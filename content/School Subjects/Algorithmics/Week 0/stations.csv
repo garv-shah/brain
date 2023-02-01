@@ -1,0 +1,4 @@
+StationA,StationB,Line,Distance,Interchange
+Victoria,Green Park,Victoria,3,5
+Green Park,Oxford Circus,Victoria,2,1
+Oxford Circus,Bond Street,Central,4,2
