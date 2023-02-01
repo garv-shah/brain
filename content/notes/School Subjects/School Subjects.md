@@ -1,3 +1,7 @@
+---
+title: "School Subjects"
+---
+
 ## [[English Language]]
 An analytical lens on the language of English as we know it and how it is used to communicate thoughts and ideas
 ## [[Algorithmics]]
