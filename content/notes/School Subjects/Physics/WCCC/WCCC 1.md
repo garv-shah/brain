@@ -1,3 +1,7 @@
+---
+title: "WCCC 1"
+---
+
 #physics #wccc #waves 
 1. Describe the motion of particles within a medium as a mechanical wave passes through the medium:
    - The particles oscillate around a mean position, allowing for energy to be transferred through them without a net transfer of matter with zero displacement

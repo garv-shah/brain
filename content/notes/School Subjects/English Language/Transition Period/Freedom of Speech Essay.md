@@ -1,3 +1,7 @@
+---
+title: "Freedom of Speech Essay"
+---
+
 #englang #essay
 Freedom of speech: it is an integral part of our society's concept of freedom and liberty, and a right that many people do not have the privilege to exercise. Nonetheless, our nations are built on a notion of democracy that is flawed without this freedom, the ability to be able to articulate opinions and thoughts without the fear of being censored or face legal consequences. Time and time again, this right has been used to defend hate speech, and though freedom of speech definitely gives people the right to use hate speech, as it always has done, this does not mean people are exempt from any form of retaliation.
 

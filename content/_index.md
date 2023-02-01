@@ -1,5 +1,5 @@
 ---
-title: 👋 Welcome
+title: 🏠 Home
 enableToc: false
 ---
 

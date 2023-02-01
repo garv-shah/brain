@@ -1,3 +1,7 @@
+---
+title: "Wave Definitions"
+---
+
 #physics #waves
 - **λ**: wavelength (m)
 	- Distance between two spots on a wave where it repeats
