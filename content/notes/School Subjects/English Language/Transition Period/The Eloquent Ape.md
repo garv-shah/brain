@@ -1,3 +1,7 @@
+---
+title: "The Eloquent Ape"
+---
+
 #englang #article
 ![[The Eloquent Ape.pdf]]
 

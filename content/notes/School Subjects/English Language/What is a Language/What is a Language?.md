@@ -1,3 +1,7 @@
+---
+title: "What is a Language?"
+---
+
 #englang #research 
 # Definition 1
 ## Source: [Language Meaning & Concept | What is Language? - Video & Lesson Transcript | Study.com](https://study.com/learn/lesson/language-meaning-concept.html)

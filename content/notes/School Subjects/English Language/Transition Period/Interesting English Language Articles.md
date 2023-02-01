@@ -1,3 +1,7 @@
+---
+title: "Interesting English Language Articles"
+---
+
 #englang #research
 1. The Scots Language
 	This is a really interesting article I found through [this video](https://www.youtube.com/watch?v=zP-PV9ryXM4) by xidnaf, and it talked about when a language actually becomes a different language. The line seems to be *really* blurry surprisingly.
