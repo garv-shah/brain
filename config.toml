@@ -1,6 +1,6 @@
-baseURL = "https://quartz.jzhao.xyz/"
+baseURL = "https://garv-shah.github.io/notes"
 languageCode = "en-us"
-googleAnalytics = "G-XYFD95KB4J"
+googleAnalytics = ""
 relativeURLs = false
 disablePathToLower = true
 ignoreFiles = [
