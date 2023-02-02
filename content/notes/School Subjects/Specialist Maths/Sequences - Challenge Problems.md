@@ -23,7 +23,7 @@ Even if you are not able to solve the problem, please explain
 >
 > Find the value of $X$ in the centre cell. 
 
-![Question 1 Diagram](notes/School Subjects/Specialist Maths/Question 1 Diagram.png)
+![Question 1 Diagram](/notes/School Subjects/Specialist Maths/Question 1 Diagram.png)
 
 So, with the current square, we have 5 arithmetic sequences to solve.
 
@@ -153,50 +153,65 @@ Now we have two terms, $k$ and $(n−1)$ whose product produces the number $2022
 
 $$
 1×2022=2022
+
 2×1011=2022
+
 3×674=2022
+
 6×337=2022
+
 337×6=2022
+
 674×3=2022
+
 1011×2=2022
+
 2022×1=2022
 $$
 
 
 Therefore there are $8$ possible values of $k$ that contain the term $2023$.
 
+## Question 3
 
-3.  The terms of an arithmetic sequence add to 2023.
-The first term of the sequence is increased by 1, the second term is increased by 2, the third term is increased by 3, and so on.
+> [!question] Question 3
+> 
+> The terms of an arithmetic sequence add to 2023. 
+>
+> The first term of the sequence is increased by 1, the second term is increased by 2, the third term is increased by 3, and so on.
+>
+> The terms of the new sequence add to 2176.
+> 
+> Find the middle term in the original sequence.
 
-The terms of the new sequence add to 2176.
+The new sequence will have $n$ added onto the end each time
 
-Find the middle term in the original sequence.
+For the sequence $1, 2, 3, 4, 5, …$:
 
-![image48](../../../resources/image48-2.png)
+$S_n=n/2 (2+(n−1))$
 
-For the sequence 1, 2, 3, 4, 5…
+$S_n=n/2(n+1)$
 
-![image49](../../../resources/image49-2.png)
+$S_n=(n^2+n)/2$
 
-![image50](../../../resources/image50-2.png)
 
-![image51](../../../resources/image51-2.png)
+The difference between $2023$ and $2176$ must equal $(n^2+n)/2$  so we get the equation:
 
-![image52](../../../resources/image52-2.png)
+$153=(n^2+n)/2$
 
-![image53](../../../resources/image53-2.png)
+$306=n^2+n$
 
-![image54](../../../resources/image54-2.png)
+$n^2+n−306=0$
 
-![image55](../../../resources/image55-2.png)
+$(n−17)(n+18)=0$
 
-![image56](../../../resources/image56-2.png)
 
-![image57](../../../resources/image57-2.png)
+$n>0∴n=17$
 
-![image58](../../../resources/image58-2.png)
+This means there are $17$ terms in the sequence, and if the sum of all these terms is $2023$, the mean must be $\frac{2023}{17}=119$
+
 
 Since the sequence has a "middle" term, there must be an odd number of terms in the sequence and this middle term must be equivalent to the mean.
 
-∴ The middle term is 119
+
+∴ The middle term is $119$
