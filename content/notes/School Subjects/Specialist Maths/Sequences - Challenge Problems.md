@@ -27,68 +27,104 @@ Even if you are not able to solve the problem, please explain
 So, with the current square, we have 5 arithmetic sequences to solve.
 
 - 1…25:
+
     This is the arithmetic sequence at the top, so $t_1=1$ and $t_5=25$
+
     The first term is 1 so $a=1$ 	
-     $\therefore t_5=1+4d$ 
+
+    $\therefore t_5=1+4d$ 
+
     $24=4d$
+
     $d=6$
     
+
     $t_n=1+6\left(n-1\right)$
     
+
     This means the sequence goes $1, 7, 13, 19, 25$
 
 - 1…17:
+
     This is the arithmetic sequence at the left, so $t_1=1$ and $t_5=17$
+
     The first term is 1 so $a=1$ 	
-     $\therefore t_5=1+4d$ 
+
+    $\therefore t_5=1+4d$ 
+
     $16=4d$
+
     $d=4$
+
     
     $t_n=1+4\left(n-1\right)$
+
     
     This means the sequence goes $1, 5, 9, 13, 17$
 
 - 17…81:
+
     This is the arithmetic sequence at the bottom, so $t_1=17$ and $t_5=81$
+
     The first term is 17 so $a=17$ 	
-     $\therefore t_5=17+4d$ 
+
+    $\therefore t_5=17+4d$ 
+
     $64=4d$
+
     $d=16$
     
+
     $t_n=17+16\left(n-1\right)$
     
+
     This means the sequence goes $17, 33, 49, 65, 81$
 
 - 25…81:
+
     This is the arithmetic sequence at the right, so $t_1=25$ and $t_5=81$
+    
     The first term is 25 so $a=25$ 
-     $\therefore t_5=25+4d$ 
+    
+    $\therefore t_5=25+4d$ 
+    
     $56=4d$
+    
     $d=14$
     
+
     $t_n=25+14\left(n-1\right)$
     
+
     This means the sequence goes $25, 39, 53, 67, 81$
 
 Now we have the following table:
-| 1   | 7   | 13  | 19  | 25  |
-|-----|-----|-----|-----|-----|
-| 5   |    |    |    | 39  |
-| 9   |    | X   |    | 53  |
-| 13  |    |    |    | 67  |
-| 17  | 33  | 49  | 65  | 81  |
+| 1  | 7  | 13 | 19 | 25 |
+|----|----|----|----|----|
+| 5  |    |    |    | 39 |
+| 9  |    | X  |    | 53 |
+| 13 |    |    |    | 67 |
+| 17 | 33 | 49 | 65 | 81 |
 
 We can either solve the vertical or the horizontal arithmetic sequence now, so arbitrarily we can go with the horizontal.
 
+
 $t_1=13$ and $t_5=49$
+
 The first term is 13 so $a=13$ 
+
 $\therefore t_5=13+4d$ 
+
 $36=4d$
+
 $d=9$
+
 
 $t_n=13+9\left(n-1\right)$
 
+
 This means the sequence goes $13, 22, 31, 40, 49$
+
 
 ∴ $X$ is 31
 
