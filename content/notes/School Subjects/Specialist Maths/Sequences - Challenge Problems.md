@@ -28,21 +28,23 @@ So, with the current square, we have 5 arithmetic sequences to solve.
 
 - 1…25:
 
-    This is the arithmetic sequence at the top, so $t_1=1$ and $t_5=25$
+    $$
+    \textnormal{This is the arithmetic sequence at the top, so} t_1=1 \textnormal{and} t_5=25
 
-    The first term is 1 so $a=1$ 	
+    \textnormal{The first term is 1 so} a=1	
 
-    $\therefore t_5=1+4d$ 
+    \therefore t_5=1+4d
 
-    $24=4d$
+    24=4d
 
-    $d=6$
+    d=6
     
 
-    $t_n=1+6\left(n-1\right)$
+    t_n=1+6\left(n-1\right)
     
 
-    This means the sequence goes $1, 7, 13, 19, 25$
+    \textnormal{This means the sequence goes} 1, 7, 13, 19, 25
+    $$
 
 - 1…17:
 
