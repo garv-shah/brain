@@ -10,3 +10,5 @@ VCE Algorithmics examines how information about the world can be systematically 
 Physics is a natural science based on observations, experiments, measurements and mathematical analysis with the purpose of finding quantitative explanations for phenomena occurring from the subatomic scale through to the planets, stellar systems and galaxies in the Universe.
 ## [[notes/School Subjects/Literature/Literature|Literature]]
 VCE Literature focuses on the meaning derived from texts, the relationship between texts, the contexts in which texts are produced and read, and the experiences the reader brings to the texts.
+## [[notes/School Subjects/Specialist Maths/Specialist Maths|Specialist Maths]]
+Specialist Maths focuses on the abstract side of maths, looking at proofs , imaginary numbers and more to delve deep into the theory behind maths and beyond.
