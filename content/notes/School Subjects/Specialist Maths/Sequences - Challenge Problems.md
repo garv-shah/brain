@@ -15,36 +15,35 @@ Even if you are not able to solve the problem, please explain
 - Why didn't it work?
 - What questions would you ask to help understand the problem?
 
-# Question 1
+## Question 1
 
 > [!question] Question 1
 > 
 > Each row and column in the grid below is an arithmetic sequence with 5 terms.
+>
 > Find the value of $X$ in the centre cell. 
 
-![[notes/School Subjects/Specialist Maths/Question 1 Diagram.png]]
+![Question 1 Diagram](notes/School Subjects/Specialist Maths/Question 1 Diagram.png)
 
 So, with the current square, we have 5 arithmetic sequences to solve.
 
 - 1…25:
 
-    $$
-    \textnormal{This is the arithmetic sequence at the top, so} t_1=1 \textnormal{and} t_5=25
+    This is the arithmetic sequence at the top, so $t_1=1$ and $t_5=25$
 
-    \textnormal{The first term is 1 so} a=1	
+    The first term is 1 so $a=1$ 	
 
-    \therefore t_5=1+4d
+    $\therefore t_5=1+4d$ 
 
-    24=4d
+    $24=4d$
 
-    d=6
+    $d=6$
     
 
-    t_n=1+6\left(n-1\right)
+    $t_n=1+6\left(n-1\right)$
     
 
-    \textnormal{This means the sequence goes} 1, 7, 13, 19, 25
-    $$
+    This means the sequence goes $1, 7, 13, 19, 25$
 
 - 1…17:
 
@@ -130,36 +129,42 @@ This means the sequence goes $13, 22, 31, 40, 49$
 
 ∴ $X$ is 31
 
-2.  ![image32](../../../resources/image32-2.png)
-![image33](../../../resources/image33-2.png)
+## Question 2
 
-![image34](../../../resources/image34-2.png)
+> [!question] Question 2
+> 
+> For each positive integer $k$; let $a_k$ denote the increasing arithmetic sequence of integers whose first term is $1$ and whose common difference is $k$: 
+>
+> For example, $a_3$ is the sequence $1, 4, 7, ...$ 
+>
+> For how many values of $k$ does $a_k$ contain the term $2023$?
+	
+	Let the nth term of the sequence $a_k$ be $2023$:
 
-![image35](../../../resources/image35-2.png)
+	$a_n=1+k(n−1)$
 
-![image36](../../../resources/image36-2.png)
+	$∴2023=1+k(n−1)$
 
-![image37](../../../resources/image37-2.png)
+	$2022=k(n−1)$
+	
+    
+	Now we have two terms, $k$ and $(n−1)$ whose product produces the number $2022$. By this logic, we should be able to list the factors of $2022$ to produce all the possible values of k.
+	
 
-![image38](../../../resources/image38-2.png)
+    $$
+	1×2022=2022
+	2×1011=2022
+	3×674=2022
+	6×337=2022
+	337×6=2022
+	674×3=2022
+	1011×2=2022
+	2022×1=2022
+	$$
 
-![image39](../../../resources/image39-2.png)
 
-![image40](../../../resources/image40-2.png)
+	Therefore there are $8$ possible values of $k$ that contain the term $2023$.
 
-![image41](../../../resources/image41-2.png)
-
-![image42](../../../resources/image42-2.png)
-
-![image43](../../../resources/image43-2.png)
-
-![image44](../../../resources/image44-2.png)
-
-![image45](../../../resources/image45-2.png)
-
-![image46](../../../resources/image46-2.png)
-
-![image47](../../../resources/image47-2.png)
 
 3.  The terms of an arithmetic sequence add to 2023.
 The first term of the sequence is increased by 1, the second term is increased by 2, the third term is increased by 3, and so on.
