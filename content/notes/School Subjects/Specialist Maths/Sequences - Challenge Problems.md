@@ -23,7 +23,7 @@ Even if you are not able to solve the problem, please explain
 >
 > Find the value of $X$ in the centre cell. 
 
-![Question 1 Diagram](/notes/School Subjects/Specialist Maths/Question 1 Diagram.png)
+![Question 1 Diagram](/notes/School%20Subjects/Specialist%20Maths/Question%201%20Diagram.png)
 
 So, with the current square, we have 5 arithmetic sequences to solve.
 
@@ -151,23 +151,23 @@ $2022=k(n−1)$
 Now we have two terms, $k$ and $(n−1)$ whose product produces the number $2022$. By this logic, we should be able to list the factors of $2022$ to produce all the possible values of k.
 
 
-$$
-1×2022=2022
 
-2×1011=2022
+$1×2022=2022$
 
-3×674=2022
+$2×1011=2022$
 
-6×337=2022
+$3×674=2022$
 
-337×6=2022
+$6×337=2022$
 
-674×3=2022
+$337×6=2022$
 
-1011×2=2022
+$674×3=2022$
 
-2022×1=2022
-$$
+$1011×2=2022$
+
+$2022×1=2022$
+
 
 
 Therefore there are $8$ possible values of $k$ that contain the term $2023$.
@@ -176,28 +176,28 @@ Therefore there are $8$ possible values of $k$ that contain the term $2023$.
 
 > [!question] Question 3
 > 
-> The terms of an arithmetic sequence add to 2023. 
+> The terms of an arithmetic sequence add to $2023$. 
 >
-> The first term of the sequence is increased by 1, the second term is increased by 2, the third term is increased by 3, and so on.
+> The first term of the sequence is increased by $1$, the second term is increased by $2$, the third term is increased by $3$, and so on.
 >
-> The terms of the new sequence add to 2176.
+> The terms of the new sequence add to $2176$.
 > 
 > Find the middle term in the original sequence.
 
 The new sequence will have $n$ added onto the end each time
 
-For the sequence $1, 2, 3, 4, 5, …$:
+For the sequence $1, 2, 3, 4, 5, …$
 
-$S_n=n/2 (2+(n−1))$
+$S_n=\frac{n}{2}(2+(n−1))$
 
-$S_n=n/2(n+1)$
+$S_n=\frac{n}{2}(n+1)$
 
-$S_n=(n^2+n)/2$
+$S_n=\frac{(n^2+n)}{2}$
 
 
-The difference between $2023$ and $2176$ must equal $(n^2+n)/2$  so we get the equation:
+The difference between $2023$ and $2176$ must equal $\frac{(n^2+n)}{2}$  so we get the equation:
 
-$153=(n^2+n)/2$
+$153=\frac{(n^2+n)}{2}$
 
 $306=n^2+n$
 
