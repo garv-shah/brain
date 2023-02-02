@@ -5,9 +5,9 @@ title: "Chapter 1"
 
 > Whose point of view is this told from and what is their motivation in telling this story?
 
-The introductory chapter is told from the point of view of Penelope, someone who has been neglected their whole life and now, only in death, has the will and ability to try and tell her story. She has been lost in the shadows for all her life, so she wants to be able to portray her side of the story, and get it all out there because she never could while she was alive.
+The introductory chapter is told from the point of view of [[notes/School Subjects/Literature/The Penelopiad/Penelope|Penelope]], someone who has been neglected their whole life and now, only in death, has the will and ability to try and tell her story. She has been lost in the shadows for all her life, so she wants to be able to portray her side of the story, and get it all out there because she never could while she was alive.
 
-She had to suffer so much just because of her husband, and she doesn't want others to go down the same path of suffering needlessly. She wants to be known as more than just a faithful wife, but her own person. The weaponisation of Penelope's character not only makes them suffer more, but further excuses the behaviour of the men.
+She had to suffer so much just because of her husband, and she doesn't want others to go down the same path of suffering needlessly. She wants to be known as more than just a faithful wife, but her own person. The weaponisation of [[notes/School Subjects/Literature/The Penelopiad/Penelope|Penelope's]] character not only makes them suffer more, but further excuses the behaviour of the men.
 
 > Comment on the tone used here and give an example
 
@@ -17,4 +17,4 @@ She is also almost slightly resentful towards Odysseus. She talks about his char
 
 > What is meant by "A stick used to beat other women with"?
 
-People weaponise Penelope's faithfulness and use that as a measuring bar to compare other women with. So Penelope's faithfulness, rather than being celebrates, is used to degrade other women and further pushes the status quo that women are defined by their husbands. Keeping that loyalty was actually something that hurt her, and she doesn't want others to follow her example because it just makes the lives of others worse.
+People weaponise [[notes/School Subjects/Literature/The Penelopiad/Penelope|Penelope's]] faithfulness and use that as a measuring bar to compare other women with. So [[notes/School Subjects/Literature/The Penelopiad/Penelope|Penelope's]] faithfulness, rather than being celebrates, is used to degrade other women and further pushes the status quo that women are defined by their husbands. Keeping that loyalty was actually something that hurt her, and she doesn't want others to follow her example because it just makes the lives of others worse.
