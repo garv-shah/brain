@@ -139,31 +139,31 @@ This means the sequence goes $13, 22, 31, 40, 49$
 >
 > For how many values of $k$ does $a_k$ contain the term $2023$?
 	
-	Let the nth term of the sequence $a_k$ be $2023$:
+Let the nth term of the sequence $a_k$ be $2023$:
 
-	$a_n=1+k(n−1)$
+$a_n=1+k(n−1)$
 
-	$∴2023=1+k(n−1)$
+$∴2023=1+k(n−1)$
 
-	$2022=k(n−1)$
-	
-    
-	Now we have two terms, $k$ and $(n−1)$ whose product produces the number $2022$. By this logic, we should be able to list the factors of $2022$ to produce all the possible values of k.
-	
-
-    $$
-	1×2022=2022
-	2×1011=2022
-	3×674=2022
-	6×337=2022
-	337×6=2022
-	674×3=2022
-	1011×2=2022
-	2022×1=2022
-	$$
+$2022=k(n−1)$
 
 
-	Therefore there are $8$ possible values of $k$ that contain the term $2023$.
+Now we have two terms, $k$ and $(n−1)$ whose product produces the number $2022$. By this logic, we should be able to list the factors of $2022$ to produce all the possible values of k.
+
+
+$$
+1×2022=2022
+2×1011=2022
+3×674=2022
+6×337=2022
+337×6=2022
+674×3=2022
+1011×2=2022
+2022×1=2022
+$$
+
+
+Therefore there are $8$ possible values of $k$ that contain the term $2023$.
 
 
 3.  The terms of an arithmetic sequence add to 2023.
