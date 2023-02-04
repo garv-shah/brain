@@ -10,3 +10,4 @@ title: "English Language"
 	- Write a short 4 - 500 word essay on why "[[notes/School Subjects/English Language/Transition Period/Freedom of Speech Essay|Freedom of speech gives people the right to use hate speech]]"
 - Week 1:
 	- [[notes/School Subjects/English Language/What is a Language/What is a Language?|What is a Language?]]
+	- [[notes/School Subjects/English Language/What is a Language/Variables of Communication|Variables of Communication]]
