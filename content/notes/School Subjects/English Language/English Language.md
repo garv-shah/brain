@@ -11,3 +11,4 @@ title: "English Language"
 - Week 1:
 	- [[notes/School Subjects/English Language/What is a Language/What is a Language?|What is a Language?]]
 	- [[notes/School Subjects/English Language/What is a Language/Variables of Communication|Variables of Communication]]
+	- [[notes/School Subjects/English Language/What is a Language/Features of Language|Features of Language]]
