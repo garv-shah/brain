@@ -1,3 +1,8 @@
+---
+title: "Chapter 6"
+---
+#lit #thepenelopiad #chapter 
+
 > [!quote] Prompt
 > 
 > "If you can't go through an obstacle, go around it." What do you think Penelope's mother might be implying here about Penelope's marriage to Odysseus?  What does this suggest about the world of the text?

@@ -1,7 +1,7 @@
 ---
 title: "Chapter 1"
 ---
-#lit #chapter
+#lit #chapter #thepenelopiad 
 
 > Whose point of view is this told from and what is their motivation in telling this story?
 
