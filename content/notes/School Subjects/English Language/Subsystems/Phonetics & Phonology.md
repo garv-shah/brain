@@ -30,6 +30,10 @@ Examples of transcription:
 - Cat: /kæt/
 - Meet: /miːt/
 
+A rough-coated, dough-faced, thoughtful ploughman strode through the streets of Scarborough.  After falling into a slough, coughed and hiccoughed.
+
+/ə ɹuf-kəʊted, dəʊ-feɪsd, θɔːtfʊl 
+
 ### The International Phonetic Alphabet
 The IPA is an international alphabet that can transcribe any of the world's languages.
 - In IPA transcription, one phone (IPA symbol) usually equals one sounds
