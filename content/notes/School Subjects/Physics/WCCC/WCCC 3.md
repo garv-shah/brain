@@ -31,3 +31,32 @@ $v=\frac{3\times10^{8}}{1.38}$
 > 
 > Light travels at a speed of $2.25 \times 10^{8} ms^{-1}$ in water and $2.29 \times 10^{8} ms^{-1}$ in ice. If water has a refractive index of 1.33, use this information to calculate the refractive index of ice.
 
+$n_{2}=\frac{c}{v}$
+$n_{2}=\frac{3\times10^{8}}{2.29\times10^{8}}$
+$n_{2}=\frac{300}{229}$
+$n_{2}\approx 1.31$
+
+> [!question]
+> 
+> Light travels from water (n = 1.33) into glass (n = 1.60). The incident angle is 44°. Calculate the angle of refraction
+
+$n_{1}\sinθ_{1}=n_{2}\sinθ_{2}$
+$1.33\sin 44°=1.60\sin θ_{2}$
+$\sin^{-1}(\frac{1.33\sin 44°}{1.60})=θ_{2}$
+$θ_{2}\approx35.27$
+
+> [!question]
+> 
+> For which of the following situations can total internal reflection occur?
+
+| Incident medium  | Refracting medium |
+| ---------------- | ----------------- |
+| air (n = 1.00)   | glass (n = 1.55)  |
+| glass (n = 1.55) | air (n = 1.00)    |
+| glass (n = 1.55) | water (n = 1.33)  |
+| glass (n = 1.55) | glass (n = 1.55)  |
+
+All but the first are possible
+
+
+
