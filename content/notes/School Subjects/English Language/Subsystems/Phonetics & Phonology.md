@@ -32,7 +32,7 @@ Examples of transcription:
 
 A rough-coated, dough-faced, thoughtful ploughman strode through the streets of Scarborough.  After falling into a slough, coughed and hiccoughed.
 
-/ə ɹuf-kəʊted, dəʊ-feɪsd, θɔːtfʊl plaʊmɘn strɵʊd θruː ðə striːts ɒf skɑːbərəʊ. ɑːftə fɔːlɪŋ ɪntuː ə slaʊ, kɑft and hɪkʌpt/
+/ə ɹuf-kəʊted, dəʊ-feɪsd, θɔːtfʊl plaʊmɘn strɵʊd θruː ðə striːts ɒf skɑːbrə. ɑːftə fɔːlɪŋ ɪntuː ə slaʊ, kɑft and hɪkʌpt/
 
 ### The International Phonetic Alphabet
 The IPA is an international alphabet that can transcribe any of the world's languages.
