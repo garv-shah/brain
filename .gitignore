@@ -2,8 +2,10 @@
 public
 resources
 .idea
-content/.obsidian
+content/.obsidian/*
+!content/.obsidian/plugins
+content/.obsidian/plugins/*/*
+!content/.obsidian/plugins/*/manifest.json
 assets/indices/linkIndex.json
 assets/indices/contentIndex.json
 linkmap
-!content/.obsidian/plugins/*/manifest.json
