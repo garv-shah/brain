@@ -15,3 +15,5 @@ title: "English Language"
 - Week 2: lol, skipped
 - Week 3:
 	- [[notes/School Subjects/English Language/Subsystems/Phonetics & Phonology|Phonetics & Phonology]]
+- Week 4:
+	- [[notes/School Subjects/English Language/Subsystems/Morphology & Lexicology|Morphology & Lexicology]]
