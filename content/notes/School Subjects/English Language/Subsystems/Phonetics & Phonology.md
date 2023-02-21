@@ -61,11 +61,11 @@ Phonology is the study of the sound system of a specific language. The sounds of
 
 ### Connected Speech
 There are no actual gaps in between words in speech generally, only written. 
-#### Ellision
+#### Ellision (sounds are lost)
 The omission (deletion) of a sound in connected speech - this sound may be a vowel, a consonant or even a whole syllable. For instance 'cos instead of pronouncing because. We often **elide** sounds in rapid, everyday speech purely for ease of pronunciation. Another example would be 'want to' vs wanna
 #### Vowel Reducation
 Similar to elision but, instead of disappearing completely, vowels in unstressed positions are reduced to schwa /ə/. So the word 'to' /tu/ might be reduced to /tə/
-#### Assimilation
+#### Assimilation (sound change)
 When a sound changes to become more like a neighbouring sound. Assimilation may be *progressive* where the sound is affected by a preceding sounds, or *regressive* (also known as *anticipatory assimilation*), where the following sound is affected by a following sound. 
 ##### Examples
 Progressive:
@@ -75,8 +75,8 @@ Regressive:
 - light blue /laip bluː/
 - green boat becomes /griːm bəʊt/
 
-#### Insertion
-There are two examples of sounds being added. The first is insertion, the other is epenthesis. **Insertion doesn't add a pull syllable, whereas epenthesis does**
+#### Insertion (sounds are added)
+There are two examples of sounds being added, generally deliberately. The first is insertion, the other is epenthesis. **Insertion doesn't add a pull syllable, whereas epenthesis does**
 - a voiceless stop insertion where, between a nsal consonant and a voiceless fricative, a voiceless stop with the same place of articulation as the nasal consonant is inserted.
 	- e.g. In English, many add a /p/ to hamster and say "hampster"/
 - after a nasal consonant, a voiceless stop may be 'added
@@ -85,7 +85,7 @@ There are two examples of sounds being added. The first is insertion, the other 
 Epenthesis is the insertion of an extra sound into a word.
 - Involves the addition of sounds (syllables) where they don't strictly belong. For instance, it's common for people to insert a vowel in 'souvlaki' so that it sounds like 'souv-e-laki'. And humbling sometimes becomes humb-e-ling.
 ##### Intrusion
-This is where sounds are added between words, but may be put together as insertion. 
+This is where sounds are added between words but is not deliberate, but may be put together as insertion. 
 
 When two vowel sounds meet, we tend to insert an extra sound which resembles wither a /j/, /w/ or /r/, to mark the transition sound between the two vowels, a device referred to as intrusion.
 - Consonants can also be added, for instance Australians often add r in law and order so that it sounds more like "lor an order".
@@ -94,9 +94,20 @@ Metathesis sounds complicated but it's a very common aspect of the English langu
 - Ask becomes /arks/
 - Nuclear becomes /nucələer/
 ### Prosodic Features
+Affect **how** we say something
 - Volume is the modulation of volume in your voice, which is used to convey emotions
 - Tempo is the speed and which we speak, reasons for speaking faster or slower
 - Intonation is the pattern of pitch changes in speech, it is the variation of spoken pitch used in language. It can be used to
 	- Indicate the different attitudes and emotions of the speaker
 	- Signal the difference between statements, questions.
 - Stress is the degree of strength used to pronounce a syllable
+
+Non-verbal features do not affect the features of speech, while paralinguistic features (cough, laugh, breath, aka vocal effects) do impact my speech, meaning you can still hear them. 
+
+### Phonological Patterning
+- Alliteration: seven slippery snakes
+- Assonance: he claps his hands and puts them in the sand
+- Consonance: Mike likes his new bike
+- Onomatopoeia: boom, crash, brrrrrr
+- Rhythm: I'm going down like a bottle of whiskey
+- Rhyme: The cat and the hat, sat on a mat
