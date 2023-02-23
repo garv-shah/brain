@@ -1,5 +1,6 @@
 ---
 title: "Phonetics & Phonology"
+cards-deck: notes::School Subjects::English Language::Subsystems
 ---
 #englang #subsystem
 
@@ -9,7 +10,13 @@ Phonetics is the study of human speech sounds, how they're produced, transmitted
 - We refer to individual sounds as phones or sounds, never letters
 - There are two kinds of transcriptions using the IPA; broad and narrow
 - All broad (general or phonemic) transcriptions is done with phonetic slashes /si/
-- •All narrow (phonetic) transcription is done within phonetic brackets:  \[si]
+- All narrow (phonetic) transcription is done within phonetic brackets:  \[si]
+
+> Questions:
+
+What is phonetics the study of? :: Phonetics is the study of human speech sounds, how they're produced, transmitted and received. ^1677146865711
+
+What are the two kinds of transcriptions using the IPA? :: There are two kinds of transcriptions using the IPA; broad and narrow. ^1677146865717
 
 ### Fields
 #### Articulatory Phonetics
@@ -39,7 +46,7 @@ The IPA is an international alphabet that can transcribe any of the world's lang
 - In IPA transcription, one phone (IPA symbol) usually equals one sounds
 
 ### Allophones
-Allophones are more specific interpretations of a phoneme, made for narrow transcriptions. 
+What is an allophone? :: Allophones are more specific interpretations of a phoneme, made for narrow transcriptions.  ^1677146865719
 ![[notes/School Subjects/English Language/Subsystems/Diagrams/Allophone Diagram.png]]
 
 ### Place + Manner
@@ -56,17 +63,17 @@ The top is the place and the and the left is the manner
 
 ## Phonology
 Phonology is the study of the sound system of a specific language. The sounds of the English language for instance are very different to the sounds of Italian or Mandarin, and the sounds of Australian English differ from those of American English.
-- There are 44 sounds in Australian English (44 phonemes)
+- How many sounds in Australian English? :: 44 phonemes ^1677146865721
 - Each language has different sounds and stresses particular phonemes, and can completely change the meaning of the word (*pro*ject vs pro*ject*)
 
 ### Connected Speech
 There are no actual gaps in between words in speech generally, only written. 
-#### Ellision (sounds are lost)
-The omission (deletion) of a sound in connected speech - this sound may be a vowel, a consonant or even a whole syllable. For instance 'cos instead of pronouncing because. We often **elide** sounds in rapid, everyday speech purely for ease of pronunciation. Another example would be 'want to' vs wanna
-#### Vowel Reducation
-Similar to elision but, instead of disappearing completely, vowels in unstressed positions are reduced to schwa /ə/. So the word 'to' /tu/ might be reduced to /tə/
-#### Assimilation (sound change)
-When a sound changes to become more like a neighbouring sound. Assimilation may be *progressive* where the sound is affected by a preceding sounds, or *regressive* (also known as *anticipatory assimilation*), where the following sound is affected by a following sound. 
+#### Elision
+What is elision? :: The omission (deletion) of a sound in connected speech (**sounds are lost**) - this sound may be a vowel, a consonant or even a whole syllable. For instance 'cos instead of pronouncing because. We often **elide** sounds in rapid, everyday speech purely for ease of pronunciation. Another example would be 'want to' vs wanna ^1677146865722
+#### Vowel Reduction
+What is vowel reduction? :: Similar to elision but, instead of disappearing completely, vowels in unstressed positions are reduced to schwa /ə/. So the word 'to' /tu/ might be reduced to /tə/ ^1677146865723
+#### Assimilation
+What is assimilation? :: When a **sound changes** to become more like a neighbouring sound. Assimilation may be *progressive* where the sound is affected by a preceding sounds, or *regressive* (also known as *anticipatory assimilation*), where the following sound is affected by a following sound.  ^1677146865724
 ##### Examples
 Progressive:
 - talked becomes /tɔːkt/
@@ -75,25 +82,25 @@ Regressive:
 - light blue /laip bluː/
 - green boat becomes /griːm bəʊt/
 
-#### Insertion (sounds are added)
-There are two examples of sounds being added, generally deliberately. The first is insertion, the other is epenthesis. **Insertion doesn't add a pull syllable, whereas epenthesis does**
-- a voiceless stop insertion where, between a nsal consonant and a voiceless fricative, a voiceless stop with the same place of articulation as the nasal consonant is inserted.
+#### Insertion
+What is insertion? :: There are two examples of **sounds being added**, generally deliberately. The first is insertion, the other is epenthesis. **Insertion doesn't add a full syllable, whereas epenthesis does** ^1677146865725
+- a voiceless stop insertion where, between a nasal consonant and a voiceless fricative, a voiceless stop with the same place of articulation as the nasal consonant is inserted.
 	- e.g. In English, many add a /p/ to hamster and say "hampster"/
 - after a nasal consonant, a voiceless stop may be 'added
 	- e.g. In English, many add a /k/ to something which becomes /sʌmθɪŋk/
 ##### Epenthesis
-Epenthesis is the insertion of an extra sound into a word.
+What is epenthesis? :: Epenthesis is the insertion of an extra sound into a word. ^1677146865726
 - Involves the addition of sounds (syllables) where they don't strictly belong. For instance, it's common for people to insert a vowel in 'souvlaki' so that it sounds like 'souv-e-laki'. And humbling sometimes becomes humb-e-ling.
 ##### Intrusion
-This is where sounds are added between words but is not deliberate, but may be put together as insertion. 
+What is intrusion? :: This is where sounds are added between words but is not deliberate, but may be put together as insertion.  ^1677146865728
 
 When two vowel sounds meet, we tend to insert an extra sound which resembles wither a /j/, /w/ or /r/, to mark the transition sound between the two vowels, a device referred to as intrusion.
 - Consonants can also be added, for instance Australians often add r in law and order so that it sounds more like "lor an order".
 #### Metathesis
-Metathesis sounds complicated but it's a very common aspect of the English language. It is the transposition within a word of its sounds. The word "metathesis" comes from the Greek word meaning to transpose. It's also known as a permutation.
+What is metathesis? :: Metathesis sounds complicated but it's a very common aspect of the English language. It is the transposition within a word of its sounds. The word "metathesis" comes from the Greek word meaning to transpose. It's also known as a permutation. ^1677146865729
 - Ask becomes /arks/
 - Nuclear becomes /nucələer/
-### Prosodic Features
+### Prosodic Features #card
 Affect **how** we say something
 - Volume is the modulation of volume in your voice, which is used to convey emotions
 - Tempo is the speed and which we speak, reasons for speaking faster or slower
@@ -101,13 +108,15 @@ Affect **how** we say something
 	- Indicate the different attitudes and emotions of the speaker
 	- Signal the difference between statements, questions.
 - Stress is the degree of strength used to pronounce a syllable
+^1677146865730
 
 Non-verbal features do not affect the features of speech, while paralinguistic features (cough, laugh, breath, aka vocal effects) do impact my speech, meaning you can still hear them. 
 
-### Phonological Patterning
+### Phonological Patterning #card
 - Alliteration: seven slippery snakes
 - Assonance: he claps his hands and puts them in the sand
 - Consonance: Mike likes his new bike
 - Onomatopoeia: boom, crash, brrrrrr
 - Rhythm: I'm going down like a bottle of whiskey
 - Rhyme: The cat and the hat, sat on a mat
+^1677146865731
