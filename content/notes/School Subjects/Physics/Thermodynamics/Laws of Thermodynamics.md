@@ -39,8 +39,10 @@ This is because when work is done on a system, the system isn't really doing any
 
 $$ΔU=Q - W$$
 
-Work **BY** the system is ___ work. :: positive ^1677188629207
-Work **ON** the system is  ___ work. :: negative ^1677188629213
+Work **BY** the system is ==positive== work.
+^1677225721447
+Work **ON** the system is  ==negative== work.
+^1677225721469
 
 ### Specific Heat Capacity #card
 The way the temperature increases when an object gains thermal energy depends on the material from which the object is made.

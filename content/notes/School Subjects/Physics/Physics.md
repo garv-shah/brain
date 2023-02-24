@@ -12,3 +12,5 @@ You can also view my [[notes/School Subjects/Physics/Logbook/Logbook|Logbook]] w
 	- Snell's Law, etc
 	- [[notes/School Subjects/Physics/WCCC/WCCC 3|WCCC 3]]: Weekly Quiz, this time of refraction!
 - Week 4: Thermodynamics
+	- [[notes/School Subjects/Physics/WCCC/WCCC 4|WCCC 4]] on heat and temperature!
+	- [[notes/School Subjects/Physics/Thermodynamics/Laws of Thermodynamics|Laws of Thermodynamics]]

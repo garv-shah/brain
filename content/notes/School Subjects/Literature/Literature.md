@@ -11,3 +11,4 @@ title: "Literature"
 - Write about the maids' [[notes/School Subjects/Literature/The Penelopiad/Cold Eyed Teenaged Killer|cold eyed teenaged killer]], Telemachus
 - Write a [[notes/School Subjects/Literature/The Penelopiad/The Obstacle To Go Through|creative piece]] on Chapter 6
 - Do a close passage analysis on [[notes/School Subjects/Literature/The Penelopiad/The Birth of Telemachus Close Analysis|the birth of Telemachus]]
+- Comment on [[notes/School Subjects/Literature/The Penelopiad/Relationships|relationships]] in Chapter 12
