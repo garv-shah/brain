@@ -63,3 +63,16 @@ $ΔQ = mcΔT$
       $= 1.68 \times 10^6 J$
 ^1677191437178
 
+### Latent Heat
+Latent (meaning "Hidden") Heat refers to the heat curve of changes in phases. This means that during the phase change, the energy that would normally manifest itself in a change in temperate ($ΔT$) is instead put towards the process of rearranging the atoms to change the phase of the material.
+#### Specific Latent Heat
+The amount of energy required to change 1 kg of a substance from one state to another is called the Specific latent Heat. The unit is $J \space kg^{-1}$ 
+- $L_{vap} =$ specific latent heat of vaporisation
+- $L_{fus} =$ specific latent heat of fusion
+
+To calculate the amount of energy required to change the state of mass m
+$$
+Q = mL
+$$
+
+
