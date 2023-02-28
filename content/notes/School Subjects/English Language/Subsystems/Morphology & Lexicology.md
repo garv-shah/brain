@@ -14,6 +14,14 @@ cards-deck: notes::School Subjects::English Language::Subsystems
 > 
 > **Etymology**:: the history of how words became the words ^1677146913663
 
+# Morphology
+Morphology is the branch of linguistics that studies *the structure of words.*
+
+In English and many other languages, many words can be broken down into parts, for example
+- unhappiness -> un-happi-ness
+- horses -> horse-s
+- walking -> walk-ing
+
 ## The Parts of Speech
 A part of speech is a class of words based on the word's function, the way it works in a sentence. They are sometime's referred to as word classes.
 
