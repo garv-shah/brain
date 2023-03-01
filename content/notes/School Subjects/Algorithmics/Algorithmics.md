@@ -9,4 +9,7 @@ title: "Algorithmics"
 - Week 2: [[notes/School Subjects/Algorithmics/Weeks/Week 2/Writing Pseudocode|Introduction to Pseudocode]] with [[notes/School Subjects/Algorithmics/Weeks/Week 2/Sweet Treats Pseudocode|Sweet Treats]]
 	- Also modelled [[notes/School Subjects/Algorithmics/Weeks/Week 2/Locker Door Problem|Locker Door Problem]]
 - Introduction to ADTs.
-- Week 3: [[notes/School Subjects/Algorithmics/Weeks/Week 4/Graphs as ADTs|Graphs as ADTs]]
+- Week 3: 
+  - Lesson 1: 
+    - [[notes/School Subjects/Algorithmics/Weeks/Week 4/Graphs as ADTs|Graphs as ADTs]]
+    - [[notes/School Subjects/Algorithmics/Weeks/Week 4/Bridge Crossing Problem|Bridge Crossing Problem]]
