@@ -14,13 +14,53 @@ cards-deck: notes::School Subjects::English Language::Subsystems
 > 
 > **Etymology**:: the history of how words became the words ^1677146913663
 
-# Morphology
+## Morphology
 Morphology is the branch of linguistics that studies *the structure of words.*
 
 In English and many other languages, many words can be broken down into parts, for example
 - unhappiness -> un-happi-ness
 - horses -> horse-s
 - walking -> walk-ing
+
+What is a morpheme? :: The *smallest unit* which has a meaning or grammatical function that words can be broken down into are known as **morphemes** ^1677545865719
+
+### Free vs Bound Morphemes
+#### Free Morphemes #card
+Free morphemes are morphemes which can stand alone. We have already seen the example of "yes".
+
+#### Bound Morphemes #card
+Bound morphemes never exist as words themselves, but ate always attached to some other morpheme. An example would be "un-"
+
+Can further be divided into 4 categories:
+- Prefix: *un*-happy
+- Suffix happi-*ness*
+- Infix: abso-*blooming*-lutely (only non-standard words in English)
+- Circumfix: *en*-light-*en*, same meaning of affixes ∴ em-bold-en would have be an example of a circumfix
+  
+### Derivational vs Inflectional Morphemes
+#### Derivational Morphemes #card
+**Derivational morphemes** create or derive new words by changing the meaning or changing the word class of the word. For example, happy turns into unhappy, and both words are adjectives but the meaning changes.
+
+#### Inflectional Morphemes #card 
+**Inflectional morphemes** don't alter the meaning or word class of a word; instead they only refine and give extra grammatical information about the word's already existing meaning. For example cat into cats or walk into walking.
+
+In English, all inflectional morphemes are suffixes (only by chance, since in other languages this is not true) and there are 8 of them.
+- -s, 3rd person sg. present
+  "He waits"
+- -ed, past tense (also -t as in "used to" or "spent")
+  "He waited"
+- -ing, progressive
+  "He is waiting"
+- -en, past participle
+  "I had eaten"
+- -s, plural
+  "Both chairs are broken"
+- -'s, possessive
+  "The chair's leg is broken"
+- -er, comparative, can also be agentive but that's derivational
+  "He was faster"
+- -est, superlative
+  "He was the fastest"
 
 ## The Parts of Speech
 A part of speech is a class of words based on the word's function, the way it works in a sentence. They are sometime's referred to as word classes.
@@ -70,9 +110,11 @@ The category is quite heterogeneous, and includes such things such as exclamatio
 ## Types of Writing Systems
 ### Orthographic #card
 This type of writing system is arbitrary and the language is "represented" in writing by something like an alphabet, such as English.
+^1677545865722
 
 ### Iconographic #card
 This type of writing system is less arbitrary and uses icons that visually represent what they're meant to mean, such as Chinese or Korean.
+^1677545865723
 
 ## Accent and Dialect
 Accent is to do with how things are pronounced, purely to do with sound, while dialect is to do with words and the lexicon that people pull from. For example, a Yorkshire man may say tub instead of bath (a different dialect), but would still say grass and have it sound different.
