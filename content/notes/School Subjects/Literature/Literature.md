@@ -13,3 +13,4 @@ title: "Literature"
 - Do a close passage analysis on [[notes/School Subjects/Literature/The Penelopiad/The Birth of Telemachus Close Analysis|the birth of Telemachus]]
 - Comment on [[notes/School Subjects/Literature/The Penelopiad/Relationships|relationships]] in Chapter 12
 - Comment on [[notes/School Subjects/Literature/The Penelopiad/Penelope as a Narrator|Penelope as a narrator]] in Chapter 15
+- Explore the significance of a passage from Chapter 18, [[notes/School Subjects/Literature/The Penelopiad/News Of Helen|News of Helen]]
