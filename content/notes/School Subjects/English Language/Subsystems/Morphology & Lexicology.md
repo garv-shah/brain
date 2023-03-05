@@ -41,6 +41,13 @@ Can further be divided into 4 categories:
 #### Derivational Morphemes #card
 **Derivational morphemes** create or derive new words by changing the meaning or changing the word class of the word. For example, happy turns into unhappy, and both words are adjectives but the meaning changes.
 
+##### The Diminutive Suffix
+A diminutive creates a meaning of ‘small’ or ‘little’ (this can be literal or notional) The most common diminutives are formed with and with suffixes such as _-let_ and _-y_. We often use a diminutive with names or with abbreviated names when we want to be more informal, or to express affection for someone or something.
+- _Here’s a book**let** which gives advice on keep-fit._ (_booklet_ = a small book)
+- _Right, Matt**y**, I’ve got some very good news for you._ (_Matty_ is formed from the name ‘Matthew’)
+- _I think she’s the perfect kitt**y** for Jennifer._ (_kitty_ is formed from ‘kitten’ a young cat)
+- What a cute little duck**ling**
+
 #### Inflectional Morphemes #card 
 **Inflectional morphemes** don't alter the meaning or word class of a word; instead they only refine and give extra grammatical information about the word's already existing meaning. For example cat into cats or walk into walking.
 
