@@ -62,6 +62,24 @@ In English, all inflectional morphemes are suffixes (only by chance, since in ot
 - -est, superlative
   "He was the fastest"
 
+## Word Formations
+### Affixation
+Forming new words by adding an extra bound morpheme, so an affix.
+
+### Compounding
+Forming new words not from bound affixes but from two or more independent words: the words can be free morphemes, words derived by affixation, or even words formed by compounds themselves. e.g. girlfriend, blackbird
+
+By putting stress on both words you seperate them into two words
+
+### Reduplication
+This is forming new words either by doubling an entire free morpheme (total reduplication) or part of a morpheme (partial reduplication).
+
+### Blending
+Where two words are merged together, such as:
+- brunch - from breakfast and lunch
+- smog - from smoke and fog
+- spork - from spoon and fork
+
 ## The Parts of Speech
 A part of speech is a class of words based on the word's function, the way it works in a sentence. They are sometime's referred to as word classes.
 
