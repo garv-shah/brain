@@ -27,42 +27,41 @@ options = {
 nx.draw_networkx(g, **options)
 
 # BFS Algorithm
-q = deque()
-seen = []
-current_node = "Kitchen"
-q.append(current_node)
-
-while True:
-    seen.append(current_node)
-    for neighbor in g.neighbors(current_node):
-        if neighbor not in seen:
-            q.append(neighbor)
-            seen.append(neighbor)
-
-    if len(q) == 0:
-        break
-    else:
-        current_node = q.popleft()
-        print(current_node)
+# q = deque()
+# seen = []
+# current_node = "Kitchen"
+# q.append(current_node)
+#
+# while True:
+#     seen.append(current_node)
+#     for neighbor in g.neighbors(current_node):
+#         if neighbor not in seen:
+#             q.append(neighbor)
+#             seen.append(neighbor)
+#
+#     if len(q) == 0:
+#         break
+#     else:
+#         current_node = q.popleft()
+#         print(current_node)
 
 # DFS Algorithm
-s = deque()
-seen = []
-current_node = "Kitchen"
-q.append(current_node)
-
-while True:
-    seen.append(current_node)
-    for neighbor in g.neighbors(current_node):
-        if neighbor not in seen:
-            q.append(neighbor)
-            seen.append(neighbor)
-
-    if len(q) == 0:
-        break
-    else:
-        current_node = q.pop()
-        print(current_node)
+# s = deque()
+# seen = []
+# current_node = "Kitchen"
+#
+# while True:
+#     for neighbor in reversed(sorted(list(g.neighbors(current_node)))):
+#         if neighbor not in seen:
+#             s.append(neighbor)
+#
+#     if len(s) == 0:
+#         break
+#     else:
+#         seen.append(current_node)
+#         print(current_node)
+#
+#         current_node = s.pop()
 
 
 # nt = Network('500px', '500px')
