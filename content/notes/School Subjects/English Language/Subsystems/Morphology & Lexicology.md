@@ -27,9 +27,11 @@ What is a morpheme? :: The *smallest unit* which has a meaning or grammatical fu
 ### Free vs Bound Morphemes
 #### Free Morphemes #card
 Free morphemes are morphemes which can stand alone. We have already seen the example of "yes".
+^1678180906338
 
 #### Bound Morphemes #card
 Bound morphemes never exist as words themselves, but ate always attached to some other morpheme. An example would be "un-"
+^1678180906342
 
 Can further be divided into 4 categories:
 - Prefix: *un*-happy
@@ -40,6 +42,7 @@ Can further be divided into 4 categories:
 ### Derivational vs Inflectional Morphemes
 #### Derivational Morphemes #card
 **Derivational morphemes** create or derive new words by changing the meaning or changing the word class of the word. For example, happy turns into unhappy, and both words are adjectives but the meaning changes.
+^1678180906349
 
 ##### The Diminutive Suffix
 A diminutive creates a meaning of ‘small’ or ‘little’ (this can be literal or notional) The most common diminutives are formed with and with suffixes such as _-let_ and _-y_. We often use a diminutive with names or with abbreviated names when we want to be more informal, or to express affection for someone or something.
@@ -50,6 +53,7 @@ A diminutive creates a meaning of ‘small’ or ‘little’ (this can be liter
 
 #### Inflectional Morphemes #card 
 **Inflectional morphemes** don't alter the meaning or word class of a word; instead they only refine and give extra grammatical information about the word's already existing meaning. For example cat into cats or walk into walking.
+^1678180906352
 
 In English, all inflectional morphemes are suffixes (only by chance, since in other languages this is not true) and there are 8 of them.
 - -s, 3rd person sg. present

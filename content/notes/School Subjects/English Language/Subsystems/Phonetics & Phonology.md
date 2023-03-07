@@ -89,7 +89,7 @@ What is insertion? :: There are two examples of **sounds being added**, generall
 - after a nasal consonant, a voiceless stop may be 'added
 	- e.g. In English, many add a /k/ to something which becomes /sʌmθɪŋk/
 ##### Epenthesis
-What is epenthesis? :: Epenthesis is the insertion of an extra sound into a word. ^1677146865726
+What is epenthesis? :: Epenthesis is the insertion of an extra sound into a word. **Epenthesis adds a full extra syllable** ^1677146865726
 - Involves the addition of sounds (syllables) where they don't strictly belong. For instance, it's common for people to insert a vowel in 'souvlaki' so that it sounds like 'souv-e-laki'. And humbling sometimes becomes humb-e-ling.
 ##### Intrusion
 What is intrusion? :: This is where sounds are added between words but is not deliberate, but may be put together as insertion.  ^1677146865728
