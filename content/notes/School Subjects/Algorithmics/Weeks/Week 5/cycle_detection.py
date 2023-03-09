@@ -4,15 +4,10 @@ import matplotlib.pyplot as plt
 from collections import deque
 
 g = nx.Graph([
-    ("Lounge", "Dining"),
-    ("Lounge", "Hall"),
-    ("Dining", "Kitchen"),
-    ("Dining", "Hall"),
-    ("Hall", "Bed 1"),
-    ("Hall", "Bath"),
-    ("Hall", "Bed 2"),
-    ("Hall", "Verandah"),
-    ("Kitchen", "Verandah"),
+    ("D", "C"),
+    ("D", "A"),
+    ("C", "A"),
+    ("A", "B"),
 ])
 
 options = {
@@ -26,29 +21,11 @@ options = {
 
 nx.draw_networkx(g, **options)
 
-# BFS Algorithm
-# q = deque()
-# seen = []
-# current_node = "Kitchen"
-# q.append(current_node)
-#
-# while True:
-#     seen.append(current_node)
-#     for neighbor in g.neighbors(current_node):
-#         if neighbor not in seen:
-#             q.append(neighbor)
-#             seen.append(neighbor)
-#
-#     if len(q) == 0:
-#         break
-#     else:
-#         current_node = q.popleft()
-#         print(current_node)
-
-# DFS Algorithm
+# Modified DFS
 s = deque()
 seen = []
-current_node = "Kitchen"
+current_node = "A"
+cycle_detected = False
 
 while True:
     for neighbor in reversed(sorted(list(g.neighbors(current_node)))):
@@ -63,6 +40,10 @@ while True:
 
         current_node = s.pop()
 
+        # if the current node has already been visited then there must have been a cycle
+        cycle_detected = current_node in seen
+
+print(f'A cycle {"was" if cycle_detected else "was not"} detected')
 
 # nt = Network('500px', '500px')
 # nt.from_nx(g)
