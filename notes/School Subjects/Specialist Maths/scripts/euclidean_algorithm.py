@@ -1,16 +1,12 @@
 # Finds the HCF
-a = 762
-b = 372
+a = 72
+b = 42
 
 r = a % b
 
 while r != 0:
     a = b
     b = r
-
-    if (a % b) == 0:
-        break
-    else:
-        r = a % b
+    r = a % b
 
 print(b)
