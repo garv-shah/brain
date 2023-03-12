@@ -13,3 +13,5 @@ title: "Algorithmics"
   - Lesson 1: 
     - [[notes/School Subjects/Algorithmics/Weeks/Week 4/Graphs as ADTs|Graphs as ADTs]]
     - [[notes/School Subjects/Algorithmics/Weeks/Week 4/Bridge Crossing Problem|Bridge Crossing Problem]]
+  - Week 4:
+    - [[notes/School Subjects/Algorithmics/Glossary|Key Graph Terminology]]
