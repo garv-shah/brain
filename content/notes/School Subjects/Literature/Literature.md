@@ -16,3 +16,4 @@ title: "Literature"
 - Explore the significance of a passage from Chapter 18, [[notes/School Subjects/Literature/The Penelopiad/News Of Helen|News of Helen]]
 - Explore [[notes/School Subjects/Literature/The Penelopiad/Chapters/Chapter 24|Chapter 24]] and what it says about the eyes of the beholder
 - What is the significance of [[notes/School Subjects/Literature/The Penelopiad/Truth and Storytelling|Truth and Storytelling]] in the novel.
+- [[notes/School Subjects/Literature/The Penelopiad/What is The Penelopiad About?|What is The Penelopiad even about?]]
