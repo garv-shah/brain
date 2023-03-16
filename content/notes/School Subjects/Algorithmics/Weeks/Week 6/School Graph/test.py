@@ -17,10 +17,9 @@ options = {
 nx.draw_networkx(g, **options)
 
 
-nt = Network('500px', '500px')
+nt = Network('1000px', '1000px')
 nt.from_nx(g)
 nt.toggle_physics(True)
-nt.show_buttons()
 nt.show('nx.html')
 
 # ax = plt.gca()
