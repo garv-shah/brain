@@ -37,11 +37,8 @@ def start():
     canvas.pause(1)
 
     n = 1
-    g.nodes[n]['seen'] = True
     seen = [n]
     canvas.node(n).color('dark-gray')
-
-    arr = []
 
     while len(seen) < len(g.nodes):
         arr = []
