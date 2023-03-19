@@ -1,17 +1,17 @@
 {
 	"nodes":[
-		{"id":"d44ed4bb9341bb65","x":315,"y":-113,"width":250,"height":60,"color":"6","type":"text","text":"Language"},
-		{"id":"009968787684b546","x":299,"y":-631,"width":453,"height":425,"type":"file","file":"notes/School Subjects/English Language/What is a Language/Features of Language.md"},
-		{"id":"f40fd3df0cc1db8d","x":-588,"y":54,"width":250,"height":60,"color":"6","type":"text","text":"The **5** Subsystems"},
-		{"id":"4947004d1a88e414","x":-641,"y":-581,"width":444,"height":464,"type":"file","file":"notes/School Subjects/English Language/Subsystems/Phonetics & Phonology.md"},
-		{"id":"ec9a740c139983b9","x":-1181,"y":-554,"width":399,"height":184,"type":"file","file":"notes/School Subjects/English Language/Subsystems/Diagrams/Allophone Diagram.png"},
-		{"id":"a436d42138d1c489","x":-269,"y":458,"width":250,"height":60,"color":"6","type":"text","text":"Animals and Language"},
-		{"id":"64c56ad26a72d071","x":250,"y":810,"width":400,"height":400,"type":"file","file":"notes/School Subjects/English Language/Transition Period/The Eloquent Ape.pdf"},
-		{"id":"a4eb490198083d44","x":-144,"y":114,"width":250,"height":60,"color":"5","type":"text","text":"English Language"},
-		{"id":"9ba48bad7a1c883e","x":-463,"y":850,"width":535,"height":447,"type":"file","file":"notes/School Subjects/English Language/Transition Period/Interesting English Language Articles.md"},
-		{"id":"f4bfcfb40d6a7f76","x":925,"y":-462,"width":503,"height":422,"type":"file","file":"notes/School Subjects/English Language/What is a Language/What is a Language?.md"},
-		{"id":"c50b25283c03dfe9","x":925,"y":54,"width":503,"height":464,"type":"file","file":"notes/School Subjects/English Language/Transition Period/Freedom of Speech Essay.md"},
-		{"id":"948e7aae2564d44e","x":250,"y":123,"width":453,"height":547,"type":"file","file":"notes/School Subjects/English Language/What is a Language/Variables of Communication.md"}
+		{"type":"text","text":"Language","id":"d44ed4bb9341bb65","x":315,"y":-113,"width":250,"height":60,"color":"6"},
+		{"type":"file","file":"notes/School Subjects/English Language/What is a Language/Features of Language.md","id":"009968787684b546","x":299,"y":-631,"width":453,"height":425},
+		{"type":"text","text":"The **5** Subsystems","id":"f40fd3df0cc1db8d","x":-588,"y":54,"width":250,"height":60,"color":"6"},
+		{"type":"file","file":"notes/School Subjects/English Language/Subsystems/Phonetics & Phonology.md","id":"4947004d1a88e414","x":-641,"y":-581,"width":444,"height":464},
+		{"type":"file","file":"notes/School Subjects/English Language/Subsystems/Diagrams/Allophone Diagram.png","id":"ec9a740c139983b9","x":-1181,"y":-554,"width":399,"height":184},
+		{"type":"text","text":"Animals and Language","id":"a436d42138d1c489","x":-269,"y":458,"width":250,"height":60,"color":"6"},
+		{"type":"file","file":"notes/School Subjects/English Language/Transition Period/The Eloquent Ape.pdf","id":"64c56ad26a72d071","x":250,"y":810,"width":400,"height":400},
+		{"type":"text","text":"English Language","id":"a4eb490198083d44","x":-144,"y":114,"width":250,"height":60,"color":"5"},
+		{"type":"file","file":"notes/School Subjects/English Language/Transition Period/Interesting English Language Articles.md","id":"9ba48bad7a1c883e","x":-463,"y":850,"width":535,"height":447},
+		{"type":"file","file":"notes/School Subjects/English Language/What is a Language/What is a Language?.md","id":"f4bfcfb40d6a7f76","x":925,"y":-462,"width":503,"height":422},
+		{"type":"file","file":"notes/School Subjects/English Language/Transition Period/Freedom of Speech Essay.md","id":"c50b25283c03dfe9","x":925,"y":54,"width":503,"height":464},
+		{"type":"file","file":"notes/School Subjects/English Language/What is a Language/Variables of Communication.md","id":"948e7aae2564d44e","x":250,"y":123,"width":453,"height":547}
 	],
 	"edges":[
 		{"id":"dcfe5ac6d70d8826","fromNode":"a4eb490198083d44","fromSide":"right","toNode":"d44ed4bb9341bb65","toSide":"left"},
