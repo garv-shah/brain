@@ -68,11 +68,11 @@ Phonology is the study of the sound system of a specific language. The sounds of
 
 ### Connected Speech
 There are no actual gaps in between words in speech generally, only written. 
-#### Elision
+#### Elision #card
 What is elision? :: The omission (deletion) of a sound in connected speech (**sounds are lost**) - this sound may be a vowel, a consonant or even a whole syllable. For instance 'cos instead of pronouncing because. We often **elide** sounds in rapid, everyday speech purely for ease of pronunciation. Another example would be 'want to' vs wanna ^1677146865722
-#### Vowel Reduction
+#### Vowel Reduction #card
 What is vowel reduction? :: Similar to elision but, instead of disappearing completely, vowels in unstressed positions are reduced to schwa /ə/. So the word 'to' /tu/ might be reduced to /tə/ ^1677146865723
-#### Assimilation
+#### Assimilation #card
 What is assimilation? :: When a **sound changes** to become more like a neighbouring sound. Assimilation may be *progressive* where the sound is affected by a preceding sounds, or *regressive* (also known as *anticipatory assimilation*), where the following sound is affected by a following sound.  ^1677146865724
 ##### Examples
 Progressive:
@@ -82,7 +82,7 @@ Regressive:
 - light blue /laip bluː/
 - green boat becomes /griːm bəʊt/
 
-#### Insertion
+#### Insertion #card
 What is insertion? :: There are two examples of **sounds being added**, generally deliberately. The first is insertion, the other is epenthesis. **Insertion doesn't add a full syllable, whereas epenthesis does** ^1677146865725
 - a voiceless stop insertion where, between a nasal consonant and a voiceless fricative, a voiceless stop with the same place of articulation as the nasal consonant is inserted.
 	- e.g. In English, many add a /p/ to hamster and say "hampster"/
@@ -92,11 +92,11 @@ What is insertion? :: There are two examples of **sounds being added**, generall
 What is epenthesis? :: Epenthesis is the insertion of an extra sound into a word. **Epenthesis adds a full extra syllable** ^1677146865726
 - Involves the addition of sounds (syllables) where they don't strictly belong. For instance, it's common for people to insert a vowel in 'souvlaki' so that it sounds like 'souv-e-laki'. And humbling sometimes becomes humb-e-ling.
 ##### Intrusion
-What is intrusion? :: This is where sounds are added between words but is not deliberate, but may be put together as insertion.  ^1677146865728
+What is intrusion? :: This is where sounds are added between words but is not deliberate, but may be put together as insertion. ^1677146865728
 
 When two vowel sounds meet, we tend to insert an extra sound which resembles wither a /j/, /w/ or /r/, to mark the transition sound between the two vowels, a device referred to as intrusion.
 - Consonants can also be added, for instance Australians often add r in law and order so that it sounds more like "lor an order".
-#### Metathesis
+#### Metathesis #card
 What is metathesis? :: Metathesis sounds complicated but it's a very common aspect of the English language. It is the transposition within a word of its sounds. The word "metathesis" comes from the Greek word meaning to transpose. It's also known as a permutation. ^1677146865729
 - Ask becomes /arks/
 - Nuclear becomes /nucələer/
