@@ -10,7 +10,6 @@ canvas = server.canvas()
 
 
 def start():
-    total_cost = 0
     canvas.label('title').remove()
     g = nx.Graph()
 
@@ -27,12 +26,12 @@ def start():
 
     # Render graph
     add_graph(canvas, g)
-    canvas.nodes().color('gray')
     canvas.pause(1)
 
     source = "C"
-    distance = []
-    predecessor = []
+    destination = "E"
+    distance = {}
+    predecessor = {}
     unexplored_list = []
 
     for node in g.nodes:
@@ -42,28 +41,27 @@ def start():
 
     distance[source] = 0
 
-    n = "A"
-    g.nodes[n]['seen'] = True
-    seen = [n]
-    canvas.node(n).color('dark-gray')
+    while len(unexplored_list) > 0:
+        min_node = None
+        for node in unexplored_list:
+            if min_node is None:
+                min_node = node
+            elif distance[node] < distance[min_node]:
+                min_node = node
 
-    while len(seen) < len(g.nodes):
-        smallest = {"node": None, "weight": float('inf')}
-        for node in seen:
-            for n2 in g.neighbors(node):
-                weight = g.edges[node, n2]['weight']
-                if weight < smallest['weight'] and n2 not in seen:
-                    smallest = {"node": n2, "weight": weight}
-                    n = node
+        unexplored_list.remove(min_node)
+        for neighbor in g.neighbors(min_node):
+            this_dist = distance[min_node] + g.edges[min_node, neighbor]['weight']
+            if this_dist < distance[neighbor]:
+                distance[neighbor] = this_dist
+                predecessor[neighbor] = min_node
 
-        canvas.edge((n, smallest['node'])).traverse('red').pause(0.5)
-        n = smallest['node']
-        total_cost += smallest['weight']
-        seen.append(n)
-        canvas.node(n).highlight().size('1.25x').pause(0.5)
-        canvas.node(n).color('dark-gray')
+    node = destination
+    while node != source:
+        canvas.edge((node, predecessor[node])).traverse('red').pause(0.5)
+        node = predecessor[node]
 
-    canvas.label('title').add(text=f'MST Cost: {total_cost}')
+    canvas.label('title').add(text=f'Distance: {distance[destination]}')
 
 
 canvas.onmessage('start', start)
