@@ -19,4 +19,3 @@ Wien discovered that the peak wavelength at which an object will emit the maximu
 > 
 > $\lambda_{max} \times T = 2.898 \times 10^{-3}\space m \space K$
 > where $\lambda_{max}$ is the peak wavelength of the emitted radiation in metres ($m$) and $T$ is the surface temperature of the object in kelvin ($K$).
-
