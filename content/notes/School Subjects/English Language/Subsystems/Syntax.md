@@ -16,6 +16,7 @@ This means it studies the parts of a sentence, and how information s organised w
 Clauses express one idea, and they are made up of the following:
 subject, verb, object, complement, adverbial
 ![[notes/School Subjects/English Language/Subsystems/Diagrams/Parts of a clause.png]]
+^1679810263228
 
 ## Phrases #card 
 A phrase is a group of two or more words which act as a part of speech. They generally do not contain either a subject or a finite verb. They also perform the function of a particular word class.
@@ -26,6 +27,7 @@ Subject:  unknown
 Tense:  Present
 Number: unknown
 Therefore it is a phrase.
+^1679810263232
 
 ## Sentence Types #card
 - Declarative: a statement
@@ -60,5 +62,6 @@ A complex sentence consists of an independent clause plus a dependent clause. (A
 
 ### Compound-Complex Sentences #card
 Consists of at least two independent clauses and one or more dependant clause.
+^1679810263235
 - John didn't come because he was ill so Mary was not happy.
 ^1678063588849

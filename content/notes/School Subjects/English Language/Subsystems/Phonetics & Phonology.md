@@ -7,6 +7,7 @@ cards-deck: notes::School Subjects::English Language::Subsystems
 ## Phonetics
 Phonetics is the study of human speech sounds, how they're produced, transmitted and received. Phonetic transcription focuses on the precise way in which a sound is produced by a particular speaker on a particular occasion, but is not related to any particular language.
 
+
 - We refer to individual sounds as phones or sounds, never letters
 - There are two kinds of transcriptions using the IPA; broad and narrow
 - All broad (general or phonemic) transcriptions is done with phonetic slashes /si/
