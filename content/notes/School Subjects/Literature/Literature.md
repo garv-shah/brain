@@ -18,3 +18,4 @@ title: "Literature"
 - What is the significance of [[notes/School Subjects/Literature/The Penelopiad/Truth and Storytelling|Truth and Storytelling]] in the novel.
 - [[notes/School Subjects/Literature/The Penelopiad/What is The Penelopiad About?|What is The Penelopiad even about?]]
 - Analyse the quote, [[notes/School Subjects/Literature/The Penelopiad/In Death I Know Everything|"Now that I am dead I know everything."]]
+- Create an [[notes/School Subjects/Literature/The Penelopiad/Oral Presentation Script|Oral Presentation]] on any extract of ur choosing in the Penelopiad
