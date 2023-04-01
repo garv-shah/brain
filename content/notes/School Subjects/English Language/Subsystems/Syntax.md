@@ -12,6 +12,9 @@ This means it studies the parts of a sentence, and how information s organised w
 - The predicate tells us about the subject.  It contains the verb, direct and indirect object etc.
 - If a group of words  does not contain both a subject and a predicate it is not a sentence – it is a phrase.
 
+## Direct vs Indirect Object #card 
+
+
 ## Clauses #card 
 Clauses express one idea, and they are made up of the following:
 subject, verb, object, complement, adverbial
