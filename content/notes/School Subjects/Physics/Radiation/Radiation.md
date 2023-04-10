@@ -1,11 +1,13 @@
 ---
 title: "Radiation"
+cards-deck: notes::School Subjects::Physics::Radiation
 ---
 #physics #radiation
 
 ## Definitions
 ### Radiation #card
 Energetic waves and particles ($\alpha = ^{4}_{2}He$, $\beta = e^{-}/e^{+}$)
+^1681003407256
 
 ### Radioactivity
 Any form of particles emitting radiation

@@ -1,9 +1,11 @@
 ---
 title: "Nuclear Half-Life"
+cards-deck: notes::School Subjects::Physics::Radiation
 ---
 ## Half-life #card 
 The time it takes for half of a radioactive sample to decay (generally in seconds or years).
 It can also be defined as the time after which there is a 50% chance that an individual nucleus has decayed.
+^1681003403907
 
 If the mass is 100g, after one half life it would be 50g, After another it would be 25g, and 12.5g, 6.25g, etc. This is a logarithmic relationship.
 
@@ -16,10 +18,12 @@ $$
 $N$ = remaining nuclei
 $N_{0}$ = initial no. nuclei
 $n$ = no. half lives since $N_{0}$ calculated
+^1681003403916
 
 ## Activity #card 
 The number of decays per second of a sample, also called the decay rate. 
 As more nuclei have decayed (time has passed), the activity of the substance will decrease (the rate decreases).
+^1681003403925
 
 $$
 A = A_{0}(\frac{1}{2})^n
