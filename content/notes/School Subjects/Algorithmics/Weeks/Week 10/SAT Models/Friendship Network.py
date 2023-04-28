@@ -3,12 +3,12 @@ from algorithmx.networkx import add_graph
 import webbrowser
 import networkx as nx
 
-server = algorithmx.http_server(port=5050)
+server = algorithmx.http_server(port=4040)
 canvas = server.canvas()
 
 edges = [
-    {'from': 'Glen Waverley', 'to': 'Caulfield Grammar - Wheelers Hill', 'weight': 16, 'line': '754 Bus Line'},
-    {'from': 'Glen Waverley', 'to': 'Caulfield Grammar - Wheelers Hill', 'weight': 23, 'line': '753 Bus Line'},
+    {'from': 'Glen Waverley', 'to': 'CGS WH', 'weight': 16, 'line': '754 Bus Line'},
+    {'from': 'Glen Waverley', 'to': 'CGS WH', 'weight': 23, 'line': '753 Bus Line'},
     {'from': 'Glen Waverley', 'to': 'Mount Waverley', 'weight': 12, 'line': '623 Bus Line'},
     {'from': 'Glen Waverley', 'to': 'Mount Waverley', 'weight': 8, 'line': 'Glen Waverley'},
     {'from': 'Mount Waverley', 'to': 'Richmond', 'weight': 20, 'line': 'Glen Waverley'},
@@ -23,32 +23,35 @@ edges = [
     {'from': 'Parliament', 'to': 'Melbourne Central', 'weight': 20, 'line': 'Pakenham'},
     {'from': 'Melbourne Central', 'to': 'Flinders Street', 'weight': 20, 'line': 'Pakenham'},
     {'from': 'Flinders Street', 'to': 'Richmond', 'weight': 20, 'line': 'Pakenham'},
-    {'from': 'Caulfield Grammar - Wheelers Hill', 'to': 'Wheelers Hill Library', 'weight': 17, 'line': 'Walk'},
+    {'from': 'CGS WH', 'to': 'Wheelers Hill Library', 'weight': 17, 'line': 'Walk'},
     {'from': 'Wheelers Hill Library', 'to': 'Oakleigh', 'weight': 20, 'line': '693 Bus Line'},
     {'from': 'Chadstone', 'to': 'Oakleigh', 'weight': 3, 'line': '800 Bus Line'},
     {'from': 'Chadstone', 'to': 'Caulfield', 'weight': 11, 'line': '900 Bus Line'},
     {'from': 'Caulfield', 'to': 'Flinders Street', 'weight': 16, 'line': 'Frankston'},
     {'from': 'Caulfield', 'to': 'Oakleigh', 'weight': 16, 'line': '900 Bus Line'},
     {'from': 'Caulfield', 'to': 'Oakleigh', 'weight': 27, 'line': 'Pakenham'},
-    {'from': 'Caulfield', 'to': 'Caulfield Grammar - Caulfield', 'weight': 15, 'line': 'Tram'},
+    {'from': 'Caulfield', 'to': 'CGS CC', 'weight': 15, 'line': 'Tram'},
     {'from': 'Wheelers Hill Library', 'to': 'Brandon Park', 'weight': 6, 'line': '693 Bus Line'},
     {'from': 'Oakleigh', 'to': 'Brandon Park', 'weight': 25, 'line': '693 Bus Line'},
 ]
 
 lineColours = {
-    'Glen Waverley': '#215086',
-    'Sandringham': '#E285AF',
-    'Camberwell': '#764193',
-    '754 Bus Line': '#de852c',
-    '753 Bus Line': '#7cde2c',
-    '623 Bus Line': '#3cbf6c',
-    '693 Bus Line': '#4cdf2c',
-    '800 Bus Line': '#4cdf2c',
-    '900 Bus Line': '#4cdf2c',
-    'Walk': '#4cdf2c',
-    'Tram': '#E285AF',
-    'Pakenham': '#3cbf6c',
-    'Frankston': '#3cbf6c',
+    # Train Lines
+    'Glen Waverley': '#BA3B46',
+    'Sandringham': '#F038FF',
+    'Camberwell': '#FF8600',
+    'Pakenham': '#E2EF70',
+    'Frankston': '#70E4EF',
+    # Misc Methods
+    'Walk': '#538083',
+    'Tram': '#2A7F62',
+    # Bus Lines
+    '754 Bus Line': '#86E7B8',
+    '753 Bus Line': '#93FF96',
+    '623 Bus Line': '#B2FFA8',
+    '693 Bus Line': '#D0FFB7',
+    '800 Bus Line': '#7DCFB6',
+    '900 Bus Line': '#AABD8C',
 }
 
 
@@ -111,5 +114,5 @@ def start():
 
 
 canvas.onmessage('start', start)
-webbrowser.open('http://localhost:5050')
+webbrowser.open('http://localhost:4040')
 server.start()
