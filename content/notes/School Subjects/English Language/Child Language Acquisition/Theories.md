@@ -54,6 +54,22 @@ Suggested the importance of a Language Acquisition Support System (LASS) which r
 Suggested that the way in which carers question, encourage and support the child through scaffolding (like fill in the gaps, basically helping/structure) enables children to gradually develop their speech.
 Concentrated more on the need for quality input from caregivers to facilitate learning rather than on imitation and positive/negative reinforcement. 
 
+### Scaffolding
+Lev Vygotsky suggested the importance of *doing* for a child to be able to develop, and suggested that a parent acts as a "more knowledgable other" (MKO), and this helps develop the ZPD
+
 ### Limitations
 All children of all backgrounds and languages tend to progress through similar stages predictably, so this challenges the idea that children exposed to child-directed speech will tend to develop more quickly.
 Some cultures (e.g. the Kaluli tribe in Papua New Guinea) dont appear to use child-directed speech at all to young children - yet youngsters' language seems to develop at the same rate as elsewhere.
+
+
+## Additional Theories
+### Critical Period/Age Hypothesis - Eric Lenneberg
+Coined the term critical period
+Believed that in the first few years of life, sufficient social interaction and exposure to language was essential in order that a child might gain fill master of the language.
+This links in well to the case of Genie, as after she had passed the critical period, she was not able to acquire language beyond a very basic level.
+
+### The Wug Test - Jean Berko Gleason
+Created in 1985 to test the notion that children have a more sophisticated understanding of linguistic morphology than they have been taught explicitly.
+Uses pseudo words like 'wug' to ensure the child has never been exposed to the word previously.
+76% of 4 to 5 years old were able to deduce what the plural of the noun 'wug' would be.
+The results seem to suggest that children have an ability to understand grammatical rules (in this case, grammatical inflections) and *transfer* them to other examples they've never heard before. This supports Chomsky's nativist theory.
