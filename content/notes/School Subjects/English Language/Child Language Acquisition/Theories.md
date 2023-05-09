@@ -1,10 +1,12 @@
 ---
 title: "Theories"
+cards-deck: notes::School Subjects::English Language::Child Language Acquisition
 ---
-#englang 
+#englang #cla 
 
-## Behaviourist - Skinner
+## Behaviourist - Skinner #card
 Children imitate adults. Their correct utterances are reinforced when they get what they want or are praised.
+^1683502539271
 
 B.F. Skinner is the main theorist associated with the language learning theory. He states that language learning involves "input, imitation, and habit formation through repetition". This conclusion was reached.
 
@@ -14,13 +16,16 @@ Role of caregiver: models language for the child to copy and provides positive r
 Lexical development: copies lexemes as heard
 Syntactic development: children learn key phrases and then substitute key words
 "Monkey hear, monkey say!"
-### Limitations
+
+### Limitations #card
 - Children rarely simply repeat what adults say
 - Children often make 'virtuous errors' - logical but non-standard utterances, which suggest they are creatively working out grammatical rules, not copying
 - Children appear to go through the same predictable stages of development whatever the input. This throws into question the importance of positive and negative reinforcement from adults.
+^1683502539277
 
-## Innateness/Nativism - Chomsky
+## Innateness/Nativism - Chomsky #card
 A child's brain contains special language-learning mechanisms at birth.
+^1683502539281
 
 Argued that the human brain has a naturally programmed ability to learn language and an ability to work out language systems in terms of grammar and syntax.
 The term *universal grammar* is also used to describe this global capacity to learn languages at similar rates and in similar ways.
@@ -37,8 +42,9 @@ It has been argued that a child is born not with a set of linguistic categories 
 The work was also purely theoretical, not based on linguistic data.
 The theory also seems to downplay the part played by interaction between the children and their carers.
 
-## Cognitive - Piaget
+## Cognitive - Piaget #card
 Language is just one aspect of a child's overall intellectual development.
+^1683502539286
 
 This suggests that children would not develop until particular stages of cognitive development had been reached.
 Outlines four cognitive stages: Sensorimotor (0 - 2) years, Pre-operational (2-6/7 years), Concrete operational (6/7-11/12 years) and Formal operational (11-16+ years).
@@ -46,8 +52,9 @@ Outlines four cognitive stages: Sensorimotor (0 - 2) years, Pre-operational (2-6
 For example, a child would not be able to use comparative adjectives (small, smaller, smallest, etc) unless they first understood the concept of size.
 It's possible to link a child's language to their conception development in early stages, such as object permanence which enables the child to articulate abstract ideas and talk about non-deictical concepts.
 
-## Interaction - Bruner
+## Interaction - Bruner #card
 This theory emphasises the interaction between children and their caregivers.
+^1683502539291
 
 Rejects the LAD and focuses on the importance of a child's interaction with caregivers as the key to language development.
 Suggested the importance of a Language Acquisition Support System (LASS) which refers to the caregivers and other important participants within a child's life.
@@ -63,13 +70,15 @@ Some cultures (e.g. the Kaluli tribe in Papua New Guinea) dont appear to use chi
 
 
 ## Additional Theories
-### Critical Period/Age Hypothesis - Eric Lenneberg
+### Critical Period/Age Hypothesis - Eric Lenneberg  #card
 Coined the term critical period
 Believed that in the first few years of life, sufficient social interaction and exposure to language was essential in order that a child might gain fill master of the language.
 This links in well to the case of Genie, as after she had passed the critical period, she was not able to acquire language beyond a very basic level.
+^1683502539300
 
-### The Wug Test - Jean Berko Gleason
+### The Wug Test - Jean Berko Gleason #card
 Created in 1985 to test the notion that children have a more sophisticated understanding of linguistic morphology than they have been taught explicitly.
 Uses pseudo words like 'wug' to ensure the child has never been exposed to the word previously.
 76% of 4 to 5 years old were able to deduce what the plural of the noun 'wug' would be.
 The results seem to suggest that children have an ability to understand grammatical rules (in this case, grammatical inflections) and *transfer* them to other examples they've never heard before. This supports Chomsky's nativist theory.
+^1683502539306
