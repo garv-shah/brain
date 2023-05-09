@@ -1,7 +1,7 @@
 ---
 title: "Bilingualism"
 ---
-#englang 
+#englang #cla 
 
 ## Development
 Children can become bilingual or multilingual in two ways:

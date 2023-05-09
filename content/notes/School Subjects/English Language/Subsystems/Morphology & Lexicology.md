@@ -44,12 +44,13 @@ Can further be divided into 4 categories:
 **Derivational morphemes** create or derive new words by changing the meaning or changing the word class of the word. For example, happy turns into unhappy, and both words are adjectives but the meaning changes.
 ^1678180906349
 
-##### The Diminutive Suffix
+##### The Diminutive Suffix #card
 A diminutive creates a meaning of ‘small’ or ‘little’ (this can be literal or notional) The most common diminutives are formed with and with suffixes such as _-let_ and _-y_. We often use a diminutive with names or with abbreviated names when we want to be more informal, or to express affection for someone or something.
 - _Here’s a book**let** which gives advice on keep-fit._ (_booklet_ = a small book)
 - _Right, Matt**y**, I’ve got some very good news for you._ (_Matty_ is formed from the name ‘Matthew’)
 - _I think she’s the perfect kitt**y** for Jennifer._ (_kitty_ is formed from ‘kitten’ a young cat)
 - What a cute little duck**ling**
+^1683501679006
 
 #### Inflectional Morphemes #card 
 **Inflectional morphemes** don't alter the meaning or word class of a word; instead they only refine and give extra grammatical information about the word's already existing meaning. For example cat into cats or walk into walking.
@@ -74,22 +75,26 @@ In English, all inflectional morphemes are suffixes (only by chance, since in ot
   "He was the fastest"
 
 ## Word Formations
-### Affixation
+### Affixation #card
 Forming new words by adding an extra bound morpheme, so an affix.
+^1683501679018
 
-### Compounding
+### Compounding #card
 Forming new words not from bound affixes but from two or more independent words: the words can be free morphemes, words derived by affixation, or even words formed by compounds themselves. e.g. girlfriend, blackbird
+^1683501679021
 
 By putting stress on both words you seperate them into two words
 
-### Reduplication
+### Reduplication #card
 This is forming new words either by doubling an entire free morpheme (total reduplication) or part of a morpheme (partial reduplication).
+^1683501679026
 
-### Blending
+### Blending #card
 Where two words are merged together, such as:
 - brunch - from breakfast and lunch
 - smog - from smoke and fog
 - spork - from spoon and fork
+^1683501679031
 
 ## The Parts of Speech
 A part of speech is a class of words based on the word's function, the way it works in a sentence. They are sometime's referred to as word classes.
@@ -145,22 +150,23 @@ This type of writing system is arbitrary and the language is "represented" in wr
 This type of writing system is less arbitrary and uses icons that visually represent what they're meant to mean, such as Chinese or Korean.
 ^1677545865723
 
-## Accent and Dialect
+## Accent and Dialect #card
 Accent is to do with how things are pronounced, purely to do with sound, while dialect is to do with words and the lexicon that people pull from. For example, a Yorkshire man may say tub instead of bath (a different dialect), but would still say grass and have it sound different.
 - **Accent**: style switching
 - **Dialect**: code switching
+^1683501679036
 
 ### Definitions
-#### Jargon
+#### Jargon #card
 Words from any semantic field, namely specialist terminology that others won't understand
-#### Argo
+#### Argo #card
 **A secret code**, the jargon or slang of a particular group or class (usually thought of lower class)
-#### Slang
+#### Slang #card
 Informal language that is non-standard but something that isn't necessarily used by a particular group
 - Normally made to avoid detection to make it harder for certain groups to understand
-#### Colloquial Language
+#### Colloquial Language #card
 Conversational language that is informal
-#### Vernacular
+#### Vernacular #card
 Colloquial language or dialect that is regional
 - Street
 - Jive
@@ -172,18 +178,19 @@ Colloquial language or dialect that is regional
 - Phraseology
 - Archaic
 - Dialect, Sociolect and Idiolect
-#### Dialectal variation
+#### Dialectal variation #card
 Variation associated with the language of a particular locality, region or geographical area. **one thing, multiple words**
-#### Flipping
+#### Flipping #card
 Term used to suggest rapid semantic change in a word from its original meaning to its opposite (or near opposite)
-#### Orthographical variation
+#### Orthographical variation #card
 How the use of symbols, letters and spellings varies among language users
-#### Phonological variation
+#### Phonological variation  #card
 How the sounds of a language vary among different speakers (accent)
-#### Semantic variation
+#### Semantic variation  #card
 How word (and phrase) meanings vary from place to place and group to group. **one word, multiple things**
-#### Social variation
+#### Social variation #card
 Variation associated with a particular social group i.e., social class or educational background
+^1683501679041
 
 ## Etymology
 The study of the history of use and origins of words.
