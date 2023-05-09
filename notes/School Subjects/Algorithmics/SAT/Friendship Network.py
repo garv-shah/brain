@@ -1,10 +1,6 @@
-import algorithmx
-from algorithmx.networkx import add_graph
-import webbrowser
 import networkx as nx
-
-server = algorithmx.http_server(port=4040)
-canvas = server.canvas()
+import matplotlib.pyplot as plt
+import numpy as np
 
 edges = [
     {'from': 'Glen Waverley', 'to': 'CGS WH', 'weight': 16, 'line': '754 Bus Line'},
@@ -54,65 +50,46 @@ lineColours = {
     '900 Bus Line': '#AABD8C',
 }
 
+g = nx.Graph()
 
-def start():
-    total_cost = 0
-    canvas.label('title').remove()
-    edge_list = []
-    node_list = []
+for index in range(len(edges)):
+    from_node = edges[index]['from']
+    to_node = edges[index]['to']
+    color = lineColours[edges[index]['line']]
+    weight = edges[index]['weight']
 
-    # create node and edge list
-    for index in range(len(edges)):
-        edge = edges[index]
-        edge_list.append([edge['from'], edge['to'], index])
-        node_list.append(edge['from'])
-        node_list.append(edge['to'])
+    g.add_edge(from_node, to_node, color=color, weight=weight)
 
-    # remove duplicates from node_list
-    node_list = list(dict.fromkeys(node_list))
+#     current_edge.color(lineColours[edges[index]['line']])
+#     current_edge.label().add(text=edges[index]['weight'])
+#
+# for index in range(len(node_list)):
+#     node = node_list[index]
+#
+#     canvas.node(node).label('name').add(text=node,color='black')
+#     canvas.node(node).label().add(text=str(index + 1))
 
-    canvas.nodes(node_list).add()
-    canvas.edges(edge_list).add()
+print(g.edges)
 
-    for index in range(len(edge_list)):
-        current_edge = canvas.edge(edge_list[index])
-        current_edge.color(lineColours[edges[index]['line']])
-        current_edge.label().add(text=edges[index]['weight'])
-
-    for index in range(len(node_list)):
-        node = node_list[index]
-
-        canvas.node(node).label('name').add(text=node,color='black')
-        canvas.node(node).label().add(text=str(index + 1))
+colors = nx.get_edge_attributes(g, 'color').values()
+weights = dict([((u, v,), d['weight']) for u, v, d in g.edges(data=True)])
 
 
-    # canvas.nodes().color('gray')
-    # canvas.pause(1)
-    #
-    # n = "A"
-    # g.nodes[n]['seen'] = True
-    # seen = [n]
-    # canvas.node(n).color('dark-gray')
-    #
-    # while len(seen) < len(g.nodes):
-    #     smallest = {"node": None, "weight": float('inf')}
-    #     for node in seen:
-    #         for n2 in g.neighbors(node):
-    #             weight = g.edges[node, n2]['weight']
-    #             if weight < smallest['weight'] and n2 not in seen:
-    #                 smallest = {"node": n2, "weight": weight}
-    #                 n = node
-    #
-    #     canvas.edge((n, smallest['node'])).traverse('red').pause(0.5)
-    #     n = smallest['node']
-    #     total_cost += smallest['weight']
-    #     seen.append(n)
-    #     canvas.node(n).highlight().size('1.25x').pause(0.5)
-    #     canvas.node(n).color('dark-gray')
-    #
-    # canvas.label('title').add(text=f'MST Cost: {total_cost}')
+pos = {'Glen Waverley': (1.2768713098241284, 0.49920912491483405), 'CGS WH': (1.4265826300847813, 0.1204628887684871), 'Mount Waverley': (0.7043105941642556, 0.7733282005439384), 'Richmond': (0.341812028442958, 0.4373730047276754), 'Parliament': (-0.4284117911380293, 0.7517066156790655), 'Melbourne Central': (-0.45435855635285616, 0.42191397468088576), 'Flinders Street': (-0.42932311065271866, 0.08181531365151296), 'Brighton Beach': (-0.665772732541814, -0.23509480230767532), 'Camberwell': (0.07247908565059714, 0.8255351955388853), 'Oakleigh': (0.633506906308221, 0.12303939377628548), 'Wheelers Hill Library': (1.1109175815449, -0.34135548220469414), 'Chadstone': (0.11467939187567033, -0.7484751364978814), 'Caulfield': (-0.12498201317170499, -0.3226959725728168), 'CGS CC': (-0.8083854616920082, -0.7323602688127431), 'Brandon Park': (0.5691253741247339, -0.6003212036334155)}
 
 
-canvas.onmessage('start', start)
-webbrowser.open('http://localhost:4040')
-server.start()
+# Draggable nodes utility
+# pos = nx.layout.kamada_kawai_layout(g)
+#
+# plot = DraggableNodes(g, pos)
+# plot.show()
+
+cmap = plt.cm.viridis(np.linspace(0, 1, g.number_of_edges()))
+nx.draw_networkx(g, pos, with_labels=True, labels={idx: val for idx, val in enumerate(g.nodes())},)
+nx.draw_networkx_edges(g, pos, edge_color=cmap)
+[nx.draw_networkx_edge_labels(g, pos, edge_labels={e: i}, font_color=cmap[i]) for i, e in enumerate(g.edges())]
+
+ax = plt.gca()
+ax.margins(0.20)
+plt.axis("off")
+plt.show()
