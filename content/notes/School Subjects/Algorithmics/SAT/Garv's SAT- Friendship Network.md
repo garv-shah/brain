@@ -53,4 +53,11 @@ I have selected a number of stations, bus stops and locations which I feel are r
 | addRoute         | \[start_node, end_node, travel_method, time, cost] -> edge |
 | findShortestPath | \[start_node, end_node] -> integer, array                  |
 | addFriend                 | \[name, wake_time, close_friends] -> dictionary                                                          |
-i can't really think of any other signatures yet 😭
+
+## Algorithm Selection
+While simplifying my problem, I found that starting and ending my day at my house while picking up all my friends along the way is simply an applied version of finding the shortest hamiltonian circuit. In other words, the shortest cost circuit that will visit every node.
+
+While researching into how to solve this, I found that this was a classic example of the travelling salesman problem, which turns out to be an NP-hard problem. This means that there currently exists no exact solution to the problem in polynomial time, and the best I can currently do is the Held–Karp algorithm, which has a time complexity of $O(n^{2}2^{n})$ which is not ideal at all in terms of efficiency, but will have to be sufficient for the use cases of this project.
+
+### Held-Karp algorithm
+The Held-Karp algorithm is a method for finding the exact shortest hamiltonian circuit in the exponential time complexity of $O(n^{2}2^{n})$, which is much better than if we to brute force it, which would have a complexity of $O(n!)$. 
