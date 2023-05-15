@@ -135,3 +135,6 @@ A digraph is strongly connected if there is a directed path from every vertex to
 ## DAGs #card 
 A directed graph that is acyclic (contains no cycles) is known as a DAG. All trees are DAGs with the added restriction that each child only has one parent.
 ^1678327509213
+## Algorithm #card 
+An algorithm is a step-by-step process that describes how to solve a problem and/or complete a task, and which will always give the correct result. 
+Algorithms are often expressed using a loosely defined language called pseudocode, which is a hybrid language combining standard English with structures used in coding/programming languages.

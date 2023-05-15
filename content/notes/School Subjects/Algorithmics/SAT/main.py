@@ -136,7 +136,7 @@ def held_karp(start, end, visit):
         for rand_node in visit:
             # divides larger path into smaller subpaths by going from start to any random node C while visiting
             # everything else in the visit set. This is then combined with djk from C to the end to get the full path.
-            sub_path = held_karp(start, rand_node, visit.difference({rand_node}))
+            sub_path = fetch_hk(start, rand_node, visit.difference({rand_node}))
             djk = fetch_djk(rand_node, end)
             cost = sub_path['cost'] + djk['cost']
             if cost < minimum['cost']:
@@ -146,28 +146,35 @@ def held_karp(start, end, visit):
         return minimum
 
 
+def fetch_hk(start, end, visit):
+    key = frozenset([start, end, frozenset(visit)])
+    if key not in cached_hk:
+        cached_hk[key] = held_karp(start, end, visit)
+    return cached_hk[key]
+
+
 if __name__ == "__main__":
     g = nx.Graph()
     setup_graph()
 
     # Create a dictionary of distances, similar to a distance matrix, but allowing for multiple edges between nodes
     cached_djk = {}
+    cached_hk = {}
     dist_dict = {frozenset({edge['from'], edge['to']}): [] for edge in edges}
     for edge in edges:
         dist_dict[frozenset({edge['from'], edge['to']})].append(edge['weight'])
 
-    master_list = ['Wheelers Hill Library', 'Oakleigh', 'Chadstone', 'Parliament', 'Richmond', 'CGS WH', 'Brighton Beach', 'CGS CC', 'Flinders Street', 'Melbourne Central', 'Camberwell', 'Glen Waverley', 'Caulfield', 'Mount Waverley']
-
-    for i in range(len(master_list)):
-        visit_set = {master_list[i]}
+    home = 'Brandon Park'
+    visit_set = set(g.nodes()).difference({home})
     start_time = time.perf_counter()
 
     print(f"Let's say I have {len(visit_set)} friends, they live closest to the following nodes: {visit_set}")
-    print("The following would be the fastest path to go from my house (Brandon Park) to all my friends' and back:")
-    print(held_karp('Brandon Park', 'Brandon Park', visit_set))
+    print(f"The following would be the fastest path to go from my house ({home}) to all my friends' and back:")
+    print(fetch_hk(home, home, visit_set))
 
     end_time = time.perf_counter()
     elapsed_time = end_time - start_time
 
     print(f"\nIt took {elapsed_time:.4f} seconds to run.")
+    print(len(cached_hk))
 
