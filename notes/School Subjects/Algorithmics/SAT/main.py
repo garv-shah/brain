@@ -176,5 +176,4 @@ if __name__ == "__main__":
     elapsed_time = end_time - start_time
 
     print(f"\nIt took {elapsed_time:.4f} seconds to run.")
-    print(len(cached_hk))
 
