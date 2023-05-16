@@ -82,3 +82,34 @@ Uses pseudo words like 'wug' to ensure the child has never been exposed to the w
 76% of 4 to 5 years old were able to deduce what the plural of the noun 'wug' would be.
 The results seem to suggest that children have an ability to understand grammatical rules (in this case, grammatical inflections) and *transfer* them to other examples they've never heard before. This supports Chomsky's nativist theory.
 ^1683502539306
+
+## Acquisition-Learning Hypothesis #card 
+This hypothesis states that there is a difference between language learning and language acquisition
+- The learner acquires language unconsciously in language acquisition
+	- The main criteria is the provision of "**comprehensible input**" which provide input just above the learner's existing level of competency - Krashan coined this as 'input+1' or 'i+1'
+- In language learning (explicitly taught), the learner picks up the language through conscious discovery and by learning the grammatical rules and structures of the language
+
+## Monitor Hypothesis #card 
+According to the monitor hypothesis, the learner learns the grammar rules and functions of the language consciously (thinks about them and check themselves after an utterance) rather than its meaning
+- It lays more emphasis on the correctness of the language
+There are three standards required to use this hypothesis properly:
+- The acquirer must know the language rules
+- The acquirer must reproduce the exact form of the language
+- The acquirer must review the language and apply its rules in a conversation
+
+## Natural Order Hypothesis #card 
+The natural order hypothesis is the idea that children learning their first language acquire grammatical structures in a pre-determined, 'natural' order, and that some are acquired earlier than others.
+According to the natural order hypothesis, learners acquire the grammatical morpheme-ing before the morpheme third person -s
+One possible implication of this hypothesis is that teaching language through a traditional structural syllabus may not necessarily help them to acquire the language they need.
+Attempts to get the learners to produce structures before they are ready to do so may fail.
+
+## Input Hypothesis #card 
+This hypothesis focuses on acquisition rather than learning of the second language. It suggests that the learner develops the language naturally as they receive fun and interesting information.
+Acquisition theories emphasis the importance of comprehensible input, which is language just beyond the competence of the learner and provides the ideal conditions for acquisition to happen.
+
+In the classroom:
+
+## Affective Filter Hypothesis #card 
+This hypothesis that emotional factors can affect language acquisition. They can have a negative or positive effect.
+Negative affective factors are called affective filters and are an important idea in theories about second language acquisition. The learner is less likely to learn the language if the affective filter is higher.
+Hence, the learning environment must be stress-fee and positive so that the learner can learn properly.

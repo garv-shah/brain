@@ -2,18 +2,10 @@
 title: Algorithmics SAT - Friendship Network
 author: Garv Shah
 date: 2022-06-02
-abstract: "I've been finding it hard to plan trips with my friends, especially when everybody lives all over the city and we would all like to travel together. This SAT project aims to model the Victorian public transport network and its proximity to friends' houses, factoring in data about each individual to find the most efficient and effective traversals and pathways for us travelling to locations around Victoria."
+abstract: "'How can a tourist best spend their day out?' I've been finding it hard to plan trips with my friends, especially when everybody lives all over the city and we would all like to travel together. This SAT project aims to model the Victorian public transport network and its proximity to friends' houses, factoring in data about each individual to find the most efficient and effective traversals and pathways for us travelling to locations around Victoria."
 geometry: margin=2cm
 output: pdf_document
 ---
-
-> How can a tourist best spend their day out?
-
-> [!info]
-> I've been finding it hard to plan trips with my friends, especially when everybody lives all over the city and we
-> would all like to travel together. This SAT project aims to model the Victorian public transport network and its
-> proximity to friends' houses, factoring in data about each individual to find the most efficient and effective
-> traversals and pathways for us travelling to locations around Victoria.
 
 I will start and end my day at my house, picking up all my friends along the way. The algorithm will find the quickest route to go to all my friends' houses, go to our desired location(s), and drop them all off before I go back to my own house. It will then return to me the traversal path, the time taken, and my cost for transport throughout the day.
 
@@ -50,7 +42,7 @@ The following would be modelled as dictionaries:
 I have selected a number of stations, bus stops and locations which I feel are relevant to my friend group.
 
 | Property                     | Stored as                                                    | Notes                                                                                                                                                                 |
-|------------------------------|--------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ---------------------------- | ------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Key Landmarks                | Node                                                         |                                                                                                                                                                       |
 | Landmark Name                | Node Attribute                                               |                                                                                                                                                                       |
 | Route                        | Edge                                                         |                                                                                                                                                                       |
@@ -58,13 +50,13 @@ I have selected a number of stations, bus stops and locations which I feel are r
 | Transport Method/Line        | Edge Colour                                                  |                                                                                                                                                                       |
 | Time or Cost                 | Edge Weight                                                  | These can be interchanged to prioritise different aspects. Distance is more relevant than time, but cost may be important as well.                                    |
 | Time/Cost of Changing Lines  | Node attribute "interchange_cost" & "interchange_time"       |                                                                                                                                                                       |
-| Train and Bus Timetable      | Dictionary: Dict<String: Array<Dict<String: Int or String>>> | Keys would be each line (bus or train), and the values would be arrays of dictionaries with what node they are at, arrival times and departure times.                 |
-| Attributes of Each Friend    | Dictionary: Dict<String: Dynamic>                            | This will be a json style nested dictionary that has various attributes about each friend, such as waking up time, other close friends and other relevant information |
-| Proximity to Friends' Houses | Node Attribute: Dict<String: Float>                          | Proximity of all houses as an attribute for each node, which has keys as friends' names and values as the distance or time to their house                             |
+| Train and Bus Timetable      | Dictionary: Dict«String: Array«Dict«String: Int or String»»» | Keys would be each line (bus or train), and the values would be arrays of dictionaries with what node they are at, arrival times and departure times.                 |
+| Attributes of Each Friend    | Dictionary: Dict«String: Dynamic»                            | This will be a json style nested dictionary that has various attributes about each friend, such as waking up time, other close friends and other relevant information |
+| Proximity to Friends' Houses | Node Attribute: Dict«String: Float»                          | Proximity of all houses as an attribute for each node, which has keys as friends' names and values as the distance or time to their house                             |
 
 ## Possible Graph
-
-![[notes/Attachments/Algorithmics/Possible Friendship Network.png]]
+****
+![Possible Graph](https://github.com/garv-shah/brain/blob/hugo/content/notes/Attachments/Algorithmics/Possible%20Friendship%20Network.png?raw=true "Possible Graph")
 
 ## Signatures
 
