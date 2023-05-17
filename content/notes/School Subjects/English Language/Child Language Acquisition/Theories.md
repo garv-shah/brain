@@ -113,3 +113,4 @@ In the classroom:
 This hypothesis that emotional factors can affect language acquisition. They can have a negative or positive effect.
 Negative affective factors are called affective filters and are an important idea in theories about second language acquisition. The learner is less likely to learn the language if the affective filter is higher.
 Hence, the learning environment must be stress-fee and positive so that the learner can learn properly.
+
