@@ -1,5 +1,6 @@
 ---
 title: "Graph Algorithms"
+cards-deck: notes::School Subjects::Algorithmics
 ---
 #algo 
 
@@ -12,6 +13,7 @@ BFS is a graph traversal algorithm that visits all neighbours of a source node, 
 4.  Store all these neighbours into the **queue** and mark them all as **seen**.
 5.  Repeat steps **2 - 4** until the **queue** becomes empty.
 ![[notes/Attachments/Graph Algorithms.png]]
+^1684293406145
 
 ## Depth First Search (DFS) #card
 DFS is a graph traversal algorithm that chooses any single neighbour node for each discovered node and proceeds searching from it. This produces long branches, because searching from other neighbours is only carried out once a branch has been fully explored.
@@ -26,31 +28,38 @@ DFS is a graph traversal algorithm that chooses any single neighbour node for ea
 **Difference from BFS**
 -   We use a **stack** instead of the **queue** for storing nodes.
 -   Typically we do not check whether a node was **seen** when storing neighbours in the stack – instead we perform this checking when retrieving the node from it.
+^1684293406148
 
 ## Applications of DFS and BFS #card 
 -   DFS and BFS will both give information about whether one node is connected to another via any path in a graph.
 -   If the graph **is** connected, BFS will visit all of its nodes.
 -   The traversal tree built by BFS represents the shortest paths from the initial vertex to any other for an unweighted graph.
 -   DFS is unsuitable for searching shortest paths for unweighted graphs.
+^1684293406149
 
 ## Graph Colouring #card 
 Graph colouring or vertex colouring is the process of colouring a graph such that no adjacent vertices have the same colour. A $k$-colouring of a graph uses $k$ colours, and the chromatic number is the minimum value of $k$ for which a $k$ colouring exists.
 Applications are generally to resolve conflicts, where certain objects cannot be next to each other or certain events cannot run at the same time.
 These generally end up being **optimal resource allocation** problems.
+^1684293406150
 
 ## Detecting Cycles #card 
 DFS is used to detect cycles! With a small modification to DFS to maintain a list of visited nodes as well as processed nodes, DFS can detect cycles, and if a we visit a node we have already visited, a cycle is detected.
+^1684293406151
 
 ## Topological Sorting #card 
 The DFS order of the processed list is the topological sorting, normally run from a source node. 
 One problem that can be solved by divide and conquer is topological sorting. **Topological sorting** is the ordering of information according to its dependencies and is typically represented by a directed graph showing the order of progress for a particular system.
+^1684293406152
 
 ## Shortest Path in Unweighted Graphs #card 
 BFS is used to find the shortest path in unweighted graphs from one node to another. By rippling out in layers from the starting node, it can find the first path to the end node.
+^1684293406153
 
 ## Spanning Tree #card 
 A **spanning tree** is a connected graph that has no circuits or cycles and which includes all the vertices or nodes of a graph.
 A **minimum spanning tree** (MST) is a spanning tree for a weighted graph whose edges add up to the smallest possible value.
+^1684293406154
 
 ## Prim's Algorithm #card 
 **Prim's Algorithm** is a greedy algorithm used for finding the MST in weighted undirected graphs.
@@ -61,6 +70,7 @@ A **minimum spanning tree** (MST) is a spanning tree for a weighted graph whos
 3.  Look at edges coming from the vertices selected so far: select the cheapest edge; if the edge forms a circuit, discard it and select the next cheapest.
 4.  Repeat until all vertices have been selected.
 5.  Double-check by repeating the process with a different starting vertex.
+^1684293406155
 
 ## Dijkstra's Algorithm #card 
 Dijkstra's algorithm finds the shortest path from the starting location to any other location, not just the desired destination. The algorithm works on weighted graphs and weighted digraphs, **where no negative weight cycles exist.** 
@@ -77,6 +87,7 @@ While there are unvisited vertices do
       A shorter path to N has been found
       Update the shortest path to N distance to N := thisDist
       set the shortest path predecessor to N as V
+^1684293406156
 
     End if
   End do
@@ -86,9 +97,11 @@ End do
 ## Bellman-Ford Algorithm #card 
 Bellman-Ford, like Dijkstra's uses relaxation to find the shortest path, but it can also *detect* that a negative cycle exists. It will not be able to find the shortest path if this cycle exists. This being said, Bellman-Ford *works* on graphs with negative edge weights, but not negative cycles.
 **Unlike Dijkstra’s algorithm, the Bellman-Ford algorithm is not greedy and does not use a priority queue to process the edges.**
+^1684293406157
 
 ## Dijkstra's vs Bellman-Ford vs Floyd-Warshall #card 
 - Dijkstra's: shortest path from **one** node to all nodes
 - Bellman-Ford: shortest path from **one** node to all nodes, negative edges **allowed**
 - Floyd-Warshall's Shortest Path: shortest path between **all** pairs of vertices, negative edges allowed
 Negative cycles are not allowed in any of these algorithms, because shortest path doesn't make sense for negative cycles.
+^1684293406158
