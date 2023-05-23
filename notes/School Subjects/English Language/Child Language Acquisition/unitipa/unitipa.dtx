@@ -1,0 +1,567 @@
+% \iffalse meta-comment
+%
+% File: unitipa.dtx
+% ----------------------------------------------------------
+% Package:      unitipa
+% Version:      0.4  (20 October, 2021)
+% Author:       निरंजन
+% Description:  TIPA typefaces with Unicode characters.
+% Repository:   https://gitlab.com/niruvt/unitipa (archived)
+% License:      GPLv3, GFDLv1.3
+% ----------------------------------------------------------
+%
+% LaTeX Package unitipa v0.4
+% © 2021 निरंजन
+%
+% This program is free software: you can redistribute it
+% and/or modify it under the terms of the GNU General Public
+% License as published by the Free Software Foundation, either
+% version 3 of the License, or (at your option) any later
+% version.
+%
+% This program is distributed in the hope that it will be
+% useful, but WITHOUT ANY WARRANTY; without even the implied
+% warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+% PURPOSE. See the GNU General Public License for more
+% details.
+%
+% You should have received a copy of the GNU General Public
+% License along with this program. If not, see
+% <https://www.gnu.org/licenses/>.
+%
+% The current maintainer of this work is निरंजन.
+%
+% This work consists of the files unitipa.dtx
+%                                 unitipa.ins
+% and the derived file            unitipa.sty.
+% \fi
+% \iffalse
+%<*internal>
+\iffalse
+%</internal>
+%<*readme>
+----------------------------------------------------------
+Package:      unitipa
+Version:      0.4  (20 October, 2021)
+Author:       निरंजन
+Description:  TIPA typefaces with Unicode characters.
+Repository:   https://gitlab.com/niruvt/unitipa (archived)
+License:      GPLv3, GFDLv1.3
+----------------------------------------------------------
+I have stopped maintaining this package and also taken it
+back from the distributions as I have realized that it is
+not ideal to use this package. The only purpose I had in
+mind while writing this package was to get the visual shapes
+of TIPA with Unicode characters in the input. This purpose
+is served very well by the CMU-serif font. Please refer to
+the file CMU-serif.tex and its output pdf to see the
+characters that differ visually. They are just 4 which is a
+very small number and the difference is not very much. I
+have compared almost all the characters, but commented the
+ones which show the exact same visual shape. You can
+uncomment those lines from the source code to test it
+yourself.
+
+I apologize for providing a package that wasn't really
+producing good results. A comment on StackExchange by an
+expert user warned me about the use of Computer Modern
+Unicode font, instead of using T3 encoding, but because of
+my inexperience in LaTeX I assumed that this font is the
+default font in every document (which isn't true). I tried
+compiling a document with the default font i.e. Latin Modern
+and I couldn't see the characters that I had listed in the
+package documentation. Therefore I wrote this package. Now
+that I have come to know about a more modern and recommended
+way of getting the TIPA shapes in our documents, I am taking
+this package back. The git repository of this project won't
+accept issues and MRs henceforth, but the project
+development and history will still be publicly available in
+the archived state.
+
+Best,
+निरंजन
+2021/10/20
+%</readme> 
+%<*internal>
+\fi
+%</internal>
+%<*driver|package>
+\def\unitipaname{unitipa}
+\def\unitipaversion{0.4}
+\def\unitipadate{2021/10/20}
+\def\unitipadescription{%
+  TIPA typefaces with Unicode characters.%
+}
+%</driver|package>
+%<*driver>
+\documentclass{l3doc}
+\usepackage{tipa}
+\usepackage{xcolor}
+\usepackage{fontawesome5}
+\usepackage{hyperref}
+\hypersetup{%
+  unicode,%
+  colorlinks,%
+  linkcolor=red!60!black,%
+  citecolor=green!60!black,%
+  pdftitle={The unitipa package},%
+  pdfauthor={निरंजन},%
+  pdfsubject={%
+    A(n obsolete) package for converting Unicode input to T3
+    encoded TIPA typefaces.%
+  }
+  urlcolor=blue!60!black%
+}%
+\usepackage{fontspec}
+\newfontfamily\devanagari[%
+  Script=Devanagari,%
+  Scale=0.8%
+]%
+{Shobhika}
+
+\begin{document}
+    \DocInput{\unitipaname.dtx}
+\end{document}
+%</driver>
+% \fi
+% \title{The \pkg{\unitipaname} package}
+% \author{{\devanagari निरंजन}}
+% \date^^A
+% {^^A
+% Version \unitipaversion\ --- \unitipadate\\[1ex]^^A
+% {^^A
+% \small\faIcon{link}\quad
+% \url{https://ctan.org/pkg/unitipa}^^A 
+% }\\^^A
+% {^^A
+% \small\faIcon{gitlab}\quad
+% \url{https://gitlab.com/niruvt/unitipa}^^A
+% }^^A
+% }
+%
+% \maketitle
+% 
+% \begin{documentation}
+%   This package is not maintained anymore and it has been
+%   removed from the \TeX -distributions as the package uses
+%   methods for converting rich Unicode input to poor T3
+%   encoding for getting TIPA typefaces when this can
+%   actually be better done using a Unicode font (i.e.\
+%   CMU-Serif). I tested the IPA characters with the Latin
+%   Modern font to find them absent in it, but mistakenly
+%   believed it to be CMU-Serif. For comparison see
+%   \texttt{CMU-Serif.tex} and its output. After rigorous
+%   testing I found out that only 4 characters are in
+%   different shape in CMU-Serif. Those differences are also
+%   not very significant. Hence I have decided to take this
+%   package back and let users use the better and the
+%   recommended Unicode-method. My sincere apologies for
+%   releasing a bad package in the community. The source
+%   code is still available as an obsolete package on CTAN
+%   and an archived repository on GitLab for backward
+%   compatibility purpose as well as for studying \LaTeX\
+%   code for enthusiastic programmers.
+%   
+%   \vfill
+%   {^^A
+%     \setlength{\parindent}{0pt}
+%     \LaTeX\ package \pkg{unitipa}
+%     
+%     © 2021 {\devanagari निरंजन}
+%   
+%     Permission is granted to copy, distribute and/or
+%     modify this document under the terms of the GNU Free
+%     Documentation License, Version 1.3 or any later
+%     version published by the Free Software Foundation;
+%     with no Invariant Sections, no Front-Cover Texts, and
+%     no Back-Cover Texts. A copy of the license is included
+%     in the section entitled ``GNU Free Documentation
+%     License''.
+%   }%
+% \end{documentation}
+% \newpage
+% \begin{implementation}
+% \section{Implementation}
+%    \begin{macrocode}
+%<@@=unitipa>
+%<*package>
+%    \end{macrocode}
+%    \begin{macrocode}
+\ProvidesPackage{unitipa}[2021/04/03 v0.3
+TIPA typefaces with unicode characters]
+\RequirePackage{tipa}
+%    \end{macrocode}
+% Provide package with its basic information and load
+% package \pkg{tipa}.
+%    \begin{macrocode}
+\RequirePackage{newunicodechar}
+\RequirePackage{fontspec}
+\RequirePackage{pgfkeys}
+\pgfkeys{%
+  unitipa/.is family, unitipa/.cd,%
+  ipafont/.code={\setfontfamily{\ipa}{#1}},%
+  ipafont=DoulosSIL%
+}%
+\DeclareTextFontCommand{\ipatext}{\ipa}
+\def\unitipa@ipafont#1{\pgfkeys{unitipa/.cd,#1}}
+\DeclareOption*{\expandafter\unitipa@ipafont\expandafter{\CurrentOption}}
+%    \end{macrocode}
+% Option \verb|ipafont| provided using \pkg{pgfkeys}.
+%    \begin{macrocode}
+\newif\ifnodiacritics
+\nodiacriticsfalse
+\DeclareOption{nodiacritics}{\nodiacriticstrue}
+\ProcessOptions\relax
+\ifnodiacritics
+\relax
+\else
+\RequirePackage{iftex}
+\RequirePackage{luacode}
+\RequireLuaTeX
+%% Dependent diacritic marks
+\begin{luacode}
+    function voiceless ( s )
+    s = unicode.utf8.gsub ( s , '(%a)̥', '\\textsubring{%1}' )
+    return s
+    end
+\end{luacode}
+\directlua{luatexbase.add_to_callback("process_input_buffer",
+    voiceless, "voiceless")}
+\begin{luacode}
+    function voiced ( s )
+    s = unicode.utf8.gsub ( s , '(%a)̬', '\\textsubwedge{%1}' )
+    return s
+    end
+\end{luacode}
+\directlua{luatexbase.add_to_callback("process_input_buffer",
+    voiced, "voiced")}
+\begin{luacode}
+    function morerounded ( s )
+    s = unicode.utf8.gsub ( s , '(%a)̹', '\\textsubrhalfring{%1}' )
+    return s
+    end
+  \end{luacode}
+  \directlua{luatexbase.add_to_callback("process_input_buffer",
+    morerounded, "morerounded")}
+  \begin{luacode}
+    function lessrounded ( s )
+    s = unicode.utf8.gsub ( s , '(%a)̜', '\\textsublhalfring{%1}' )
+    return s
+    end
+  \end{luacode}
+  \directlua{luatexbase.add_to_callback("process_input_buffer",
+    lessrounded, "lessrounded")}
+  \begin{luacode}
+    function advanced ( s )
+    s = unicode.utf8.gsub ( s , '(%a)̟', '\\textsubplus{%1}' )
+    return s
+    end
+  \end{luacode}
+  \directlua{luatexbase.add_to_callback("process_input_buffer",
+    advanced, "advanced")}
+  \begin{luacode}
+    function retracted ( s )
+    s = unicode.utf8.gsub ( s , '(%a)̠', '\\textsubbar{%1}' )
+    return s
+    end
+  \end{luacode}
+  \directlua{luatexbase.add_to_callback("process_input_buffer",
+    retracted, "retracted")}
+  \begin{luacode}
+    function midcentralized ( s )
+    s = unicode.utf8.gsub ( s , '(%a)̽', '\\textovercross{%1}' )
+    return s
+    end
+  \end{luacode}
+  \directlua{luatexbase.add_to_callback("process_input_buffer",
+    midcentralized, "midcentralized")}
+  \begin{luacode}
+    function syllabic ( s )
+    s = unicode.utf8.gsub ( s , '(%a)̩', '\\textsyllabic{%1}' )
+    return s
+    end
+  \end{luacode}
+  \directlua{luatexbase.add_to_callback("process_input_buffer",
+    syllabic, "syllabic")}
+  \begin{luacode}
+    function nonsyllabic ( s )
+    s = unicode.utf8.gsub ( s , '(%a)̯', '\\textsubarch{%1}' )
+    return s
+    end
+  \end{luacode}
+  \directlua{luatexbase.add_to_callback("process_input_buffer",
+    nonsyllabic, "nonsyllabic")}
+  \begin{luacode}
+    function breathyvoiced ( s )
+    s = unicode.utf8.gsub ( s , '(%a)̤', '\\textsubumlaut{%1}' )
+    return s
+    end
+  \end{luacode}
+  \directlua{luatexbase.add_to_callback("process_input_buffer",
+    breathyvoiced, "breathyvoiced")}
+  \begin{luacode}
+    function linguolabial ( s )
+    s = unicode.utf8.gsub ( s , '(%a)̼', '\\textseagull{%1}' )
+    return s
+    end
+  \end{luacode}
+  \directlua{luatexbase.add_to_callback("process_input_buffer",
+    linguolabial, "linguolabial")}
+  \begin{luacode}
+    function velarized ( s )
+    s = unicode.utf8.gsub ( s , '(%a)̴', '\\textsuperimposetilde{%1}' )
+    return s
+    end
+  \end{luacode}
+  \directlua{luatexbase.add_to_callback("process_input_buffer",
+    velarized, "velarized")}
+  \begin{luacode}
+    function raised ( s )
+    s = unicode.utf8.gsub ( s , '(%a)̝', '\\textraising{%1}' )
+    return s
+    end
+  \end{luacode}
+  \directlua{luatexbase.add_to_callback("process_input_buffer",
+    raised, "raised")}
+  \begin{luacode}
+    function lowered ( s )
+    s = unicode.utf8.gsub ( s , '(%a)̞', '\\textlowering{%1}' )
+    return s
+    end
+  \end{luacode}
+  \directlua{luatexbase.add_to_callback("process_input_buffer",
+    lowered, "lowered")}
+  \begin{luacode}
+    function advancedtr ( s )
+    s = unicode.utf8.gsub ( s , '(%a)̘', '\\textadvancing{%1}' )
+    return s
+    end
+  \end{luacode}
+  \directlua{luatexbase.add_to_callback("process_input_buffer",
+    advancedtr, "advancedtr")}
+  \begin{luacode}
+    function retractedtr ( s )
+    s = unicode.utf8.gsub ( s , '(%a)̙', '\\textretracting{%1}' )
+    return s
+    end
+  \end{luacode}
+  \directlua{luatexbase.add_to_callback("process_input_buffer",
+    retractedtr, "retractedtr")}
+  \begin{luacode}
+    function dental ( s )
+    s = unicode.utf8.gsub ( s , '(%a)̪', '\\textsubbridge{%1}' )
+    return s
+    end
+  \end{luacode}
+  \directlua{luatexbase.add_to_callback("process_input_buffer",
+    dental, "dental")}
+  \begin{luacode}
+    function apical ( s )
+    s = unicode.utf8.gsub ( s , '(%a)̺', '\\textinvsubbridge{%1}' )
+    return s
+    end
+  \end{luacode}
+  \directlua{luatexbase.add_to_callback("process_input_buffer",
+    apical, "apical")}
+  \begin{luacode}
+    function laminal ( s )
+    s = unicode.utf8.gsub ( s , '(%a)̻', '\\textsubsquare{%1}' )
+    return s
+    end
+  \end{luacode}
+  \directlua{luatexbase.add_to_callback("process_input_buffer",
+    laminal, "laminal")}
+  \begin{luacode}
+    function unaudible ( s )
+    s = unicode.utf8.gsub ( s , '(%a)̚', '%1\\textcorner' )
+    return s
+    end
+  \end{luacode}
+  \directlua{luatexbase.add_to_callback("process_input_buffer",
+    unaudible, "unaudible")}
+%% Tie bars
+\begin{luacode}
+  function tiebarup ( s )
+  s = unicode.utf8.gsub ( s , '(%a)͡(%a)', '\\texttoptiebar{%1%2}' )
+  return s
+  end
+\end{luacode}
+\directlua{luatexbase.add_to_callback("process_input_buffer",
+  tiebarup, "tiebarup")}
+\begin{luacode}
+  function tiebardown ( s )
+  s = unicode.utf8.gsub ( s , '(%a)͜(%a)', '\\textbottomtiebar{%1%2}' )
+  return s
+  end
+\end{luacode}
+\directlua{luatexbase.add_to_callback("process_input_buffer",
+  tiebardown, "tiebardown")}
+\begin{luacode}
+  function risefall ( s )
+  s = unicode.utf8.gsub ( s , '(%a)᷈', '\\textrisefall{%1}' )
+  return s
+  end
+\end{luacode}
+\directlua{luatexbase.add_to_callback("process_input_buffer",
+  risefall, "risefall")}
+\begin{luacode}
+  function rising ( s )
+  s = unicode.utf8.gsub ( s , '(%a)᷄', '\\texthighrise{%1}' )
+  return s
+  end
+\end{luacode}
+\directlua{luatexbase.add_to_callback("process_input_buffer",
+  rising, "rising")}
+\begin{luacode}
+  function falling ( s )
+  s = unicode.utf8.gsub ( s , '(%a)᷅', '\\textlowrise{%1}' )
+  return s
+  end
+\end{luacode}
+\directlua{luatexbase.add_to_callback("process_input_buffer",
+  falling, "falling")}
+\fi
+%    \end{macrocode}
+% Option \verb|nodiacritics| provided for using the package
+% without Lua\LaTeX. Enabling this option won't print any
+% diacritics. Help from Samcarter and Mico Loretan on
+% different platforms\footnote{^^A
+% Samcarter's
+% \href{https://topanswers.xyz/tex?q=1332\#a1577}{answer} on
+% TopAnswer \& Mico Loretan's
+% \href{https://tex.stackexchange.com/a/563447/174620}{answer}
+% on TeX.SE.^^A
+% } gave a right direction to this code.
+%    \begin{macrocode}
+%% Pulmonic Consonants
+%% Plosives
+\newunicodechar{ʈ}{\textrtailt}
+\newunicodechar{ɖ}{\textrtaild}
+\newunicodechar{ɟ}{\textbardotlessj}
+\newunicodechar{ɢ}{\textscg}
+\newunicodechar{ʔ}{\textglotstop}
+%% Nasals
+\newunicodechar{ɱ}{\textltailm}
+\newunicodechar{ɳ}{\textrtailn}
+\newunicodechar{ɲ}{\textltailn}%% Added in v0.2
+\newunicodechar{ɴ}{\textscn}
+%% Trills
+\newunicodechar{ʙ}{\textscb}
+\newunicodechar{ʀ}{\textscr}
+%% Taps or flaps
+\newunicodechar{ⱱ}{\ipatext{ⱱ}}%% Sorry for the bad typography!
+\newunicodechar{ɾ}{\textfishhookr}
+\newunicodechar{ɽ}{\textrtailr}
+%% Fricatives
+\newunicodechar{ɸ}{\textphi}
+\newunicodechar{β}{\textbeta}
+\newunicodechar{θ}{\texttheta}
+\newunicodechar{ʃ}{\textesh}
+\newunicodechar{ʒ}{\textyogh}
+\newunicodechar{ʂ}{\textrtails}
+\newunicodechar{ʐ}{\textrtailz}
+\newunicodechar{ʝ}{\textctj}
+\newunicodechar{ɣ}{\textgamma}
+\newunicodechar{χ}{\textchi}
+\newunicodechar{ʁ}{\textinvscr}
+\newunicodechar{ʕ}{\textrevglotstop}
+\newunicodechar{ɦ}{\texthth}
+%% Lateral fricatives
+\newunicodechar{ɬ}{\textbeltl}
+\newunicodechar{ɮ}{\textlyoghlig}
+%% Approximants
+\newunicodechar{ʋ}{\textscriptv}
+\newunicodechar{ɹ}{\textturnr}
+\newunicodechar{ɻ}{\textturnrrtail}
+\newunicodechar{ɰ}{\textturnmrleg}
+%% Lateral approximants
+\newunicodechar{ɭ}{\textrtaill}
+\newunicodechar{ʎ}{\textturny}
+\newunicodechar{ʟ}{\textscl}
+%% Affricates
+\newunicodechar{ʧ}{\textteshlig}
+\newunicodechar{ʤ}{\textdyoghlig}
+\newunicodechar{ʦ}{\texttslig}
+\newunicodechar{ʣ}{\textdzlig}
+%% Vowels
+%% Close
+\newunicodechar{ɨ}{\textbari}
+\newunicodechar{ʉ}{\textbaru}
+\newunicodechar{ɯ}{\textturnm}
+%% Near-close
+\newunicodechar{ɪ}{\textsci}
+\newunicodechar{ʏ}{\textscy}
+\newunicodechar{ʊ}{\textupsilon}
+%% Close-mid
+\newunicodechar{ɵ}{\textbaro}
+\newunicodechar{ɤ}{\textramshorns}
+%% Open-mid
+\newunicodechar{ɛ}{\textepsilon}
+\newunicodechar{ɜ}{\textrevepsilon}
+\newunicodechar{ɞ}{\textcloserevepsilon}
+\newunicodechar{ʌ}{\textturnv}
+\newunicodechar{ɔ}{\textopeno}
+%% Near-open
+\newunicodechar{ɐ}{\textturna}
+\newunicodechar{ɶ}{\textscoelig}
+\newunicodechar{ɒ}{\textturnscripta}
+%% Open
+%% Reported and added by Heller, Thomas on 2021/03/13
+%% Bug report - https://gitlab.com/niruvt/unitipa/-/issues/1
+%% MR - https://gitlab.com/niruvt/unitipa/-/merge_requests/1
+\newunicodechar{ɑ}{\textscripta}
+%% Non-Pulmonic
+\newunicodechar{ʘ}{\textbullseye}
+\newunicodechar{ǀ}{\textpipe}
+\newunicodechar{ǃ}{\textipa{!}}
+\newunicodechar{ǂ}{\textdoublebarpipe}
+\newunicodechar{ǁ}{\textdoublepipe}
+%% Voiced Implosives
+\newunicodechar{ɓ}{\texthtb}
+\newunicodechar{ɗ}{\texthtd}
+\newunicodechar{ʄ}{\texthtbardotlessj}
+\newunicodechar{ɠ}{\texthtg}
+\newunicodechar{ʛ}{\texthtscg}
+\newunicodechar{ʼ}{'}
+%% Suprasegmentals
+\newunicodechar{ˈ}{\textprimstress}
+\newunicodechar{ˌ}{\textsecstress}
+\newunicodechar{ː}{\textlengthmark}
+\newunicodechar{ˑ}{\texthalflength}
+\newunicodechar{ʍ}{\textturnw}
+\newunicodechar{ɥ}{\textturnh}
+\newunicodechar{ʜ}{\textsch}
+\newunicodechar{ʢ}{\textbarrevglotstop}
+\newunicodechar{ʡ}{\textbarglotstop}
+\newunicodechar{ɕ}{\textctc}
+\newunicodechar{ʑ}{\textctz}
+\newunicodechar{ɺ}{\textturnlonglegr}
+\newunicodechar{ɧ}{\texththeng}
+%% Diacritics
+\newunicodechar{ʰ}{\textsuperscript{h}}
+\newunicodechar{ʱ}{\textsuperscript{ɦ}}
+\newunicodechar{ʷ}{\textsuperscript{w}}
+\newunicodechar{ʲ}{\textsuperscript{j}}
+\newunicodechar{ˠ}{\textsuperscript{ɣ}}
+\newunicodechar{ˤ}{\textsuperscript{ʕ}}
+%% Tones independent diacritics
+\newunicodechar{ꜜ}{\textdownstep}
+\newunicodechar{ꜛ}{\textupstep}
+%% \newunicodechar{︎↗}{\textglobrise}%% Not working :'(
+%% \newunicodechar{↘}{\textglobfall}%% Need help here
+%    \end{macrocode}
+%    \begin{macrocode}
+%</package>
+%    \end{macrocode}
+% \end{implementation}
+% \RecordChanges
+% \changes{v0.1}{2020/09/21}{Initial version}
+% \changes{v0.2}{2021/03/13}{Added characters `ɑ' and `ɲ'}
+% \changes{v0.3}{2021/04/03}{Updated repository path}
+% \changes{v0.4}{2021/10/20}{Removed the package from \TeX
+% -distributions and changed the license to GPLv3+GFDLv1.3.
+% This is the last release of the package.}
+% \PrintChanges
+% \newpage
+% \include{gfdl.tex}
+% \Finale
