@@ -1,0 +1,132 @@
+\documentclass[border=0.5in]{standalone}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{tipa}
+\usepackage{fontspec}
+\newfontfamily\ipafont[Color=blue]{CMU-serif}
+
+\begin{document}
+\begin{tabular}{%
+    c%
+    c%
+    >{\ipafont}c%
+  }
+  \multicolumn{3}{c}{TIPA vs.\ Unicode}\\
+  \toprule
+  \footnotesize Long &
+  \footnotesize
+  \verb|\|\texttt{textipa}$\langle$\textit{arg}$\rangle$ &
+  \footnotesize Unicode\\
+  \midrule
+  - & - & ⱱ\\
+  - & - & ʋ\\
+  \textdzlig & - & ʣ\\
+  - & - & ǀ\\
+  - & - & ǃ\\
+  \textsubbar{l} & \textipa{\=*l} & l̠\\
+  \textsuperimposetilde{l} & - & l̴\\
+  \textbottomtiebar{ts} & \textipa{\t*{ts}} & t͜s\\
+  \texttoptiebar{kp} & \textipa{\t{kp}} & k͡p\\
+  \textsuperimposetilde{l} & - & l̴\\
+  \textbottomtiebar{ts} & \textipa{\t*{ts}} & t͜s\\
+  \texttoptiebar{kp} & \textipa{\t{kp}} & k͡p\\
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %-%-% Following are identical in TIPA and CMU-Serif %-%-%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % \textrtailt & \textipa{\:t} & ʈ\\
+  % \textrtaild & \textipa{\:d} & ɖ\\
+  % \textbardotlessj & \textipa{\*j} & ɟ\\
+  % \textscg & \textipa{\;G} & ɢ\\
+  % \textglotstop & \textipa{P} & ʔ\\
+  % \textltailm & \textipa{M} & ɱ\\
+  % \textrtailn & \textipa{\:n} & ɳ\\
+  % \textltailn & \textipa{\*n} & ɲ\\
+  % \textscn & \textipa{\;N} & ɴ\\
+  % \textscb & \textipa{\;B} & ʙ\\
+  % \textscr & \textipa{\;R} & ʀ\\
+  % \textfishhookr & \textipa{R} & ɾ\\
+  % \textrtailr & \textipa{\:r} & ɽ\\
+  % \textphi & \textipa{F} & ɸ\\
+  % \textbeta & \textipa{B} & β\\
+  % \texttheta & \textipa{T} & θ\\
+  % \textesh & \textipa{S} & ʃ\\
+  % \textyogh & \textipa{Z} & ʒ\\
+  % \textrtails & \textipa{\:s} & ʂ\\
+  % \textrtailz & \textipa{\:z} & ʐ\\
+  % \textctj & \textipa{J} & ʝ\\
+  % \textgamma & \textipa{G} & ɣ\\
+  % \textchi & \textipa{X} & χ\\
+  % \textinvscr & \textipa{K} & ʁ\\
+  % \textrevglotstop & \textipa{Q} & ʕ\\
+  % \texthth & \textipa{H} & ɦ\\
+  % \textbeltl & \textipa{\*l} & ɬ\\
+  % \textlyoghlig & \textipa{\*z} & ɮ\\
+  % \textturnr & \textipa{\*r} & ɹ\\
+  % \textturnrrtail & \textipa{\:R} & ɻ\\
+  % \textturnmrleg & - & ɰ\\
+  % \textrtaill & \textipa{\:l} & ɭ\\
+  % \textturny & \textipa{L} & ʎ\\
+  % \textscl & \textipa{\;L} & ʟ\\
+  % \textteshlig & - & ʧ\\
+  % \textdyoghlig & - & ʤ\\
+  % \texttslig & - & ʦ\\
+  % \textbari & \textipa{1} & ɨ\\
+  % \textbaru & \textipa{0} & ʉ\\
+  % \textturnm & \textipa{W} & ɯ\\
+  % \textsci & \textipa{\;I} & ɪ\\
+  % \textscy & \textipa{\;Y} & ʏ\\
+  % \textupsilon & \textipa{U} & ʊ\\
+  % \textbaro & \textipa{8} & ɵ\\
+  % \textramshorns & \textipa{7} & ɤ\\
+  % \textepsilon & \textipa{E} & ɛ\\
+  % \textrevepsilon & \textipa{3} & ɜ\\
+  % \textcloserevepsilon & - & ɞ\\
+  % \textturnv & \textipa{2} & ʌ\\
+  % \textopeno & \textipa{O} & ɔ\\
+  % \textturna & \textipa{5} & ɐ\\
+  % \textscoelig & \textipa{\OE} & ɶ\\
+  % \textturnscripta & \textipa{6} & ɒ\\
+  % \textbullseye & \textipa{\!o} & ʘ\\
+  % \textdoublebarpipe & - & ǂ\\
+  % \textdoublepipe & - & ǁ\\
+  % \texthtb & \textipa{\!b} & ɓ\\
+  % \texthtd & \textipa{\!d} & ɗ\\
+  % \texthtbardotlessj & \textipa{\!j} & ʄ\\
+  % \texthtg & \textipa{\!g} & ɠ\\
+  % \texthtscg & \textipa{\!G} & ʛ\\
+  % \textprimstress & \textipa{"} & ˈ\\
+  % \textsecstress & \textipa{""} & ˌ\\
+  % \textlengthmark & \textipa{:} & ː\\
+  % \texthalflength & \textipa{;} & ˑ\\
+  % \textturnw & \textipa{\*w} & ʍ\\
+  % \textturnh & \textipa{4} & ɥ\\
+  % \textsch & \textipa{\;H} & ʜ\\
+  % \textbarrevglotstop & - & ʢ\\
+  % \textbarglotstop & - & ʡ\\
+  % \textctc & \textipa{C} & ɕ\\
+  % \textctz & - & ʑ\\
+  % \textturnlonglegr & - & ɺ\\
+  % \texththeng & - & ɧ\\
+  % \textsubring{k} & \textipa{\r*k} & k̥\\
+  % \textsubwedge{e} & \textipa{\v*e} & e̬\\
+  % \textsubrhalfring{o} & \textipa{\|)o} & o̹\\
+  % \textsublhalfring{o} & \textipa{\|(o} & o̜\\
+  % \textsubplus{u} & \textipa{\|+u} & u̟\\
+  % \textovercross{e} & \textipa{\|x{e}} & e̽\\
+  % \textsyllabic{m} & \textipa{\s{m}} & m̩\\
+  % \textsubarch{a} & - & a̯\\
+  % \textsubumlaut{b} & \textipa{\"*b} & b̤\\
+  % \textseagull{t} & \textipa{\|mt} & t̼\\
+  % \textraising{e} & \textipa{\|'@} & e̝\\
+  % \textlowering{e} & \textipa{\|'e} & e̞\\
+  % \textadvancing{e} & \textipa{\|<e} & e̘\\
+  % \textretracting{ə} & \textipa{\|>e} & e̙\\
+  % \textsubbridge{t} & \textipa{\|[t} & t̪\\
+  % \textinvsubbridge{t} & \textipa{\|]t} & t̺\\
+  % \textsubsquare{s} & - & n̻\\
+  % p\textcorner & - & p̚\\
+  \bottomrule
+\end{tabular}
+\end{document}
