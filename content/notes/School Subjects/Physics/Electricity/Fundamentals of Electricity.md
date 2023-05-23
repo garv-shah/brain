@@ -11,4 +11,9 @@ title: "Fundamentals of Electricity"
 
 $m = \textrm{mass in kg}$
 $q = \textrm{charge in Coulomb} \space (C)$
-$I = \textrm{current in Amps} \space \frac{C}{S}$
+$I = \textrm{current in Amps} \space \frac{C}{S}$ or Q/T
+
+Voltage $=\frac{J}{C}$ (joules per coulomb)
+$P = IV$, Power = Current $\times$ Voltage
+$V = IR$, Voltage = Current $\times$ Resistance
+

@@ -1,0 +1,712 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=2cm]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Algorithmics SAT - Friendship Network},
+  pdfauthor={Garv Shah},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Algorithmics SAT - Friendship Network}
+\author{Garv Shah}
+\date{2022-06-02}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+`How can a tourist best spend their day out?' I've been finding it hard
+to plan trips with my friends, especially when everybody lives all over
+the city and we would all like to travel together. This SAT project aims
+to model the Victorian public transport network and its proximity to
+friends' houses, factoring in data about each individual to find the
+most efficient and effective traversals and pathways for us travelling
+to locations around Victoria.
+\end{abstract}
+
+I will start and end my day at my house, picking up all my friends along
+the way. The algorithm will find the quickest route to go to all my
+friends\textquotesingle{} houses, go to our desired location(s), and
+drop them all off before I go back to my own house. It will then return
+to me the traversal path, the time taken, and my cost for transport
+throughout the day.
+
+\hypertarget{information-to-consider}{%
+\subsection{Information to Consider}\label{information-to-consider}}
+
+The following is key information to consider when modelling the real
+life problem. This will be done by representing the problem with an
+undirected network/graph, as all public transport methods go both ways,
+just at different times depending on the transport method.
+
+\hypertarget{node-representation}{%
+\subsubsection{Node Representation}\label{node-representation}}
+
+Nodes represent key landmarks such as train stations, bus stops or a
+tourist attraction.
+
+\hypertarget{edge-representation}{%
+\subsubsection{Edge Representation}\label{edge-representation}}
+
+Edges represent a route (train, bus, tram, walking, etc) from one
+location to another
+
+\hypertarget{weight-representation}{%
+\subsubsection{Weight Representation}\label{weight-representation}}
+
+The edge weights will represent:
+
+\begin{itemize}
+\tightlist
+\item
+  the time taken to travel from one house to the other
+\item
+  the financial cost of the route, with buses being more expensive than
+  trains, which are more expensive than walking, etc. These can be
+  interchanged to prioritise the certain attribute, such as time or
+  money being of higher importance in the algorithm.
+\end{itemize}
+
+\hypertarget{additional-information-modelled-outside-graph}{%
+\subsubsection{Additional Information Modelled Outside
+Graph}\label{additional-information-modelled-outside-graph}}
+
+The following would be modelled as dictionaries:
+
+\begin{itemize}
+\tightlist
+\item
+  The arrival time/timetable of buses and trains
+\item
+  The cost of changing lines
+\item
+  Attributes of each friend, such as name, home, the time they wake up,
+  the amount of time they take to get ready, and who is friends with
+  whom or to what degree.
+\item
+  Proximity to all friends\textquotesingle{} houses (by walking), which
+  would be a dictionary for each node separately. This information could
+  be used to add further complications to make the model reflect real
+  life more closely, such as different friends being ready earlier than
+  others or requiring a certain number of "close friends" (by threshold)
+  to be within the travel party at all times.
+\end{itemize}
+
+\hypertarget{abstract-data-types}{%
+\subsection{Abstract Data Types}\label{abstract-data-types}}
+
+I have selected a number of stations, bus stops and locations which I
+feel are relevant to my friend group.
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+Property & Stored as & Notes \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Key Landmarks & Node & \\
+Landmark Name & Node Attribute & \\
+Route & Edge & \\
+Route Name & Edge Attribute & \\
+Transport Method/Line & Edge Colour & \\
+Time or Cost & Edge Weight & These can be interchanged to prioritise
+different aspects. Distance is more relevant than time, but cost may be
+important as well. \\
+Time/Cost of Changing Lines & Node attribute "interchange\_cost" \&
+"interchange\_time" & \\
+Train and Bus Timetable & Dictionary: Dict«String: Array«Dict«String:
+Int or String»»» & Keys would be each line (bus or train), and the
+values would be arrays of dictionaries with what node they are at,
+arrival times and departure times. \\
+Attributes of Each Friend & Dictionary: Dict«String: Dynamic» & This
+will be a json style nested dictionary that has various attributes about
+each friend, such as waking up time, other close friends and other
+relevant information \\
+Proximity to Friends\textquotesingle{} Houses & Node Attribute:
+Dict«String: Float» & Proximity of all houses as an attribute for each
+node, which has keys as friends\textquotesingle{} names and values as
+the distance or time to their house \\
+\end{longtable}
+
+\hypertarget{possible-graph}{%
+\subsection{Possible Graph}\label{possible-graph}}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\includegraphics{https://github.com/garv-shah/brain/blob/hugo/content/notes/Attachments/Algorithmics/Possible\%20Friendship\%20Network.png?raw=true}
+
+\hypertarget{signatures}{%
+\subsection{Signatures}\label{signatures}}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+Function Name & Signature \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+addLandmark & {[}name, interchange\_cost, friend\_proximity{]}
+-\textgreater{} node \\
+addRoute & {[}start\_node, end\_node, travel\_method, time, cost{]}
+-\textgreater{} edge \\
+findShortestPath & {[}start\_node, end\_node{]} -\textgreater{} integer,
+array \\
+addFriend & {[}name, wake\_time, close\_friends{]} -\textgreater{}
+dictionary \\
+\end{longtable}
+
+\hypertarget{algorithm-selection}{%
+\subsection{Algorithm Selection}\label{algorithm-selection}}
+
+While simplifying my problem, I found that starting and ending my day at
+my house while picking up all my friends along the way is simply an
+applied version of finding the shortest hamiltonian circuit. In other
+words, the shortest cost circuit that will visit every node.
+
+While researching into how to solve this, I found that this was a
+classic example of the travelling salesman problem, which turns out to
+be an NP-hard problem. This means that there currently exists no exact
+solution to the problem in polynomial time, and the best I can currently
+do is the Held--Karp algorithm, which has a time complexity of
+{\(O(n^{2}2^{n})\)} which is not ideal at all in terms of efficiency,
+but will have to be sufficient for the use cases of this project.
+
+\hypertarget{held-karp-algorithm}{%
+\subsubsection{Held-Karp algorithm}\label{held-karp-algorithm}}
+
+The Held-Karp algorithm is a method for finding the exact shortest
+hamiltonian circuit in the exponential time complexity of
+{\(O(n^{2}2^{n})\)}, which is much better than if we to brute force it,
+which would have a complexity of {\(O(n!)\)}.
+
+It works by utilising the fact the following principle.
+
+Let {\(A =\)} starting vertex\\
+Let {\(B =\)} ending vertex\\
+Let {\(S = \{ P,Q,R\}\)} or any other vertices to be visited along the
+way.\\
+Let {\(C \in S\)}
+
+We {\(\therefore\)} know that
+{\(\text{Cost}_{\text{min}}\ A\rightarrow B\ \text{whilst\ visiting\ all\ nodes\ in\ S}\)}
+=
+{\(\text{min}(\text{Cost}\ A\rightarrow C\ \text{visiting\ everything\ else\ in\ S} + d_{CB})\)}.
+Put more simply, we can find the smallest cost hamiltonian path by
+gradually building larger and larger subpaths from the minimum cost to
+the next node in {\(S\)}, using dynamic programming to combine the
+subpaths to form the larger hamiltonian path.
+
+This logic leads to the following pseudocode:
+
+\begin{verbatim}
+1. function held_karp (
+2.  start: node, 
+3.  end: node, 
+4.  visit: set<node>
+5. ):
+6.  if visit.size = 0:
+7.      return dist(start, end)
+8.  else:
+9.      min = infinity
+10.         For node C in set S:
+11.             sub_path = held_carp(start, C, (set \ C))
+12.             cost = sub_path + dist(C, end)
+13.             if cost < min:
+14.                 min = cost
+15.         return min
+16. end function
+Copy
+\end{verbatim}
+
+After being implemented in Python (with a slight modification to return
+the path as well), this pseudocode looks like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{def held\_karp(start, end, visit):}
+\NormalTok{    if type(visit) is not set:}
+\NormalTok{        print("Error: visit must be a set of nodes")}
+\NormalTok{        return \{\textquotesingle{}cost\textquotesingle{}: float(\textquotesingle{}inf\textquotesingle{}), \textquotesingle{}path\textquotesingle{}: None\}}
+\NormalTok{    if len(visit) == 0:}
+\NormalTok{        return \{\textquotesingle{}cost\textquotesingle{}: dist(start, end), \textquotesingle{}path\textquotesingle{}: [start, end]\}}
+\NormalTok{    else:}
+\NormalTok{        minimum = \{\textquotesingle{}cost\textquotesingle{}: float(\textquotesingle{}inf\textquotesingle{})\}}
+\NormalTok{        for rand\_node in visit:}
+\NormalTok{            sub\_path = held\_karp(start, rand\_node, visit.difference(\{rand\_node\}))}
+\NormalTok{            cost = dist(rand\_node, end) + sub\_path[\textquotesingle{}cost\textquotesingle{}]}
+\NormalTok{            if cost \textless{} minimum[\textquotesingle{}cost\textquotesingle{}]:}
+\NormalTok{                minimum = \{\textquotesingle{}cost\textquotesingle{}: cost, \textquotesingle{}path\textquotesingle{}: sub\_path[\textquotesingle{}path\textquotesingle{}] + [end]\}}
+\NormalTok{        return minimum}
+\NormalTok{RunCopy}
+\end{Highlighting}
+\end{Shaded}
+
+The problem with this implementation is that it currently only works
+with complete graphs, where the distance between any two given nodes
+will not be infinity. This becomes clear if we try and find the cost of
+going from Oakleigh to Melbourne Central while visiting Caulfield along
+the way. The pseudocode would choose Caulfield as the value for {\(C\)},
+as it is the only node in the set. The issue is at line \texttt{12}, as
+the algorithm would try and get the distance between Caulfield and
+Melbourne Central, but as there is no edge between these two nodes, it
+will return {\(\infty\)}.
+
+This can be solved by using Dijkstra\textquotesingle s Algorithm,
+instead of the \texttt{dist} function, which will instead find the
+shortest path (and {\(\therefore\)} distance) between any two given
+nodes.
+
+After this modification, our hybrid algorithm works great!
+
+\begin{verbatim}
+Let's say I have 5 friends, they live closest to the following nodes: Caulfield, Mount Waverley, Glen Waverley, Melbourne Central and Chadstone
+
+The following would be the fastest path to go from my house (Brandon Park) to all my friends' and back:
+
+{'cost': 182, 'path': ['Brandon Park', 'Wheelers Hill Library', 'CGS WH', 'Glen Waverley', 'Mount Waverley', 'Richmond', 'Parliament', 'Melbourne Central', 'Flinders Street', 'Caulfield', 'Chadstone', 'Oakleigh', 'Brandon Park']}
+Copy
+\end{verbatim}
+
+\hypertarget{dijkstras-algorithm}{%
+\subsubsection{Dijkstra\textquotesingle s
+Algorithm}\label{dijkstras-algorithm}}
+
+Dijkstra\textquotesingle s Algorithm is a method for finding the
+shortest path between any two given nodes in a weighted graph, given
+that the weights are non-negative. If some of the weights were negative,
+the Bellman-Ford Algorithm could also be used to find the shortest path
+between two vertices, but as this is not the case for our model (a
+method of transport cannot take you negative time to get somewhere),
+Dijkstra\textquotesingle s Algorithm is preferred for simplicity.
+
+Dijkstra\textquotesingle s Algorithm is a greedy algorithm, which
+actually finds the distance between a node and every other node on the
+graph. It does this based on the notion that if there were a shorter
+path than any sub-path, it would replace that sub-path to make the whole
+path shorter. More simply, shortest paths must be composed of shortest
+paths, which allows Dijkstra\textquotesingle s to be greedy, always
+selecting the shortest path from "visited" nodes, using the principle of
+relaxation to gradually replace estimates with more accurate values.
+
+Dijkstra\textquotesingle s Algorithm follows the logic outlined by the
+following pseudocode:
+
+\begin{verbatim}
+1. function dijkstras (
+2.  start: node, 
+3.  end: node,
+4.  graph: graph
+5. ):
+6.  // Set all node distance to infinity
+7.  for node in graph:
+8.      distance[node] = infinity
+9.      predecessor[node] = null
+10.         unexplored_list.add(node)
+11.         
+12.     distance[start] = 0
+13.     
+14.     while unexplored_list is not empty:
+15.         min_node = unexplored node with min cost
+16.         unexplored_list.remove(min_node)
+17.         
+18.         for each neighbour of min_node:
+19.             current_dist = distance[min_node] + dist(min_node, neighbour)
+20.             // a shorter path has been found to the neighbour -> relax value
+21.             if current_dist < distance[neighbour]:
+22.                 distance[neighbour] = current_dist
+23.                 predecessor[neighbour] = min_node
+24.     
+25.     return distance[end]
+26. end function
+Copy
+\end{verbatim}
+
+After being implemented in Python (with a slight modification to return
+the path as well), the pseudocode looks like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{def dijkstra(start, end):}
+\NormalTok{    \# set all nodes to infinity with no predecessor}
+\NormalTok{    distance = \{node: float(\textquotesingle{}inf\textquotesingle{}) for node in g.nodes()\}}
+\NormalTok{    predecessor = \{node: None for node in g.nodes()\}}
+\NormalTok{    unexplored = list(g.nodes())}
+
+\NormalTok{    distance[start] = 0}
+
+\NormalTok{    while len(unexplored) \textgreater{} 0:}
+\NormalTok{        min\_node = min(unexplored, key=lambda node: distance[node])}
+\NormalTok{        unexplored.remove(min\_node)}
+
+\NormalTok{        for neighbour in g.neighbors(min\_node):}
+\NormalTok{            current\_dist = distance[min\_node] + dist(min\_node, neighbour)}
+\NormalTok{            \# a shorter path has been found to the neighbour {-}\textgreater{} relax value}
+\NormalTok{            if current\_dist \textless{} distance[neighbour]:}
+\NormalTok{                distance[neighbour] = current\_dist}
+\NormalTok{                predecessor[neighbour] = min\_node}
+
+\NormalTok{    \# reconstructs the path}
+\NormalTok{    path = [end]}
+\NormalTok{    while path[0] != start:}
+\NormalTok{        path.insert(0, predecessor[path[0]])}
+
+\NormalTok{    return \{\textquotesingle{}cost\textquotesingle{}: distance[end], \textquotesingle{}path\textquotesingle{}: path\}}
+\NormalTok{Copy}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{optimisations}{%
+\subsection{Optimisations}\label{optimisations}}
+
+The optimisations below were created after the following base case:
+
+\begin{verbatim}
+Let's say I have 9 friends, they live closest to the following nodes: {'Mount Waverley', 'Melbourne Central', 'Chadstone', 'CGS WH', 'Parliament', 'Wheelers Hill Library', 'Flinders Street', 'Brighton Beach', 'Camberwell'}
+The following would be the fastest path to go from my house (Brandon Park) to all my friends' and back:
+{'cost': 262, 'path': ['Brandon Park', 'Wheelers Hill Library', 'CGS WH', 'Glen Waverley', 'Mount Waverley', 'Richmond', 'Camberwell', 'Richmond', 'Parliament', 'Melbourne Central', 'Flinders Street', 'Brighton Beach', 'Flinders Street', 'Caulfield', 'Chadstone', 'Oakleigh', 'Brandon Park']}
+
+It took 47.3621 seconds to run.
+Copy
+\end{verbatim}
+
+As seen, running the above Held-Karp + Dijkstra\textquotesingle s
+combination took about 50 seconds to calculate the minimal cost path for
+9 nodes. The following is a table for {\(n\ \text{vs}\ t\)}, with an
+approximate line of best fit of {\(y \approx a \times b^{x}\)} where
+{\(a = 8.1017 \times 10^{- 8}\)} and {\(b = 9.3505\)}:
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+{\(n\)} (no. nodes) & {\(t\)} (execution time in seconds, 4dp) & {\(y\)}
+(line of best fit, 4dp) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 0.0001 & 0.0000 \\
+1 & 0.0002 & 0.0000 \\
+2 & 0.0002 & 0.0000 \\
+3 & 0.0016 & 0.0001 \\
+4 & 0.0083 & 0.0006 \\
+5 & 0.0132 & 0.0058 \\
+6 & 0.1090 & 0.0541 \\
+7 & 0.5674 & 0.5063 \\
+8 & 4.7193 & 4.7343 \\
+9 & 44.2688 & 44.2680 \\
+\end{longtable}
+
+Anything above 7 nodes takes far too long, and calculating the entire
+hamiltonian circuit would take 5 weeks 1 day 14 hours 56 mins and 39
+secs based on the line of best fit, so the following optimisations have
+been utilised.
+
+\hypertarget{caching-dijkstras-output}{%
+\subsubsection{Caching Dijkstra\textquotesingle s
+Output}\label{caching-dijkstras-output}}
+
+When replacing the \texttt{dist} function with
+Dijkstra\textquotesingle s Algorithm, a certain time compromise was
+made. \texttt{dist} has a time complexity of {\(O(1)\)}, simply fetching
+the distance from the distance matrix, but Dijkstra\textquotesingle s
+Algorithm is relatively slower at {\(O(E\log V)\)} where {\(E\)} is the
+number of edges and {\(V\)} the number of vertices. For our sample graph
+above, with {\(E = 27\)} and {\(V = 15\)},
+{\(O(E\log V) \approx 31.75\)}. This makes using
+Dijkstra\textquotesingle s roughly 31 times slower than \texttt{dist}as
+it is called every time.
+
+To avoid this, we can cache the results of Dijkstra\textquotesingle s
+Algorithm to avoid running the same calculation multiple times. This can
+be done with the following pseudocode:
+
+\begin{verbatim}
+1. cached_djk = dictionary of node -> dict
+2. 
+3. function fetch_djk (
+4.  start: node, 
+5.  end: node, 
+6. ):
+7.  if cached_djk[start] does not exists:
+8.      cached_djk[start] = dijkstras(start)
+9.  
+10.     djk = cached_djk[start]
+11.     # reconstructs the path  
+12.     path = [end] as queue  
+13.     while path.back != start:  
+14.         path.enqueue(djk['predecessors'][path.back])
+15.     
+16.     return {
+17.         'distance': djk['distances'][end], 
+18.         'path': path
+19.     }
+20. end function
+Copy
+\end{verbatim}
+
+In this case, \texttt{dijkstras} would need to be modified to return the
+\texttt{distance} and \texttt{predecessor} rather than just
+\texttt{distance{[}end{]}}.
+
+After being implemented in Python, \texttt{cached\_djk} resembles the
+following:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{def fetch\_djk(start, end):}
+\NormalTok{    if start not in cached\_djk:}
+\NormalTok{        cached\_djk[start] = dijkstra(start)}
+
+\NormalTok{    djk = cached\_djk[start]}
+\NormalTok{    \# reconstructs the path}
+\NormalTok{    path = [end]}
+\NormalTok{    while path[0] != start:}
+\NormalTok{        path.insert(0, djk[\textquotesingle{}predecessors\textquotesingle{}][path[0]])}
+
+\NormalTok{    return \{\textquotesingle{}cost\textquotesingle{}: djk[\textquotesingle{}distances\textquotesingle{}][end], \textquotesingle{}path\textquotesingle{}: path\}}
+\NormalTok{Copy}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{performance-improvement}{%
+\paragraph{Performance Improvement}\label{performance-improvement}}
+
+As expected by the theoretical time savings calculated above, this
+optimisation makes Held-Karp roughly 31 times faster. The base case from
+above, which took 44 - 47 seconds before the optimisation now only takes
+about 1.25 seconds.
+
+\begin{verbatim}
+Let's say I have 9 friends, they live closest to the following nodes: {'Parliament', 'Melbourne Central', 'Chadstone', 'Camberwell', 'Flinders Street', 'Brighton Beach', 'Mount Waverley', 'CGS WH', 'Wheelers Hill Library'}
+The following would be the fastest path to go from my house (Brandon Park) to all my friends' and back:
+{'cost': 262, 'path': ['Brandon Park', 'Wheelers Hill Library', 'CGS WH', 'Glen Waverley', 'Mount Waverley', 'Richmond', 'Camberwell', 'Richmond', 'Parliament', 'Melbourne Central', 'Flinders Street', 'Brighton Beach', 'Flinders Street', 'Caulfield', 'Chadstone', 'Oakleigh', 'Brandon Park']}
+
+It took 1.2799 seconds to run.
+Copy
+\end{verbatim}
+
+The {\(n\ \text{vs}\ t\)} table now looks like this, with an approximate
+line of best fit of {\(y \approx a \times b^{x}\)} where
+{\(a = 1.4002 \times 10^{- 9}\)} and {\(b = 10.1876\)}:
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+{\(n\)} (no. nodes) & {\(t\)} (execution time in seconds, 4dp) & {\(y\)}
+(line of best fit, 4dp) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 0.0001 & 0.0000 \\
+1 & 0.0001 & 0.0000 \\
+2 & 0.0001 & 0.0000 \\
+3 & 0.0001 & 0.0000 \\
+4 & 0.0001 & 0.0000 \\
+5 & 0.0005 & 0.0002 \\
+6 & 0.0060 & 0.0016 \\
+7 & 0.0287 & 0.0159 \\
+8 & 0.2148 & 0.1625 \\
+9 & 1.6055 & 1.6551 \\
+10 & 17.4555 & 16.8620 \\
+11 & 171.6719 & 171.7832 \\
+12 & 1750.1065 & 1750.0590 \\
+\end{longtable}
+
+We can see that this line of best fit is relatively accurate, and if we
+extend it to run for 14 nodes (our hamiltonian circuit), it would take a
+total of about 2 days 2 hours 27 mins and 14 secs to compute it all.
+
+\hypertarget{caching-held-karps-output}{%
+\subsubsection{Caching Held-Karp\textquotesingle s
+Output}\label{caching-held-karps-output}}
+
+The same principle as above can be applied to the Held-Karp algorithm.
+Although it is a harder task to make Held-Karp iterative, the result of
+computations can be stored rather than calling \texttt{held\_karp} every
+time. As above, this can be done with an intermediary function,
+\texttt{fetch\_hk} which only runs \texttt{held\_karp} if the value
+hasn\textquotesingle t already been stored.
+
+The pseudocode for this process is relatively simple:
+
+\begin{verbatim}
+cached_hk = dictionary of list -> dict
+
+function fetch_hk (
+    start: node, 
+    end: node,
+    visit: set of nodes 
+):
+    if cached_hk[[start, end, visit]] does not exists:
+        cached_hk[[start, end, visit]] = held_karp(start, end, visit)
+    return cached_hk[[start, end, visit]]
+end function
+Copy
+\end{verbatim}
+
+After being implemented in Python, \texttt{fetch\_hk} resembles the
+following:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{def fetch\_hk(start, end, visit):}
+\NormalTok{    key = frozenset([start, end, frozenset(visit)])}
+\NormalTok{    if key not in cached\_hk:}
+\NormalTok{        cached\_hk[key] = held\_karp(start, end, visit)}
+\NormalTok{    return cached\_hk[key]}
+\NormalTok{Copy}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{performance-improvement-1}{%
+\paragraph{Performance Improvement}\label{performance-improvement-1}}
+
+Though this is a somewhat minor change, the improvements are drastic,
+with the entire hamiltonian circuit being calculated in less than a
+second. The {\(n\ \text{vs}\ t\)} table now looks like this, with an
+approximate line of best fit of {\(y \approx a \times b^{x}\)} where
+{\(a = 0.00000544325\)} and {\(b = 2.36503\)}:
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+{\(n\)} (no. nodes) & {\(t\)} (execution time in seconds, 4dp) & {\(y\)}
+(line of best fit, 4dp) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 0.0001 & 0.0000 \\
+1 & 0.0001 & 0.0000 \\
+2 & 0.0001 & 0.0000 \\
+3 & 0.0001 & 0.0001 \\
+4 & 0.0001 & 0.0002 \\
+5 & 0.0002 & 0.0004 \\
+6 & 0.0005 & 0.0010 \\
+7 & 0.0012 & 0.0023 \\
+8 & 0.0030 & 0.0053 \\
+9 & 0.0081 & 0.0126 \\
+10 & 0.0210 & 0.0298 \\
+11 & 0.0520 & 0.0705 \\
+12 & 0.2051 & 0.1667 \\
+13 & 0.5061 & 0.3942 \\
+14 & 0.8246 & 0.9323 \\
+15 & 2.2284 & 2.2050 \\
+\end{longtable}
+
+Evidently this is significantly better, with Held-Karp at 12 nodes being
+about 8,533 times faster than without this optimisation. Across a couple
+tests, the {\(b\)} value of the line of best fit seems to hover around
+{\(2.1 - 2.3\)}, which indicates that we\textquotesingle re nearing the
+limits of our optimisations. The theoretical average time complexity of
+Held-Karp is {\(O(2^{n}n^{2})\)}, and it is unknown if any algorithm
+exists to solve TSP in a time complexity of less than base 2. As such,
+the closer we get to base 2, the more "perfectly" we have optimised our
+algorithm, and as of now we\textquotesingle re pretty close.
+
+\end{document}
