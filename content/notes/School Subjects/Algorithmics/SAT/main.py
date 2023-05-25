@@ -48,15 +48,18 @@ def dist(start, end):
         return float('inf')
 
 
-def dijkstra(start):
+def dijkstra(start, end):
     """
     Dijkstra's Shortest Path Algorithm.
 
     :param start: start node
     :type start: str
 
-    :return: The distance dictionary and the predecessor dictionary.
-    :rtype: dict
+    :param end: end node
+    :type end: str
+
+    :return: The shortest distance between two nodes along with the path.
+    :rtype: dict[str, float | list[str]]
     """
 
     # set all nodes to infinity with no predecessor
@@ -72,39 +75,17 @@ def dijkstra(start):
 
         for neighbour in g.neighbors(min_node):
             current_dist = distance[min_node] + dist(min_node, neighbour)
-            # a shorter path has been found to the neighbour ∴ relax value
+            # a shorter path has been found to the neighbour -> relax value
             if current_dist < distance[neighbour]:
                 distance[neighbour] = current_dist
                 predecessor[neighbour] = min_node
 
-    return {'distances': distance, 'predecessors': predecessor}
-
-
-def fetch_djk(start, end):
-    """
-    Fetches Dijkstra's Shortest Path Algorithm.
-
-    :param start: start node
-    :type start: str
-
-    :param end: end node
-    :type end: str
-
-    :return: The shortest distance between two nodes along with the path.
-    :rtype: dict[str, float | list[str]]
-    """
-
-    global cached_djk
-    if start not in cached_djk:
-        cached_djk[start] = dijkstra(start)
-
-    djk = cached_djk[start]
     # reconstructs the path
     path = [end]
     while path[0] != start:
-        path.insert(0, djk['predecessors'][path[0]])
+        path.insert(0, predecessor[path[0]])
 
-    return {'cost': djk['distances'][end], 'path': path}
+    return {'cost': distance[end], 'path': path}
 
 
 def held_karp(start, end, visit):
@@ -129,15 +110,15 @@ def held_karp(start, end, visit):
         return {'cost': float('inf'), 'path': None}
     # visit set being empty means direct distance, ∴ we can use Dijkstra's instead
     if len(visit) == 0:
-        djk = fetch_djk(start, end)
+        djk = dijkstra(start, end)
         return {'cost': djk['cost'], 'path': djk['path']}
     else:
         minimum = {'cost': float('inf')}
         for rand_node in visit:
             # divides larger path into smaller subpaths by going from start to any random node C while visiting
             # everything else in the visit set. This is then combined with djk from C to the end to get the full path.
-            sub_path = fetch_hk(start, rand_node, visit.difference({rand_node}))
-            djk = fetch_djk(rand_node, end)
+            sub_path = held_karp(start, rand_node, visit.difference({rand_node}))
+            djk = dijkstra(rand_node, end)
             cost = sub_path['cost'] + djk['cost']
             if cost < minimum['cost']:
                 # the path is calculated by adding the final path from dijkstra's to the sub-path
@@ -146,31 +127,23 @@ def held_karp(start, end, visit):
         return minimum
 
 
-def fetch_hk(start, end, visit):
-    key = frozenset([start, end, frozenset(visit)])
-    if key not in cached_hk:
-        cached_hk[key] = held_karp(start, end, visit)
-    return cached_hk[key]
-
-
 if __name__ == "__main__":
     g = nx.Graph()
     setup_graph()
 
     # Create a dictionary of distances, similar to a distance matrix, but allowing for multiple edges between nodes
-    cached_djk = {}
-    cached_hk = {}
     dist_dict = {frozenset({edge['from'], edge['to']}): [] for edge in edges}
     for edge in edges:
         dist_dict[frozenset({edge['from'], edge['to']})].append(edge['weight'])
 
     home = 'Brandon Park'
-    visit_set = set(g.nodes()).difference({home})
+    # visit_set = set(g.nodes()).difference({home})
+    visit_set = {'Chadstone', 'Flinders Street', 'Glen Waverley', 'Caulfield', 'Melbourne Central', 'Mount Waverley', 'Oakleigh', 'Camberwell'}
     start_time = time.perf_counter()
 
     print(f"Let's say I have {len(visit_set)} friends, they live closest to the following nodes: {visit_set}")
     print(f"The following would be the fastest path to go from my house ({home}) to all my friends' and back:")
-    print(fetch_hk(home, home, visit_set))
+    print(held_karp(home, home, visit_set))
 
     end_time = time.perf_counter()
     elapsed_time = end_time - start_time

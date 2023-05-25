@@ -5,6 +5,7 @@ date: 2022-06-02
 abstract: "'How can a tourist best spend their day out?' I've been finding it hard to plan trips with my friends, especially when everybody lives all over the city and we would all like to travel together. This SAT project aims to model the Victorian public transport network and its proximity to friends' houses, factoring in data about each individual to find the most efficient and effective traversals and pathways for us travelling to locations around Victoria."
 geometry: margin=2cm
 output: pdf_document
+colorlinks: true
 ---
 
 I will start and end my day at my house, picking up all my friends along the way. The algorithm will find the quickest route to go to all my friends' houses, go to our desired location(s), and drop them all off before I go back to my own house. It will then return to me the traversal path, the time taken, and my cost for transport throughout the day.
@@ -126,9 +127,10 @@ def held_karp(start, end, visit):
         return minimum
 ```
 
+#### The Infinite Distance Problem
 The problem with this implementation is that it currently only works with complete graphs, where the distance between any two given nodes will not be infinity. This becomes clear if we try and find the cost of going from Oakleigh to Melbourne Central while visiting Caulfield along the way. The pseudocode would choose Caulfield as the value for $C$, as it is the only node in the set. The issue is at line `12`, as the algorithm would try and get the distance between Caulfield and Melbourne Central, but as there is no edge between these two nodes, it will return $\infty$.
 
-This can be solved by using [[notes/School Subjects/Algorithmics/SAT/Garv's SAT- Friendship Network#Dijkstra's Algorithm|Dijkstra's Algorithm]], instead of the `dist` function, which will instead find the shortest path (and $\therefore$ distance) between any two given nodes.
+This can be solved by using [Dijkstra's Algorithm](#dijkstras-algorithm), instead of the `dist` function, which will instead find the shortest path (and $\therefore$ distance) between any two given nodes. (the justification of this specific algorithm selection is evaluated and challenged [here](#dijkstras-algorithm-vs-floyd-warshalls-shortest-path-algorithm))
 
 After this modification, our hybrid algorithm works great!
 
@@ -206,6 +208,32 @@ def dijkstra(start, end):
 
     return {'cost': distance[end], 'path': path}
 ```
+
+### Dijkstra's Algorithm vs Floyd Warshall's Shortest Path Algorithm
+The problem that using Dijkstra's was attempting to solve was that Held-Karp treats the distance between two unconnected vertices as $\infty$, as demonstrated [here](#the-infinite-distance-problem).
+
+There are 3 main shortest path algorithms covered in Unit 3:
+1. Dijkstra's Algorithm: 
+   - Shortest path from **one** node to all nodes
+   - Negative edges **not** allowed
+   - Returns **both** path and cost
+2. Bellman-Ford Algorithm:
+   - Shortest path from **one** node to all nodes
+   - Negative edges **allowed**
+   - Returns **both** path and cost
+3. Floyd-Warshall's Shortest Path Algorithm:
+   - Shortest path between **all** pairs of vertices
+   - Negative edges **allowed**
+   - Returns **only** cost
+
+As we can see, to be able to output the traversal path, we need both the cost and the path, so Floyd-Warshall's was initially discarded because it did not do so, even if it meant that the less desirable solution of running Dijkstra's from every source node had to be used, calculating the shortest path to every other node each time.
+
+The most optimal solution would be an algorithm that returns both the cost and the traversal order of the shortest path between *all* pairs of vertices, as this operation is carried out many times by Held-Karp.
+Implementing Floyd-Warshall's Shortest Path with the modification of a predecessor matrix (similar to Bellman-Ford and Dijkstra's) was attempted, but this requires additional recursive computation to reconstruct the path, making it not ideal in terms of efficiency.
+
+An alternative solution, Johnson's Algorithm, is one that gives us the exact output we want: the shortest path and cost between all vertex pairs. The algorithm works by first running Bellman-Ford to account for negative edge weights (not a problem for this SAT) and then runs Dijkstra's from every source node to construct a matrix and paths for each. Surprisingly, this algorithm is comparable to the efficiency of running just normal Floyd-Warshall's, and can even be faster in some cases.
+
+As such, the only modification that needs to be made is that instead of calling Dijkstra's *every* time a vertex pair distance and path is needed, the whole distance matrix can be constructed at once, so subsequent calls only take $O(1)$ time instead. This can be achieved using dynamic programming, by [caching the output of Dijkstra's](#caching-dijkstras-output) whenever it is invoked, so we are only running the algorithm as many times as we need to. 
 
 ## Optimisations
 
@@ -314,58 +342,3 @@ The $n \space \textrm{vs} \space t$ table now looks like this, with an approxima
 | 12              | 1750.1065                            | 1750.0590                   |
 
 We can see that this line of best fit is relatively accurate, and if we extend it to run for 14 nodes (our hamiltonian circuit), it would take a total of about 2 days 2 hours 27 mins and 14 secs to compute it all.
-
-### Caching Held-Karp's Output
-
-The same principle as above can be applied to the Held-Karp algorithm. Although it is a harder task to make Held-Karp iterative, the result of computations can be stored rather than calling `held_karp` every time. As above, this can be done with an intermediary function, `fetch_hk` which only runs `held_karp` if the value hasn't already been stored.
-
-The pseudocode for this process is relatively simple:
-
-```
-cached_hk = dictionary of list -> dict
-
-function fetch_hk (
-	start: node, 
-	end: node,
-	visit: set of nodes 
-):
-	if cached_hk[[start, end, visit]] does not exists:
-		cached_hk[[start, end, visit]] = held_karp(start, end, visit)
-	return cached_hk[[start, end, visit]]
-end function
-```
-
-After being implemented in Python, `fetch_hk` resembles the following:
-
-```python
-def fetch_hk(start, end, visit):
-    key = frozenset([start, end, frozenset(visit)])
-    if key not in cached_hk:
-        cached_hk[key] = held_karp(start, end, visit)
-    return cached_hk[key]
-```
-
-#### Performance Improvement
-
-Though this is a somewhat minor change, the improvements are drastic, with the entire hamiltonian circuit being calculated in less than a second. The $n \space \textrm{vs} \space t$ table now looks like this, with an approximate line of best fit of $y \approx a \times b^{x}$ where $a=0.00000544325$ and $b=2.36503$:
-
-| $n$ (no. nodes) | $t$ (execution time in seconds, 4dp) | $y$ (line of best fit, 4dp) |
-|-----------------|--------------------------------------|-----------------------------|
-| 0               | 0.0001                               | 0.0000                      |
-| 1               | 0.0001                               | 0.0000                      |
-| 2               | 0.0001                               | 0.0000                      |
-| 3               | 0.0001                               | 0.0001                      |
-| 4               | 0.0001                               | 0.0002                      |
-| 5               | 0.0002                               | 0.0004                      |
-| 6               | 0.0005                               | 0.0010                      |
-| 7               | 0.0012                               | 0.0023                      |
-| 8               | 0.0030                               | 0.0053                      |
-| 9               | 0.0081                               | 0.0126                      |
-| 10              | 0.0210                               | 0.0298                      |
-| 11              | 0.0520                               | 0.0705                      |
-| 12              | 0.2051                               | 0.1667                      |
-| 13              | 0.5061                               | 0.3942                      |
-| 14              | 0.8246                               | 0.9323                      |
-| 15              | 2.2284                               | 2.2050                      |
-
-Evidently this is significantly better, with Held-Karp at 12 nodes being about 8,533 times faster than without this optimisation. Across a couple tests, the $b$ value of the line of best fit seems to hover around $2.1-2.3$, which indicates that we're nearing the limits of our optimisations. The theoretical average time complexity of Held-Karp is $O(2^{n}n^{2})$, and it is unknown if any algorithm exists to solve TSP in a time complexity of less than base 2. As such, the closer we get to base 2, the more "perfectly" we have optimised our algorithm, and as of now we're pretty close.
