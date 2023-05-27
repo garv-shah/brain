@@ -1,0 +1,20 @@
+{
+    'Garv': {'min_node': 'Brandon Park', 'distance': 0.4320651871428905},
+    'Grace': {'min_node': 'Caulfield', 'distance': 3.317303898425856},
+    'Sophie': {'min_node': 'Camberwell', 'distance': 10.093829041341555},
+    'Zimo': {'min_node': 'CGS WH', 'distance': 1.0463628559819804},
+    'Emma': {'min_node': 'Wheelers Hill Library', 'distance': 2.316823113596007},
+    'Sabrina': {'min_node': 'CGS WH', 'distance': 1.0361159593717744},
+    'Audrey': {'min_node': 'CGS WH', 'distance': 6.99331705920331},
+    'Eric': {'min_node': 'Glen Waverley', 'distance': 2.591823985420863},
+    'Isabella': {'min_node': 'CGS WH', 'distance': 2.048436485663766},
+    'Josh': {'min_node': 'CGS WH', 'distance': 0.656799522332077},
+    'Molly': {'min_node': 'Wheelers Hill Library', 'distance': 7.559508844793643},
+    'Avery': {'min_node': 'Mount Waverley', 'distance': 6.312529532145972},
+    'Sammy': {'min_node': 'Brandon Park', 'distance': 3.408577759087159},
+    'Natsuki': {'min_node': 'CGS WH', 'distance': 6.419493747390275},
+    'Liam': {'min_node': 'Mount Waverley', 'distance': 0.8078481833574709},
+    'Nick': {'min_node': 'Glen Waverley', 'distance': 1.3699143560496139},
+    'Will': {'min_node': 'Wheelers Hill Library', 'distance': 6.404888550878483},
+    'Bella': {'min_node': 'Wheelers Hill Library', 'distance': 0.7161158445537555}
+}

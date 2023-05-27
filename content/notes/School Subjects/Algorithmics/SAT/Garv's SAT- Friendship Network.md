@@ -6,6 +6,8 @@ abstract: "'How can a tourist best spend their day out?' I've been finding it ha
 geometry: margin=2cm
 output: pdf_document
 colorlinks: true
+linkcolor: blue
+urlcolor: red
 ---
 
 I will start and end my day at my house, picking up all my friends along the way. The algorithm will find the quickest route to go to all my friends' houses, go to our desired location(s), and drop them all off before I go back to my own house. It will then return to me the traversal path, the time taken, and my cost for transport throughout the day.
@@ -56,7 +58,7 @@ I have selected a number of stations, bus stops and locations which I feel are r
 | Proximity to Friends' Houses | Node Attribute: Dict«String: Float»                          | Proximity of all houses as an attribute for each node, which has keys as friends' names and values as the distance or time to their house                             |
 
 ## Possible Graph
-****
+
 ![Possible Graph](https://github.com/garv-shah/brain/blob/hugo/content/notes/Attachments/Algorithmics/Possible%20Friendship%20Network.png?raw=true "Possible Graph")
 
 ## Signatures
@@ -70,10 +72,140 @@ I have selected a number of stations, bus stops and locations which I feel are r
 
 ## Algorithm Selection
 
-While simplifying my problem, I found that starting and ending my day at my house while picking up all my friends along the way is simply an applied version of finding the shortest hamiltonian circuit. In other words, the shortest cost circuit that will visit every node.
+While simplifying my problem, I found that starting and ending my day at my house while picking up all my friends along the way is simply an applied version of finding the shortest hamiltonian circuit. In other words, the shortest cost circuit that will visit every node that is needed to be visited to pick up my friends.
 
 While researching into how to solve this, I found that this was a classic example of the travelling salesman problem, which turns out to be an NP-hard problem. This means that there currently exists no exact solution to the problem in polynomial time, and the best I can currently do is the Held–Karp algorithm, which has a time complexity of $O(n^{2}2^{n})$ which is not ideal at all in terms of efficiency, but will have to be sufficient for the use cases of this project.
 
+### Node Selection Algorithm
+
+Before we can find the shortest circuit that visits a set of nodes, we need to know what nodes to visit in the first place!
+Each node, which is part of the public transport network, can be assigned latitude and longitude coordinates, and these can be compared with the coordinates of each of my friends' houses to determine the shortest distance they would need to walk to reach a transport hub that is represented as a node on our graph.
+
+The process of finding the nodes can then $\therefore$ be represented as the following informal steps:
+1. Get the latitude and longitude coordinates of all transport hubs and friends' houses.
+2. Loop over all friends and transport hubs, comparing the distance of each to find the closest transport hub to each friend.
+3. Finally store each friends' closest transport hub and distance into their respective dictionary entries.
+
+The question still remains though: how can we find the distance between two lat/long coordinates? The answer is the [haversine formula](https://en.wikipedia.org/wiki/Haversine_formula)!
+
+#### The Haversine Formula
+
+The haversine formula determines the distance between two points on a sphere given their latitude and longitude coordinates. Using the distance formula $\sqrt{(y_{2}-y_{1})^2+(x_{2}-x_{1})^2}$ may be sufficient in terms of finding the closest transport hub, it does not provide the distance which could be used for later computation such as time taken to walk to the node. ==works for cartesian plane, not sphere==
+
+The haversine formula can be rearranged given that the Earth's radius is 6371km to give us the following equation (with $d$ representing the distance between two locations):
+
+$\Delta lat=lat_{1}-lat_2$
+$\Delta long=long{1}-long_2$
+$R=6371$
+
+$a = \sin^{2}(\frac{\Delta lat}{2}) + \cos(lat_{1})\cos(lat_{2})\sin^{2}(\frac{\Delta long}{2})$
+$c = 2\operatorname{atan2}(\sqrt{a}, \sqrt{1−a})$
+$d = R\times c$
+
+It *is* somewhat long on not the cleanest formula, but it should be more than sufficient in our code.
+
+#### Pseudocode
+
+Finally we can use the informal steps above to construct the following pseudocode:
+```
+distance_dict: dictionary = {}
+
+function calculate_nodes (
+	friend_data: dictionary,
+	node_data: dictionary
+):
+	for friend in friend_data:
+		home: tuple = friend['home']
+		// initial min vals that will be set to smallest iterated distance
+		min: float = infinity
+		min_node: node = null
+		
+		for node in node_data:
+			location: tuple = node['coordinates']
+			// find real life distance (functional abstraction)
+			distance: float = latlong_distance(home, location)
+			if distance < min:
+				min = distance
+				min_node = node
+		
+		distance_dict[friend]['min_node'] = min_node
+		distance_dict[friend]['distance'] = min
+end function
+```
+
+This combines the haversine formula and simple iteration to find the minimum distance node for each and stores it into a dictionary. When translated to Python, the above code looks like this:
+```python
+def lat_long_distance(coord1, coord2):
+    # assign lat/long from coords
+    lat1 = coord1[0]
+    long1 = coord1[1]
+    lat2 = coord2[0]
+    long2 = coord2[1]
+
+    # radius of earth
+    r = 6371
+
+    # equation definitions from haversine formula
+    phi_1 = math.radians(lat1)
+    phi_2 = math.radians(lat2)
+
+    delta_phi = math.radians(lat2 - lat1)
+    delta_lambda = math.radians(long2 - long1)
+
+    a = math.sin(delta_phi / 2.0) ** 2 + math.cos(phi_1) * math.cos(phi_2) * math.sin(delta_lambda / 2.0) ** 2
+
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+
+    # distance in kilometers
+    d = r * c
+
+    return d
+
+
+def calculate_nodes(friend_data, node_data):
+    distance_dict = {}
+    for friend in friend_data:
+        friend_home = friend_data[friend]['home']
+        # initial min vals that will be set to smallest iterated distance
+        min_dist = float('inf')
+        closest_node = None
+
+        for node in node_data:
+            location = node_data[node]
+            distance = lat_long_distance(friend_home, location)
+            if distance < min_dist:
+                min_dist = distance
+                closest_node = node
+
+        distance_dict[friend] = {}
+        distance_dict[friend]['closest_node'] = closest_node
+        distance_dict[friend]['distance'] = min_dist
+    return distance_dict
+```
+
+The output of this code on our data set is as follows:
+```
+{
+    'Garv': {'min_node': 'Brandon Park', 'distance': 0.4320651871428905},
+    'Grace': {'min_node': 'Caulfield', 'distance': 3.317303898425856},
+    'Sophie': {'min_node': 'Camberwell', 'distance': 10.093829041341555},
+    'Zimo': {'min_node': 'CGS WH', 'distance': 1.0463628559819804},
+    'Emma': {'min_node': 'Wheelers Hill Library', 'distance': 2.316823113596007},
+    'Sabrina': {'min_node': 'CGS WH', 'distance': 1.0361159593717744},
+    'Audrey': {'min_node': 'CGS WH', 'distance': 6.99331705920331},
+    'Eric': {'min_node': 'Glen Waverley', 'distance': 2.591823985420863},
+    'Isabella': {'min_node': 'CGS WH', 'distance': 2.048436485663766},
+    'Josh': {'min_node': 'CGS WH', 'distance': 0.656799522332077},
+    'Molly': {'min_node': 'Wheelers Hill Library', 'distance': 7.559508844793643},
+    'Avery': {'min_node': 'Mount Waverley', 'distance': 6.312529532145972},
+    'Sammy': {'min_node': 'Brandon Park', 'distance': 3.408577759087159},
+    'Natsuki': {'min_node': 'CGS WH', 'distance': 6.419493747390275},
+    'Liam': {'min_node': 'Mount Waverley', 'distance': 0.8078481833574709},
+    'Nick': {'min_node': 'Glen Waverley', 'distance': 1.3699143560496139},
+    'Will': {'min_node': 'Wheelers Hill Library', 'distance': 6.404888550878483},
+    'Bella': {'min_node': 'Wheelers Hill Library', 'distance': 0.7161158445537555}
+}
+```
 ### Held-Karp algorithm
 
 The Held-Karp algorithm is a method for finding the exact shortest hamiltonian circuit in the exponential time complexity of $O(n^{2}2^{n})$, which is much better than if we to brute force it, which would have a complexity of $O(n!)$.
