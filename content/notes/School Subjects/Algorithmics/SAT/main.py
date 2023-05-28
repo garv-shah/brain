@@ -5,6 +5,7 @@ import networkx as nx
 from utilities.custom import render_graph
 from utilities.data import edges, line_data, pos, node_lat_long, friend_data
 import time
+import datetime as dt
 
 # Draggable utility to reposition nodes
 force_local_debug = False
@@ -158,7 +159,6 @@ def query_yes_no(question, default="yes"):
 def select_friend(question, default="Garv"):
     valid = [friend for friend in friend_data]
     line_count = 0
-    return_val = None
 
     while True:
         print(question)
@@ -182,9 +182,9 @@ def select_friend(question, default="Garv"):
             line_count += 1
 
     for i in range(line_count + 1):
-        LINE_UP = '\033[1A'
-        LINE_CLEAR = '\x1b[2K'
-        print(LINE_UP, end=LINE_CLEAR)
+        line_up = '\033[1A'
+        line_clear = '\x1b[2K'
+        print(line_up, end=line_clear)
 
     print(f"{question} {return_val}")
     return return_val
@@ -196,7 +196,7 @@ def pairwise(iterable):
     return zip(a, a)
 
 
-def dist(start, end):
+def dist(start, end, current_time):
     """
     Abstraction of node distance.
 
@@ -206,30 +206,58 @@ def dist(start, end):
     :param end: end node
     :type end: str
 
+    :param current_time: the current time when the distance is being called
+    :type current_time: dt.datetime
+
     :return: direct distance between start and end nodes. If the nodes are not connected, returns infinity.
     :rtype: float
     """
 
+    # if the start and end node are the same, it takes no time to get there
     if start == end:
         return 0
-    try:
-        return min(edge_lookup_matrix[frozenset({start, end})], key=lambda x: x['weight'])['weight']
-    except KeyError:
+    elif frozenset({start, end}) not in edge_lookup_matrix:
+        # if no edge exists between nodes
         return float('inf')
 
+    connecting_edges = edge_lookup_matrix[frozenset({start, end})]
+    distances = []
 
-def dijkstra(start, end):
+    # go over each possible edge between nodes (multiple possible)
+    for edge in connecting_edges:
+        line = edge['line']
+
+        # calculate the next time bus/train will be at the node
+        timetable = []
+        for arrival_time in line_data[line]['timetable'][start]:
+            date = dt.datetime.strptime(arrival_time, r"%H:%M")
+            if date >= current_time:
+                timetable.append(date)
+
+        # get all differences with date as values
+        difference_dict = {date.timestamp() - current_time.timestamp(): date for date in timetable}
+
+        # extracting minimum key using min()
+        next_time = difference_dict[min(difference_dict.keys())]
+
+        wait_time = next_time - current_time
+        distances.append(edge['weight'] + wait_time.total_seconds() / 60)
+
+    return min(distances)
+
+
+def dijkstra(start, current_time):
     """
     Dijkstra's Shortest Path Algorithm.
 
     :param start: start node
     :type start: str
 
-    :param end: end node
-    :type end: str
+    :param current_time: the current time when Dijkstra's is being called
+    :type current_time: dt.datetime
 
-    :return: The shortest distance between two nodes along with the path.
-    :rtype: dict[str, float | list[str]]
+    :return: The distance dictionary and the predecessor dictionary.
+    :rtype: dict
     """
 
     # set all nodes to infinity with no predecessor
@@ -240,25 +268,53 @@ def dijkstra(start, end):
     distance[start] = 0
 
     while len(unexplored) > 0:
-        closest_node = min(unexplored, key=lambda node: distance[node])
-        unexplored.remove(closest_node)
+        min_node = min(unexplored, key=lambda node: distance[node])
+        unexplored.remove(min_node)
 
-        for neighbour in g.neighbors(closest_node):
-            current_dist = distance[closest_node] + dist(closest_node, neighbour)
-            # a shorter path has been found to the neighbour -> relax value
+        for neighbour in g.neighbors(min_node):
+            current_dist = distance[min_node] + dist(min_node, neighbour,
+                                                     current_time + dt.timedelta(minutes=distance[min_node]))
+            # a shorter path has been found to the neighbour ∴ relax value
             if current_dist < distance[neighbour]:
                 distance[neighbour] = current_dist
-                predecessor[neighbour] = closest_node
+                predecessor[neighbour] = min_node
 
+    return {'distances': distance, 'predecessors': predecessor}
+
+
+def fetch_djk(start, end, current_time):
+    """
+    Fetches Dijkstra's Shortest Path Algorithm.
+
+    :param start: start node
+    :type start: str
+
+    :param end: end node
+    :type end: str
+
+    :param current_time: the current time when Dijkstra's is being called
+    :type current_time: dt.datetime
+
+    :return: The shortest distance between two nodes along with the path.
+    :rtype: dict[str, float | list[str]]
+    """
+
+    name = f"{start}@{current_time}"
+
+    global cached_djk
+    if name not in cached_djk:
+        cached_djk[name] = dijkstra(start, current_time)
+
+    djk = cached_djk[name]
     # reconstructs the path
     path = [end]
     while path[0] != start:
-        path.insert(0, predecessor[path[0]])
+        path.insert(0, djk['predecessors'][path[0]])
 
-    return {'cost': distance[end], 'path': path}
+    return {'cost': djk['distances'][end], 'path': path}
 
 
-def held_karp(start, end, visit):
+def held_karp(start, end, visit, current_time):
     """
     Held-Karp Algorithm.
 
@@ -271,6 +327,9 @@ def held_karp(start, end, visit):
     :param visit: set of nodes to visit
     :type visit: set[str]
 
+    :param current_time: the current time when Dijkstra's is being called
+    :type current_time: dt.datetime
+
     :return: The shortest distance path from the start to end node while visiting all nodes in the visit set.
     :rtype: dict[str, float | list[str]]
     """
@@ -280,15 +339,15 @@ def held_karp(start, end, visit):
         return {'cost': float('inf'), 'path': None}
     # visit set being empty means direct distance, ∴ we can use Dijkstra's instead
     if len(visit) == 0:
-        djk = dijkstra(start, end)
+        djk = fetch_djk(start, end, current_time)
         return {'cost': djk['cost'], 'path': djk['path']}
     else:
         minimum = {'cost': float('inf')}
         for rand_node in visit:
             # divides larger path into smaller subpaths by going from start to any random node C while visiting
             # everything else in the visit set. This is then combined with djk from C to the end to get the full path.
-            sub_path = held_karp(start, rand_node, visit.difference({rand_node}))
-            djk = dijkstra(rand_node, end)
+            sub_path = held_karp(start, rand_node, visit.difference({rand_node}), current_time)
+            djk = fetch_djk(rand_node, end, current_time + dt.timedelta(minutes=sub_path['cost']))
             cost = sub_path['cost'] + djk['cost']
             if cost < minimum['cost']:
                 # the path is calculated by adding the final path from dijkstra's to the sub-path
@@ -304,9 +363,18 @@ if __name__ == "__main__":
     concession = query_yes_no("Do you posses a concession card?")
     holiday = query_yes_no("Is today a weekend or a holiday?")
     user_name = select_friend("Who are you?")
+    while True:
+        string_time = input('What is the current time? (HH:MM) ')
+        try:
+            selected_time = dt.datetime.strptime(string_time, r"%H:%M")
+            break
+        except ValueError:
+            print("Please enter a valid time in the HH:MM format")
+
     print("")
 
     start_time = time.perf_counter()
+    cached_djk = {}
 
     # Create a lookup matrix so that edge data can be accessed given any two vertices
     # Create a dictionary of distances, similar to a distance matrix, but allowing for multiple edges between nodes
@@ -320,14 +388,15 @@ if __name__ == "__main__":
     people_at_nodes = {node: [] for node in visit_set}
     for key, val in friend_distances.items():
         people_at_nodes[val['closest_node']].append(key)
-    # My home node (I am Garv)
+
     home = friend_distances[user_name]['closest_node']
     friend_distances['You'] = friend_distances[user_name]
     friend_distances.pop(user_name)
 
     print(f"I have {len(friend_distances)} friends and they live closest to the following {len(visit_set)} nodes:")
-    [print(f"{key if key != 'You' else f'{key} ({user_name})'} {'lives' if key != 'You' else 'live'} {round(val['distance'], 3)}km from {val['closest_node']}")
-     for key, val in friend_distances.items()]
+    [print(
+        f"{key if key != 'You' else f'{key} ({user_name})'} {'lives' if key != 'You' else 'live'} "
+        f"{round(val['distance'], 3)}km from {val['closest_node']}") for key, val in friend_distances.items()]
 
     # print out friends that would take more than 20 minutes to walk (average human walking speed is 5.1 km/h)
     long_walk = [f"{key} ({round(friend_distances[key]['distance'] / 5.1 * 60, 2)})"
@@ -337,7 +406,7 @@ if __name__ == "__main__":
               f'transport hub. Possibly consider adding hubs closer to their houses: ', end=' ')
         print(f'{" and ".join([", ".join(long_walk[:-1]), long_walk[-1]] if len(long_walk) > 2 else long_walk)}')
 
-    hamiltonian_path = held_karp(home, home, visit_set)
+    hamiltonian_path = held_karp(home, home, visit_set, selected_time)
 
     print(f"\nThe trip would cost you ${calculate_prices():,.2f} and would take you "
           f"{round(hamiltonian_path['cost'] + 2 * friend_distances['You']['distance'] / 5.1 * 60, 2)} "

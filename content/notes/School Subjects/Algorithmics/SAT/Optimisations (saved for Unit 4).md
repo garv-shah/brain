@@ -121,3 +121,7 @@ def dijkstra(start):
 
     return {'distances': distance, 'predecessors': predecessor}
 ```
+
+```
+pandoc "Garv's SAT- Friendship Network.md" -o "Garv's SAT- Friendship Network.pdf" --from markdown --toc --listings -H setup.tex
+```

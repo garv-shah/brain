@@ -99,7 +99,7 @@ $\Delta long=long{1}-long_2$
 $R=6371$
 
 $a = \sin^{2}(\frac{\Delta lat}{2}) + \cos(lat_{1})\cos(lat_{2})\sin^{2}(\frac{\Delta long}{2})$
-$c = 2\operatorname{atan2}(\sqrt{a}, \sqrt{1−a})$
+$c = 2\operatorname{atan2}(\sqrt{a}, \sqrt{1-a})$
 $d = R\times c$
 
 It *is* somewhat long on not the cleanest formula, but it should be more than sufficient in our code.
@@ -248,7 +248,7 @@ function calculate_prices (
 	money = 0
 	
 	// if it took us 2 hours or less
-	if hamiltonian_path['time'] ≤ 120:
+	if hamiltonian_path['time'] <= 120:
 		// 2 hour bracket
 		if zones has 1 and 2:
 			if concession:
@@ -302,22 +302,22 @@ We $\therefore$ know that $\textrm{Cost}_{\textrm{min}} \space A \rightarrow B \
 This logic leads to the following pseudocode:
 
 ```
-1. function held_karp (
-2. 	start: node, 
-3. 	end: node, 
-4. 	visit: set<node>
-5. ):
-6. 	if visit.size = 0:
-7. 		return dist(start, end)
-8. 	else:
-9. 		min = infinity
-10. 		For node C in set S:
-11. 			sub_path = held_carp(start, C, (set \ C))
-12. 			cost = sub_path + dist(C, end)
-13. 			if cost < min:
-14. 				min = cost
-15. 		return min
-16. end function
+function held_karp (
+    start: node,
+    end: node,
+    visit: set<node>
+):
+    if visit.size = 0:
+        return dist(start, end)
+    else:
+        min = infinity
+        For node C in set S:
+        sub_path = held_carp(start, C, (set \ C))
+        cost = sub_path + dist(C, end)
+        if cost < min:
+            min = cost
+    return min
+end function
 ```
 
 After being implemented in Python (with a slight modification to return the path as well), this pseudocode looks like this:
@@ -363,32 +363,32 @@ Dijkstra's Algorithm is a greedy algorithm, which actually finds the distance be
 Dijkstra's Algorithm follows the logic outlined by the following pseudocode:
 
 ```
-1. function dijkstras (
-2. 	start: node, 
-3. 	end: node,
-4. 	graph: graph
-5. ):
-6. 	// Set all node distance to infinity
-7. 	for node in graph:
-8. 		distance[node] = infinity
-9. 		predecessor[node] = null
-10. 		unexplored_list.add(node)
-11. 		
-12. 	distance[start] = 0
-13. 	
-14. 	while unexplored_list is not empty:
-15. 		min_node = unexplored node with min cost
-16. 		unexplored_list.remove(min_node)
-17. 		
-18. 		for each neighbour of min_node:
-19. 			current_dist = distance[min_node] + dist(min_node, neighbour)
-20. 			// a shorter path has been found to the neighbour -> relax value
-21. 			if current_dist < distance[neighbour]:
-22. 				distance[neighbour] = current_dist
-23. 				predecessor[neighbour] = min_node
-24. 	
-25. 	return distance[end]
-26. end function
+function dijkstras (
+    start: node,
+    end: node,
+    graph: graph
+):
+    // Set all node distance to infinity
+    for node in graph:
+        distance[node] = infinity
+        predecessor[node] = null
+        unexplored_list.add(node)
+    
+    distance[start] = 0
+    
+    while unexplored_list is not empty:
+        min_node = unexplored node with min cost
+        unexplored_list.remove(min_node)
+    
+        for each neighbour of min_node:
+            current_dist = distance[min_node] + dist(min_node, neighbour)
+            // a shorter path has been found to the neighbour -> relax value
+            if current_dist < distance[neighbour]:
+                distance[neighbour] = current_dist
+                predecessor[neighbour] = min_node
+    
+    return distance[end]
+end function
 ```
 
 After being implemented in Python (with a slight modification to return the path as well), the pseudocode looks like this:
@@ -420,6 +420,57 @@ def dijkstra(start, end):
 
     return {'cost': distance[end], 'path': path}
 ```
+
+### Considering Train/Bus Arrival Times & Switching Lines
+
+Evidently, trains do not leave immediately when you get to the station, and neither do buses. The algorithm thus far assumes no waiting time during transit, and as anyone who has used public transport would know, this is not realistic.
+As such, the arrival time of trains and buses needs to be considered. This also has the added benefit of factoring in the time it takes to switch lines, as this time is lost waiting for another train or bus.
+
+All the algorithms above eventually call the `dist` function to get the direct distance between two nodes, which in and of itself is an abstraction of a distance matrix. By taking the input of the current time, the `dist` function can consider how long one must wait for a bus/train to arrive at the node, and modify the edge weights according, returning a larger cost for edges that require long wait times.
+
+The following `dist` function takes the above into consideration:
+```
+function dist (
+	start: node,
+	end: node,
+	current_time: datetime
+):	
+	// if the start and end node are the same, it takes no time to get there
+	if start = end:
+		return 0
+	else if edges = null:
+		// if no edge exists between nodes
+		return infinity
+	
+	edges = edge_lookup_matrix[start][end]
+	distances = []
+	
+	// go over each possible edge between nodes (multiple possible)
+	for edge in edges:
+		line = edge.line
+		// next time bus/train will be at node (functional abstraction)
+		next_time = soonest_time_at_node(timetable, line, start, current_time)
+		wait_time = next_time - current_time
+		distances.add(edge.weight + wait_time)
+	
+	return min(distances)
+end function
+```
+
+After implementing this function, an additional problem is introduced: how can the algorithms that are dependant on `dist` be aware of the current time?
+
+#### Implementing Current Time in Dijkstra's
+
+The process for keeping track of the current time for Dijkstra's is relatively simple: it will just be the given time of day inputed into Dijkstra's + $n$ amount of minutes, where $n$ is the distance to the `min_node`. As such line 19 from the pseudocode above simply needs to be changed to the following, along with a new input of `current_time`
+```
+current_dist = distance[min_node] + dist(min_node, neighbour, current_time + to_minutes(distance[min_node]))
+```
+
+This works because distance in our algorithm is analogous to minutes, and since the `dist` function returns the correct distance initially and stores it into the distance array, subsequent calls will be using the correct distance from `distance[min_node]` along with the correct distance from the `dist` function. This informal proof by mathematical induction shows the correctness of this modification, which seems to work well when tested within the algorithm.
+
+#### Implementing Current Time in Held-Karp
+
+
 
 ### Dijkstra's Algorithm vs Floyd Warshall's Shortest Path Algorithm
 The problem that using Dijkstra's was attempting to solve was that Held-Karp treats the distance between two unconnected vertices as $\infty$, as demonstrated [here](#the-infinite-distance-problem).
@@ -478,31 +529,31 @@ Anything above 7 nodes takes far too long, and calculating the entire hamiltonia
 
 ### Caching Dijkstra's Output
 
-When replacing the `dist` function with Dijkstra's Algorithm, a certain time compromise was made. `dist` has a time complexity of $O(1)$, simply fetching the distance from the distance matrix, but Dijkstra's Algorithm is relatively slower at $O(E\log{V})$ where $E$ is the number of edges and $V$ the number of vertices. For our sample graph above, with $E = 27$ and $V = 15$, $O(E\log{V}) \approx 31.75$. This makes using Dijkstra's roughly 31 times slower than `dist`as it is called every time.
+When replacing the `dist` function with Dijkstra's Algorithm, a certain time compromise was made. `dist` has a time complexity of $O(1)$, simply fetching the distance from the distance matrix, but Dijkstra's Algorithm is relatively slower at $O(E\log{V})$ where $E$ is the number of edges and $V$ the number of vertices. For our sample graph above, with $E = 27$ and $V = 15$, $O(E\log{V}) \approx 31.75$. This makes using Dijkstra's roughly 31 times slower than `dist` as it is called every time.
 
 To avoid this, we can cache the results of Dijkstra's Algorithm to avoid running the same calculation multiple times. This can be done with the following pseudocode:
 
 ```
-1. cached_djk = dictionary of node -> dict
-2. 
-3. function fetch_djk (
-4. 	start: node, 
-5. 	end: node, 
-6. ):
-7. 	if cached_djk[start] does not exists:
-8. 		cached_djk[start] = dijkstras(start)
-9. 	
-10. 	djk = cached_djk[start]
-11. 	# reconstructs the path  
-12. 	path = [end] as queue  
-13. 	while path.back != start:  
-14. 		path.enqueue(djk['predecessors'][path.back])
-15. 	
-16. 	return {
-17. 		'distance': djk['distances'][end], 
-18. 		'path': path
-19. 	}
-20. end function
+cached_djk = dictionary of node -> dict
+
+function fetch_djk (
+    start: node,
+    end: node,
+):
+    if cached_djk[start] does not exists:
+        cached_djk[start] = dijkstras(start)
+    
+    djk = cached_djk[start]
+    # reconstructs the path  
+    path = [end] as queue
+    while path.back != start:
+        path.enqueue(djk['predecessors'][path.back])
+    
+    return {
+        'distance': djk['distances'][end],
+        'path': path
+    }
+end function
 ```
 
 In this case, `dijkstras` would need to be modified to return the `distance` and `predecessor` rather than just `distance[end]`.
@@ -522,6 +573,38 @@ def fetch_djk(start, end):
 
     return {'cost': djk['distances'][end], 'path': path}
 ```
+
+##### Update: Caching After Timetable Considerations
+
+The above pseudocode for `fetch_djk` breaks once considerations of train/bus arrival times are added, because for example, the time it takes to travel from Glen Waverley to Melbourne Central at 7am is not necessarily the same as the same trip at 9pm. Above, the `cached_djk` dictionary only takes the starting node into consideration, so the pseudocode has to be modified to the following to us an 'id' like system for the paths.
+
+```
+cached_djk = dictionary of node -> dict
+
+function fetch_djk (
+    start: node,
+    end: node,
+    current_time: datetime,
+):
+	name = start + '@' + current_time
+	
+    if cached_djk[name] does not exists:
+        cached_djk[name] = dijkstras(start)
+    
+    djk = cached_djk[name]
+    # reconstructs the path  
+    path = [end] as queue
+    while path.back != start:
+        path.enqueue(djk['predecessors'][path.back])
+    
+    return {
+        'distance': djk['distances'][end],
+        'path': path
+    }
+end function
+```
+
+As such we can have a more specific key in our dictionary. This does have the disadvantage of having less reusable paths (running at 7 nodes was about 4 times slower than below), but at least the result isn't nondeterministic!
 
 #### Performance Improvement
 
