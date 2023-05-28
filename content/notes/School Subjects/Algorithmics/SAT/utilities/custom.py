@@ -4,12 +4,13 @@ import numpy as np
 from matplotlib.pyplot import text
 
 
-def render_graph(g, edges, pos=None, line_colours=None, bg_colour='#D3D3D3'):
+def render_graph(g, edges, pos=None, line_data=None, bg_colour='#D3D3D3'):
     """
     Custom graph render framework to allow for multiple features that default networkx graphs do not contain, such as
     edge colours, custom labels, and multiple edges from node to node.
 
     :param g: the networkx graph
+    :type g: nx.Graph
     :type g: nx.Graph
 
     :param edges: a list of dictionaries, which are edges
@@ -18,8 +19,8 @@ def render_graph(g, edges, pos=None, line_colours=None, bg_colour='#D3D3D3'):
     :param pos: dictionary of position data, can be optional in which case the kamada_kawai_layout will be used
     :type pos: dict or None
 
-    :param line_colours: a dictionary of line colours, can be optional in which case #BA3B46 is used for all lines
-    :type line_colours: dict or None
+    :param line_data: a dictionary of line colours, can be optional in which case #BA3B46 is used for all lines
+    :type line_data: dict or None
 
     :param bg_colour: the background colour of the graph, can be optional in which case #D3D3D3 is used
     :type bg_colour: str or None
@@ -28,8 +29,8 @@ def render_graph(g, edges, pos=None, line_colours=None, bg_colour='#D3D3D3'):
     # Handle None values
     if pos is None:
         pos = nx.kamada_kawai_layout(g)
-    if line_colours is None:
-        line_colours = {'default': '#BA3B46'}
+    if line_data is None:
+        line_data = {'default': {'colour': '#BA3B46', 'zone': 0}}
         for index in range(len(edges)):
             edges[index]['line'] = 'default'
 
@@ -62,22 +63,22 @@ def render_graph(g, edges, pos=None, line_colours=None, bg_colour='#D3D3D3'):
 
         if edge_count == 1:
             straight_edges.append((first['from'], first['to'], first))
-            s_cmap.append(line_colours[first['line']])
+            s_cmap.append(line_data[first['line']]['colour'])
         elif edge_count == 2:
             left_curved_edges.append((first['from'], first['to'], first))
-            l_cmap.append(line_colours[first['line']])
+            l_cmap.append(line_data[first['line']]['colour'])
 
             right_curved_edges.append((second['from'], second['to'], second))
-            r_cmap.append(line_colours[second['line']])
+            r_cmap.append(line_data[second['line']]['colour'])
         elif edge_count == 3:
             left_curved_edges.append((first['from'], first['to'], first))
-            l_cmap.append(line_colours[first['line']])
+            l_cmap.append(line_data[first['line']]['colour'])
 
             right_curved_edges.append((second['from'], second['to'], second))
-            r_cmap.append(line_colours[second['line']])
+            r_cmap.append(line_data[second['line']]['colour'])
 
             straight_edges.append((third['from'], third['to'], third))
-            s_cmap.append(line_colours[third['line']])
+            s_cmap.append(line_data[third['line']]['colour'])
 
     # Draw edges
     arc_radius = 0.25
@@ -87,7 +88,7 @@ def render_graph(g, edges, pos=None, line_colours=None, bg_colour='#D3D3D3'):
             g, pos, ax=axes,
             bbox=dict(boxstyle="round", ec=bg_colour, fc=bg_colour),
             edge_labels={(edge[0], edge[1]): edge[2]['weight']}, rotate=False, font_size=6,
-            font_color=line_colours[edge[2]['line']]) for edge in straight_edges
+            font_color=line_data[edge[2]['line']]['colour']) for edge in straight_edges
     ]
 
     nx.draw_networkx_edges(g, pos, ax=axes, edgelist=right_curved_edges, connectionstyle=f'arc3, rad = {arc_radius}',
@@ -97,7 +98,7 @@ def render_graph(g, edges, pos=None, line_colours=None, bg_colour='#D3D3D3'):
             g, pos, ax=axes, rad=arc_radius,
             bbox=dict(boxstyle="round", ec=bg_colour, fc=bg_colour),
             edge_labels={(edge[0], edge[1]): edge[2]['weight']}, rotate=False, font_size=6,
-            font_color=line_colours[edge[2]['line']]) for edge in right_curved_edges
+            font_color=line_data[edge[2]['line']]['colour']) for edge in right_curved_edges
     ]
 
     nx.draw_networkx_edges(g, pos, ax=axes, edgelist=left_curved_edges, connectionstyle=f'arc3, rad = -{arc_radius}',
@@ -107,7 +108,7 @@ def render_graph(g, edges, pos=None, line_colours=None, bg_colour='#D3D3D3'):
             g, pos, ax=axes, rad=-arc_radius,
             bbox=dict(boxstyle="round", ec=bg_colour, fc=bg_colour),
             edge_labels={(edge[0], edge[1]): edge[2]['weight']}, rotate=False, font_size=6,
-            font_color=line_colours[edge[2]['line']]) for edge in left_curved_edges
+            font_color=line_data[edge[2]['line']]['colour']) for edge in left_curved_edges
     ]
 
     # Add node labels

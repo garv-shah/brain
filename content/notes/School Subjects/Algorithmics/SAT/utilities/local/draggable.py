@@ -11,7 +11,7 @@ class DraggableNodes:
     currently_dragging: bool = False
     position_data: dict[VertexId, tuple[float, float]]
     edges: list[dict[str, Any]]
-    line_colours: dict[str, str]
+    line_data: dict[str, str]
     dirty: bool = False
     g: nx.Graph
 
@@ -20,11 +20,11 @@ class DraggableNodes:
             g: nx.Graph,
             initial_positions: dict[VertexId, tuple[float, float]] | dict[VertexId, list[float]],
             edges: list[dict[str, Any]],
-            line_colours: dict[str, str]
+            line_data: dict[str, Any]
     ):
         self.g = g
         self.edges = edges
-        self.line_colours = line_colours
+        self.line_data = line_data
         # networkx generates the position data as a two-element array, this doesn't really print very well, so I'm
         # using tuples
         self.position_data = {k: (v[0], v[1])

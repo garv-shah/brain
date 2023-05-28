@@ -10,7 +10,7 @@ linkcolor: blue
 urlcolor: red
 ---
 
-I will start and end my day at my house, picking up all my friends along the way. The algorithm will find the quickest route to go to all my friends' houses, go to our desired location(s), and drop them all off before I go back to my own house. It will then return to me the traversal path, the time taken, and my cost for transport throughout the day.
+I will start and end my day at my house, picking up all my friends along the way. The algorithm will find the quickest route to pick up all my friends, go to our desired location(s), and drop them all off before I go back to my own house. It will then return to me the traversal path, the time taken, and my cost for transport throughout the day.
 
 ## Information to Consider
 
@@ -90,7 +90,7 @@ The question still remains though: how can we find the distance between two lat/
 
 #### The Haversine Formula
 
-The haversine formula determines the distance between two points on a sphere given their latitude and longitude coordinates. Using the distance formula $\sqrt{(y_{2}-y_{1})^2+(x_{2}-x_{1})^2}$ may be sufficient in terms of finding the closest transport hub, it does not provide the distance which could be used for later computation such as time taken to walk to the node. ==works for cartesian plane, not sphere==
+The haversine formula determines the distance between two points on a sphere given their latitude and longitude coordinates. Using the distance formula $\sqrt{(y_{2}-y_{1})^2+(x_{2}-x_{1})^2}$ may be sufficient in terms of finding the closest transport hub, but the distances it provides only work on a flat cartesian plane, not spheres like the earth, distances which could be used for later computation such as time taken to walk to the transport hubs.
 
 The haversine formula can be rearranged given that the Earth's radius is 6371km to give us the following equation (with $d$ representing the distance between two locations):
 
@@ -206,7 +206,87 @@ The output of this code on our data set is as follows:
     'Bella': {'min_node': 'Wheelers Hill Library', 'distance': 0.7161158445537555}
 }
 ```
-### Held-Karp algorithm
+If it takes any of my friends' more than 20 minutes to walk to their transport location, I'd probably want a little warning advising me to consider adding closer transport hubs, because that seems like an awfully long time to walk! This can be done by considering the average human walking speed of $5.1 \textrm{km/h}$. Dividing their distance to transport hubs by this constant should give a good approximation of walking time.
+This gives the following list of friends that it would be too long for, and we can consider expanding our graph for better results:
+```
+Warning! These 11 friends have to walk more than 20 minutes in order to get to their transport hub. Possibly consider adding hubs closer to their houses:  Grace (39.03), Sophie (118.75), Emma (27.26), Audrey (82.27), Eric (30.49), Isabella (24.1), Molly (88.94), Avery (74.27), Sammy (40.1), Natsuki (75.52) and Will (75.35)
+```
+
+#### Evaluation of Solution
+
+The solution above works alright for short distances, but slightly breaks apart the further you have to go. This is because humans in the real world have to walk across set designated pathways that the algorithm is not aware of, which is simply calculating the direct distance, which could be walking directly through houses or shopping centres. As such, the distances and times taken for walking are very much approximations in this model that could be further refined by a path finding algorithm that has an awareness of roads and pathways, but as that is an immense amount of data, this approximation will have to suffice for the purposes of this SAT.
+
+### Fare Cost Calculation Algorithm
+
+As well as the time taken to pick up all my friends, it would be useful for the algorithm to tell me how much the trip costs in ride fairs. PTV uses a "zoning system" that charges different for the zones you are in. It also charges a set rate for under 2 hours of travel, and a seperate "daily rate" for any more than that:
+
+| 2 hour     | Zone 1 + 2 | Zone 2 |
+| ---------- | ---------- | ------ |
+| Full Fare  | $4.60      | $3.10  |
+| Concession | $2.30      | $1.55  |
+
+| Daily      | Zone 1 + 2 | Zone 2 |
+| ---------- | ---------- | ------ |
+| Full Fare  | $9.20      | $6.20  |
+| Concession | $4.60      | $3.10  |
+
+There are also caps on public holidays and weekends set to $6.70 for full-fare users and $3.35 to concession users. Zone 0 can be used to denote the free zone as well, or transport methods such as walking or cycling that have no associated cost.
+
+This can be setup into the following conditional statements in pseudocode to calculate fare prices:
+```
+function calculate_prices (
+	line_data: dictionary,
+	hamiltonian_path: dictionary,
+	concession: boolean,
+	holiday: boolean
+):
+	zones: set = {}
+	// add all traversed zones into a set to see which zones were visited
+	for node in hamiltonian_path['path']:
+		zones.add(line_data[node['line']]['zone'])
+		
+	money = 0
+	
+	// if it took us 2 hours or less
+	if hamiltonian_path['time'] ≤ 120:
+		// 2 hour bracket
+		if zones has 1 and 2:
+			if concession:
+				money = 2.30
+			else:
+				money = 4.60
+		else if zones has 2:
+			// just zone 2
+			if concession:
+				money = 1.55
+			else:
+				money = 3.10
+	else:
+		// daily fare bracket
+		if zones has 1 and 2:
+			if concession:
+				money = 4.60
+			else:
+				money = 9.20
+		else if zones has 2:
+			// just zone 2
+			if concession:
+				money = 3.10
+			else:
+				money = 6.20
+	
+	// if it is a weekend or a holiday			
+	if holiday:
+		if concession and money > 3.35:
+			money = 3.35
+		else if money > 6.70:
+			money = 6.70
+	
+	return money
+end function
+```
+
+### Held-Karp Algorithm
 
 The Held-Karp algorithm is a method for finding the exact shortest hamiltonian circuit in the exponential time complexity of $O(n^{2}2^{n})$, which is much better than if we to brute force it, which would have a complexity of $O(n!)$.
 
