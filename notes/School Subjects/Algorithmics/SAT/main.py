@@ -1,8 +1,9 @@
 import math
 
+import sys
 import networkx as nx
 from utilities.custom import render_graph
-from utilities.data import edges, line_colours, pos, node_lat_long, friend_data
+from utilities.data import edges, line_data, pos, node_lat_long, friend_data
 import time
 
 # Draggable utility to reposition nodes
@@ -40,7 +41,7 @@ def lat_long_distance(coord1, coord2):
     return d
 
 
-def calculate_nodes(friend_data, node_data):
+def calculate_nodes(node_data):
     distance_dict = {}
     for friend in friend_data:
         friend_home = friend_data[friend]['home']
@@ -61,19 +62,138 @@ def calculate_nodes(friend_data, node_data):
     return distance_dict
 
 
+def calculate_prices():
+    zones = set()
+    # add all traversed zones into a set to see which zones were visited
+    for start, end in pairwise(hamiltonian_path['path']):
+        line = edge_lookup_matrix[frozenset({start, end})][0]['line']
+        zones.add(line_data[line]['zone'])
+
+    money = 0
+
+    # if it took us 2 hours or less
+    if hamiltonian_path['cost'] <= 120:
+        # 2 hour bracket
+        if 1 in zones and 2 in zones:
+            if concession:
+                money = 2.30
+            else:
+                money = 4.60
+        elif 2 in zones:
+            # just zone 2
+            if concession:
+                money = 1.55
+            else:
+                money = 3.10
+    else:
+        # daily fare bracket
+        if 1 in zones and 2 in zones:
+            if concession:
+                money = 4.60
+            else:
+                money = 9.20
+        elif 2 in zones:
+            # just zone 2
+            if concession:
+                money = 3.10
+            else:
+                money = 6.20
+
+    # if it is a weekend or a holiday
+    if holiday:
+        if concession and money > 3.35:
+            money = 3.35
+        elif money > 6.70:
+            money = 6.70
+
+    return money
+
+
 def setup_graph():
     global g
 
     # Add nodes and edges to the graph
     for edge in edges:
-        g.add_edge(edge['from'], edge['to'], color=line_colours[edge['line']], weight=edge['weight'])
+        g.add_edge(edge['from'], edge['to'], color=line_data[edge['line']]['colour'], weight=edge['weight'])
 
     # If the force_local_debug flag is set, render the graph using the draggable nodes utility (for repositioning)
     if force_local_debug:
-        plot = DraggableNodes(g, pos, edges, line_colours)
+        plot = DraggableNodes(g, pos, edges, line_data)
         plot.show()
     else:
-        render_graph(g, edges, pos, line_colours)
+        render_graph(g, edges, pos, line_data)
+
+
+def query_yes_no(question, default="yes"):
+    """Ask a yes/no question via raw_input() and return their answer.
+
+    "question" is a string that is presented to the user.
+    "default" is the presumed answer if the user just hits <Enter>.
+            It must be "yes" (the default), "no" or None (meaning
+            an answer is required of the user).
+
+    The "answer" return value is True for "yes" or False for "no".
+    """
+    valid = {"yes": True, "y": True, "ye": True, "no": False, "n": False}
+    if default is None:
+        prompt = " [y/n] "
+    elif default == "yes":
+        prompt = " [Y/n] "
+    elif default == "no":
+        prompt = " [y/N] "
+    else:
+        raise ValueError("invalid default answer: '%s'" % default)
+
+    while True:
+        sys.stdout.write(question + prompt)
+        choice = input().lower()
+        if default is not None and choice == "":
+            return valid[default]
+        elif choice in valid:
+            return valid[choice]
+        else:
+            sys.stdout.write("Please respond with 'yes' or 'no' " "(or 'y' or 'n').\n")
+
+
+def select_friend(question, default="Garv"):
+    valid = [friend for friend in friend_data]
+    line_count = 0
+    return_val = None
+
+    while True:
+        print(question)
+        line_count += 1
+        for i in range(len(valid)):
+            print(f"{i + 1}. {valid[i]}")
+            line_count += 1
+        choice = input().lower()
+        if default is not None and choice == "":
+            return_val = default
+            break
+        elif choice.isdigit():
+            if int(choice) in range(1, len(valid) + 1):
+                return_val = valid[int(choice) - 1]
+                break
+            else:
+                print(f"Please respond with a number between 1 and {len(valid)}.\n")
+                line_count += 1
+        else:
+            print(f"Please respond with a number between 1 and {len(valid)}.\n")
+            line_count += 1
+
+    for i in range(line_count + 1):
+        LINE_UP = '\033[1A'
+        LINE_CLEAR = '\x1b[2K'
+        print(LINE_UP, end=LINE_CLEAR)
+
+    print(f"{question} {return_val}")
+    return return_val
+
+
+def pairwise(iterable):
+    """s -> (s0, s1), (s2, s3), (s4, s5), ..."""
+    a = iter(iterable)
+    return zip(a, a)
 
 
 def dist(start, end):
@@ -93,7 +213,7 @@ def dist(start, end):
     if start == end:
         return 0
     try:
-        return min(dist_dict[frozenset({start, end})])
+        return min(edge_lookup_matrix[frozenset({start, end})], key=lambda x: x['weight'])['weight']
     except KeyError:
         return float('inf')
 
@@ -181,26 +301,65 @@ if __name__ == "__main__":
     g = nx.Graph()
     setup_graph()
 
+    concession = query_yes_no("Do you posses a concession card?")
+    holiday = query_yes_no("Is today a weekend or a holiday?")
+    user_name = select_friend("Who are you?")
+    print("")
+
     start_time = time.perf_counter()
 
+    # Create a lookup matrix so that edge data can be accessed given any two vertices
     # Create a dictionary of distances, similar to a distance matrix, but allowing for multiple edges between nodes
-    dist_dict = {frozenset({edge['from'], edge['to']}): [] for edge in edges}
+    edge_lookup_matrix = {frozenset({edge['from'], edge['to']}): [] for edge in edges}
     for edge in edges:
-        dist_dict[frozenset({edge['from'], edge['to']})].append(edge['weight'])
+        edge_lookup_matrix[frozenset({edge['from'], edge['to']})].append(edge)
 
     # visit_set = set(g.nodes()).difference({home})
-    friend_distances = calculate_nodes(friend_data, node_lat_long)
+    friend_distances = calculate_nodes(node_lat_long)
     visit_set = set(val['closest_node'] for key, val in friend_distances.items())
+    people_at_nodes = {node: [] for node in visit_set}
+    for key, val in friend_distances.items():
+        people_at_nodes[val['closest_node']].append(key)
     # My home node (I am Garv)
-    home = friend_distances['Garv']['closest_node']
+    home = friend_distances[user_name]['closest_node']
+    friend_distances['You'] = friend_distances[user_name]
+    friend_distances.pop(user_name)
 
     print(f"I have {len(friend_distances)} friends and they live closest to the following {len(visit_set)} nodes:")
-    [print(f"{key}: lives {round(val['distance'], 3)}km from {val['closest_node']}")
+    [print(f"{key if key != 'You' else f'{key} ({user_name})'} {'lives' if key != 'You' else 'live'} {round(val['distance'], 3)}km from {val['closest_node']}")
      for key, val in friend_distances.items()]
 
-    print(f"\nThe following would be the fastest path to go from my house ({home}) to all my friends' and back, "
-          f"provided that I meet my friends at the transport hubs given:")
-    print(held_karp(home, home, visit_set))
+    # print out friends that would take more than 20 minutes to walk (average human walking speed is 5.1 km/h)
+    long_walk = [f"{key} ({round(friend_distances[key]['distance'] / 5.1 * 60, 2)})"
+                 for key, val in friend_distances.items() if val['distance'] / 5.1 * 60 > 20]
+    if len(long_walk) > 0:
+        print(f'\nWarning! These {len(long_walk)} friends have to walk more than 20 minutes in order to get to their '
+              f'transport hub. Possibly consider adding hubs closer to their houses: ', end=' ')
+        print(f'{" and ".join([", ".join(long_walk[:-1]), long_walk[-1]] if len(long_walk) > 2 else long_walk)}')
+
+    hamiltonian_path = held_karp(home, home, visit_set)
+
+    print(f"\nThe trip would cost you ${calculate_prices():,.2f} and would take you "
+          f"{round(hamiltonian_path['cost'] + 2 * friend_distances['You']['distance'] / 5.1 * 60, 2)} "
+          f"minutes, taking the following route: ")
+
+    # prints out the route with correct wording and the people picked up at each point
+    for index in range(len(hamiltonian_path['path'])):
+        if index == 0:
+            print('From', end=' ')
+
+        node = hamiltonian_path['path'][index]
+        print(node, end='')
+        if node in people_at_nodes:
+            print(f" ({', '.join(people_at_nodes[hamiltonian_path['path'][index]])})", end='')
+            people_at_nodes.pop(node)
+
+        if index == len(hamiltonian_path['path']) - 1:
+            print('.')
+        elif index == len(hamiltonian_path['path']) - 2:
+            print(' and back to ', end='')
+        else:
+            print(' to ', end='')
 
     end_time = time.perf_counter()
     elapsed_time = end_time - start_time
