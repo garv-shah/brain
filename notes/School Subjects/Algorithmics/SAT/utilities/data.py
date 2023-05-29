@@ -4511,15 +4511,3 @@ friend_data = {
     'Will': {'home': (-37.934019087537294, 145.25616524009948)},
     'Bella': {'home': (-37.91367826109825, 145.1935228810244)},
 }
-
-# for time in line_data['800 Bus Line']['timetable']['Oakleigh']:
-#     old_time = dt.datetime.strptime(time, r"%H:%M")
-#     # add 4 minutes to the time
-#     new_time = old_time + dt.timedelta(minutes=17)
-#     print("'" + new_time.strftime(r"%H:%M") + "',")
-
-# for index in range(120):
-#     old_time = dt.datetime.strptime('13:17', r"%H:%M")
-#     # add 4 minutes to the time
-#     new_time = old_time + dt.timedelta(minutes=12 * index)
-#     print("'" + new_time.strftime(r"%H:%M") + "',")
