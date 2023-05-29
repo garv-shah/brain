@@ -64,7 +64,7 @@ I have selected a number of stations, bus stops and locations which I feel are r
 
 ### Final Graph
 
-![[notes/Attachments/Garv's SAT- Friendship Network Final.png]]
+![Final Graph](https://github.com/garv-shah/brain/blob/hugo/content/notes/Attachments/Algorithmics/Garv's%20SAT-%20Friendship%20Network%20Final.png?raw=true "Final Graph")
 
 ## Signatures
 
