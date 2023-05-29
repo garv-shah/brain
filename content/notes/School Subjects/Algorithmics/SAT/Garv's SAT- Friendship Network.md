@@ -10,7 +10,8 @@ linkcolor: blue
 urlcolor: red
 ---
 
-I will start and end my day at my house, picking up all my friends along the way. The algorithm will find the quickest route to pick up all my friends, go to our desired location(s), and drop them all off before I go back to my own house. It will then return to me the traversal path, the time taken, and my cost for transport throughout the day.
+The general problem of planning trips with friends can be made more specific by considering scenarios for hangouts. In this particular scenario, my friends have decided that we want to travel in one big travel party and I will start and end my day at my house, picking up all my friends along the way. This form of hangout is quite common with my friends, where we pick up people along the way to get to a final destination.
+The algorithm will find the quickest route to pick up all my friends, go to our desired location(s), and drop them all off before I go back to my own house. It will then return to me the traversal path, the time taken, and my cost for transport throughout the day.
 
 ## Information to Consider
 
@@ -60,6 +61,10 @@ I have selected a number of stations, bus stops and locations which I feel are r
 ## Possible Graph
 
 ![Possible Graph](https://github.com/garv-shah/brain/blob/hugo/content/notes/Attachments/Algorithmics/Possible%20Friendship%20Network.png?raw=true "Possible Graph")
+
+### Final Graph
+
+![[notes/Attachments/Garv's SAT- Friendship Network Final.png]]
 
 ## Signatures
 
@@ -296,14 +301,21 @@ end function
 
 The Held-Karp algorithm is a method for finding the exact shortest hamiltonian circuit in the exponential time complexity of $O(n^{2}2^{n})$, which is much better than if we to brute force it, which would have a complexity of $O(n!)$.
 
-It works by utilising the fact the following principle.
+The Travelling Salesman problem does not allow us to be greedy, because for us to choose the best choice at any moment, we have to be able to discard all other solutions. TSP is too complex for this, as going down any node may lead to a shorter solution later on. Because of this, solving for the TSP has to use the decrease and conquer principle to make our problem smaller piece by piece, which can be done by recursion or using dynamic programming if the results of operations are saved.
+
+Held-Karp works by utilising the the following information.
 
 Let $A =$ starting vertex
 Let $B =$ ending vertex
 Let $S = \{P, Q, R\}$ or any other vertices to be visited along the way.
-Let $C \in S$
+Let $C \in S$ (random node in $S$)
 
-We $\therefore$ know that the minimum cost of going from $A$ to $B$ while visiting all nodes in the set $S$ is the same as going from $A$ to $C$ (a random node in $S$) while visiting all nodes in the set $S \verb C$   $\textrm{Cost}_{\textrm{min}} \space A \rightarrow B \space \textrm{whilst visiting all nodes in S}$ = $\textrm{min}(\textrm{Cost} \space A \rightarrow C \space \textrm{visiting everything else in S} + d_{CB})$. Put more simply, we can find the smallest cost hamiltonian path by gradually building larger and larger subpaths from the minimum cost to the next node in $S$, using dynamic programming to combine the subpaths to form the larger hamiltonian path.
+We $\therefore$ know that the minimum cost of going from $A$ to $B$ while visiting all nodes in the set $S$ can be split up into the following two parts:
+- Going from $A$ to $C$ (a random node in $S$) while visiting all nodes in the set $S$ besides $C$
+- Going from $C$ to $B$ directly
+Essentially, this goes through the set $S$ and makes any node $C$ the last node, giving us the same problem with a smaller set. This then allows us to identify that the problem is recursive, as the larger path can be split up into smaller and smaller sub-paths by the above logic, until we reach a base case of $S$ having length 0, where we can then just calculate the direct distance.
+
+To reiterate more formally: $\textrm{Cost}_{\textrm{min}} \space A \rightarrow B \space \textrm{whilst visiting all nodes in S}$ = $\textrm{min}(\textrm{Cost} \space A \rightarrow C \space \textrm{visiting everything else in S} + d_{CB})$. As such, we can find the smallest cost hamiltonian path by gradually building larger and larger subpaths from the minimum cost to the next node in $S$, using dynamic programming to combine the subpaths to form the larger hamiltonian path.
 
 This logic leads to the following pseudocode:
 
@@ -688,3 +700,44 @@ The $n \space \textrm{vs} \space t$ table now looks like this, with an approxima
 | 12              | 1750.1065                            | 1750.0590                   |
 
 We can see that this line of best fit is relatively accurate, and if we extend it to run for 14 nodes (our hamiltonian circuit), it would take a total of about 2 days 2 hours 27 mins and 14 secs to compute it all.
+
+## Justification of Solution
+
+Throughout this report, each individual algorithm has been challenged and justified for it's suitability and effectiveness at solving their individual problems. To evaluate the overall suitability of the combined algorithms, we can refer back to our original problem:
+
+> I've been finding it hard to plan hangouts with my friends, and I want a solution that will plan a trip using the Victorian public transport network so that can find the quickest route to pick up all of my friends and we can all come back to my house.
+
+In reality, this is a relatively niche use case, as most friends *could* just travel on their own, but given that I want to pick up all my friends along the way, this solution its suitability and fitness for purpose well.
+
+Below is the output of the solution when I (`Garv`, with a concession card) leave my house at `8:30am` , on a Saturday:
+
+```
+I have 18 friends and they live closest to the following 7 nodes:
+Grace lives 3.317km from Caulfield
+Sophie lives 10.094km from Camberwell
+Zimo lives 1.046km from CGS WH
+Emma lives 2.317km from Wheelers Hill Library
+Sabrina lives 1.036km from CGS WH
+Audrey lives 6.993km from CGS WH
+Eric lives 2.592km from Glen Waverley
+Isabella lives 2.048km from CGS WH
+Josh lives 0.657km from CGS WH
+Molly lives 7.56km from Wheelers Hill Library
+Avery lives 6.313km from Mount Waverley
+Sammy lives 3.409km from Brandon Park
+Natsuki lives 6.419km from CGS WH
+Liam lives 0.808km from Mount Waverley
+Nick lives 1.37km from Glen Waverley
+Will lives 6.405km from Wheelers Hill Library
+Bella lives 0.716km from Wheelers Hill Library
+You (Garv) live 0.432km from Brandon Park
+
+Warning! These 11 friends have to walk more than 20 minutes in order to get to their transport hub. Possibly consider adding hubs closer to their houses:  Grace (39.03), Sophie (118.75), Emma (27.26), Audrey (82.27), Eric (30.49), Isabella (24.1), Molly (88.94), Avery (74.27), Sammy (40.1), Natsuki (75.52) and Will (75.35)
+
+The trip would cost you $3.35 and would take you 266.17 minutes, taking the following route: 
+From Brandon Park (Garv, Sammy) to Wheelers Hill Library (Emma, Molly, Will, Bella) to CGS WH (Zimo, Sabrina, Audrey, Isabella, Josh, Natsuki) to Glen Waverley (Eric, Nick) to Mount Waverley (Avery, Liam) to Richmond to Flinders Street to Caulfield (Grace) to Flinders Street to Richmond to Camberwell (Sophie) to Richmond to Oakleigh and back to Brandon Park.
+
+It took 0.8578 seconds to run.
+```
+
+The correctness of this being the quickest route was presented as informal arguments via mathematical induction throughout the report, relying on modifications to the Held-Karp Algorithm to model features of the real world scenario and provide us with an answer to our problem. As can be seen above, the solution suitably provides the fastest route, which friends will be picked up at which nodes, the time it would take for the traversal to occur and the overall cost of the trip. This satisfactorily answers the initial problem and is fit for the purpose of planning real life trips that would involve picking up all my friends to visit my house.
