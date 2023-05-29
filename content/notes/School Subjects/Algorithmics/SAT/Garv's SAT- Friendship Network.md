@@ -63,12 +63,18 @@ I have selected a number of stations, bus stops and locations which I feel are r
 
 ## Signatures
 
-| Function Name    | Signature                                                  |
-|------------------|------------------------------------------------------------|
-| addLandmark      | \[name, interchange_cost, friend_proximity] -> node        |
-| addRoute         | \[start_node, end_node, travel_method, time, cost] -> edge |
-| findShortestPath | \[start_node, end_node] -> integer, array                  |
-| addFriend        | \[name, wake_time, close_friends] -> dictionary            |
+| Function Name    | Signature                                                      |
+| ---------------- | -------------------------------------------------------------- |
+| add_landmark     | \[name, timetable, latlong_coordinates] -> node                |
+| add_route        | \[start_node, end_node, travel_method, time, line?] -> edge    |
+| add_line         | \[colour, zone, timetable] -> dictionary                       |
+| add_friend       | \[name, latlong_coordinates] -> dictionary                     |
+| latlong_distance | \[coord1, coord2] -> floating point number                     |
+| calculate_nodes  | \[friend_data, node_data] -> dictionary<string, node or float> |
+| calculate_prices | \[line_data, hamiltonian_path, concession, holiday] -> float   |
+| dist             | \[start, end, current_time] -> float                           |
+| dijkstras        | \[start, end, graph, current_time] -> cost and path            |
+| held_karp        | \[start, end, visit, current_time] -> cost and path            |
 
 ## Algorithm Selection
 
@@ -297,7 +303,7 @@ Let $B =$ ending vertex
 Let $S = \{P, Q, R\}$ or any other vertices to be visited along the way.
 Let $C \in S$
 
-We $\therefore$ know that $\textrm{Cost}_{\textrm{min}} \space A \rightarrow B \space \textrm{whilst visiting all nodes in S}$ = $\textrm{min}(\textrm{Cost} \space A \rightarrow C \space \textrm{visiting everything else in S} + d_{CB})$. Put more simply, we can find the smallest cost hamiltonian path by gradually building larger and larger subpaths from the minimum cost to the next node in $S$, using dynamic programming to combine the subpaths to form the larger hamiltonian path.
+We $\therefore$ know that the minimum cost of going from $A$ to $B$ while visiting all nodes in the set $S$ is the same as going from $A$ to $C$ (a random node in $S$) while visiting all nodes in the set $S \verb C$   $\textrm{Cost}_{\textrm{min}} \space A \rightarrow B \space \textrm{whilst visiting all nodes in S}$ = $\textrm{min}(\textrm{Cost} \space A \rightarrow C \space \textrm{visiting everything else in S} + d_{CB})$. Put more simply, we can find the smallest cost hamiltonian path by gradually building larger and larger subpaths from the minimum cost to the next node in $S$, using dynamic programming to combine the subpaths to form the larger hamiltonian path.
 
 This logic leads to the following pseudocode:
 
@@ -312,11 +318,11 @@ function held_karp (
     else:
         min = infinity
         For node C in set S:
-        sub_path = held_carp(start, C, (set \ C))
-        cost = sub_path + dist(C, end)
-        if cost < min:
-            min = cost
-    return min
+	        sub_path = held_carp(start, C, (set \ C))
+	        cost = sub_path + dist(C, end)
+	        if cost < min:
+	            min = cost
+	    return min
 end function
 ```
 
@@ -466,11 +472,56 @@ The process for keeping track of the current time for Dijkstra's is relatively s
 current_dist = distance[min_node] + dist(min_node, neighbour, current_time + to_minutes(distance[min_node]))
 ```
 
-This works because distance in our algorithm is analogous to minutes, and since the `dist` function returns the correct distance initially and stores it into the distance array, subsequent calls will be using the correct distance from `distance[min_node]` along with the correct distance from the `dist` function. This informal proof by mathematical induction shows the correctness of this modification, which seems to work well when tested within the algorithm.
+This works because distance in our algorithm is analogous to minutes, and since the `dist` function returns the correct distance initially and stores it into the distance array, subsequent calls will be using the correct distance from `distance[min_node]` along with the correct distance from the `dist` function. This informal argument by mathematical induction demonstrates the correctness of this modification, which seems to work well when tested within the algorithm.
 
 #### Implementing Current Time in Held-Karp
 
+Factoring in the current time into Held-Karp follows the same recursive nature as the algorithm itself. First we can change the base case to work with the new Dijkstra's Algorithm outlined above:
 
+```
+if visit.size = 0:
+	djk = dijkstras(start, end, current_time)
+	return djk['cost']
+```
+
+Now that our base case is returning a cost with the current time factored in, we need to make the sub path on line 11 of the original algorithm also factor in the current time. The current time when the sub_path is created will always be the current time at the start node, which we defined as the time inputed into Held-Karp at initialisation. As such, the line is changed to the following:
+
+```
+sub_path = held_carp(start, C, (set \ C), current_time)
+```
+
+Finally, the only other change needs to be made on line 12. Previously, we replaced the `dist` function here with `dijkstras` to solve the [Infinite Distance Problem](#the-infinite-distance-problem), but Dijkstra's also requires the input of time. As the starting node here is $C$, or the randomly selected node, the current time for this function call would have to be the time when we are at $C$. This can simply be found by treating the distance of `sub_path` as minutes which are added to the current time, as the `sub_path` ends at the same random node $C$. As such, line 12 can be changed to the following:
+
+```
+djk = dijkstras(C, end, current_time + toMinutes(sub_path['cost']))
+cost = sub_path['cost'] + djk['cost']
+```
+
+This leaves us with the a sound implementation of Held-Karp factoring in time, demonstrated by the following pseudocode:
+
+```
+function held_karp (
+    start: node,
+    end: node,
+    visit: set<node>,
+    current_time: datetime
+):
+    if visit.size = 0:
+    	djk = dijkstras(start, end, current_time)
+		return djk['cost']
+    else:
+        min = infinity
+        For node C in set S:
+	        sub_path = held_carp(start, C, (set \ C), current_time)
+	        djk = dijkstras(C, end, current_time + toMinutes(sub_path['cost']))
+	        cost = sub_path['cost'] + djk['cost']
+	        if cost < min:
+	            min = cost
+	    return min
+end function
+```
+
+This works because of a similar principle to the informal argument for the modified Dijkstra's correctness: it works for the base case (because Dijkstra's works), and it also must work for the $k+1$ case, because the time being inputed into the functions is always the time at the starting nodes. It then $\therefore$ works for all cases, which seems to also be true when used in practice.
 
 ### Dijkstra's Algorithm vs Floyd Warshall's Shortest Path Algorithm
 The problem that using Dijkstra's was attempting to solve was that Held-Karp treats the distance between two unconnected vertices as $\infty$, as demonstrated [here](#the-infinite-distance-problem).
