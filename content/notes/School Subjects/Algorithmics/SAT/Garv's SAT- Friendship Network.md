@@ -60,11 +60,11 @@ I have selected a number of stations, bus stops and locations which I feel are r
 
 ## Possible Graph
 
-![Possible Graph](https://github.com/garv-shah/brain/blob/hugo/content/notes/Attachments/Algorithmics/Possible%20Friendship%20Network.png?raw=true "Possible Graph")
+![Possible Graph](https://github.com/garv-shah/brain/blob/hugo/content/notes/Attachments/Algorithmics/Possible%20Friendship%20Network.png?raw=true "Possible Graph"){ height=360px } 
 
 ### Final Graph
 
-![Final Graph](https://github.com/garv-shah/brain/blob/hugo/content/notes/Attachments/Algorithmics/Garv's%20SAT-%20Friendship%20Network%20Final.png?raw=true "Final Graph")
+![Final Graph](https://github.com/garv-shah/brain/blob/hugo/content/notes/Attachments/Algorithmics/Garv's%20SAT-%20Friendship%20Network%20Final.png?raw=true "Final Graph"){ height=360px } 
 
 ## Signatures
 
