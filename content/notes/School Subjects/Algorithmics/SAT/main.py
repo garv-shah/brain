@@ -360,30 +360,30 @@ if __name__ == "__main__":
     g = nx.Graph()
     setup_graph()
 
-    # concession = query_yes_no("Do you posses a concession card?")
-    # holiday = query_yes_no("Is today a weekend or a holiday?")
-    # user_name = select_friend("Who are you?")
-    # while True:
-    #     string_time = input('What is the current time? (HH:MM) ')
-    #     try:
-    #         selected_time = dt.datetime.strptime(string_time, r"%H:%M")
-    #         break
-    #     except ValueError:
-    #         print("Please enter a valid time in the HH:MM format")
+    concession = query_yes_no("Do you posses a concession card?")
+    holiday = query_yes_no("Is today a weekend or a holiday?")
+    user_name = select_friend("Who are you?")
+    while True:
+        string_time = input('What is the current time? (HH:MM) ')
+        try:
+            selected_time = dt.datetime.strptime(string_time, r"%H:%M")
+            break
+        except ValueError:
+            print("Please enter a valid time in the HH:MM format")
 
-    concession = True
-    holiday = True
-    user_name = 'Garv'
-    string_time = '08:30'
-    selected_time = dt.datetime.strptime(string_time, r"%H:%M")
-    print("The algorithm is running with the following parameters:")
-    print(f"Concession card: {concession}")
-    print(f"Holiday: {holiday}")
-    print(f"User: {user_name}")
-    print(f"Time: {string_time}")
+    # concession = True
+    # holiday = True
+    # user_name = 'Garv'
+    # string_time = '08:30'
+    # selected_time = dt.datetime.strptime(string_time, r"%H:%M")
+    # print("The algorithm is running with the following parameters:")
+    # print(f"Concession card: {concession}")
+    # print(f"Holiday: {holiday}")
+    # print(f"User: {user_name}")
+    # print(f"Time: {string_time}")
 
-    # The above code has hard coded input parameters. For the user to be able to input their own parameters,
-    # uncomment the commented code and let it replace the hard coded parameters above.
+    # The above code has hard coded input parameters for testing purposes.
+    # Production code may use user inputer global variables.
 
     print("")
 

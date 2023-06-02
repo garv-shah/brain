@@ -68,18 +68,21 @@ I have selected a number of stations, bus stops and locations which I feel are r
 
 ## Signatures
 
-| Function Name    | Signature                                                      |
-| ---------------- | -------------------------------------------------------------- |
-| add_landmark     | \[name, timetable, latlong_coordinates] -> node                |
-| add_route        | \[start_node, end_node, travel_method, time, line?] -> edge    |
-| add_line         | \[colour, zone, timetable] -> dictionary                       |
-| add_friend       | \[name, latlong_coordinates] -> dictionary                     |
-| latlong_distance | \[coord1, coord2] -> floating point number                     |
-| calculate_nodes  | \[friend_data, node_data] -> dictionary<string, node or float> |
-| calculate_prices | \[line_data, hamiltonian_path, concession, holiday] -> float   |
-| dist             | \[start, end, current_time] -> float                           |
-| dijkstras        | \[start, end, graph, current_time] -> cost and path            |
-| held_karp        | \[start, end, visit, current_time] -> cost and path            |
+| Function Name    | Signature                                                           |
+| ---------------- | ------------------------------------------------------------------- |
+| add_landmark     | \[name, timetable, latlong_coordinates] -> node                     |
+| add_route        | \[start_node, end_node, travel_method, time, line?] -> edge         |
+| add_line         | \[colour, zone, timetable] -> dictionary                            |
+| add_friend       | \[name, latlong_coordinates] -> dictionary                          |
+| setup_graph      | \[landmarks, routes, friends, timetable] -> graph                   |
+| latlong_distance | \[coord1, coord2] -> floating point number                          |
+| calculate_nodes  | \[friend_data, node_data] -> dictionary<string, node or float>      |
+| calculate_prices | \[line_data, hamiltonian_path, concession, holiday] -> float        |
+| dist             | \[start, end, current_time] -> float                                |
+| fetch_djk        | \[start, end, graph, current_time] -> dictionary with cost and path |
+| dijkstras        | \[start, end, graph, current_time] -> cost and path                 |
+| held_karp        | \[start, end, visit, current_time] -> cost and path                 |
+Function signatures can also be found within the `main.py` Python file as comments within the code
 
 ## Algorithm Selection
 
@@ -325,11 +328,14 @@ function held_karp (
     end: node,
     visit: set<node>
 ):
+	// base case: if no visit set then we can just return direct distance
     if visit.size = 0:
         return dist(start, end)
     else:
         min = infinity
+        // find the minimum subpath
         For node C in set S:
+	        // uses property described above to split larger path into smaller subpath, and solves recursively
 	        sub_path = held_carp(start, C, (set \ C))
 	        cost = sub_path + dist(C, end)
 	        if cost < min:
@@ -392,12 +398,15 @@ function dijkstras (
         predecessor[node] = null
         unexplored_list.add(node)
     
+    // starting distance has to be 0
     distance[start] = 0
     
+    // while more to still explore
     while unexplored_list is not empty:
         min_node = unexplored node with min cost
         unexplored_list.remove(min_node)
     
+	    // go through every neighbour and relax
         for each neighbour of min_node:
             current_dist = distance[min_node] + dist(min_node, neighbour)
             // a shorter path has been found to the neighbour -> relax value
@@ -741,3 +750,42 @@ It took 0.8578 seconds to run.
 ```
 
 The correctness of this being the quickest route was presented as informal arguments via mathematical induction throughout the report, relying on modifications to the Held-Karp Algorithm to model features of the real world scenario and provide us with an answer to our problem. As can be seen above, the solution suitably provides the fastest route, which friends will be picked up at which nodes, the time it would take for the traversal to occur and the overall cost of the trip. This satisfactorily answers the initial problem and is fit for the purpose of planning real life trips that would involve picking up all my friends to visit my house.
+
+## Final Code
+
+The final Python implementation of the code can be found [here](https://trinket.io/python3/55e1b08d8e) on Trinket. Below is the final main thread in structured pseudocode that invokes all the modules described throughout the report.
+
+```
+function main(
+	friends: dictionary,
+	landmarks: dictionary,
+	routes: dictionary,
+	timetable: dictionary
+):
+	// global variable declarations
+	concession: bool = Ask the user "Do you posses a concession card?"
+	holiday: bool = Ask the user "Is today a weekend or a holiday?"
+	user_name: string = Ask the user to select a friend from friends dictionary
+	selected_time = Ask the user what time they are leaving
+	
+	cached_djk: dictionary = empty dictionary
+	edge_lookup_matrix: matrix = |V| x |V| matrix that stores a list of edges in each entry
+	
+	// get distance of all friends from landmarks
+	friend_distances: dictionary = calculate_nodes(friends, landmarks)
+	visit_set: set = set of all closest nodes from friend_distances
+	people_at_nodes: dictionary = all friends sorted into keys of which nodes they are closest to, from visit_set
+	
+	home: string = closest node of user_name
+	
+	print all friends, where they live closest to and how far away
+	
+	print out friends that would take more than 20 minutes to walk (average human walking speed is 5.1 km/h)
+	
+	hamiltonian_path = held_karp(home, home, visit_set, selected_time)
+	
+	print how much the trip would cost and how long it would take
+	
+	print the path of the hamiltonian_path
+end function
+```
