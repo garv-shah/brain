@@ -19,13 +19,14 @@ What is phonetics the study of? :: Phonetics is the study of human speech sounds
 
 What are the two kinds of transcriptions using the IPA? :: There are two kinds of transcriptions using the IPA; broad and narrow. ^1677146865717
 
-### Fields
+### Fields #card
 #### Articulatory Phonetics
 How sounds are produced
 #### Acoustic Phonetics
 Physical properties of sounds
 #### Auditory Phonetics
 How sounds are perceived
+^1685778115231
 
 ### Transcription
 Transcription aims to create a system of one-to-one sound-symbol correspondence, which is not necessarily the case with spelling.
@@ -46,12 +47,12 @@ A rough-coated, dough-faced, thoughtful ploughman strode through the streets of 
 The IPA is an international alphabet that can transcribe any of the world's languages.
 - In IPA transcription, one phone (IPA symbol) usually equals one sounds
 
-### Allophones
+### Allophones #card
 What is an allophone? :: Allophones are more specific interpretations of a phoneme, made for narrow transcriptions.  ^1677146865719
 ![[notes/School Subjects/English Language/Subsystems/Diagrams/Allophone Diagram.png]]
 
 ### Place + Manner
-#### **Place** of Articulation
+#### **Place** of Articulation #card
 **Where** the sound is made
 ![[notes/School Subjects/English Language/Subsystems/Diagrams/Human Mouth Diagram.png]]
 ##### Consonants
@@ -61,8 +62,9 @@ The top is the place and the and the left is the manner
 ![[notes/School Subjects/English Language/Subsystems/Diagrams/Vowel IPA Table.png]]
 #### **Manner** of Articulation
 **How** the sound is made
+^1685778115248
 
-## Phonology
+## Phonology #card
 Phonology is the study of the sound system of a specific language. The sounds of the English language for instance are very different to the sounds of Italian or Mandarin, and the sounds of Australian English differ from those of American English.
 - How many sounds in Australian English? :: 44 phonemes ^1677146865721
 - Each language has different sounds and stresses particular phonemes, and can completely change the meaning of the word (*pro*ject vs pro*ject*)
@@ -84,23 +86,30 @@ Regressive:
 - green boat becomes /griːm bəʊt/
 
 #### Insertion #card
-What is insertion? :: There are two examples of **sounds being added**, generally deliberately. The first is insertion, the other is epenthesis. **Insertion doesn't add a full syllable, whereas epenthesis does** ^1677146865725
+What is insertion? :: There are two examples of **sounds being added**, generally deliberately. The first is insertion, the other is epenthesis. **Insertion doesn't add a full syllable, whereas epenthesis does**  ^1685778838440
 - a voiceless stop insertion where, between a nasal consonant and a voiceless fricative, a voiceless stop with the same place of articulation as the nasal consonant is inserted.
 	- e.g. In English, many add a /p/ to hamster and say "hampster"/
 - after a nasal consonant, a voiceless stop may be 'added
 	- e.g. In English, many add a /k/ to something which becomes /sʌmθɪŋk/
-##### Epenthesis
-What is epenthesis? :: Epenthesis is the insertion of an extra sound into a word. **Epenthesis adds a full extra syllable** ^1677146865726
-- Involves the addition of sounds (syllables) where they don't strictly belong. For instance, it's common for people to insert a vowel in 'souvlaki' so that it sounds like 'souv-e-laki'. And humbling sometimes becomes humb-e-ling.
-##### Intrusion
-What is intrusion? :: This is where sounds are added between words but is not deliberate, but may be put together as insertion. ^1677146865728
+^1677146865725
 
+##### Epenthesis #card
+What is epenthesis? :: Epenthesis is the insertion of an extra sound into a word. **Epenthesis adds a full extra syllable** ^1685778838445
+- Involves the addition of sounds (syllables) where they don't strictly belong. For instance, it's common for people to insert a vowel in 'souvlaki' so that it sounds like 'souv-e-laki'. And humbling sometimes becomes humb-e-ling.
+^1677146865726
+
+##### Intrusion #card
+What is intrusion? :: This is where sounds are added between words but is not deliberate, but may be put together as insertion.  ^1685778838448
 When two vowel sounds meet, we tend to insert an extra sound which resembles wither a /j/, /w/ or /r/, to mark the transition sound between the two vowels, a device referred to as intrusion.
 - Consonants can also be added, for instance Australians often add r in law and order so that it sounds more like "lor an order".
+^1677146865728
+
 #### Metathesis #card
-What is metathesis? :: Metathesis sounds complicated but it's a very common aspect of the English language. It is the transposition within a word of its sounds. The word "metathesis" comes from the Greek word meaning to transpose. It's also known as a permutation. ^1677146865729
+What is metathesis? :: Metathesis sounds complicated but it's a very common aspect of the English language. It is the transposition within a word of its sounds. The word "metathesis" comes from the Greek word meaning to transpose. It's also known as a permutation.  ^1685778838451
 - Ask becomes /arks/
 - Nuclear becomes /nucələer/
+^1677146865729
+
 ### Prosodic Features #card
 Affect **how** we say something
 - Volume is the modulation of volume in your voice, which is used to convey emotions
