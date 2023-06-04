@@ -25,6 +25,7 @@ Make something purposely more offensive, such as "snuffed it" for dying
 ^1683503025958
 
 ## Semantic Change #card
+
 | Process                               | Example         |
 | ------------------------------------- | --------------- |
 | Shift                                 | Mouse           |
