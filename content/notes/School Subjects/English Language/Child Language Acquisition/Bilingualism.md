@@ -8,6 +8,8 @@ cards-deck: notes::School Subjects::English Language::Child Language Acquisition
 Children can become bilingual or multilingual in two ways:
 ### Consecutive #card
 Child learns one language, then another
+^1685840200378
+
 ### Simultaneous #card
 Child learns both languages at once
 #### Stages

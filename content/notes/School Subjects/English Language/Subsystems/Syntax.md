@@ -13,7 +13,16 @@ This means it studies the parts of a sentence, and how information s organised w
 - If a group of words  does not contain both a subject and a predicate it is not a sentence – it is a phrase.
 
 ## Direct vs Indirect Object #card 
-
+Object: noun that has not taken action of the verb mentioned
+- Direct object: involved in action
+- Indirect object: affected by action; not directly involved
+e.g. He gave his teacher a gift
+	teacher - direct object
+e.g. He gave a gift to his teacher
+	teacher - indirect object
+<u>TIP</u>: remove one of the nouns to see if it makes sense without
+unnecessary noun $\rightarrow$ indirect object
+^1685839922103
 
 ## Clauses #card 
 Clauses express one idea, and they are made up of the following:
