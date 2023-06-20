@@ -8,3 +8,6 @@ title: "Logbook"
 
 # [[notes/School Subjects/Physics/Logbook/13-2-2023|13-2-2023]]
 13th February 2023: Refraction of Light with Snell's Law 
+
+# [[notes/School Subjects/Physics/Logbook/20-6-2023|20-6-2023]]
+20th June 2023: Ohm's Law Prac with Electrical Components
