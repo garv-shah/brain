@@ -1,0 +1,1 @@
+Dictionaries are O(1) time
