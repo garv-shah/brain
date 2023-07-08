@@ -1,6 +1,5 @@
-baseURL = "https://garv-shah.github.io/brain"
+baseURL = "https://quartz.jzhao.xyz/"
 languageCode = "en-us"
-googleAnalytics = ""
 relativeURLs = false
 disablePathToLower = true
 ignoreFiles = [
