@@ -24,4 +24,4 @@ Priority queues can be **minimum ranking**, where the smallest priority item go
 A **dictionary**, also known as an **associated array**, is an information structure of <key, value> pairs where the 'key' is used to access the 'value' items, which give more detailed information related to the 'key'.
 
 ## List/Array Signatures #card
-![[notes/School Subjects/Algorithmics/Diagrams/List Signature.png]]
+![[List Signature.png]]

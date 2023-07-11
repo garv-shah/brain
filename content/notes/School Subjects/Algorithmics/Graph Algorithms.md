@@ -12,7 +12,7 @@ BFS is a graph traversal algorithm that visits all neighbours of a source node, 
 3.  Get all neighbours of the **current** node that are not yet marked as **seen**.
 4.  Store all these neighbours into the **queue** and mark them all as **seen**.
 5.  Repeat steps **2 - 4** until the **queue** becomes empty.
-![[notes/Attachments/Graph Algorithms.png]]
+![[Graph Algorithms.png]]
 ^1684293406145
 
 ## Depth First Search (DFS) #card

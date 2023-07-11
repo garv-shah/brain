@@ -29,7 +29,7 @@ Here 6->8->3->1->2->4 is a Path
 ## Complete Graph #card 
 The **complete graph** is the graph ('$n$' vertices) in which every pair of vertices are adjacent.
 Since each node is connected to every other node by an edge, each node has a degree of $n-1$ and there are $\frac{n(n-1)}{2}$ edges.
-![[notes/School Subjects/Algorithmics/Diagrams/Connected Graph.png]]
+![[Connected Graph.png]]
 ^1678270591206
 
 ## Bipartite Graphs #card 
@@ -45,7 +45,7 @@ The **adjacency matrix** $A$ of a graph G with $n$ vertices is the $n\times n$
 
 ## Walk #card 
 A **walk** is going from any node to another node, and is the most general definition of this process for a graph.
-![[notes/School Subjects/Algorithmics/Diagrams/Walk Diagram.png]]
+![[Walk Diagram.png]]
 ^1678327509204
 
 ## Trail #card 
@@ -62,7 +62,7 @@ A **circuit** is a trail whose first and last vertices are the same.
 
 ## Cycle #card 
 A **cycle** is a circuit with no repeated vertex other than the first and last vertex.
-![[notes/School Subjects/Algorithmics/Diagrams/Cycle Diagram.png]]
+![[Cycle Diagram.png]]
 ^1678270591212
 
 ## Length #card 
@@ -91,7 +91,7 @@ The **neighbourhood** of a vertex v is the set of vertices adjacent to v.
 
 ## Tree #card 
 A **tree** is a connected graph with no cycles.
-![[notes/School Subjects/Algorithmics/Diagrams/Tree Diagram.png]]
+![[Tree Diagram.png]]
 ^1678270591219
 
 ## Leaf #card 
@@ -118,7 +118,7 @@ The diameter here would be 3!
 
 ## Radius #card
 The radius of a graph is the minimum distance you can take to get to any other node from a central node. For example, in this graph, C can get to any other node in 2 moves, so the radius would be 2.
-![[notes/School Subjects/Algorithmics/Diagrams/Radius Diagram.png]]
+![[Radius Diagram.png]]
 ^1678327509210
 
 ## Eccentricity #card

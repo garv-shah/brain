@@ -27,7 +27,7 @@ unnecessary noun $\rightarrow$ indirect object
 ## Clauses #card 
 Clauses express one idea, and they are made up of the following:
 subject, verb, object, complement, adverbial
-![[notes/School Subjects/English Language/Subsystems/Diagrams/Parts of a clause.png]]
+![[Parts of a clause.png]]
 ^1679810263228
 
 ## Phrases #card 

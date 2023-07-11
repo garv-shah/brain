@@ -366,7 +366,7 @@ def held_karp(start, end, visit):
 #### The Infinite Distance Problem
 The problem with this implementation is that it currently only works with complete graphs, where the distance between any two given nodes will not be infinity. This becomes clear if we try and find the cost of going from Oakleigh to Melbourne Central while visiting Caulfield along the way. The pseudocode would choose Caulfield as the value for $C$, as it is the only node in the set. The issue is at line `12`, as the algorithm would try and get the distance between Caulfield and Melbourne Central, but as there is no edge between these two nodes, it will return $\infty$.
 
-This can be solved by using [Dijkstra's Algorithm](#dijkstras-algorithm), instead of the `dist` function, which will instead find the shortest path (and $\therefore$ distance) between any two given nodes. (the justification of this specific algorithm selection is evaluated and challenged [here](#dijkstras-algorithm-vs-floyd-warshalls-shortest-path-algorithm))
+This can be solved by using [[#dijkstras-algorithm|Dijkstra's Algorithm]], instead of the `dist` function, which will instead find the shortest path (and $\therefore$ distance) between any two given nodes. (the justification of this specific algorithm selection is evaluated and challenged [[#dijkstras-algorithm-vs-floyd-warshalls-shortest-path-algorithm|here]])
 
 After this modification, our hybrid algorithm works great!
 
@@ -511,7 +511,7 @@ Now that our base case is returning a cost with the current time factored in, we
 sub_path = held_carp(start, C, (set \ C), current_time)
 ```
 
-Finally, the only other change needs to be made on line 12. Previously, we replaced the `dist` function here with `dijkstras` to solve the [Infinite Distance Problem](#the-infinite-distance-problem), but Dijkstra's also requires the input of time. As the starting node here is $C$, or the randomly selected node, the current time for this function call would have to be the time when we are at $C$. This can simply be found by treating the distance of `sub_path` as minutes which are added to the current time, as the `sub_path` ends at the same random node $C$. As such, line 12 can be changed to the following:
+Finally, the only other change needs to be made on line 12. Previously, we replaced the `dist` function here with `dijkstras` to solve the [[#the-infinite-distance-problem|Infinite Distance Problem]], but Dijkstra's also requires the input of time. As the starting node here is $C$, or the randomly selected node, the current time for this function call would have to be the time when we are at $C$. This can simply be found by treating the distance of `sub_path` as minutes which are added to the current time, as the `sub_path` ends at the same random node $C$. As such, line 12 can be changed to the following:
 
 ```
 djk = dijkstras(C, end, current_time + toMinutes(sub_path['cost']))
@@ -545,7 +545,7 @@ end function
 This works because of a similar principle to the informal argument for the modified Dijkstra's correctness: it works for the base case (because Dijkstra's works), and it also must work for the $k+1$ case, because the time being inputed into the functions is always the time at the starting nodes. It then $\therefore$ works for all cases, which seems to also be true when used in practice.
 
 ### Dijkstra's Algorithm vs Floyd Warshall's Shortest Path Algorithm
-The problem that using Dijkstra's was attempting to solve was that Held-Karp treats the distance between two unconnected vertices as $\infty$, as demonstrated [here](#the-infinite-distance-problem).
+The problem that using Dijkstra's was attempting to solve was that Held-Karp treats the distance between two unconnected vertices as $\infty$, as demonstrated [[#the-infinite-distance-problem|here]].
 
 There are 3 main shortest path algorithms covered in Unit 3:
 1. Dijkstra's Algorithm: 
@@ -568,7 +568,7 @@ Implementing Floyd-Warshall's Shortest Path with the modification of a predecess
 
 An alternative solution, Johnson's Algorithm, is one that gives us the exact output we want: the shortest path and cost between all vertex pairs. The algorithm works by first running Bellman-Ford to account for negative edge weights (not a problem for this SAT) and then runs Dijkstra's from every source node to construct a matrix and paths for each. Surprisingly, this algorithm is comparable to the efficiency of running just normal Floyd-Warshall's, and can even be faster in some cases.
 
-As such, the only modification that needs to be made is that instead of calling Dijkstra's *every* time a vertex pair distance and path is needed, the whole distance matrix can be constructed at once, so subsequent calls only take $O(1)$ time instead. This can be achieved using dynamic programming, by [caching the output of Dijkstra's](#caching-dijkstras-output) whenever it is invoked, so we are only running the algorithm as many times as we need to. 
+As such, the only modification that needs to be made is that instead of calling Dijkstra's *every* time a vertex pair distance and path is needed, the whole distance matrix can be constructed at once, so subsequent calls only take $O(1)$ time instead. This can be achieved using dynamic programming, by [[#caching-dijkstras-output|caching the output of Dijkstra's]] whenever it is invoked, so we are only running the algorithm as many times as we need to. 
 
 ## Optimisations
 

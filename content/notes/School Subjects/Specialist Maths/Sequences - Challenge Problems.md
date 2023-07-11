@@ -23,7 +23,7 @@ Even if you are not able to solve the problem, please explain
 >
 > Find the value of $X$ in the centre cell. 
 
-![Question 1 Diagram](/notes/School%20Subjects/Specialist%20Maths/Question%201%20Diagram.png)
+![[Question 1 Diagram.png]]
 
 So, with the current square, we have 5 arithmetic sequences to solve.
 
