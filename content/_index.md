@@ -12,7 +12,3 @@ Currently you can explore my [[School Subjects]] or [[University Applications]].
 
 ## To-Do
 All my tasks to do!
-```tasks
-group by status.type
-group by function task.tags
-```
