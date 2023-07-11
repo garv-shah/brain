@@ -19,7 +19,7 @@ the understanding that there are systematic and predictable relationships betwee
 ^1683501100885
 
 ## Amelioration #card
-the process by which words or phrases become more positive in meaning over time. A type of [[notes/School Subjects/English Language/Subsystems/Semantics#Semantic Change|Semantic Change]].
+the process by which words or phrases become more positive in meaning over time. A type of [[Semantics#Semantic Change|Semantic Change]].
 ^1683501100887
 
 ## Babbling #card 
@@ -87,7 +87,7 @@ sword that sounds the same (maybe spelt differently) but have difference meaning
 ^1683501100909
 
 ## Inflection #card 
-A change in the form of a word by an affix to express a grammatical function, such as a change in tense, mood, number or gender rather than changing the meaning of the word. Linked to [[notes/School Subjects/English Language/Subsystems/Morphology & Lexicology#Inflectional Morphemes card|Inflectional Morphemes]].
+A change in the form of a word by an affix to express a grammatical function, such as a change in tense, mood, number or gender rather than changing the meaning of the word. Linked to [[Morphology & Lexicology#Inflectional Morphemes card|Inflectional Morphemes]].
 ^1683501100910
 
 ## Idiolect #card 

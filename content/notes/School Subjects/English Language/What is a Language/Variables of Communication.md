@@ -4,7 +4,7 @@ cards-deck: notes::School Subjects::English Language::What is a Language
 ---
 #englang #notes
 
-In [[notes/School Subjects/English Language/English Language|English Language]] Units 1 - 4 we will be using these variables to annotate texts:
+In [[English Language]] Units 1 - 4 we will be using these variables to annotate texts:
 
 ## Mode #card
 The medium of communication

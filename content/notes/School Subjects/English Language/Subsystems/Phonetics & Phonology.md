@@ -49,17 +49,17 @@ The IPA is an international alphabet that can transcribe any of the world's lang
 
 ### Allophones #card
 What is an allophone? :: Allophones are more specific interpretations of a phoneme, made for narrow transcriptions.  ^1677146865719
-![[notes/School Subjects/English Language/Subsystems/Diagrams/Allophone Diagram.png]]
+![[Allophone Diagram.png]]
 
 ### Place + Manner
 #### **Place** of Articulation #card
 **Where** the sound is made
-![[notes/School Subjects/English Language/Subsystems/Diagrams/Human Mouth Diagram.png]]
+![[Human Mouth Diagram.png]]
 ##### Consonants
-![[notes/School Subjects/English Language/Subsystems/Diagrams/Consonant IPA Table.png]]
+![[Consonant IPA Table.png]]
 The top is the place and the and the left is the manner
 ##### Vowels
-![[notes/School Subjects/English Language/Subsystems/Diagrams/Vowel IPA Table.png]]
+![[Vowel IPA Table.png]]
 #### **Manner** of Articulation
 **How** the sound is made
 ^1685778115248
