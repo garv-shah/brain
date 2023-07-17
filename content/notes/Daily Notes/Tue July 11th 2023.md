@@ -8,7 +8,7 @@ Today I have a Dusty rehearsal from 10am to 4pm, so I'll probably just be progra
 
 - [x] Create PR for theme fix #programming
 - [x] Make is possible to render Delta #programming
-- [ ] Do some Maths homework #methods
+- [x] Do some Maths homework #methods
 - [x] Start working on schedule view #programming
 
 For Dusty, I got assigned [Eden Kane](https://en.wikipedia.org/wiki/Eden_Kane) as well, which is a short talking role during the start of Scene 12. Basically, Dusty is just trying to go out to dinner with this guy but the paparazzi is relentless, but she's spinning up this story that they're dating even though they're not. Check it out on the script when we get to it. 
