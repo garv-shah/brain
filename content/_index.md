@@ -9,6 +9,3 @@ Currently you can explore my [[School Subjects]] or [[University Applications]].
 > [!note] School Subjects
 >
 > Currently I'm doing [[English Language]], [[Literature]], [[Physics]], [[Algorithmics]], [[Specialist Maths]] and Maths Methods for VCE!
-
-## To-Do
-All my tasks to do!
