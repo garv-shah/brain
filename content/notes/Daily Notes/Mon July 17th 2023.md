@@ -22,7 +22,7 @@ Below are the main discussion points I want to have with him:
 - rename the availability at the top to "Weekly Availability" and remove the numbers because that was a bit confusing (might have to fork the syncfusion calendar or add in an option to hide them).
 
 ## To Do For Today
-- [ ] Finish Englang Exercises 2-12 🔺 #englang
+- [x] Finish Englang Exercises 2-12 #englang 🔺
 - [ ] Start watching Physics Videos #physics
 - [ ] Fix Username Issue #programming 
 - [ ] Fix date pickers for post creation #programming 
