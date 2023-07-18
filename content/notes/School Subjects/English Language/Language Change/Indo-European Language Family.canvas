@@ -2,17 +2,21 @@
 	"nodes":[
 		{"type":"text","text":"# Indo-European Language Family","id":"26f7c76bed87eb28","x":-180,"y":0,"width":345,"height":50,"color":"1"},
 		{"type":"text","text":"## Armenian","id":"cfc53e038795aba2","x":302,"y":-100,"width":138,"height":60,"color":"2"},
-		{"id":"87500b353cae70b1","x":285,"y":59,"width":115,"height":50,"color":"2","type":"text","text":"## Greek"},
+		{"type":"text","text":"## Greek","id":"87500b353cae70b1","x":285,"y":59,"width":115,"height":50,"color":"2"},
 		{"type":"text","text":"## Indo-Iranian","id":"0fb0adce07036219","x":1,"y":-197,"width":164,"height":60,"color":"2"},
-		{"id":"40c150332da66144","x":20,"y":180,"width":126,"height":64,"color":"2","type":"text","text":"## Albanian"},
-		{"id":"533a52e3b23849d6","x":-140,"y":187,"width":102,"height":50,"color":"2","type":"text","text":"## Celtic"},
-		{"id":"a2f2e0764cca3eae","x":-420,"y":127,"width":115,"height":60,"color":"2","type":"text","text":"## Roman"},
-		{"id":"964b5d96ed25be07","x":-460,"y":-66,"width":143,"height":60,"color":"2","type":"text","text":"## Germanic"},
-		{"id":"520e873a7e9b78b6","x":-200,"y":-192,"width":120,"height":50,"color":"2","type":"text","text":"## Roman"},
-		{"id":"e9874fdf6711d654","x":-143,"y":-560,"width":183,"height":213,"type":"text","text":"### Indic\n- Hindi\n- Urdu\n- Bengali\n- Marathi"},
-		{"id":"735c4bb9e7c7422e","x":71,"y":-520,"width":149,"height":197,"type":"text","text":"### Iranian\n- Farsi\n- Pashto\n- Kurdish\n- Taijki"},
-		{"id":"14f518b4fc4b460a","x":-292,"y":360,"width":212,"height":133,"type":"text","text":"- Irish Gaelic\n- Scottish Gaelic\n- Manx"},
-		{"id":"a50a8d3c2182af83","x":-38,"y":365,"width":162,"height":128,"type":"text","text":"- Welsh\n- Breton\n- Cornish"}
+		{"type":"text","text":"## Albanian","id":"40c150332da66144","x":20,"y":180,"width":126,"height":64,"color":"2"},
+		{"type":"text","text":"## Celtic","id":"533a52e3b23849d6","x":-140,"y":187,"width":102,"height":50,"color":"2"},
+		{"type":"text","text":"## Roman","id":"a2f2e0764cca3eae","x":-420,"y":127,"width":115,"height":60,"color":"2"},
+		{"type":"text","text":"## Germanic","id":"964b5d96ed25be07","x":-460,"y":-66,"width":143,"height":60,"color":"2"},
+		{"type":"text","text":"## Baltic-Slavic","id":"520e873a7e9b78b6","x":-240,"y":-197,"width":160,"height":55,"color":"2"},
+		{"type":"text","text":"### Indic\n- Hindi\n- Urdu\n- Bengali\n- Marathi","id":"e9874fdf6711d654","x":-143,"y":-560,"width":183,"height":213},
+		{"type":"text","text":"### Iranian\n- Farsi\n- Pashto\n- Kurdish\n- Taijki","id":"735c4bb9e7c7422e","x":71,"y":-520,"width":149,"height":197},
+		{"type":"text","text":"- Irish Gaelic\n- Scottish Gaelic\n- Manx","id":"14f518b4fc4b460a","x":-292,"y":360,"width":212,"height":133},
+		{"type":"text","text":"- Welsh\n- Breton\n- Cornish","id":"a50a8d3c2182af83","x":-38,"y":365,"width":162,"height":128},
+		{"type":"text","text":"- French\n- Spanish\n- Italian\n- Catalan\n- Portuguese\n- Occitan\n- Romanian\n- Rumansh","id":"360e629d4c5331c8","x":-720,"y":100,"width":190,"height":296},
+		{"type":"text","text":"- English\n- Dutch\n- German\n- Swedish\n- Norwegian\n- Danish\n- Afrikaans\n- Friesian\n- Icelandic","id":"16d96ec986226486","x":-780,"y":-280,"width":203,"height":320},
+		{"id":"c8b33867a4904a88","x":-389,"y":-520,"width":168,"height":189,"type":"text","text":"- Russian\n- Ukranian\n- Polish\n- Czech\n- Bulgarian"},
+		{"id":"fc0db5cab0a293ba","x":-532,"y":-278,"width":215,"height":81,"type":"text","text":"- Lithuanian\n- Latvian"}
 	],
 	"edges":[
 		{"id":"c3d28da1921d3daa","fromNode":"26f7c76bed87eb28","fromSide":"top","toNode":"0fb0adce07036219","toSide":"bottom"},
@@ -26,6 +30,10 @@
 		{"id":"8d7ceb3c71dac109","fromNode":"0fb0adce07036219","fromSide":"top","toNode":"e9874fdf6711d654","toSide":"bottom"},
 		{"id":"a818d7cbc54df3d3","fromNode":"0fb0adce07036219","fromSide":"top","toNode":"735c4bb9e7c7422e","toSide":"bottom"},
 		{"id":"b440e3eb7068bced","fromNode":"533a52e3b23849d6","fromSide":"bottom","toNode":"14f518b4fc4b460a","toSide":"top"},
-		{"id":"a6f03042f0fbe0ba","fromNode":"533a52e3b23849d6","fromSide":"bottom","toNode":"a50a8d3c2182af83","toSide":"top"}
+		{"id":"a6f03042f0fbe0ba","fromNode":"533a52e3b23849d6","fromSide":"bottom","toNode":"a50a8d3c2182af83","toSide":"top"},
+		{"id":"e5b54f55848613f6","fromNode":"a2f2e0764cca3eae","fromSide":"left","toNode":"360e629d4c5331c8","toSide":"right"},
+		{"id":"b60d7bda77c3e6e0","fromNode":"964b5d96ed25be07","fromSide":"left","toNode":"16d96ec986226486","toSide":"right"},
+		{"id":"6b74f58355a09ab5","fromNode":"520e873a7e9b78b6","fromSide":"top","toNode":"c8b33867a4904a88","toSide":"bottom"},
+		{"id":"40ea3f23375a877d","fromNode":"520e873a7e9b78b6","fromSide":"left","toNode":"fc0db5cab0a293ba","toSide":"right"}
 	]
 }
