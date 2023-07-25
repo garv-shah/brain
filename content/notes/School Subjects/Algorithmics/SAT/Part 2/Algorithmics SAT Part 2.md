@@ -230,6 +230,126 @@ As we can see from this process and the call tree above, there are 3 main elemen
 
 If we let the time complexity of `held_karp` be represented by $HK(n)$ where $n$ denotes the calculated size of the `visit_set`, our current time complexity of the `main` function can be represented as $O(HK(n)+FL+R+F)$.
 
-## Modified Held-Karp Time Complexity
+## Held-Karp Time Complexity
 
 Figuring out the time complexity of the other processes in our algorithm was relatively easy; we can simply look at their pseudocode implementation (or what they would be if they are abstracted) and look at the general number of operations. Held-Karp on the other hand is a bit harder as it is a recursive algorithm, making direct analysis a bit more troublesome. To begin, we can try to represent the modified Held-Karp algorithm as a recurrence relation to aid in mathematical analysis.
+
+To recap, Held-Karp[^3] works by utilising the fact that every subpath of a path of minimum distance is itself of minimum distance. This means that we can reduce the length of $S$ by one each time by finding the minimum distance/path between $C$ and $B$ while running Held-Karp again on the set $S$ without $C$, but as $C$ as the new value for $B$.   
+
+[^3]: The following variables will be used as shorthand throughout the analysis.
+	
+	Let $A =$ starting vertex
+	
+	Let $B =$ ending vertex
+	
+	Let $S = \{P, Q, R\}$ or any other vertices to be visited along the way.
+	
+	Let $n$ = the length of the visit set $S$.
+	
+	Let $C \in S$ (random node in $S$), and to clarify: $C \neq A, B$ as $S$ does not include them
+
+As stated in part 1, this logic can be represented recursively as the following:
+
+$\textrm{Let Cost}_{A \rightarrow B, \space S}=\textrm{The minimum cost of a cycle free path from A to B that visits all the vertices of S.}$
+
+$\textrm{Let } d_{A,B} = \textrm{The minimum cost of travelling from A to B, as outputted by Dijkstra's.}$
+
+$\therefore \textrm{Cost}_{A \rightarrow B, \space S}= \textrm{min}(\textrm{Cost}_{A \rightarrow C, \space S - \{B\}} + d_{CB})$
+
+
+We can then turn this into a recurrence relation for Big O, where $n$ is the size of the set $S$ and $d(n)$ is the cost function, which in our case is Dijkstra's:
+
+$$
+T_{n} = \left\{
+        \begin{array}{ll}
+            n(T_{n-1}+d(n)) & \quad n > 0 \\
+            d(n) & \quad n=0
+        \end{array}
+    \right.
+$$
+
+Now that we have a recurrence relation for Held-Karp in terms of the cost of running Dijkstra's, the next logical step is to find the number of operations required to run Dijkstra's every time (which would be in the worst case scenario where none of our previous calculations are reused).
+
+## Dijkstra's Time Complexity
+
+We can analyse Dijkstra's step by step by viewing all the elements of the pseudocode and evaluating them separately and then add them up together at the end:
+
+1. We can see that initial loop runs for every node, or $L$ times, as each node represents a landmark.
+
+2. In the main while loop, we iterate over every node in the graph, making the while loop run $L$ times as well. 
+
+3. To find the `min_node`, the pseudocode iterates over every single node in the `unexplored_list`. As this list decreases by one each time, the total cost of finding the `min_node` can be represented as $L+(L-1)+(L-2)+\cdots+1+0$. This resembles the triangular numbers, and hence we can also represent the total `min_node` cost as $\frac{L(L+1)}{2}$.
+
+4. The nested for loop inside the while loop is a bit trickier as it covers all neighbours of the current `min_node`. As we have established that every single node in the graph will be the `min_node` at some point, we can use the graph below as an example for how many times this loop would occur. 
+   Over here, we can see that $A$ has 2 neighbours, $B$ has 2 neighbours, $C$ has 1 neighbour and $D$ has 1 neighbour. This makes it evident that the amount of times this inner for loop will run is actually just the sum of the degrees of the graph, and by the handshaking lemma, this is simply equal to twice the number of edges in the graph. Hence, the total amount of times this loop will run is $2R$.
+
+	```mermaid
+	graph TD;
+	            A<-->B;
+	            A<-->C;
+	            B<-->D;
+	```
+
+5. Finally, inside this for loop, we call the `dist` function. As is evident from the pseudocode, this function uses the `edge_lookup_matrix` and goes over the edges between two nodes. In most practical cases, this will simply be one or two edges if multiple bus or train lines go across the same nodes. The `soonest_time_at_node` function is also an abstraction the next available bus/train time given any time at a particular node, which can possibly be implemented into a dictionary to be done in constant time. Due to these two factors, when looking at the asymptotic behaviour, this can be simplified to $O(1)$.
+   
+Now that we have considered all parts of our implementation of Dijkstra's, we can combine it to get a single cost function: $d(n) = L + L\left(\frac{L(L+1)}{2}+2R\right)= 2LR+\frac{1}{2}L^{3}+\frac{1}{2}L^{2}+L$. Considering the behaviour of this function asymptotically, we can see that it would have a time complexity of $O(2LR + L^{3})$, which is far from ideal and can be improved significantly (Dijkstra's can supposedly be done in $O(L+R\log{L})$ with a min-priority queue).
+
+## Modified Held-Karp Time Complexity
+
+Now that we have an established cost function, we can attempt to evaluate $T_{n}$ in terms of $d(n)$. To reiterate:
+
+$$
+T_{n} = \left\{
+        \begin{array}{ll}
+            n(T_{n-1}+d(n)) & \quad n > 0 \\
+            d(n) & \quad n=0
+        \end{array}
+    \right.
+$$
+$$
+d(n)=2LR+\frac{1}{2}L^{3}+\frac{1}{2}L^{2}+L
+$$
+
+Keeping this in terms of $d(n)$, we can create a table to see how this recurrence relation gets bigger as $n$ increases.
+
+| $n$     | 0      | 1       | 2       | 3   | 4   | 5   |
+| ------- | ------ | ------- | ------- | --- | --- | --- |
+| $T_{n}$ | $d(n)$ | $2d(n)$ | $6d(n)$ | $21d(n)$    | $88d(n)$    | $445d(n)$    |
+
+
+The working for this table is shown below, but you can easily keep going to follow the pattern for higher values of $n$:
+
+$n = 0$: $T_{n}=d(n)$
+
+$n = 1$: $T_{n}=1(T_{0}+d(n))=2d(n)$
+
+$n = 2$: $T_{n}=2(T_{1}+d(n))=6d(n)$
+
+$n = 3$: $T_{n}=3(T_{2}+d(n))=21d(n)$
+
+$n = 4$: $T_{n}=4(T_{3}+d(n))=88d(n)$
+
+$n = 5$: $T_{n}=5(T_{4}+d(n))=445d(n)$
+
+
+Now we run into a bit of an issue. Just looking at the coefficients for a second, we have the recurrence relation $T_{n}=n(T_{n-1}+1), \space T_{0}=1$. Looking all over the web for this, the only place I could find any reference to this sequence is [here](https://oeis.org/A033540), which provides us with the relation $T_{n}=n! + \lfloor e\times n!\rfloor - 1$ for the coefficients. This provides us with a rearranged formula of $T(n)=d(n) \lfloor n!(e+1)-1 \rfloor$.
+
+The floor function here seems to just be there to deal with the irrational $e$ so that we can get an integer output. Subbing in our known time complexity of $d(n)$, we get a final Big O of $O(\lfloor n!(e+1)-1 \rfloor(2LR+L^{3}))$ for the original implementation of our modified Held-Karp with no caching of its own Dijkstra's outputs.
+
+We can verify that this is somewhat correct by intuition. If we look back at Part 1, we can get the time taken to run the unoptimised modified Held-Karp on our data with different $n$ values. $(2LR+L^{3})$ should be a constant for any particular graph, meaning that if our Big O time complexity is correct then $\textrm{execution time} \propto \lfloor n!(e+1)-1 \rfloor$. 
+
+| n   | $\frac{\textrm{execution time}}{\lfloor n!(e+1)-1 \rfloor}$ |
+| --- | ----------------------------------------- |
+| 5   | $3\times10^{-5}$                          |
+| 6   | $4\times10^{-5}$                          |
+| 7   | $3\times10^{-5}$                          |
+| 8   | $3\times10^{-5}$                          |
+| 9   | $3\times10^{-5}$                          |
+
+Note that $n<5$ would be rather unreliable due to the decimal inaccuracy of my recorded execution times (4dp)
+
+As we can see, this proportionality is fairly constant, so it would probably be safe to assume that the worst-case time complexity for the unoptimised modified Held-Karp algorithm would be $O(n!(e+1)(2LR+L^{3}))$, or at least something pretty close to it.
+
+## Optimised Modified Held-Karp Time Complexity
+
+As was established in part 1, this factorial time complexity is not nearly sufficient enough for real world applications. Not only is it simply worse than brute forcing it, it makes it so calculating the Hamiltonian path with just my own friend group takes a ludicrous amount of time. 
