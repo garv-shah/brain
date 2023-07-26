@@ -17,7 +17,7 @@ Let $F =$ number of friends
 Let $L =$ number of landmarks
 Let $R=$ number of routes
 
-## Algorithm Pseudocode
+# Algorithm Pseudocode
 The following is the final pseudocode reiterated from Part 1, namely for convenience while analysing, since multiple modifications were made to the initial pseudocode.
 
 Let $A =$ starting vertex
@@ -160,6 +160,8 @@ function dist (
 	return min(distances)
 end function
 ```
+
+# Time Complexity Analysis
 
 ## Expected Time Complexity
 
@@ -312,10 +314,14 @@ $$
 
 Keeping this in terms of $d(n)$, we can create a table to see how this recurrence relation gets bigger as $n$ increases.
 
-| $n$     | 0      | 1       | 2       | 3   | 4   | 5   |
-| ------- | ------ | ------- | ------- | --- | --- | --- |
-| $T_{n}$ | $d(n)$ | $2d(n)$ | $6d(n)$ | $21d(n)$    | $88d(n)$    | $445d(n)$    |
-
+| $n$ | $T_{n}$ |
+| --- | ------- |
+| 0   | $d(n)$  |
+| 1   | $2d(n)$  |
+| 2   | $6d(n)$  |
+| 3   | $21d(n)$  |
+| 4   | $88d(n)$  |
+| 5   | $445d(n)$  |
 
 The working for this table is shown below, but you can easily keep going to follow the pattern for higher values of $n$:
 
@@ -334,11 +340,11 @@ $n = 5$: $T_{n}=5(T_{4}+d(n))=445d(n)$
 
 Now we run into a bit of an issue. Just looking at the coefficients for a second, we have the recurrence relation $T_{n}=n(T_{n-1}+1), \space T_{0}=1$. Looking all over the web for this, the only place I could find any reference to this sequence is [here](https://oeis.org/A033540), which provides us with the relation $T_{n}=n! + \lfloor e\times n!\rfloor - 1$ for the coefficients. This provides us with a rearranged formula of $T(n)=d(n) \lfloor n!(e+1)-1 \rfloor$.
 
-The floor function here seems to just be there to deal with the irrational $e$ so that we can get an integer output. Subbing in our known time complexity of $d(n)$, we get a final Big O of $O(\lfloor n!(e+1)-1 \rfloor(2LR+L^{3}))$ for the original implementation of our modified Held-Karp with no caching of its own Dijkstra's outputs.
+The floor function here seems to just be there to deal with the irrational $e$ so that we can get an integer output. Subbing in our known time complexity of $d(n)$, we get a final Big O of $O(\lfloor n!(e+1) \rfloor(2LR+L^{3}))$ for the original implementation of our modified Held-Karp with no caching of its own Dijkstra's outputs.
 
-We can verify that this is somewhat correct by intuition. If we look back at Part 1, we can get the time taken to run the unoptimised modified Held-Karp on our data with different $n$ values. $(2LR+L^{3})$ should be a constant for any particular graph, meaning that if our Big O time complexity is correct then $\textrm{execution time} \propto \lfloor n!(e+1)-1 \rfloor$. 
+We can verify that this is somewhat correct by intuition. If we look back at Part 1, we can get the time taken to run the unoptimised modified Held-Karp on our data with different $n$ values. $(2LR+L^{3})$ should be a constant for any particular predefined graph, meaning that if our Big O time complexity is correct then $\textrm{execution time} \propto \lfloor n!(e+1) \rfloor$[^4].
 
-| n   | $\frac{\textrm{execution time}}{\lfloor n!(e+1)-1 \rfloor}$ |
+| n   | $\frac{\textrm{execution time}}{\lfloor n!(e+1) \rfloor}$ |
 | --- | ----------------------------------------- |
 | 5   | $3\times10^{-5}$                          |
 | 6   | $4\times10^{-5}$                          |
@@ -346,10 +352,54 @@ We can verify that this is somewhat correct by intuition. If we look back at Par
 | 8   | $3\times10^{-5}$                          |
 | 9   | $3\times10^{-5}$                          |
 
-Note that $n<5$ would be rather unreliable due to the decimal inaccuracy of my recorded execution times (4dp)
+[^4]: Note that $n<5$ would be rather unreliable due to the decimal inaccuracy of my recorded execution times (4dp)
 
-As we can see, this proportionality is fairly constant, so it would probably be safe to assume that the worst-case time complexity for the unoptimised modified Held-Karp algorithm would be $O(n!(e+1)(2LR+L^{3}))$, or at least something pretty close to it.
+As we can see, this proportionality is fairly constant, so it would probably be safe to assume that the worst-case time complexity for the unoptimised modified Held-Karp algorithm would be $O(\lfloor n!(e+1) \rfloor(2LR+L^{3}))$, or at least something pretty close to it.
 
 ## Optimised Modified Held-Karp Time Complexity
 
 As was established in part 1, this factorial time complexity is not nearly sufficient enough for real world applications. Not only is it simply worse than brute forcing it, it makes it so calculating the Hamiltonian path with just my own friend group takes a ludicrous amount of time. 
+
+One optimisation that was made in Part 1 was the caching of Dijkstra's outputs, so that once Dijkstra's is called from one starting node, all subsequent calls to Dijkstra's will be done in $O(1)$ time. This means that the full Dijkstra's algorithm will only be called a maximum of once for every node in the graph, and then all subsequent calls will just use the cache. Since the time complexity for our Dijkstra's implementation is currently $O(2LR + L^{3})$, we can simply multiply this by the amount of nodes ($L$) to get the worst case scenario for how long Dijkstra's takes.
+
+This transforms our time complexity of $O(\lfloor n!(e+1) \rfloor(2LR+L^{3}))$ into $O(\lfloor n!(e+1) \rfloor + L(2LR+L^{3}))$, which doesn't *look* like that much of a difference, but it means that when looking at the asymptotic time as $n \to \infty$, we can remove the whole second term as it becomes a constant if we are not considering increasing the amount of landmarks and routes, which is much better than multiplying by this value instead. 
+
+As $n \to \infty$, not only does the 2nd term become negligible as explained above, but the floor function also doesn't make a difference because it is simply for making the output an integer number of operations. As such, it is safe to conclude that the implemented algorithm runs in factorial time for an increasing size of the `visit_set`. 
+
+In conclusion, the final algorithm from part one has a time complexity of $O(\lfloor n!(e+1) \rfloor + L(2LR+L^{3}))$, which means that the algorithm runs in factorial time.
+
+# Consequences of Time Complexity
+
+As detailed in the previous section, the final time complexity of the algorithm so far is $O(\lfloor n!(e+1) \rfloor + L(2LR+L^{3}))$. This isn't very ideal, because simply brute forcing it would likely lead to a better worst case time complexity than the current algorithm.
+
+Let's quickly take the example of the time complexities of our two algorithms, the one with cached Dijkstra's values and the one without. The graph/input data detailed in Part 1 has 15 landmarks, 26 routes and a `visit_set` of size 7. For these values, the unoptimised algorithm would take 77,864,700 time units and the algorithm with Dijkstra's caching would take 81,065 time units. This is over 960 times faster in the worst case scenario, but as shown in part 1, about 31 times faster in the average case. Below is a discussion on the real world consequences of this time performance difference, as well as how practical this algorithm is for real world use cases.
+
+## Revisiting Problem Requirements
+
+This algorithm was made to solve the general problem of planning trips with friends, but more specifically the scenario where my friends decided that we want to travel in one big travel party and I am to start and end my day at my house, picking up all my friends along the way. In other words, this algorithm is designed for the real world use case of finding the shortest circuit that picks up all my friends as we travel. 
+
+Let us consider some requirements for this real world use case. By my own general estimates, most people would only have about 5 to 10 close friends that they would travel like this with. Similarly, most people live relatively close to their friends, so the case of 15 landmarks (or train stations/buses) and 26 routes (or train/bus lines) is realistic. As shown in Part 1, below is the real world performance as $n \in [0,12]$ and $L=15,\space R=26$.
+
+| $n$ (size of `visit_set`) | $t$ (execution time in seconds, 4dp) |
+| ------------------------- | ------------------------------------ |
+| 0                         | 0.0001                               |
+| 1                         | 0.0001                               |
+| 2                         | 0.0001                               |
+| 3                         | 0.0001                               |
+| 4                         | 0.0001                               |
+| 5                         | 0.0005                               |
+| 6                         | 0.0060                               |
+| 7                         | 0.0287                               |
+| 8                         | 0.2148                               |
+| 9                         | 1.6055                               |
+| 10                        | 17.4555                              |
+| 11                        | 171.6719                             |
+| 12                        | 1750.1065                            |
+
+Presuming most people's friends live somewhat close to each other, even in the case where we have 10 close friends that we want to hang out with, most of them probably share "pickup points" which reduces the size of the `visit_set`. For example, the current input data has 18 friends but a visit set of size 7! This means that in almost every case $n<10$, and if people were using this in a mapping application like Google Maps for example to have certain pickup points along the way, this would most likely be fine, returning a result in a couple seconds at worst.
+
+The problems start arising when this problem is scaled up more. As the algorithm is in factorial time, it scales rather terribly and has minimal improvements over brute force, if any improvements at all. The algorithm more generally is a solution for TSP with a graph that is not necessarily complete, and this can be applied to a lot more real life applications than just houses of friends. For example, if the person starting the trip was a truck driver for a logistics company rather than me, and the pickup points were necessary delivery points rather than the closest meeting points for friends, we would have a completely different scale in which the algorithm would perform very poorly. Not only would these pickup points be across a *much* larger distance, meaning the value of $R$ will likely be much higher, but there are potentially many more pickup/dropoff points in a day than the previous scenario, causing both $L$ and $n$ to be greatly larger. Simply put, a factorial time complexity of $O(\lfloor n!(e+1) \rfloor + L(2LR+L^{3}))$ just does not scale very well for many other practical use cases besides the one explored, and even then, if the party of friends was sufficiently large, the algorithm would crawl to a halt. Looking at the example above, with just $12$ pickup points the algorithm ground to a staggering half an hour of required time when tested on my machine.
+
+Due to the fact that most users are not willing to wait more than a couple seconds for a result, the practical input sizes are $n < 10$, $L \le 15$, $R \le 30$. These values are taken from the input values that produced the table above while considering the time complexity of the algorithm. This is not a very big scope of possible use cases, and therefore optimisations are most definitely needed. Although this algorithm as of now is suitable to the problem's requirements, it very quickly falls apart for a "power user" or anyone else that has a different use-case in mind.
+
+To conclude, this algorithm's time complexity directly influences how practically it can be used in the real world to solve the problem it is intended to solve. Users of a program as such would expect a result within seconds at most, and the practical input sizes are therefore restricted to those described above. 
