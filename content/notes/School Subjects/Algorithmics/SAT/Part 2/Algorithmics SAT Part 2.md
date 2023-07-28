@@ -2,7 +2,7 @@
 title: Algorithmics SAT - Friendship Network Part 2
 author: Garv Shah
 date: 2023-07-28
-abstract: "'How can a tourist best spend their day out?' I've been finding it hard to plan trips with my friends, especially when everybody lives all over the city and we would all like to travel together. This SAT project aims to model the Victorian public transport network and its proximity to friends' houses, factoring in data about each individual to find the most efficient and effective traversals and pathways for us travelling to locations around Victoria."
+abstract: "'How can a tourist best spend their day out?'. The first part of this SAT project aimed to model the Victorian public transport network and its proximity to friends' houses in order to construct an algorithm. In Part 2 we will now consider the time complexity of said algorithms and analyse their impact on real life use-cases."
 geometry: margin=2cm
 output: pdf_document
 colorlinks: true
@@ -28,7 +28,7 @@ As explained in Part 1 of the SAT, the algorithm in essence boils down to an app
 
 ## Call Tree
 
-![Call Tree](call_tree.svg)
+![Call Tree](call_tree.svg "Call Tree")
 
 As we can see, the [main function](#main-function) calls a few distinct processes [^1]:
 
@@ -125,7 +125,7 @@ We can analyse Dijkstra's step by step by viewing all the elements of the [pseud
 4. The nested for loop inside the while loop is a bit trickier as it covers all neighbours of the current `min_node`. As we have established that every single node in the graph will be the `min_node` at some point, we can use the graph below as an example for how many times this loop would occur. 
    Over here, we can see that $A$ has 2 neighbours, $B$ has 2 neighbours, $C$ has 1 neighbour and $D$ has 1 neighbour. This makes it evident that the amount of times this inner for loop will run is actually just the sum of the degrees of the graph, and by the handshaking lemma, this is simply equal to twice the number of edges in the graph. Hence, the total amount of times this loop will run is $2R$.
 
-	![Sample Graph](sample_graph.svg)
+	![Sample Graph](sample_graph.svg "Sample Graph")
 
 5. Finally, inside this for loop, we call the `dist` function. As is evident from the pseudocode, this function uses the `edge_lookup_matrix` and goes over the edges between two nodes. In most practical cases, this will simply be one or two edges if multiple bus or train lines go across the same nodes. The `soonest_time_at_node` function is also an abstraction the next available bus/train time given any time at a particular node, which can possibly be implemented into a dictionary to be done in constant time. Due to these two factors, when looking at the asymptotic behaviour, this can be simplified to $O(1)$.
    
@@ -252,7 +252,7 @@ $$
 \textrm{Let } \space r_{n}=n!(e+1)-1-T_{n}
 $$
 
-###### Lemma 1
+##### Lemma 1
 
 > When $n>1$, the following must be true: $r_{n}=\frac{1}{n+1}+\frac{1}{(n+1)(n+2)}+\frac{1}{(n+1)(n+2)(n+3)}+\cdots$
 
@@ -285,7 +285,7 @@ $=\frac{1}{n+1}+\frac{1}{(n+1)(n+2)}+\frac{1}{(n+1)(n+2)(n+3)}+\cdots$
 
 $\therefore$ The lemma is true.
 
-###### Lemma 2
+##### Lemma 2
 
 > When $n>1$, it is true that $r_{n}<\frac{1}{n+1}+\frac{1}{(n+1)^{2}}+\frac{1}{(n+1)^{3}}+\cdots=\frac{1}{n}$
 
@@ -304,7 +304,7 @@ This upper bound above is in the form of an infinite geometric series with ratio
 
 $\therefore$ The lemma is true.
 
-###### Lemma 3
+##### Lemma 3
 
 > If $n > 1$, $0<r_{n}<1$ must hold true.
 
@@ -314,7 +314,7 @@ Then, by [Lemma 2](#lemma-2), the following must hold: $r_{n}<\frac{1}{n}\le\fra
 
 $\therefore$ The lemma is true.
 
-###### Conclusion
+##### Conclusion
 
 Thus, the proof for this theorem is complete for the case $n>1$:
 
