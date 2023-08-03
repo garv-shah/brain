@@ -4,7 +4,7 @@ title: "Sun July 30th 2023"
 
 School leadership!
 
-Personal brand is about how I geniunley find it really fun and enjoyable to help other people and school leadership is an opportunity to make a wider impact and have others realise their abilities
+Personal brand is about how I genuinely find it really fun and enjoyable to help other people and school leadership is an opportunity to make a wider impact and have others realise their abilities
 - talk about student mental health
 - connection with other campuses
 - connection with many facets of the school, bring together communities
