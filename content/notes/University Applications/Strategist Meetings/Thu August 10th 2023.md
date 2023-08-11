@@ -26,4 +26,5 @@ Forgot to list activities:
 - Play sports: table tennis top level team, currently do badminton did tennis too
 - Community service with the school, conducting school tours etc (this is more of an award rather than activity)
 - Editorial Committee, write pieces that get published in the yearbook "The Grammarian"
-- 
+- FOTA Director and Captain
+- Research (work in progress, hasn't been to successful so far)
