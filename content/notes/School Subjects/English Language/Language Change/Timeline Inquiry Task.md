@@ -84,13 +84,16 @@ The internet has introduced many new words in the average person's lexicon. To t
 The fall of formality can also be accredited to the rise of the internet. Though this may be alarming to some, it is far from surprising: as people spend more time talking online in informal contexts, a shadow of their online syntax creeps into their academic work. For example, take [this academic paper](https://www.cambridge.org/core/journals/religious-studies/article/abs/faith-as-extended-knowledge/7072E6F301E99089D56A5DFB7B4B662B) published in 2017, a form of writing that has tended to be as formal as it gets. What is surprising about this text is the high frequency of informal features, including contractions (*isn't*) and first/second person pronouns, all of which would have been an abnormality before the age of the internet:
 
 > "For at least on a popular Christian conception, when **you** believe something truly on the basis of faith this **isn't** because of anything **you're** naturally competent to do…**I argue** in this article that **there's** no deep tension between faith-based knowledge and virtue epistemology."
-> - Kegan J. Shaw, Cambridge University Press
+> 
+> \- Kegan J. Shaw, Cambridge University Press
 
 Modal verbs such as "must", "may", and "shall" have seen an all time low since the start of the internet. This decline was present well before the internet came about to speed it up, but phrases from only a few decades ago now feel archaic:
 
 > "Of course, we shall not be staying here long."
+> 
 > "May I take my jacket off, please?"
-> - British National Corpus 1994
+> 
+> \- British National Corpus 1994
 
 ![The decline of English modals](modal_graph.png)
 
