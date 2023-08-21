@@ -1,10 +1,9 @@
-import datetime
 import math
 
 import sys
 import networkx as nx
 from utilities.custom import render_graph
-from utilities.data import edges, line_data, pos, node_lat_long, friend_data, time_data
+from utilities.data import edges, line_data, pos, node_lat_long, friend_data
 import time
 import datetime as dt
 import heapq as hq
@@ -229,7 +228,21 @@ def dist(start, end, current_time):
     for edge in connecting_edges:
         line = edge['line']
 
-        distances.append(time_data[line][start][dt.datetime.strftime(current_time, "%H:%M")])
+        # calculate the next time bus/train will be at the node
+        timetable = []
+        for arrival_time in line_data[line]['timetable'][start]:
+            date = dt.datetime.strptime(arrival_time, r"%H:%M")
+            if date >= current_time:
+                timetable.append(date)
+
+        # get all differences with date as values
+        difference_dict = {date.timestamp() - current_time.timestamp(): date for date in timetable}
+
+        # extracting minimum key using min()
+        next_time = difference_dict[min(difference_dict.keys())]
+
+        wait_time = next_time - current_time
+        distances.append(edge['weight'] + wait_time.total_seconds() / 60)
 
     return min(distances)
 
@@ -249,69 +262,26 @@ def dijkstra(start, current_time):
     """
 
     # set all nodes to infinity with no predecessor
-    distances = {}
     distance = {node: float('inf') for node in g.nodes()}
-    predecessor = {}
-    unexplored = []
-
-    size = len(g.nodes())
-
-    for node in list(g.nodes()):
-        if node == start:
-            unexplored.append((0, node))
-        else:
-            unexplored.append((float('inf'), node))
-
-    hq.heapify(unexplored)
+    predecessor = {node: None for node in g.nodes()}
+    unexplored = list(g.nodes())
 
     distance[start] = 0
-    distances[start] = 0
 
-    while size > 0:
-        min_node = hq.heappop(unexplored)
-        node = min_node[1]
-        node_dist = distance[node]
-        size = size - 1
+    while len(unexplored) > 0:
+        min_node = min(unexplored, key=lambda node: distance[node])
+        unexplored.remove(min_node)
 
-        for neighbour in g.neighbors(node):
-            current_dist = node_dist + dist(node, neighbour, current_time + dt.timedelta(minutes=node_dist))
+        for neighbour in g.neighbors(min_node):
+            current_dist = distance[min_node] + dist(min_node, neighbour,
+                                                     current_time + dt.timedelta(minutes=distance[min_node]))
             # a shorter path has been found to the neighbour ∴ relax value
             if current_dist < distance[neighbour]:
-                distances[neighbour] = current_dist
                 distance[neighbour] = current_dist
-                hq.heappush(unexplored, (current_dist, neighbour))
-                predecessor[neighbour] = node
+                predecessor[neighbour] = min_node
 
-    return {'distances': distances, 'predecessors': predecessor}
+    return {'distances': distance, 'predecessors': predecessor}
 
-
-def fetch_hk(start, end, visit, current_time):
-    """
-    Fetches Dijkstra's Shortest Path Algorithm.
-
-    :param start: start node
-    :type start: str
-
-    :param end: end node
-    :type end: str
-
-    :param visit: set of nodes to visit
-    :type visit: set[str]
-
-    :param current_time: the current time when Dijkstra's is being called
-    :type current_time: dt.datetime
-
-    :return: The shortest distance path from the start to end node while visiting all nodes in the visit set.
-    :rtype: dict[str, float | list[str]]
-    """
-
-    name = f"{start}-{end}{visit}@{current_time}"
-
-    global cached_hk
-    if name not in cached_hk:
-        cached_hk[name] = held_karp(start, end, visit, current_time)
-
-    return cached_hk[name]
 
 def fetch_djk(start, end, current_time):
     """
@@ -377,7 +347,7 @@ def held_karp(start, end, visit, current_time):
         for rand_node in visit:
             # divides larger path into smaller subpaths by going from start to any random node C while visiting
             # everything else in the visit set. This is then combined with djk from C to the end to get the full path.
-            sub_path = fetch_hk(start, rand_node, visit.difference({rand_node}), current_time)
+            sub_path = held_karp(start, rand_node, visit.difference({rand_node}), current_time)
             djk = fetch_djk(rand_node, end, current_time + dt.timedelta(minutes=sub_path['cost']))
             cost = sub_path['cost'] + djk['cost']
             if cost < minimum['cost']:
@@ -390,7 +360,6 @@ def held_karp(start, end, visit, current_time):
 def main():
     global edge_lookup_matrix
     global cached_djk
-    global cached_hk
     global holiday
     global concession
     global hamiltonian_path
@@ -428,7 +397,6 @@ def main():
 
     start_time = time.perf_counter()
     cached_djk = {}
-    cached_hk = {}
 
     # Create a lookup matrix so that edge data can be accessed given any two vertices
     # Create a dictionary of distances, similar to a distance matrix, but allowing for multiple edges between nodes
@@ -459,9 +427,9 @@ def main():
                  'Brighton Beach',
                  'Camberwell',
                  'Oakleigh',
-                 'Wheelers Hill Library',
-                 'Chadstone',
-                 'Caulfield',
+                 # 'Wheelers Hill Library',
+                 # 'Chadstone',
+                 # 'Caulfield',
                  # 'CGS CC',
                  # 'Brandon Park'
                  }.difference({home})
@@ -479,7 +447,7 @@ def main():
               f'transport hub. Possibly consider adding hubs closer to their houses: ', end=' ')
         print(f'{" and ".join([", ".join(long_walk[:-1]), long_walk[-1]] if len(long_walk) > 2 else long_walk)}')
 
-    hamiltonian_path = fetch_hk(home, home, visit_set, selected_time)
+    hamiltonian_path = held_karp(home, home, visit_set, selected_time)
 
     print(f"\nThe trip would cost you ${calculate_prices():,.2f} and would take you "
           f"{round(hamiltonian_path['cost'] + 2 * friend_distances['You']['distance'] / 5.1 * 60, 2)} "
@@ -514,7 +482,6 @@ def main():
 if __name__ == "__main__":
     global edge_lookup_matrix
     global cached_djk
-    global cached_hk
     global holiday
     global concession
     global hamiltonian_path
