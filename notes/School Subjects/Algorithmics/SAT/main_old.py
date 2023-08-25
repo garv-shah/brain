@@ -426,7 +426,7 @@ def main():
                  'Flinders Street',
                  'Brighton Beach',
                  'Camberwell',
-                 'Oakleigh',
+                 # 'Oakleigh',
                  # 'Wheelers Hill Library',
                  # 'Chadstone',
                  # 'Caulfield',
@@ -448,6 +448,8 @@ def main():
         print(f'{" and ".join([", ".join(long_walk[:-1]), long_walk[-1]] if len(long_walk) > 2 else long_walk)}')
 
     hamiltonian_path = held_karp(home, home, visit_set, selected_time)
+
+    print(hamiltonian_path)
 
     print(f"\nThe trip would cost you ${calculate_prices():,.2f} and would take you "
           f"{round(hamiltonian_path['cost'] + 2 * friend_distances['You']['distance'] / 5.1 * 60, 2)} "
@@ -489,7 +491,7 @@ if __name__ == "__main__":
 
     running_time = []
 
-    for i in range(10):
+    for i in range(1):
         running_time.append(main())
 
     print(running_time)

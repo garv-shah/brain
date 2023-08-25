@@ -397,6 +397,39 @@ def candidate_solution(start, end, visit, current_time):
     return {'path': path, 'cost': cost}
 
 
+def normalise_path(path, current_time):
+    """
+    Fills in the gaps in the path.
+
+    :param path: path to get the cost of
+    :type path: list[str]
+
+    :param current_time: the current time when Dijkstra's is being called
+    :type current_time: dt.datetime
+
+    :return: The normalised path.
+    :rtype: list[str]
+    """
+    route = path.copy()
+    return_route = []
+    time = current_time
+
+    for i in range(len(route) - 1):
+        if frozenset({route[i], route[i + 1]}) not in edge_lookup_matrix:
+            djk = fetch_djk(route[i], route[i + 1], current_time, None)
+            cost = djk['cost']
+            # everything but first and last
+            return_route += djk['path'][:-1]
+        else:
+            cost = edge_lookup_matrix[frozenset({route[i], route[i + 1]})][0]['weight']
+            return_route.append(route[i])
+        time += dt.timedelta(minutes=cost)
+
+    return_route.append(route[-1])
+
+    return return_route
+
+
 def calculate_cost(path, current_time):
     """
     Dijkstra's Cost Calculator
@@ -411,10 +444,12 @@ def calculate_cost(path, current_time):
     :rtype: int
     """
     cost = 0
-    route = path.copy()
+    route = normalise_path(path.copy(), current_time)
+    time = current_time
 
     for i in range(len(route) - 1):
         djk = fetch_djk(route[i], route[i + 1], current_time, None)
+        time += dt.timedelta(minutes=djk['cost'])
         cost += djk['cost']
 
     return cost
@@ -463,15 +498,15 @@ def hill_climbing(candidate, current_time, fail_count=0):
     :type current_time: dt.datetime
 
     :return: an improved path.
-    :rtype: list[str]
+    :rtype: list[str] | dict[str, float | list[str]]
     """
 
     if fail_count > 200:
-        return candidate
+        return {'path': candidate, 'cost': calculate_cost(candidate, current_time)}
     else:
         cost = calculate_cost(candidate, current_time)
-        u = random.randint(0, len(candidate)-3)
-        v = random.randint(u+1, len(candidate)-2)
+        u = random.randint(1, len(candidate)-2)
+        v = random.randint(1, len(candidate)-2)
 
         # print(f"u value of {u} and v value of {v}")
 
@@ -483,6 +518,59 @@ def hill_climbing(candidate, current_time, fail_count=0):
             return hill_climbing(new_tour, current_time, 0)
         else:
             return hill_climbing(candidate, current_time, fail_count + 1)
+
+
+def acceptance_probability(old_cost, new_cost, beta, temp):
+    c = new_cost - old_cost
+
+    if c <= 0:
+        return 1
+    else:
+        return math.e**((-beta * c)/temp)
+
+
+def simulated_annealing(path, current_time):
+    """
+    Dijkstra's Cost Calculator
+
+    :param path: candidate solution to improve upon
+    :type path: list[str]
+
+    :param current_time: the current time when Dijkstra's is being called
+    :type current_time: dt.datetime
+
+    :return: an improved path.
+    :rtype: list[str] | dict[str, float | list[str]]
+    """
+
+    # parameters to fiddle with
+    temp = 0.98
+    min_temp = 0.01
+    temp_change = 5
+    beta = 4
+    alpha = 0.9
+
+    candidate = path.copy()
+    old_cost = calculate_cost(candidate, current_time)
+
+    while temp > min_temp:
+        for n in range(temp_change):
+            u = random.randint(1, len(candidate)-2)
+            v = random.randint(u, len(candidate)-2)
+
+            new_tour = pairwise_swap(u, v, candidate)
+            new_cost = calculate_cost(new_tour, current_time)
+
+            ap = acceptance_probability(old_cost, new_cost, beta, temp)
+
+            if ap > random.random():
+                print(f"New tour accepted from {old_cost} to {new_cost}")
+                candidate = new_tour
+                old_cost = new_cost
+
+        temp = temp * alpha
+
+    return {'path': candidate, 'cost': old_cost}
 
 
 def held_karp(start, end, visit, current_time):
@@ -588,7 +676,6 @@ def main():
     friend_distances.pop(user_name)
 
     # force visit_set
-    print(g.nodes())
     visit_set = {'Glen Waverley',
                  'CGS WH',
                  'Mount Waverley',
@@ -620,11 +707,14 @@ def main():
         print(f'{" and ".join([", ".join(long_walk[:-1]), long_walk[-1]] if len(long_walk) > 2 else long_walk)}')
 
     candidate = candidate_solution(home, home, visit_set, selected_time)
-    print("candidate")
-    print(candidate)
-    print("improved")
-    print(hill_climbing(candidate['path'], selected_time))
-    hamiltonian_path = fetch_hk(home, home, visit_set, selected_time)
+    print(f"Initial candidate cost was {candidate['cost']}")
+    hamiltonian_path = hill_climbing(candidate['path'], selected_time)
+    # hamiltonian_path = fetch_hk(home, home, visit_set, selected_time)
+    print(f"Final candidate cost is {hamiltonian_path['cost']}")
+
+    hamiltonian_path['path'] = normalise_path(hamiltonian_path['path'], selected_time)
+
+    print(f"Final candidate path is {hamiltonian_path['path']}")
 
     print(f"\nThe trip would cost you ${calculate_prices():,.2f} and would take you "
           f"{round(hamiltonian_path['cost'] + 2 * friend_distances['You']['distance'] / 5.1 * 60, 2)} "
