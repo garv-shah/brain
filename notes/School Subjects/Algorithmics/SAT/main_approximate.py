@@ -676,22 +676,22 @@ def main():
     friend_distances.pop(user_name)
 
     # force visit_set
-    visit_set = {'Glen Waverley',
-                 'CGS WH',
-                 'Mount Waverley',
-                 'Richmond',
-                 'Parliament',
-                 'Melbourne Central',
-                 'Flinders Street',
-                 'Brighton Beach',
-                 'Camberwell',
-                 'Oakleigh',
-                 'Wheelers Hill Library',
-                 'Chadstone',
-                 'Caulfield',
-                 # 'CGS CC',
-                 # 'Brandon Park'
-                 }.difference({home})
+    # visit_set = {'Glen Waverley',
+    #              'CGS WH',
+    #              'Mount Waverley',
+    #              'Richmond',
+    #              'Parliament',
+    #              'Melbourne Central',
+    #              'Flinders Street',
+    #              'Brighton Beach',
+    #              'Camberwell',
+    #              'Oakleigh',
+    #              'Wheelers Hill Library',
+    #              'Chadstone',
+    #              'Caulfield',
+    #              # 'CGS CC',
+    #              # 'Brandon Park'
+    #              }.difference({home})
 
     print(f"I have {len(friend_distances)} friends and they live closest to the following {len(visit_set)} nodes:")
     [print(
@@ -708,7 +708,7 @@ def main():
 
     candidate = candidate_solution(home, home, visit_set, selected_time)
     print(f"Initial candidate cost was {candidate['cost']}")
-    hamiltonian_path = hill_climbing(candidate['path'], selected_time)
+    hamiltonian_path = simulated_annealing(candidate['path'], selected_time)
     # hamiltonian_path = fetch_hk(home, home, visit_set, selected_time)
     print(f"Final candidate cost is {hamiltonian_path['cost']}")
 
