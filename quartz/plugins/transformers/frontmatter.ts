@@ -8,11 +8,13 @@ import { slugTag } from "../../util/path"
 export interface Options {
   delims: string | string[]
   language: "yaml" | "toml"
+  oneLineTagDelim: string
 }
 
 const defaultOptions: Options = {
   delims: "---",
   language: "yaml",
+  oneLineTagDelim: ",",
 }
 
 export const FrontMatter: QuartzTransformerPlugin<Partial<Options> | undefined> = (userOpts) => {
@@ -20,6 +22,8 @@ export const FrontMatter: QuartzTransformerPlugin<Partial<Options> | undefined> 
   return {
     name: "FrontMatter",
     markdownPlugins() {
+      const { oneLineTagDelim } = opts
+
       return [
         [remarkFrontmatter, ["yaml", "toml"]],
         () => {
@@ -33,19 +37,19 @@ export const FrontMatter: QuartzTransformerPlugin<Partial<Options> | undefined> 
             })
 
             // tag is an alias for tags
-            if (data.tag) {
-              data.tags = data.tag
+            if (data.tag !== null) {
+              data.tags = data.tag.toString()
             }
 
             // coerce title to string
-            if (data.title) {
+            if (data.title !== null) {
               data.title = data.title.toString()
             }
 
-            if (data.tags && !Array.isArray(data.tags)) {
+            if (data.tags !== null && !Array.isArray(data.tags)) {
               data.tags = data.tags
                 .toString()
-                .split(",")
+                .split(oneLineTagDelim)
                 .map((tag: string) => tag.trim())
             }
 
