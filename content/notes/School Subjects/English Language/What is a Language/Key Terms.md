@@ -1,5 +1,5 @@
 ---
-title: "Key Terms"
+title: Key Terms
 cards-deck: notes::School Subjects::English Language::What is a Language
 ---
 #englang 

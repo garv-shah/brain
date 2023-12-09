@@ -1,5 +1,5 @@
 ---
-title: "The Eloquent Ape"
+title: The Eloquent Ape
 ---
 
 #englang #article

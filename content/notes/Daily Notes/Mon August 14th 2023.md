@@ -1,5 +1,5 @@
 ---
-title: "Mon August 14th 2023"
+title: Mon August 14th 2023
 ---
 
 1. Uniform - scenario question: you are on the committee, and you have a job to encourage more students to wear their uniform with pride. How could you do this? 

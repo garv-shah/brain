@@ -1,5 +1,5 @@
 ---
-title: "In Death I Know Everything"
+title: In Death I Know Everything
 ---
 #lit #thepenelopiad #flashwrite 
 

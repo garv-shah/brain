@@ -1,5 +1,5 @@
 ---
-title: "Wed July 12th 2023"
+title: Wed July 12th 2023
 ---
 
 Another day of app development.

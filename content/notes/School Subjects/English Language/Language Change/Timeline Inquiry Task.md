@@ -65,7 +65,7 @@ One of the most influential inventions in the history of the English language wo
 
 Caxton started off as a successful merchant, serving as the governor of the 'English Nation of Merchant Adventurers' for the better part of a decade. This not only allowed him to build a strong standing in the merchant community, but also act as a diplomat for the King at the time, through the process of which he gained a significant wealth. 
 
-In the early 1470s, his interests turned to literature and he started the work of translating books from French to English. Through these ventures, Caxton spent some time in Cologne, Germany learning of the printing presses they had started developing. Although printing with movable type had been invented many centuries earlier in China, the technology was not well developed in Europe until the mid-15th century, meaning that the printing press was quite new at the time. As he worked on his own eventual translation of _'Recueil des histoires de Troye'_ (which later become the first book in history to be printed in English), he later recounted that how his "pen became worn, his hand weary, his eye dimmed" with the laborious task of copying the book. Simply, he found the work such a bore that he "practiced and learnt" at a great personal cost how to print it instead. The next year, toward the end of 1476, Caxton returned to England and established the now famous press at Westminster.
+In the early 1470s, his interests turned to literature and he started the work of translating books from French to English. Through these ventures, Caxton spent some time in Cologne, Germany learning of the printing presses they had started developing. Although printing with movable type had been invented many centuries earlier in China, the technology was not well developed in Europe until the mid-15th century, meaning that the printing press was quite new at the time. As he worked on his own eventual translation of *'Recueil des histoires de Troye'* (which later become the first book in history to be printed in English), he later recounted that how his "pen became worn, his hand weary, his eye dimmed" with the laborious task of copying the book. Simply, he found the work such a bore that he "practiced and learnt" at a great personal cost how to print it instead. The next year, toward the end of 1476, Caxton returned to England and established the now famous press at Westminster.
 
 At the time, most continental printers made their books in Latin, the international language of the time, so that they could sell them to a wider market. Caxton chose to ride against this wave, and though they were still a luxury aimed at fairly wealthy people, over the coming decades the price of books fell heavily as he streamlined the process and reshaped the way in which people acquired books for information and entertainment.
 
@@ -84,18 +84,15 @@ The internet has introduced many new words in the average person's lexicon. To t
 The fall of formality can also be accredited to the rise of the internet. Though this may be alarming to some, it is far from surprising: as people spend more time talking online in informal contexts, a shadow of their online syntax creeps into their academic work. For example, take [this academic paper](https://www.cambridge.org/core/journals/religious-studies/article/abs/faith-as-extended-knowledge/7072E6F301E99089D56A5DFB7B4B662B) published in 2017, a form of writing that has tended to be as formal as it gets. What is surprising about this text is the high frequency of informal features, including contractions (*isn't*) and first/second person pronouns, all of which would have been an abnormality before the age of the internet:
 
 > "For at least on a popular Christian conception, when **you** believe something truly on the basis of faith this **isn't** because of anything **you're** naturally competent to do…**I argue** in this article that **there's** no deep tension between faith-based knowledge and virtue epistemology."
-> 
-> \- Kegan J. Shaw, Cambridge University Press
+> - Kegan J. Shaw, Cambridge University Press
 
 Modal verbs such as "must", "may", and "shall" have seen an all time low since the start of the internet. This decline was present well before the internet came about to speed it up, but phrases from only a few decades ago now feel archaic:
 
 > "Of course, we shall not be staying here long."
-> 
 > "May I take my jacket off, please?"
-> 
-> \- British National Corpus 1994
+> - British National Corpus 1994
 
-![The decline of English modals](modal_graph.png)
+![modal_graph.png](modal_graph.png)
 
 Simply put, the internet has pushed the boundaries of informality. The way we now communicate online somewhat resembles the telegraphic stage of child language acquisition, where children typically from the ages of around 18 to 24 months old use only the necessary words such as nouns, verbs and adjectives and omit function words such as prepositions and conjunctions. Online communication follows similar patterns; previously pressured by the monetary incentives of short messages, online language has remained laconic and efficient, focused solely on conveying meaning with the fewest words possible. This could be attributed to the fast-paced nature of online communities, creating pressure on our language for quick and concise communication.
 
@@ -119,26 +116,26 @@ Overall, the future of English will be shaped by its role as a global language a
 
 ## Bibliography
 
-1. Al Kadi, A & Ahmed, R 2018, _(PDF) Evolution of english in the internet age_, ResearchGate, viewed 12 August 2023, <https://www.researchgate.net/publication/323052712_Evolution_of_english_in_the_internet_age>.
+1. Al Kadi, A & Ahmed, R 2018, *(PDF) Evolution of english in the internet age*, ResearchGate, viewed 12 August 2023, [https://www.researchgate.net/publication/323052712_Evolution_of_english_in_the_internet_age](https://www.researchgate.net/publication/323052712_Evolution_of_english_in_the_internet_age).
 
-2. Curzan, A 2003, _Gender Shifts in the History of English_, Cambridge University Press.
+2. Curzan, A 2003, *Gender Shifts in the History of English*, Cambridge University Press.
 
-3. Favilla, E 2017, _How the internet changed the way we write – and what to do about it_, The Guardian.
+3. Favilla, E 2017, *How the internet changed the way we write – and what to do about it*, The Guardian.
 
-4. Godwin, R 2019, _How the internet is changing language as we know it (ikr lol)_, the Guardian, viewed 13 August 2023, <https://www.theguardian.com/books/2019/oct/11/how-to-speak-internet-online-writing-richard-godwin>.
+4. Godwin, R 2019, *How the internet is changing language as we know it (ikr lol)*, the Guardian, viewed 13 August 2023, [https://www.theguardian.com/books/2019/oct/11/how-to-speak-internet-online-writing-richard-godwin](https://www.theguardian.com/books/2019/oct/11/how-to-speak-internet-online-writing-richard-godwin).
 
-5. Hist, S-GC n.d., _How did William Caxton influence and change modern English Language?_, Shorthand.
+5. Hist, S-GC n.d., *How did William Caxton influence and change modern English Language?*, Shorthand.
 
-6. Horobin, S 2015, _What will the English language be like in 100 years?_, The Conversation, viewed 13 August 2023, <https://theconversation.com/what-will-the-english-language-be-like-in-100-years-50284>.
+6. Horobin, S 2015, *What will the English language be like in 100 years?*, The Conversation, viewed 13 August 2023, [https://theconversation.com/what-will-the-english-language-be-like-in-100-years-50284](https://theconversation.com/what-will-the-english-language-be-like-in-100-years-50284).
 
-7. Jones, C 2015, _Grammatical Gender in English_, Routledge.
+7. Jones, C 2015, *Grammatical Gender in English*, Routledge.
 
-8. Knibbs, K 2013, _How Internet-speak is changing the way we talk | Digital Trends_, Digital Trends, viewed 13 August 2023, <https://www.digitaltrends.com/social-media/how-the-internet-is-changing-the-way-we-talk/>.
+8. Knibbs, K 2013, *How Internet-speak is changing the way we talk | Digital Trends*, Digital Trends, viewed 13 August 2023, [https://www.digitaltrends.com/social-media/how-the-internet-is-changing-the-way-we-talk/](https://www.digitaltrends.com/social-media/how-the-internet-is-changing-the-way-we-talk/).
 
-9. _Middle English, the Standardisation of English and the Printing Press_ 2012, My English Language, viewed 12 August 2023, <https://www.myenglishlanguage.com/history-of-english/middle-english/>.
+9. *Middle English, the Standardisation of English and the Printing Press* 2012, My English Language, viewed 12 August 2023, [https://www.myenglishlanguage.com/history-of-english/middle-english/](https://www.myenglishlanguage.com/history-of-english/middle-english/).
 
-10. The Editors of Encyclopedia Britannica 2019, _William Caxton | Biography & Facts_, _Encyclopædia Britannica_.
+10. The Editors of Encyclopedia Britannica 2019, *William Caxton | Biography & Facts*, *Encyclopædia Britannica*.
 
-11. The Ohio State University n.d., _The Cases in English | Department of Classics_, classics.osu.edu, viewed 12 August 2023, <https://classics.osu.edu/Undergraduate-Studies/Latin-Program/Grammar/Cases/English-Case>.
+11. The Ohio State University n.d., *The Cases in English | Department of Classics*, classics.osu.edu, viewed 12 August 2023, [https://classics.osu.edu/Undergraduate-Studies/Latin-Program/Grammar/Cases/English-Case](https://classics.osu.edu/Undergraduate-Studies/Latin-Program/Grammar/Cases/English-Case).
 
-12. Tokošová, K & Vogel, M 2015, _Reduction in Noun and Adjective Inflections in Middle English Texts_, 3 June, Masaryk University, Faculty of Education, viewed 12 August 2023, <https://is.muni.cz/th/qu7t4/Tokosova_Bachelor_thesis.pdf>.
+12. Tokošová, K & Vogel, M 2015, *Reduction in Noun and Adjective Inflections in Middle English Texts*, 3 June, Masaryk University, Faculty of Education, viewed 12 August 2023, [https://is.muni.cz/th/qu7t4/Tokosova_Bachelor_thesis.pdf](https://is.muni.cz/th/qu7t4/Tokosova_Bachelor_thesis.pdf).

@@ -1,8 +1,13 @@
 ---
 title: Algorithmics SAT - Friendship Network Part 2
 author: Garv Shah
-date: 2023-07-28
-abstract: "'How can a tourist best spend their day out?'. The first part of this SAT project aimed to model the Victorian public transport network and its proximity to friends' houses in order to construct an algorithm. In Part 2 we will now consider the time complexity of said algorithms and analyse their impact on real life use-cases."
+date: {}
+abstract: >-
+  'How can a tourist best spend their day out?'. The first part of this SAT
+  project aimed to model the Victorian public transport network and its
+  proximity to friends' houses in order to construct an algorithm. In Part 2 we
+  will now consider the time complexity of said algorithms and analyse their
+  impact on real life use-cases.
 geometry: margin=2cm
 output: pdf_document
 colorlinks: true

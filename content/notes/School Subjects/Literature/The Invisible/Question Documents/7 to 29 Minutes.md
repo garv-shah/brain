@@ -1,5 +1,5 @@
 ---
-title: "7 to 29 Minutes"
+title: 7 to 29 Minutes
 ---
 #theinvisible #questions #lit 
 

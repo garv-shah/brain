@@ -1,5 +1,5 @@
 ---
-title: "Newton's Third Law"
+title: Newton's Third Law
 ---
 #physics #kinematics 
 

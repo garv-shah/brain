@@ -1,5 +1,5 @@
 ---
-title: "Locker Door Problem"
+title: Locker Door Problem
 ---
 
 > [!info]

@@ -1,5 +1,5 @@
 ---
-title: "Chapter 24"
+title: Chapter 24
 ---
 
 > [!info]

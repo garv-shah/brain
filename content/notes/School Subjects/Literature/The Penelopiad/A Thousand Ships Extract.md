@@ -1,5 +1,5 @@
 ---
-title: "A Thousand Ships Extract"
+title: A Thousand Ships Extract
 ---
 #lit #flashwrite 
 

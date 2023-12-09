@@ -1,5 +1,5 @@
 ---
-title: "Prestige and Language"
+title: Prestige and Language
 ---
 
 Received Pronunciation:: the accent needed to be received in court, very much like the queen's English

@@ -1,5 +1,5 @@
 ---
-title: "Goat Cabbage Wolf Hunter"
+title: Goat Cabbage Wolf Hunter
 ---
 
 > [!info]

@@ -1,5 +1,5 @@
 ---
-title: "Penelope"
+title: Penelope
 book: The Penelopiad
 type: character
 ---

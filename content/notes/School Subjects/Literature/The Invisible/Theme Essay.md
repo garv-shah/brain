@@ -1,5 +1,5 @@
 ---
-title: "Theme Essay"
+title: Theme Essay
 ---
 
 > [!info]

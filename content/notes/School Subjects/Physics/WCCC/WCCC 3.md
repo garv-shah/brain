@@ -1,5 +1,5 @@
 ---
-title: "WCCC 3"
+title: WCCC 3
 ---
 #physics #wccc #refraction
 

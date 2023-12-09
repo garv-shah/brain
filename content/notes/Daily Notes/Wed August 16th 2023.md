@@ -1,5 +1,5 @@
 ---
-title: "Wed August 16th 2023"
+title: Wed August 16th 2023
 ---
 
 Hi Everyone! My name's Garv and I'd like to be your House Captain for 2024, because how bad can I be? I've asked that question to myself a lot recently and I think it's a question that embodies Langley: how bad can I possibly be?

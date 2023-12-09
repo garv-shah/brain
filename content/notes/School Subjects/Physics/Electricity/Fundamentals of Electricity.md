@@ -1,5 +1,5 @@
 ---
-title: "Fundamentals of Electricity"
+title: Fundamentals of Electricity
 ---
 #physics #electricity
 

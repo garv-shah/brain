@@ -1,5 +1,5 @@
 ---
-title: "Truth and Storytelling"
+title: Truth and Storytelling
 ---
 #flashwrite #thepenelopiad #lit 
 

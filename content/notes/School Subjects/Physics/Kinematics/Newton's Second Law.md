@@ -1,5 +1,5 @@
 ---
-title: "Newton's Second Law"
+title: Newton's Second Law
 ---
 #physics #kinematics 
 

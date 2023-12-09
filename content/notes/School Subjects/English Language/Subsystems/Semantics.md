@@ -1,5 +1,5 @@
 ---
-title: "Semantics"
+title: Semantics
 cards-deck: notes::School Subjects::English Language::Subsystems
 ---
 #englang #subsystem 
@@ -36,5 +36,3 @@ Make something purposely more offensive, such as "snuffed it" for dying
 | Eponyms                               | Elevator        |
 | Metaphor                              | Leg/Tongue      |
 ^1683503025963
-
-

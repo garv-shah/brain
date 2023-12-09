@@ -1,5 +1,5 @@
 ---
-title: "The Birth of Telemachus Close Analysis"
+title: The Birth of Telemachus Close Analysis
 ---
 #lit #flashwrite #analysis
 

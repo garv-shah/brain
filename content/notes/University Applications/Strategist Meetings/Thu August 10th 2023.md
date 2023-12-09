@@ -5,8 +5,8 @@ title: Thu August 10th 2023
 ## Meeting Notes
 **With**: Jon Javier
 **Date**: 10/08/2023
-<mark style="background: #F9C74F; color: #000000">Yellow</mark> = To Action
-<mark style="background: #90BE6D; color: #000000">Green</mark> = Dates/Info
+==Yellow== = To Action
+==Green== = Dates/Info
 
 Studied at UCLA and did a language major in French
 
@@ -18,8 +18,7 @@ Play around with Crimson app and fill it out
 Take a peak at ideas
 
 > [!note]+ Session Notes
-> 
-> ![[Thu August 10th 2023.png]]
+> ![Thu August 10th 2023.png](Thu August 10th 2023.png)
 
 
 ## Awards
@@ -27,7 +26,7 @@ Here's are the noteworthy honours/awards:
 
 - Apple Scholarship, formally the [Swift Student Challenge](https://developer.apple.com/wwdc21/swift-student-challenge/), awarded in 2021 one of 300 global students, overall number of applicants not published
 
-- International Mathematical Modeling Challenge, Award of Meritorious Achievement: 2nd in Australia, one of two teams chosen to represent Australia at the international round. 93 teams across Australia registered
+- International Mathematical Modelling Challenge, Award of Meritorious Achievement: 2nd in Australia, one of two teams chosen to represent Australia at the international round. 93 teams across Australia registered
 
 - Australian Maths Challenge: Prize Award, top 0.3% one in 300 students
 
@@ -49,7 +48,7 @@ Outstanding Academic Achievement:
 
 - Maths Enrichment, History, Science
 
-Class Academic Achievement: 
+Class Academic Achievement:
 
 - Chinese Phase 1, English Sem 1
 
@@ -82,13 +81,13 @@ ICAS:
 - Distinction: English
 
 ### Year 8
-Outstanding Academic Achievement: 
+Outstanding Academic Achievement:
 
 - Design & Technology, English, History, Maths Enrichment, Music Technology, Theatre Studies Sem 1
 
 - English, Art, Theatre Studies Sem 2
 
-Class Academic Achievement: 
+Class Academic Achievement:
 
 - Physical Education Sem 1
 
@@ -126,13 +125,13 @@ ICAS:
 
 ### Year 9
 
-Outstanding Academic Achievement: 
+Outstanding Academic Achievement:
 
 - English, Science, Learning Journeys, Media, Design & Technology Sem 1
 
 - English, Science, Enrichment Maths, Learning Journeys, Coding and Computers
 
-Class Academic Achievement: 
+Class Academic Achievement:
 
 - Enrichment Maths Sem 1
 
@@ -185,17 +184,17 @@ ICAS:
 - Distinction: Writing, Digital Technologies, English, Maths
 
 ### Year 10
-Outstanding Academic Achievement: 
+Outstanding Academic Achievement:
 
 - English, History: Australia and the Modern World Sem 1
 
 - English Sem 2
 
-Class Academic Achievement: 
+Class Academic Achievement:
 
 - Ethics Sem 1
 
-==IMMC Award of Meritorious Achievement: 2nd in Australia, chosen out of two teams to represent Australia at the international round ==
+==IMMC Award of Meritorious Achievement: 2nd in Australia, chosen out of two teams to represent Australia at the international round==
 
 Community Service Emblem
 

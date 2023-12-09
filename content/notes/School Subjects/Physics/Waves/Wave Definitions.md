@@ -1,5 +1,5 @@
 ---
-title: "Wave Definitions"
+title: Wave Definitions
 ---
 
 #physics #waves

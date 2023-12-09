@@ -1,5 +1,5 @@
 ---
-title: "Logbook"
+title: Logbook
 ---
 
 #physics

@@ -1,6 +1,5 @@
 .DS_Store
 public
-resources
 .idea
 node_modules
 prof
@@ -16,3 +15,5 @@ content/.obsidian/plugins/*/*
 assets/indices/linkIndex.json
 assets/indices/contentIndex.json
 linkmap
+
+content/notes/University Applications/resources

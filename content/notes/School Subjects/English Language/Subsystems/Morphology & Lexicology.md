@@ -1,5 +1,5 @@
 ---
-title: "Morphology & Lexicology"
+title: Morphology & Lexicology
 cards-deck: notes::School Subjects::English Language::Subsystems
 ---
 #englang #subsystem 

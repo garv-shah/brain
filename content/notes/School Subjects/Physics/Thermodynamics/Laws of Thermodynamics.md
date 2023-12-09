@@ -1,5 +1,5 @@
 ---
-title: "Laws of Thermodynamics"
+title: Laws of Thermodynamics
 cards-deck: notes::School Subjects::Physics::Thermodynamics
 ---
 #physics #thermodynamics

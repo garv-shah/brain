@@ -1,5 +1,5 @@
 ---
-title: "Oral Presentation Script"
+title: Oral Presentation Script
 ---
 #lit #thepenelopiad #speech 
 

@@ -1,5 +1,5 @@
 ---
-title: "Atwood"
+title: Atwood
 book: The Penelopiad
 type: author
 ---

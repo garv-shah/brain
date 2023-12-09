@@ -1,5 +1,5 @@
 ---
-title: "Freedom of Speech Essay"
+title: Freedom of Speech Essay
 ---
 
 #englang #essay

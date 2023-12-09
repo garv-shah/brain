@@ -1,5 +1,5 @@
 ---
-title: "Variables of Communication"
+title: Variables of Communication
 cards-deck: notes::School Subjects::English Language::What is a Language
 ---
 #englang #notes

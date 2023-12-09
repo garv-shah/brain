@@ -1,11 +1,11 @@
 ---
-title: "Penelope as a Narrator"
+title: Penelope as a Narrator
 ---
 #thepenelopiad #lit #flashwrite 
 
 > [!info]
 > 
-> In what ways does Atwood make Penelope an  unreliable narrator in this chapter? Why do you think she chooses to present Penelope's character in this way?  Use evidence from chapter 15, The Shroud, to support your point of view.
+> In what ways does Atwood make Penelope an unreliable narrator in this chapter? Why do you think she chooses to present Penelope's character in this way?  Use evidence from chapter 15, The Shroud, to support your point of view.
 
 Throughout Chapter 15, we get a glimpse as to why Penelope may not be the most reliable of narrators throughout the novel. In general, the recount of the events in the story are quite opinionated, clouded by a judgement from one side and experience, and as such there can never be one "truth" because all experiences will be under some lens or the other.
 

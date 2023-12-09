@@ -1,5 +1,5 @@
 ---
-title: "Sweet Treats Pseudocode"
+title: Sweet Treats Pseudocode
 ---
 
 > [!info]

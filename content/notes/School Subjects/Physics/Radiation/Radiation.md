@@ -1,5 +1,5 @@
 ---
-title: "Radiation"
+title: Radiation
 cards-deck: notes::School Subjects::Physics::Radiation
 ---
 #physics #radiation

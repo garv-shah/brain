@@ -1,5 +1,5 @@
 ---
-title: "Bridge Crossing Problem"
+title: Bridge Crossing Problem
 ---
 #algo #graphtheory 
 

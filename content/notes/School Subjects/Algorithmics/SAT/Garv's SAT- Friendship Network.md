@@ -1,8 +1,15 @@
 ---
 title: Algorithmics SAT - Friendship Network
 author: Garv Shah
-date: 2022-06-02
-abstract: "'How can a tourist best spend their day out?' I've been finding it hard to plan trips with my friends, especially when everybody lives all over the city and we would all like to travel together. This SAT project aims to model the Victorian public transport network and its proximity to friends' houses, factoring in data about each individual to find the most efficient and effective traversals and pathways for us travelling to locations around Victoria."
+date: {}
+abstract: >-
+  'How can a tourist best spend their day out?' I've been finding it hard to
+  plan trips with my friends, especially when everybody lives all over the city
+  and we would all like to travel together. This SAT project aims to model the
+  Victorian public transport network and its proximity to friends' houses,
+  factoring in data about each individual to find the most efficient and
+  effective traversals and pathways for us travelling to locations around
+  Victoria.
 geometry: margin=2cm
 output: pdf_document
 colorlinks: true

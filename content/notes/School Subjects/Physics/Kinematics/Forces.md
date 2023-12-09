@@ -1,11 +1,10 @@
 ---
-title: "Forces"
+title: Forces
 ---
 #physics #kinematics
 
 > [!info]
-> 
-> <u>Forces</u> - make a change in movement
+> Forces - make a change in movement
 
 $F_{g}=$ gravitational force
 $F_{r}=$ frictional force
@@ -14,7 +13,7 @@ $T=$ tensile force
 For example, tug of war, the force in the rope when it's being pulled, or perhaps a hanging mass
 $F_{N}=$ normal contact force (perpendicular to the surface), same magnitude as $F_{g}$ if no motion
 
-![[Constant Acceleration Equations.png]]
+![Constant Acceleration Equations.png](Constant Acceleration Equations.png)
 
 Additionally, the equation for the vertical displacement of a horizontally launched projectile is:
 $y=\frac{1}{2}gt^2$

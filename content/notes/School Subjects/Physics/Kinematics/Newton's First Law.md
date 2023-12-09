@@ -1,5 +1,5 @@
 ---
-title: "Newton's First Law"
+title: Newton's First Law
 ---
 #physics #kinematics 
 

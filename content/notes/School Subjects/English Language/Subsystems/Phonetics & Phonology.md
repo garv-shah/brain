@@ -1,5 +1,5 @@
 ---
-title: "Phonetics & Phonology"
+title: Phonetics & Phonology
 cards-deck: notes::School Subjects::English Language::Subsystems
 ---
 #englang #subsystem
@@ -11,7 +11,7 @@ Phonetics is the study of human speech sounds, how they're produced, transmitted
 - We refer to individual sounds as phones or sounds, never letters
 - There are two kinds of transcriptions using the IPA; broad and narrow
 - All broad (general or phonemic) transcriptions is done with phonetic slashes /si/
-- All narrow (phonetic) transcription is done within phonetic brackets:  \[si]
+- All narrow (phonetic) transcription is done within phonetic brackets:  [si]
 
 > Questions:
 
@@ -49,17 +49,17 @@ The IPA is an international alphabet that can transcribe any of the world's lang
 
 ### Allophones #card
 What is an allophone? :: Allophones are more specific interpretations of a phoneme, made for narrow transcriptions.  ^1677146865719
-![[Allophone Diagram.png]]
+![Allophone Diagram.png](Allophone Diagram.png)
 
 ### Place + Manner
 #### **Place** of Articulation #card
 **Where** the sound is made
-![[Human Mouth Diagram.png]]
+![Human Mouth Diagram.png](Human Mouth Diagram.png)
 ##### Consonants
-![[Consonant IPA Table.png]]
+![Consonant IPA Table.png](Consonant IPA Table.png)
 The top is the place and the and the left is the manner
 ##### Vowels
-![[Vowel IPA Table.png]]
+![Vowel IPA Table.png](Vowel IPA Table.png)
 #### **Manner** of Articulation
 **How** the sound is made
 ^1685778115248
@@ -88,9 +88,9 @@ Regressive:
 #### Insertion #card
 What is insertion? :: There are two examples of **sounds being added**, generally deliberately. The first is insertion, the other is epenthesis. **Insertion doesn't add a full syllable, whereas epenthesis does**  ^1685778838440
 - a voiceless stop insertion where, between a nasal consonant and a voiceless fricative, a voiceless stop with the same place of articulation as the nasal consonant is inserted.
-	- e.g. In English, many add a /p/ to hamster and say "hampster"/
+    - e.g. In English, many add a /p/ to hamster and say "hampster"/
 - after a nasal consonant, a voiceless stop may be 'added
-	- e.g. In English, many add a /k/ to something which becomes /sʌmθɪŋk/
+    - e.g. In English, many add a /k/ to something which becomes /sʌmθɪŋk/
 ^1677146865725
 
 ##### Epenthesis #card
@@ -115,8 +115,8 @@ Affect **how** we say something
 - Volume is the modulation of volume in your voice, which is used to convey emotions
 - Tempo is the speed and which we speak, reasons for speaking faster or slower
 - Intonation is the pattern of pitch changes in speech, it is the variation of spoken pitch used in language. It can be used to
-	- Indicate the different attitudes and emotions of the speaker
-	- Signal the difference between statements, questions.
+    - Indicate the different attitudes and emotions of the speaker
+    - Signal the difference between statements, questions.
 - Stress is the degree of strength used to pronounce a syllable
 ^1677146865730
 
@@ -128,5 +128,4 @@ Non-verbal features do not affect the features of speech, while paralinguistic f
 - Consonance: Mike likes his new bike
 - Onomatopoeia: boom, crash, brrrrrr
 - Rhythm: I'm going down like a bottle of whiskey
-- Rhyme: The cat and the hat, sat on a mat
-^1677146865731
+- Rhyme: The cat and the hat, sat on a mat^1677146865731

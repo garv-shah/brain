@@ -1,5 +1,5 @@
 ---
-title: "Wien's Law"
+title: Wien's Law
 ---
 #physics #thermodynamics 
 

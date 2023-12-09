@@ -1,5 +1,5 @@
 ---
-title: "What is The Penelopiad About?"
+title: What is The Penelopiad About?
 ---
 #lit #essay #thepenelopiad 
 

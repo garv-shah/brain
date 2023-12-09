@@ -1,5 +1,5 @@
 ---
-title: "Features of Language"
+title: Features of Language
 cards-deck: notes::School Subjects::English Language::What is a Language
 ---
 #englang #notes 

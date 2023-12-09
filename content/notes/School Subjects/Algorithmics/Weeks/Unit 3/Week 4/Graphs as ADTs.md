@@ -1,5 +1,5 @@
 ---
-title: "Graphs as ADTs"
+title: Graphs as ADTs
 ---
 #algo #graphtheory
 

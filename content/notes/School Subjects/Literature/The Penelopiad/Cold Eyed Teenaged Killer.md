@@ -1,5 +1,5 @@
 ---
-title: "Cold Eyed Teenaged Killer"
+title: Cold Eyed Teenaged Killer
 ---
 #lit #flashwrite 
 

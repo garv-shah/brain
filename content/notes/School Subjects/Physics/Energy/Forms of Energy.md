@@ -15,3 +15,6 @@ title: Forms of Energy
 - $E_{g}$ or $GPE$
 - Energy due to position in a gravitational field of an object with mass
 - $E_{g}=mgh$
+## Springs
+k (the spring constant) = $\frac{F}{x}$ or the gradient of a F vs x graph
+- Note: As the displacement is a square relationship in $U_{s}=\frac{1}{2}k(\Delta x)^{2}$, when two springs are at equilibrium with the same fixed hanging mass, the spring with the lower spring constant ($k$) has a larger potential energy $\because$ the displacement outweighs the spring constant.

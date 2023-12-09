@@ -1,5 +1,5 @@
 ---
-title: "Odyssey"
+title: Odyssey
 author: Homer
 type: book
 ---

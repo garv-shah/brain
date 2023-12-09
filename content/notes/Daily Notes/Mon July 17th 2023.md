@@ -1,5 +1,5 @@
 ---
-title: "Mon July 17th 2023"
+title: Mon July 17th 2023
 ---
 
 I'm in the city today! I got invited to [Tildes](https://tildes.net/) which is really cool and I've been having some fun with that. Right now I'm in the Melbourne Connect building and I'm meeting with [Prof Alistair Moffat](https://findanexpert.unimelb.edu.au/profile/13222-alistair-moffat). 
@@ -13,6 +13,7 @@ Below are the main discussion points I want to have with him:
 
 ## Notes for Two Cousins
 > These should be added into the issue tracker later
+
 - the list of available jobs should also have a section underneath it, maybe a button that says view other jobs, and this section should list jobs that are free but that don’t match the availability of the user since some may have more flexible schedules. Also it is not immedietly clear that the cards are interactive/clickable, so there should be an indicator saying “16 times available” to make that more clear.
 - preferably once a lesson time slot is locked in, it should also display on the manage jobs card so that it’s more clear when the lesson is.
 - volunteers should be able to click the start shift button up to 15 mins before the lesson has started, but logic needs to be put in place to “snap” this to lesson times
@@ -22,8 +23,8 @@ Below are the main discussion points I want to have with him:
 - rename the availability at the top to "Weekly Availability" and remove the numbers because that was a bit confusing (might have to fork the syncfusion calendar or add in an option to hide them).
 
 ## To Do For Today
-- [x] Finish Englang Exercises 2-12 #englang 🔺
-- [ ] Start watching Physics Videos #physics
-- [ ] Fix Username Issue #programming 
-- [ ] Fix date pickers for post creation #programming 
-- [ ] Fix the translation layer for rending from quill delta #programming 
+- [x] Finish Englang Exercises 2-12 #englang 🔺 [[.tasks/Finish Englang Exercises 2-12 #englang 🔺]]
+- [ ] Start watching Physics Videos #physics [[.tasks/Start watching Physics Videos #physics]]
+- [ ] Fix Username Issue #programming [[.tasks/Fix Username Issue #programming]]
+- [ ] Fix date pickers for post creation #programming [[.tasks/Fix date pickers for post creation #programming]]
+- [ ] Fix the translation layer for rending from quill delta #programming [[.tasks/Fix the translation layer for rending from quill delta #programming]]

@@ -1,7 +1,7 @@
 ---
-title: "Snail Transcript Presentation"
+title: Snail Transcript Presentation
 author: Garv Shah
-date: 2022-05-22
+date: {}
 ---
 
 ## Introduction

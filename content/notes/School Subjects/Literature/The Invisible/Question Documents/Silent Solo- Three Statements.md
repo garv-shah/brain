@@ -1,5 +1,5 @@
 ---
-title: "Silent Solo- Three Statements"
+title: Silent Solo- Three Statements
 ---
 #lit #flashwrite 
 

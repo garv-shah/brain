@@ -1,5 +1,5 @@
 ---
-title: "World & Setting"
+title: World & Setting
 ---
 #theinvisible #flashwrite 
 

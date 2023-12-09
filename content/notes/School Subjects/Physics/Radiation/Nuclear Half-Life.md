@@ -1,5 +1,5 @@
 ---
-title: "Nuclear Half-Life"
+title: Nuclear Half-Life
 cards-deck: notes::School Subjects::Physics::Radiation
 ---
 ## Half-life #card 

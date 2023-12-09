@@ -1,5 +1,5 @@
 ---
-title: "Interesting English Language Articles"
+title: Interesting English Language Articles
 ---
 
 #englang #research

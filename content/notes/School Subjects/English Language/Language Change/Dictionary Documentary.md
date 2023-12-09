@@ -1,5 +1,5 @@
 ---
-title: "Dictionary Documentary"
+title: Dictionary Documentary
 ---
 #englang #documentary
 

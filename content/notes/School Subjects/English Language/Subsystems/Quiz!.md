@@ -1,5 +1,5 @@
 ---
-title: "Quiz!"
+title: Quiz!
 cards-deck: notes::School Subjects::English Language::Subsystems
 ---
 #subsystem #englang 

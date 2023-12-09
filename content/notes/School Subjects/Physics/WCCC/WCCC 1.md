@@ -1,5 +1,5 @@
 ---
-title: "WCCC 1"
+title: WCCC 1
 ---
 
 #physics #wccc #waves 

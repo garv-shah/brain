@@ -1,5 +1,5 @@
 ---
-title: "Sun July 30th 2023"
+title: Sun July 30th 2023
 ---
 
 School leadership!

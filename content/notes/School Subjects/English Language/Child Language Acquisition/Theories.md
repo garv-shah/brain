@@ -1,5 +1,5 @@
 ---
-title: "Theories"
+title: Theories
 cards-deck: notes::School Subjects::English Language::Child Language Acquisition
 ---
 #englang #cla 

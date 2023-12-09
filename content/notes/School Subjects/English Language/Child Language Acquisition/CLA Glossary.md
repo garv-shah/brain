@@ -1,5 +1,5 @@
 ---
-title: "CLA Glossary"
+title: CLA Glossary
 cards-deck: notes::School Subjects::English Language::Child Language Acquisition
 ---
 #englang #cla

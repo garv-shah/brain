@@ -13,18 +13,21 @@ jobs:
         with:
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
-      - name: Build Link Index
-        uses: jackyzha0/hugo-obsidian@v2.20
-        with:
-          index: true
-          input: content
-          output: assets/indices
-          root: .
-
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: 18
+
+      - name: Get Dependencies
+        run: npm i
+
+      - name: Cache Dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
       - name: Build
         run: npx quartz build --bundleInfo

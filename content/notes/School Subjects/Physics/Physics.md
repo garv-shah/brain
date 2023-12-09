@@ -1,5 +1,5 @@
 ---
-title: "Physics"
+title: Physics
 ---
 #physics #subject
 

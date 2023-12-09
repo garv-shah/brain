@@ -1,5 +1,5 @@
 ---
-title: "The Obstacle To Go Through"
+title: The Obstacle To Go Through
 ---
 #lit #thepenelopiad #flashwrite 
 

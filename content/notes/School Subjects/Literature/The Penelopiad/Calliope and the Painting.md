@@ -1,5 +1,5 @@
 ---
-title: "Calliope and the Painting"
+title: Calliope and the Painting
 ---
 #lit #flashwrite
 

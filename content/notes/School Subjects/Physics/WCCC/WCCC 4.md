@@ -1,5 +1,5 @@
 ---
-title: "WCCC 4"
+title: WCCC 4
 ---
 #wccc #physics #thermodynamics 
 

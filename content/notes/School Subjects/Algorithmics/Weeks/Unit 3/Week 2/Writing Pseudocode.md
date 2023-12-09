@@ -1,5 +1,5 @@
 ---
-title: "Writing Pseudocode"
+title: Writing Pseudocode
 ---
 
 > [!info]

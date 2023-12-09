@@ -1,5 +1,5 @@
 ---
-title: "Eight Minute Questions"
+title: Eight Minute Questions
 ---
 #theinvisible #questions #lit 
 

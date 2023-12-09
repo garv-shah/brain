@@ -1,5 +1,5 @@
 ---
-title: "Applications of Electric Circuits"
+title: Applications of Electric Circuits
 ---
 #physics #electricity 
 
@@ -29,8 +29,8 @@ V_{L} = \frac{R_{L}}{R_{i}+R_{L}}\times V_{in}
 $$
 
 ## Diodes
-![[Diode Diagram.png]]
+![Diode Diagram.png](Diode Diagram.png)
 A diode only allows the current to go through in one direction, which is the direction of the arrow. In the other direction, it blocks that.
 
 Most diodes "switch on" at about 0.7V. Refer to the graph below.
-![[Knee Voltage.png]]
+![Knee Voltage.png](Knee Voltage.png)

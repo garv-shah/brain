@@ -1,5 +1,5 @@
 ---
-title: "University Applications"
+title: University Applications
 ---
 #university 
 

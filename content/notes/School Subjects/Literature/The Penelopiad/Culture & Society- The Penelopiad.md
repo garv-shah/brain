@@ -1,5 +1,5 @@
 ---
-title: "Culture & Society- The Penelopiad"
+title: Culture & Society- The Penelopiad
 ---
 #lit #flashwrite #thepenelopiad 
 

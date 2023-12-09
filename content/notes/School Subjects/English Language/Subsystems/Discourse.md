@@ -1,5 +1,5 @@
 ---
-title: "Discourse"
+title: Discourse
 cards-deck: notes::School Subjects::English Language::Subsystems
 ---
 #englang #subsystem 

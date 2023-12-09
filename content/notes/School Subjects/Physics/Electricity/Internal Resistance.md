@@ -1,5 +1,5 @@
 ---
-title: "Internal Resistance"
+title: Internal Resistance
 ---
 #physics #electricity 
 

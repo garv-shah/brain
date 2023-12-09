@@ -1,5 +1,5 @@
 ---
-title: "Thu August 24th 2023"
+title: Thu August 24th 2023
 ---
 #crimson #meeting
 ## Meeting Notes

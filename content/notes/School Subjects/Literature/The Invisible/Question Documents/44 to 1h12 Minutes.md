@@ -1,5 +1,5 @@
 ---
-title: "44 to 1h12 Minutes"
+title: 44 to 1h12 Minutes
 ---
 #lit #questions #flashwrite 
 

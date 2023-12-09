@@ -1,5 +1,5 @@
 ---
-title: "Ohm's Law"
+title: Ohm's Law
 ---
 #physics #electricity 
 

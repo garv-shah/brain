@@ -2,7 +2,14 @@
 title: Algorithmics SAT - Friendship Network Part 3
 author: Garv Shah
 date: 25/08/2023
-abstract: "'How can a tourist best spend their day out?'. The first part of this SAT project aimed to model the Victorian public transport network and its proximity to friends' houses in order to construct an algorithm and the second part considered the time complexity of said algorithms and analysed their impact on real life use-cases. In Part 3, we will finally design an improved algorithm for the original problem using more advanced algorithm design techniques"
+abstract: >-
+  'How can a tourist best spend their day out?'. The first part of this SAT
+  project aimed to model the Victorian public transport network and its
+  proximity to friends' houses in order to construct an algorithm and the second
+  part considered the time complexity of said algorithms and analysed their
+  impact on real life use-cases. In Part 3, we will finally design an improved
+  algorithm for the original problem using more advanced algorithm design
+  techniques
 geometry: margin=3cm
 output: pdf_document
 colorlinks: true
@@ -27,11 +34,11 @@ Let $R =$ number of routes
 From Part 2, there were various possible optimisations that became evident from the time complexity analysis. These read as follows:
 
 1. The [current implementation of Dijkstra's](#dijkstras) is far from optimal: the current algorithm has a cubic time complexity but with a min priority queue this can supposedly be reduced to $O(L+R\log{L})$.
-   
-2. The abstraction of [`soonest_time_at_node`](#distance-function) can be implemented as a dictionary that is accessed in constant time but is currently implemented as two for loops that makes the [`dist`](#distance-function) function more complex than necessary. 
-   
+
+2. The abstraction of `soonest_time_at_node` can be implemented as a dictionary that is accessed in constant time but is currently implemented as two for loops that makes the `dist` function more complex than necessary.
+
 3. The biggest optimisation needed is the caching of the Held-Karp outputs, meaning that subpaths are calculated once only, and all subsequent subpaths will be read in $O(1)$ time (basically dynamic programming by definition). This should probably help the factorial time complexity, though it might be hindered by the fact that a different starting time means that the whole sub-path is different which decreases how effective this optimisation is.
-   
+
 4. Finally, it may be worth considering approximate solutions. This being said, the scope of the problem to solve does *just* fit into the practical input sizes that the algorithm allows, but definitely limits its usefulness and real world use cases. In many times, the *best* solution is not needed, just a relatively good one.
 
 The first three can be implemented and compared relatively easily, so they will be the focus of this section.
@@ -52,7 +59,7 @@ A heap is a special tree-based data structure in which the tree is a complete bi
 
 Interestingly, since there are no gaps in the tree, the heap can actually be stored simply as an array with additional logic for adding and removing from the priority queue.
 
-![Complete Binary Tree](complete_binary_tree.svg "Complete Binary Tree")
+![Complete Binary Tree](complete_binary_tree.svg)
 
 ##### Insertion
 
@@ -65,29 +72,30 @@ Since we would want to remove the smallest node, this would of course be the roo
 #### Improvement
 
 | Visit Set Size | Initial Algorithm (s) | Improved Dijkstra's (s) |
-| -------------- | --------------------- | ----------------------- |
-| 8              | 1.4038                | 1.2842                  |
-| 9              | 3.9718                | 3.9315                  |
+|---|---|---|
+| 8 | 1.4038 | 1.2842 |
+| 9 | 3.9718 | 3.9315 |
+
 
 All times are the average of 10 trials. Evidently, the improvement is slight, if any improvement at all. 
 
 ### Improving Distance Function
 
-To find the [`soonest_time_at_node`](#distance-function), the original Pythonic implementation was using a nested for loop to find when the next train/bus would arrive. This is thoroughly inefficient, namely due to the amount of times that the [`dist`](#distance-function) function is called, meaning that there would be a lot of overlap. This *could* be improved using dynamic programming, but since there is a fixed amount of time in a day (24 hours), it doesn't actually take that long to precompute this waiting time and store it along with the rest of our data. The pseudocode for this function is below:
+To find the `soonest_time_at_node`, the original Pythonic implementation was using a nested for loop to find when the next train/bus would arrive. This is thoroughly inefficient, namely due to the amount of times that the `dist` function is called, meaning that there would be a lot of overlap. This *could* be improved using dynamic programming, but since there is a fixed amount of time in a day (24 hours), it doesn't actually take that long to precompute this waiting time and store it along with the rest of our data. The pseudocode for this function is below:
 
 ```
 time_data = dictionary of dictionaries
 
 for line in line_data:
-	for start_node in line_data[line]['timetable']:
-		for current_time in every minute of a day:
-			// calculate next time at node
-			for arrival_time at start_node:
-				if arrival_time >= current_time and is first:
-					next_time = arrival_time
-			
-			wait_time = next_time - current_time
-			add wait_time to time_date
+    for start_node in line_data[line]['timetable']:
+        for current_time in every minute of a day:
+            // calculate next time at node
+            for arrival_time at start_node:
+                if arrival_time >= current_time and is first:
+                    next_time = arrival_time
+            
+            wait_time = next_time - current_time
+            add wait_time to time_date
 ```
 
 This produces a rather large dictionary of wait times, but the change to $O(1)$ time complexity pays off, even if space complexity is sacrificed.
@@ -96,10 +104,11 @@ This produces a rather large dictionary of wait times, but the change to $O(1)$ 
 
 
 | Visit Set Size | Initial Algorithm (s) | Improved Dijkstra's (s) | Improved Dist (s) |
-| -------------- | --------------------- | ----------------------- | ----------------- |
-| 8              | 1.4038                | 1.2842                  | 0.2746            |
-| 9              | 3.9718                | 3.9315                  | 2.2123            |
-| 10             | 27.8881               |                         | 24.4954           |
+|---|---|---|---|
+| 8 | 1.4038 | 1.2842 | 0.2746 |
+| 9 | 3.9718 | 3.9315 | 2.2123 |
+| 10 | 27.8881 |  | 24.4954 |
+
 
 All times are the average of 10 trials and improvements are cumulative. The improvement seems quite large for smaller visit set sizes, but evidently this does not influence the Big O much as $\lim n \rightarrow \infty$. 
 
@@ -114,14 +123,15 @@ The pseudocode for this process is relatively simple and [can be found below](#f
 #### Improvement
 
 | Visit Set Size | Initial Algorithm (s) | Improved Dijkstra's (s) | Improved Dist (s) | Improved Held-Karp (s) |
-| -------------- | --------------------- | ----------------------- | ----------------- | ---------------------- |
-| 8              | 1.4038                | 1.2842                  | 0.2746            | 0.0264                 |
-| 9              | 3.9718                | 3.9315                  | 2.2123            | 0.0579                 |
-| 10             | 27.8881               |                         | 24.4954           | 0.1460                 |
-| 11             |                       |                         |                   | 0.2339                 |
-| 12             |                       |                         |                   | 0.5172                 |
-| 13             |                       |                         |                   | 1.2122                  |
-| 14             |                       |                         |                   | 2.8075                 |
+|---|---|---|---|---|
+| 8 | 1.4038 | 1.2842 | 0.2746 | 0.0264 |
+| 9 | 3.9718 | 3.9315 | 2.2123 | 0.0579 |
+| 10 | 27.8881 |  | 24.4954 | 0.1460 |
+| 11 |  |  |  | 0.2339 |
+| 12 |  |  |  | 0.5172 |
+| 13 |  |  |  | 1.2122 |
+| 14 |  |  |  | 2.8075 |
+
 
 All times are the average of 10 trials and improvements are cumulative. The improvement from this change is much better than the previous changes, likely changing our Big O time from factorial to exponential, as seen by the roughly doubling running times. This can be verified by creating a line of best fit from the data above, which works out to be $t(n) \approx a^{n-b}$ where $a=2.29792$ and $b=12.7609$. This has an $R^{2}$ value of $0.9996$, which provides us with a relatively high confidence that the new algorithm has $\Theta(2^{n})$. According to this line of best fit, $n=20$ would take about 7 minutes and 53 seconds, while $n=30$ would take almost 3 weeks.
 
@@ -176,28 +186,28 @@ Below is the pseudocode to generate an initial candidate solution. Note that in 
 ```
 // creates a canditate solution using the NN Heuristic
 function canditate_solution (
-	start: node, 
-	end: node,
-	visit: set of nodes,
-	current_time: datetime,
+    start: node, 
+    end: node,
+    visit: set of nodes,
+    current_time: datetime,
 ):
-	path = [start]
-	current_vertex = start
-	cost = 0
-	
-	while len(visit) != 0:
-		closest_node = fetch_djk(current_vertex, visit, current_time)
-		path.add(closest_node)
-		cost += closest_node.cost
-		visit.remove(closest_node)
-		current_vertex = closest_node
-	
-	// go back to the end node
-	closest_node = fetch_djk(current_vertex, end, current_time)
-	path.add(closest_node)
-	cost += closest_node.cost
-	
-	return {'path': path, 'cost': cost}
+    path = [start]
+    current_vertex = start
+    cost = 0
+    
+    while len(visit) != 0:
+        closest_node = fetch_djk(current_vertex, visit, current_time)
+        path.add(closest_node)
+        cost += closest_node.cost
+        visit.remove(closest_node)
+        current_vertex = closest_node
+    
+    // go back to the end node
+    closest_node = fetch_djk(current_vertex, end, current_time)
+    path.add(closest_node)
+    cost += closest_node.cost
+    
+    return {'path': path, 'cost': cost}
 end function
 ```
 
@@ -209,7 +219,8 @@ One way to do this is random swapping, where we randomly pick two cities in the 
 
 A slightly more sophisticated technique than randomly swapping the nodes is a method called Pairwise Exchange or 2-opt. The main idea is that we can select any two edges and reconfigure them in the only other way possible with the hopes that this may result in a lower cost tour.
 
-![Demonstration of the 2-opt Technique](2-opt.png "Demonstration of the 2-opt Technique"){ height=360px } 
+![2-opt.png](2-opt.png)
+{ height=360px } 
 
 For example, in the diagram above, it can be seen that the pairs $b-e$ and $c-f$ cross over each other, so the edges can be swapped so that they do not. 
 
@@ -236,447 +247,187 @@ This basic logic can be combined with the Hill Climbing Heuristic to provide a s
 
 ```
 function pairwise_swap (
-	u: integer,
-	v: integer,
-	path: path of nodes
+    u: integer,
+    v: integer,
+    path: path of nodes
 ):
-	new_tour = []
-	
-	for i in [0, u]:
-		new_tour.add(path[i])
-	for i in [v, u):
-		new_tour.add(path[i])
-	for i in (v, len(path)]:
-		new_tour.add(path[i])
-	
-	return new_tour
+    new_tour = []
+    
+    for i in [0, u]:
+        new_tour.add(path[i])
+    for i in [v, u):
+        new_tour.add(path[i])
+    for i in (v, len(path)]:
+        new_tour.add(path[i])
+    
+    return new_tour
 end function
 
 function calculate_cost (
-	path: path of nodes,
-	current_time: datetime
+    path: path of nodes,
+    current_time: datetime
 ):
-	cost = 0
-	time = current_time
-	
-	for i from 0 to len(path) - 1:
-		djk = fetch_djk(path[i], path[i + 1], current_time)
-		cost += djk['cost']
-		time += djk['cost'] number of minutes
-	
-	return cost
+    cost = 0
+    time = current_time
+    
+    for i from 0 to len(path) - 1:
+        djk = fetch_djk(path[i], path[i + 1], current_time)
+        cost += djk['cost']
+        time += djk['cost'] number of minutes
+    
+    return cost
 end function
 
 function hill_climbing (
-	candidate: path of nodes,
-	current_time: datetime,
-	fail_count: int = 0
+    candidate: path of nodes,
+    current_time: datetime,
+    fail_count: int = 0
 ):
-	if fail_count < 200:
-		cost = calculate_cost(candidate, current_time)
-		u = random number from 1 to len(candidate) - 1 inclusive
-		v = random number from u to len(candidate) - 1 inclusive
-		
-		new_tour = pairwise_swap(u, v, candidate)
-		new_cost = calculate_cost(new_tour, current_time)
-		
-		if new_cost <= cost:
-			// new cost is better/equal -> accept
-			return hill_climbing(new_tour, current_time, 0)
-		else:
-			// new cost is worse -> go again
-			return hill_climbing(candidate, current_time, fail_count + 1)
-	else:
-		return candidate
-end function
-```
-
-Note that the above range of $u$ and $v$ values has been chosen to prevent them from referring to the start or end of the tour, since in our particular use case we would like to force the tour to start and end at particular locations
-
-### Simulated Annealing
-
-One of the problems with the above solution is that it will quite easily get stuck on a local minimum. Demonstrated by the graph below, the Hill Climbing Heuristic is blind to anything besides its local vicinity. As such, there may be an overall better solution, but not one that can be achieved by constantly improving the current candidate solution. In other words, sometimes things have to get worse before they get better, especially for the TSP.
-
-![Example of the Limitations of Hill Climbing](Local%20Minima%20Example.png "Example of the Limitations of Hill Climbing")
-
-Currently, once the Hill Climbing algorithm is implemented in Python, it produces a somewhat suboptimal result. It is hardcoded to terminate after it has had 200 consecutive iterations that have seen no improvement. Sometimes, it can terminate on a relatively good result, but in other cases it gets stuck on much more sub-par candidates. This can be demonstrated by the two paths bellow, both of which the Hill Climbing algorithm terminated on.
-
-```
-The cost has been improved from 234.0 to 227.0
-['Brandon Park', 'Oakleigh', 'Wheelers Hill Library', 'CGS WH', 'Chadstone', 'Caulfield', 'Flinders Street', 'Camberwell', 'Parliament', 'Melbourne Central', 'Brighton Beach', 'Richmond', 'Mount Waverley', 'Glen Waverley', 'Brandon Park']
-```
-
-```
-The cost has been improved from 277.0 to 270.0
-['Brandon Park', 'CGS WH', 'Glen Waverley', 'Mount Waverley', 'Camberwell', 'Chadstone', 'Caulfield', 'Brighton Beach', 'Flinders Street', 'Melbourne Central', 'Parliament', 'Richmond', 'Oakleigh', 'Wheelers Hill Library', 'Brandon Park']
-```
-
-Simulated Annealing is a concept that builds off of this idea of possibly selecting a worse solution to hopefully get to the global optimum. Namely, it tries to explore as much of the search space as possible at the start (by being more likely to select worse candidates) and then gradually reduces this chance so that it can converge on a better solution. 
-
-The logic behind this is quite similar to Hill Climbing:
-
-1. Start with a candidate solution, from a previous algorithm or just a random tour.
-   
-2. Modify this candidate by trying to apply some tour improvements, in this case 2-opt.
-   
-3. Decide whether to accept the new solution or stay with the old one.
-
-The key difference here is step 3. In both algorithms, if the new tour's cost is lower than the previous one, we will always accept it. If the cost is more than the current solution, with some probability, we will actually accept the higher cost solution but this probability will decrease over time.
-
-How this probability is determined is mostly based on a parameter called the "Temperature" $T$. At the start we will initialise this to a high value, and a higher temperature means we are more likely to select a worse solution. Any $T \in [0, 1]$ will work, but we want to gradually reduce our temperature over time, so that it can influence some probability function.
-
-There are usually three main types of temperature reduction functions, where $\alpha$ is the factor by which the temperature is scaled after $n$ iterations:
-
-1. Linear Reduction Rule: $T = T - \alpha$
-   
-2. Geometric Reduction Rule: $T = T \times \alpha$
-   
-3. Slow-Decrease Rule[^1]: $T = \frac{T}{1+\beta T}$
-
-[^1]: This rule is not often used, but $\beta$ is a different constant that we'll get to later.
-
-Each of these reduction rules decreases the temperature at a different rate, so they may be better for different use cases. For now, we will settle upon the Geometric Reduction Rule (as it is the most common).
-
-Starting at the initial temperature, the algorithm will loop through $n$ iterations and then decrease the temperature according to the selected temperature reduction function at the end of every iteration. This loop will stop once the terminating condition is reached, generally some low cutoff temperature where we have determined an acceptable amount of the search space has been explored. 
-
-Finally, within each iteration, we will use our temperature, the old cost and the new cost to determine whether we accept the new solution or not. This follows the formula below where $\Delta c = \textrm{new cost} - \textrm{old cost}$:
-
-$$
-P=
-\begin{cases} 
-  1 & \Delta c \leq 0 \\
-  e^{-\beta \Delta c/T} & 0 < \Delta c\\
-\end{cases}
-$$
-
-To demonstrate, if the new cost is less than or equal to the old cost, the new cost will always be accepted. If on the other hand the new cost is greater, then we *might* pick it based on the formula shown above. This equation is inspired by the formula for the energy released by metal particles as they cool down from thermodynamics: $P(\Delta E) = e^{-\frac{\Delta E}{k * t}}$. This process is known as annealing, hence the name of the algorithm! Borrowing this equation from physics turns out to be quite elegant, giving us a probability distribution known as the Boltzman distribution.
-
-It is worth noting the different parameters that can be tuned, and the effectiveness of the algorithm depends on the choice of these parameters:
-
-1. $\beta$ - Normalising Constant
-   The choice of this constant is dependent on the expected variation in the performance measure over the search space, If the chosen value of $\beta$ is higher, the probability of accepting a solution is supposedly also higher in later iterations. In our use case, we can simply play around with this number and see if it changes anything!
-   
-2. $T_{0}$ - Initial Temperature
-   This is simply the temperature we start with, and should be relatively close to one so that we accept a lot of new solutions at the start. For now, we will set $T_{0} = 0.98$.
-
-3. $\alpha$ - Temperature Scaling Factor
-   As explained above, depending on the temperature reduction function chosen, $\alpha$ will reduce it at a different rate. Low $\alpha$ values restrict the search space faster, so we can choose $\alpha = 0.85$ for now.
-
-The number of iterations before the temperature is updated can also be played around with, for now this will be set to 5. Also, the cutoff terminating temperature can also be set to allow the algorithm to search for longer.
-
-The above should demonstrate the main weakness of simulated annealing: there are a lot of tunable parameters that vastly influence the performance of the algorithm. If our input data is very sparse, the algorithm may perform much worse for certain use cases. Nonetheless, it is most definitely an improvement over the Hill Climbing algorithm as it does not increase time complexity or space complexity, but it does provide a more accurate output.
-
-Below is the pseudocode that summarises the above discussion:
-
-```
-function acceptance_probability (
-	old_cost: number,
-	new_cost: number,
-	beta: number,
-	temp: number
+    if fail_count < 200:
+        cost = calculate_cost(candidate, current_time)
+        u = random number from 1 to len(candidate) - 1 inclusive
+        v = random number from u to len(candidate) - 1 inclusive
+        
+        new_tour = pairwise_swap(u, v, candidate)
+        new_cost = calculate_cost(new_tour, current_time)
+        
+        if new_cost  accept
+            return hill_climbing(new_tour, current_time, 0)
+        else:
+            // new cost is worse -> go again
+            return hill_climbing(candidate, current_time, fail_count + 1)
+    else:
+        return candidate
+end functionNote that the above range of  and  values has been chosen to prevent them from referring to the start or end of the tour, since in our particular use case we would like to force the tour to start and end at particular locationsSimulated AnnealingOne of the problems with the above solution is that it will quite easily get stuck on a local minimum. Demonstrated by the graph below, the Hill Climbing Heuristic is blind to anything besides its local vicinity. As such, there may be an overall better solution, but not one that can be achieved by constantly improving the current candidate solution. In other words, sometimes things have to get worse before they get better, especially for the TSP.Currently, once the Hill Climbing algorithm is implemented in Python, it produces a somewhat suboptimal result. It is hardcoded to terminate after it has had 200 consecutive iterations that have seen no improvement. Sometimes, it can terminate on a relatively good result, but in other cases it gets stuck on much more sub-par candidates. This can be demonstrated by the two paths bellow, both of which the Hill Climbing algorithm terminated on.The cost has been improved from 234.0 to 227.0
+['Brandon Park', 'Oakleigh', 'Wheelers Hill Library', 'CGS WH', 'Chadstone', 'Caulfield', 'Flinders Street', 'Camberwell', 'Parliament', 'Melbourne Central', 'Brighton Beach', 'Richmond', 'Mount Waverley', 'Glen Waverley', 'Brandon Park']The cost has been improved from 277.0 to 270.0
+['Brandon Park', 'CGS WH', 'Glen Waverley', 'Mount Waverley', 'Camberwell', 'Chadstone', 'Caulfield', 'Brighton Beach', 'Flinders Street', 'Melbourne Central', 'Parliament', 'Richmond', 'Oakleigh', 'Wheelers Hill Library', 'Brandon Park']Simulated Annealing is a concept that builds off of this idea of possibly selecting a worse solution to hopefully get to the global optimum. Namely, it tries to explore as much of the search space as possible at the start (by being more likely to select worse candidates) and then gradually reduces this chance so that it can converge on a better solution. The logic behind this is quite similar to Hill Climbing:Start with a candidate solution, from a previous algorithm or just a random tour.Modify this candidate by trying to apply some tour improvements, in this case 2-opt.Decide whether to accept the new solution or stay with the old one.The key difference here is step 3. In both algorithms, if the new tour's cost is lower than the previous one, we will always accept it. If the cost is more than the current solution, with some probability, we will actually accept the higher cost solution but this probability will decrease over time.How this probability is determined is mostly based on a parameter called the "Temperature" . At the start we will initialise this to a high value, and a higher temperature means we are more likely to select a worse solution. Any  will work, but we want to gradually reduce our temperature over time, so that it can influence some probability function.There are usually three main types of temperature reduction functions, where  is the factor by which the temperature is scaled after  iterations:Linear Reduction Rule: Geometric Reduction Rule: Slow-Decrease Rule[^1]: [^1]: This rule is not often used, but  is a different constant that we'll get to later.Each of these reduction rules decreases the temperature at a different rate, so they may be better for different use cases. For now, we will settle upon the Geometric Reduction Rule (as it is the most common).Starting at the initial temperature, the algorithm will loop through  iterations and then decrease the temperature according to the selected temperature reduction function at the end of every iteration. This loop will stop once the terminating condition is reached, generally some low cutoff temperature where we have determined an acceptable amount of the search space has been explored. Finally, within each iteration, we will use our temperature, the old cost and the new cost to determine whether we accept the new solution or not. This follows the formula below where :To demonstrate, if the new cost is less than or equal to the old cost, the new cost will always be accepted. If on the other hand the new cost is greater, then we might pick it based on the formula shown above. This equation is inspired by the formula for the energy released by metal particles as they cool down from thermodynamics: . This process is known as annealing, hence the name of the algorithm! Borrowing this equation from physics turns out to be quite elegant, giving us a probability distribution known as the Boltzman distribution.It is worth noting the different parameters that can be tuned, and the effectiveness of the algorithm depends on the choice of these parameters: - Normalising ConstantThe choice of this constant is dependent on the expected variation in the performance measure over the search space, If the chosen value of  is higher, the probability of accepting a solution is supposedly also higher in later iterations. In our use case, we can simply play around with this number and see if it changes anything! - Initial TemperatureThis is simply the temperature we start with, and should be relatively close to one so that we accept a lot of new solutions at the start. For now, we will set . - Temperature Scaling FactorAs explained above, depending on the temperature reduction function chosen,  will reduce it at a different rate. Low  values restrict the search space faster, so we can choose  for now.The number of iterations before the temperature is updated can also be played around with, for now this will be set to 5. Also, the cutoff terminating temperature can also be set to allow the algorithm to search for longer.The above should demonstrate the main weakness of simulated annealing: there are a lot of tunable parameters that vastly influence the performance of the algorithm. If our input data is very sparse, the algorithm may perform much worse for certain use cases. Nonetheless, it is most definitely an improvement over the Hill Climbing algorithm as it does not increase time complexity or space complexity, but it does provide a more accurate output.Below is the pseudocode that summarises the above discussion:function acceptance_probability (
+    old_cost: number,
+    new_cost: number,
+    beta: number,
+    temp: number
 ):
-	c = new_cost - old_cost
-	
-	if c <= 0:
-		return 1
-	else:
-		return e**((-beta * c)/temp)
-end function
-
-function simulated_annealing (
-	candidate: path of nodes,
-	current_time: datetime,
+    c = new_cost - old_cost
+    
+    if c  min_temp:
+        for n from 1 to temp_change:
+            u = random number from 1 to len(candidate) - 1 inclusive
+            v = random number from u to len(candidate) - 1 inclusive
+            
+            new_tour = pairwise_swap(u, v, candidate)
+            new_cost = calculate_cost(new_tour, current_time)
+            
+            ap = acceptance_probability(old_cost, new_cost, beta, temp)
+            
+            if ap > random float from 0 to 1:
+                candidate = new_tour
+                old_cost = new_cost
+            
+        temp *= alpha
+        
+    return candidate
+end functionNormalising FunctionSomething that may have become apparent when viewing the above examples is how the paths generated by this approximate solution are somehow much shorter than those generated by Held-Karp. This is due to the fact that the implementation of Held-Karp is not restricted to only visiting each node once, whereas the approximate algorithms are. Due to this, we get some interesting behaviour that needs to be accounted for.['Brandon Park', 'Oakleigh', 'CGS WH', 'Wheelers Hill Library', 'Caulfield', 'Flinders Street', 'Melbourne Central', 'Parliament', 'Glen Waverley', 'Chadstone', 'Brighton Beach', 'Camberwell', 'Mount Waverley', 'Richmond', 'Brandon Park']The above is a path generated by the Hill Climbing algorithm. The issue to note is that it advises the user to go from Glen Waverley to Chadstone, but there is no edge between them for this to happen. Since the algorithms have been using Dijkstra's to go to any other node, it has in essence been treating our tour as a complete graph, even though it is not. As such, the edges in between these locations need to be added in again.This is quite simple to do, and is similar to the calculate_cost, except the paths are added instead of the costs.function normalise_path (
+    path: path of nodes,
+    current_time: datetime
 ):
-	// parameters to fiddle with
-	temp = 0.98
-	min_temp = 0.00001
-	temp_change = 5
-	beta = 1.2
-	alpha = 0.85
-	
-	old_cost = calculate_cost(candidate, current_time)
-	
-	while temp > min_temp:
-		for n from 1 to temp_change:
-			u = random number from 1 to len(candidate) - 1 inclusive
-			v = random number from u to len(candidate) - 1 inclusive
-			
-			new_tour = pairwise_swap(u, v, candidate)
-			new_cost = calculate_cost(new_tour, current_time)
-			
-			ap = acceptance_probability(old_cost, new_cost, beta, temp)
-			
-			if ap > random float from 0 to 1:
-				candidate = new_tour
-				old_cost = new_cost
-			
-		temp *= alpha
-		
-	return candidate
-end function
-```
-
-#### Normalising Function
-
-Something that may have become apparent when viewing the above examples is how the paths generated by this approximate solution are somehow much shorter than those generated by Held-Karp. This is due to the fact that the implementation of Held-Karp is not restricted to only visiting each node once, whereas the approximate algorithms are. Due to this, we get some interesting behaviour that needs to be accounted for.
-
-```
-['Brandon Park', 'Oakleigh', 'CGS WH', 'Wheelers Hill Library', 'Caulfield', 'Flinders Street', 'Melbourne Central', 'Parliament', 'Glen Waverley', 'Chadstone', 'Brighton Beach', 'Camberwell', 'Mount Waverley', 'Richmond', 'Brandon Park']
-```
-
-The above is a path generated by the Hill Climbing algorithm. The issue to note is that it advises the user to go from Glen Waverley to Chadstone, but there is no edge between them for this to happen. Since the algorithms have been using Dijkstra's to go to any other node, it has in essence been treating our tour as a complete graph, even though it is not. As such, the edges in between these locations need to be added in again.
-
-This is quite simple to do, and is similar to the `calculate_cost`, except the paths are added instead of the costs.
-
-```
-function normalise_path (
-	path: path of nodes,
-	current_time: datetime
-):
-	return_path = []
-	time = current_time
-	
-	for i from 0 to len(path) - 1:
-		djk = fetch_djk(path[i], path[i + 1], current_time)
-		time += djk['cost'] number of minutes
-		// this is to prevent the last and first item double up
-		return_path += everything in djk['path'] except last item
-	
-	return_route.add(last item in route)
-	
-	return cost
-end function
-```
-
-\newpage
-
-## Final Solution
-
-The problem these algorithms were set out to solve is a specific application of the TSP: how could the shortest closed walk be found that picks up all my friends as we travel around the city?
-
-The initial approach to solve this problem used the concepts of dynamic programming to recursively split up the larger problem into smaller overlapping subproblems. Unfortunately, because the number of subpaths increases exponentially as the size of the visit set increased, it was demonstrated that even though an exact algorithm may provide an optimal solution, intractable problems like the TSP may require a better time complexity in a trade-off for accuracy.
-
-The approaches for the approximate solutions have followed two main phases:
-- Generate a possible candidate solution.
-- Improve the candidate using some optimisation algorithm.
-
-The Nearest Neighbour heuristic was used to generate the initial candidate, simply travelling to the closest node remaining in the visit set until a closed walk has been achieved. This was then later improved upon by processing this candidate through both the Hill Climbing and Simulated Annealing algorithms.
-
-In regard to the performance of Simulated Annealing (SA) vs Hill Climbing (HC), it seems that the output of the former is heavily dependent on the parameters set. Whereas HC produced results in a relatively large range, SA could be tuned to consistently provide the same "good" results every time or if the parameters were not optimal, a completely rubbish result every time.
-
-For example, with $T_{0}=0.98, \beta = 4, \alpha = 0.9$ and the 5 iterations before updating the temperature, SA consistently produced a hamiltonian path that would take 254 minutes to traverse. HC was more inconsistent, outputting 274 initially, 281 next and struck gold with the last try with 237. Surprisingly though, the difference between Hill Climbing and Simulated Annealing doesn't seem to be vast for this particular input graph, and SA can simply be viewed as a more tunable and adjustable version of HC to be able to produce a more consistent result.
-
-When this was changed to simply be the visit set that the friends reside at, the output for both HC and SA was as follows:
-
-```
-Final candidate cost is 143.0
-Final candidate path is ['Brandon Park', 'Wheelers Hill Library', 'CGS WH', 'Glen Waverley', 'Mount Waverley', 'Richmond', 'Camberwell', 'Richmond', 'Flinders Street', 'Caulfield', 'Oakleigh', 'Brandon Park']
-```
-
-Nonetheless, neither of them are able to find the true optimal path that Held-Karp creates:
-
-```
-Final candidate cost is 130.0
-Final candidate path is ['Brandon Park', 'Wheelers Hill Library', 'CGS WH', 'Glen Waverley', 'Mount Waverley', 'Richmond', 'Flinders Street', 'Caulfield', 'Oakleigh', 'Richmond', 'Camberwell', 'Richmond', 'Oakleigh', 'Brandon Park']
-```
-
-This could simply be because 2-opt does not provide the required permutations to be able to reach the optimal path, but still demonstrates the required tradeoff between approximate solutions and exact algorithms, a tradeoff of time vs accuracy.
-
-### Comparison of Solutions
-
-#### Design Features
-
-As discussed above, Held-Karp (the exact algorithm) used the principle of dynamic programming to split the larger problem into instances of the similar overlapping subproblems that can be solved recursively. By utilising the fact that every subpath of a path of minimum distance is itself of minimum distance, we can recursively reduce the size of the visit set by one and solve for the smaller cases. In this case, due to the TSP's intractability, this only decreases the time complexity from factorial to exponential, saving time by ensuring that subpaths are not re-calculated.
-
-On the other hand, the combination of algorithms that produce the approximate solutions operate based off a variety of design principles.
-
-The initial candidate solution generated by the NN Heuristic uses a greedy design pattern to find a possible path. This design pattern does not work with many problems (including the TSP) because sometimes things have to get worse for an overall better result.
-
-![Demonstration of Why Greedy Algorithms Fail](greedy_example.svg "Demonstration of Why Greedy Algorithms Fail")
-
-Demonstrated above, the greedy design feature would select "3" as it is the best option visible at the time, but will end up selecting a far worse solution that could easily be avoided with some intuition for what comes afterwards.
-
-Nonetheless, the greedy design pattern in the NN heuristic generally produces a somewhat viable candidate, that is then improved upon by certain Generate and Test algorithms.
-
-One such algorithm is Hill Climbing, which refers to a type of local search optimisation technique that provides an iterative way to make incremental changes to a candidate and proceed if an improvement has been found.
-
-Simulated Annealing expands upon this idea by using a probabilistic technique to decide if we accept an incremental change or not. Both these local search algorithms allow for an exploration of adjacent solutions that help find an improved solution in a tractable way.
-
-The difference between the two approaches and their design patterns lies between the intended output. The dynamic programming approach guarantees a correct output, but since the requirements are slightly different for the approximate algorithms, a wider range of design techniques are available (such as using random probability or the Generate and Test pattern) that can get us closer to a better solution, even if it produces a non-deterministic non-optimal result.
-
-#### Coherence
-
-Overall, Held-Karp is far more of a consistent and logical solution. Since the exact algorithm is inherently deterministic, it is always guaranteed to produce the same optimal result consistently.  In contrast, the NN algorithm's performance can vary widely depending on the arrangement of nodes and both the optimisation algorithms use probability to pick $u$ and $v$ values. Simulated annealing is also non-deterministic ($\because$ probabilistic), meaning that it is nowhere near as consistent as Held-Karp. That being said, Simulated Annealing does seem to converge consistently on the same or similar local optima based on its input parameters, so we can render it more coherent than Hill Climbing but much less so than Held-Karp.
-
-The influence of this difference in consistency between the two approaches on the real world applications is key to deciding which approach is better. Exact algorithms would be preferred in scenarios where predictability and repeatability are crucial. For example, in scientific research studies on geographical data that is static, the superior coherence of Held-Karp would mean that the study is repeatable and verifiable by peers. On the other hand, the lower consistency of SA and HC are not necessarily disadvantageous in real world applications, because they can provide more flexibility and adaptability. Instead of providing only one solution, they provide many good candidates that the user can consider between. This flexibility would be ideal for larger operations such as a logistics company, where the clients and pickup points are very actively changing, and alternative routes need to be provided in case the algorithm does not account for real world disturbances such as road closures.
-
-#### Fitness for Problem
-
-In terms of fitness for the problem, it would be safe to say that the exact algorithm would be preferred for the initial problem described. Even though Held-Karp would have a larger space complexity (due to all the subpaths that need to be stored), a typical user's phone will have plenty of storage such that space should not be too much of an issue. The inefficient time complexity of the algorithm mostly relates to how it scales to larger visit set sizes, anything below $n=14$ is barely noticeable to the typical user. Since most people will not be intending to travel in this fashion with such a large number of friends, it would likely be preferred to use the exact algorithm as it provides the optimal solution. This being said, Held-Karp is somewhat inflexible, especially when it comes to frequently changing data. As it only provides one path and one path only, it could be a bit of an issue when it does not account for certain data such as a bus replacement (very common around Victoria). As such, it might be best to use a combination of both in an application, defaulting to the modified Held-Karp but switching over to the approximate algorithms once $n>13$ or more solutions are requested.
-
-#### Efficiency & Time Complexity
-
-As established above, the improved Held-Karp algorithm maintains an exponential time complexity, similar enough to $O(2^{n})$ that we can use this simplified version to come to more clear conclusions. 
-
-Going through the pseudocode for the approximate algorithms, the algorithm to find a candidate solution is run first. In this case, this would be the Nearest Neighbour heuristic, which runs the following code for every node in the visit set (of size $n$)
-
-```
-closest_node = fetch_djk(current_vertex, visit, current_time)
+    return_path = []
+    time = current_time
+    
+    for i from 0 to len(path) - 1:
+        djk = fetch_djk(path[i], path[i + 1], current_time)
+        time += djk['cost'] number of minutes
+        // this is to prevent the last and first item double up
+        return_path += everything in djk['path'] except last item
+    
+    return_route.add(last item in route)
+    
+    return cost
+end function\newpageFinal SolutionThe problem these algorithms were set out to solve is a specific application of the TSP: how could the shortest closed walk be found that picks up all my friends as we travel around the city?The initial approach to solve this problem used the concepts of dynamic programming to recursively split up the larger problem into smaller overlapping subproblems. Unfortunately, because the number of subpaths increases exponentially as the size of the visit set increased, it was demonstrated that even though an exact algorithm may provide an optimal solution, intractable problems like the TSP may require a better time complexity in a trade-off for accuracy.The approaches for the approximate solutions have followed two main phases:Generate a possible candidate solution.Improve the candidate using some optimisation algorithm.The Nearest Neighbour heuristic was used to generate the initial candidate, simply travelling to the closest node remaining in the visit set until a closed walk has been achieved. This was then later improved upon by processing this candidate through both the Hill Climbing and Simulated Annealing algorithms.In regard to the performance of Simulated Annealing (SA) vs Hill Climbing (HC), it seems that the output of the former is heavily dependent on the parameters set. Whereas HC produced results in a relatively large range, SA could be tuned to consistently provide the same "good" results every time or if the parameters were not optimal, a completely rubbish result every time.For example, with  and the 5 iterations before updating the temperature, SA consistently produced a hamiltonian path that would take 254 minutes to traverse. HC was more inconsistent, outputting 274 initially, 281 next and struck gold with the last try with 237. Surprisingly though, the difference between Hill Climbing and Simulated Annealing doesn't seem to be vast for this particular input graph, and SA can simply be viewed as a more tunable and adjustable version of HC to be able to produce a more consistent result.When this was changed to simply be the visit set that the friends reside at, the output for both HC and SA was as follows:Final candidate cost is 143.0
+Final candidate path is ['Brandon Park', 'Wheelers Hill Library', 'CGS WH', 'Glen Waverley', 'Mount Waverley', 'Richmond', 'Camberwell', 'Richmond', 'Flinders Street', 'Caulfield', 'Oakleigh', 'Brandon Park']Nonetheless, neither of them are able to find the true optimal path that Held-Karp creates:Final candidate cost is 130.0
+Final candidate path is ['Brandon Park', 'Wheelers Hill Library', 'CGS WH', 'Glen Waverley', 'Mount Waverley', 'Richmond', 'Flinders Street', 'Caulfield', 'Oakleigh', 'Richmond', 'Camberwell', 'Richmond', 'Oakleigh', 'Brandon Park']This could simply be because 2-opt does not provide the required permutations to be able to reach the optimal path, but still demonstrates the required tradeoff between approximate solutions and exact algorithms, a tradeoff of time vs accuracy.Comparison of SolutionsDesign FeaturesAs discussed above, Held-Karp (the exact algorithm) used the principle of dynamic programming to split the larger problem into instances of the similar overlapping subproblems that can be solved recursively. By utilising the fact that every subpath of a path of minimum distance is itself of minimum distance, we can recursively reduce the size of the visit set by one and solve for the smaller cases. In this case, due to the TSP's intractability, this only decreases the time complexity from factorial to exponential, saving time by ensuring that subpaths are not re-calculated.On the other hand, the combination of algorithms that produce the approximate solutions operate based off a variety of design principles.The initial candidate solution generated by the NN Heuristic uses a greedy design pattern to find a possible path. This design pattern does not work with many problems (including the TSP) because sometimes things have to get worse for an overall better result.Demonstrated above, the greedy design feature would select "3" as it is the best option visible at the time, but will end up selecting a far worse solution that could easily be avoided with some intuition for what comes afterwards.Nonetheless, the greedy design pattern in the NN heuristic generally produces a somewhat viable candidate, that is then improved upon by certain Generate and Test algorithms.One such algorithm is Hill Climbing, which refers to a type of local search optimisation technique that provides an iterative way to make incremental changes to a candidate and proceed if an improvement has been found.Simulated Annealing expands upon this idea by using a probabilistic technique to decide if we accept an incremental change or not. Both these local search algorithms allow for an exploration of adjacent solutions that help find an improved solution in a tractable way.The difference between the two approaches and their design patterns lies between the intended output. The dynamic programming approach guarantees a correct output, but since the requirements are slightly different for the approximate algorithms, a wider range of design techniques are available (such as using random probability or the Generate and Test pattern) that can get us closer to a better solution, even if it produces a non-deterministic non-optimal result.CoherenceOverall, Held-Karp is far more of a consistent and logical solution. Since the exact algorithm is inherently deterministic, it is always guaranteed to produce the same optimal result consistently.  In contrast, the NN algorithm's performance can vary widely depending on the arrangement of nodes and both the optimisation algorithms use probability to pick  and  values. Simulated annealing is also non-deterministic ( probabilistic), meaning that it is nowhere near as consistent as Held-Karp. That being said, Simulated Annealing does seem to converge consistently on the same or similar local optima based on its input parameters, so we can render it more coherent than Hill Climbing but much less so than Held-Karp.The influence of this difference in consistency between the two approaches on the real world applications is key to deciding which approach is better. Exact algorithms would be preferred in scenarios where predictability and repeatability are crucial. For example, in scientific research studies on geographical data that is static, the superior coherence of Held-Karp would mean that the study is repeatable and verifiable by peers. On the other hand, the lower consistency of SA and HC are not necessarily disadvantageous in real world applications, because they can provide more flexibility and adaptability. Instead of providing only one solution, they provide many good candidates that the user can consider between. This flexibility would be ideal for larger operations such as a logistics company, where the clients and pickup points are very actively changing, and alternative routes need to be provided in case the algorithm does not account for real world disturbances such as road closures.Fitness for ProblemIn terms of fitness for the problem, it would be safe to say that the exact algorithm would be preferred for the initial problem described. Even though Held-Karp would have a larger space complexity (due to all the subpaths that need to be stored), a typical user's phone will have plenty of storage such that space should not be too much of an issue. The inefficient time complexity of the algorithm mostly relates to how it scales to larger visit set sizes, anything below  is barely noticeable to the typical user. Since most people will not be intending to travel in this fashion with such a large number of friends, it would likely be preferred to use the exact algorithm as it provides the optimal solution. This being said, Held-Karp is somewhat inflexible, especially when it comes to frequently changing data. As it only provides one path and one path only, it could be a bit of an issue when it does not account for certain data such as a bus replacement (very common around Victoria). As such, it might be best to use a combination of both in an application, defaulting to the modified Held-Karp but switching over to the approximate algorithms once  or more solutions are requested.Efficiency & Time ComplexityAs established above, the improved Held-Karp algorithm maintains an exponential time complexity, similar enough to  that we can use this simplified version to come to more clear conclusions. Going through the pseudocode for the approximate algorithms, the algorithm to find a candidate solution is run first. In this case, this would be the Nearest Neighbour heuristic, which runs the following code for every node in the visit set (of size )closest_node = fetch_djk(current_vertex, visit, current_time)
 path.add(closest_node)
 cost += closest_node.cost
 visit.remove(closest_node)
-current_vertex = closest_node
-```
-
-Since it runs Dijkstra's at every node, our time complexity for NN will just be $n \times \textrm{Dijkstra's Time Complexity}$. If we presume that the above optimisations for Dijkstra were effective then this would be at $O(L+R\log{L})$ (the generally accepted time complexity for Dijkstra's using min heaps), but even if this was not the case, we would have a time complexity of $O(L^{2})$. This provides an NN time complexity of $O(n \times L^{2})$.
-
-In terms of Hill Climbing, during every iteration $i$, the algorithm runs the following pseudocode:
-
-```
-cost = calculate_cost(candidate, current_time)
+current_vertex = closest_nodeSince it runs Dijkstra's at every node, our time complexity for NN will just be . If we presume that the above optimisations for Dijkstra were effective then this would be at  (the generally accepted time complexity for Dijkstra's using min heaps), but even if this was not the case, we would have a time complexity of . This provides an NN time complexity of .In terms of Hill Climbing, during every iteration , the algorithm runs the following pseudocode:cost = calculate_cost(candidate, current_time)
 u = random number from 1 to len(candidate) - 1 inclusive
 v = random number from u to len(candidate) - 1 inclusive
 
 new_tour = pairwise_swap(u, v, candidate)
 new_cost = calculate_cost(new_tour, current_time)
 
-if new_cost <= cost:
-	// new cost is better/equal -> accept
-	Go again with the new tour
+if new_cost  accept
+    Go again with the new tour
 else:
-	// new cost is worse -> go again
-	Go again with the same tour
-```
-
-First, the cost of the candidate is evaluated. This requires us to run Dijkstra's on each node in the visit set again, but since the output of Dijkstra's is cached, this would actually only take $O(n)$ time. Next, a pairwise swap is done, which adds every node in the visit set to a new array in a differing order which is also in $O(n)$ time. Finally, the cost is calculated again, leaving us with a final total of $O(3n)$. Overall, this means that this process is done in linear time for $i$ iterations, leaving a final time complexity of $O(i \times n)$. 
-
-Simulated Annealing has the exact same time complexity as Hill Climbing because the only major difference is if a candidate solution is accepted or not and this is done in $O(1)$ time because the time complexity of selecting a random number is $O(1)$.
-
-This leaves us with a final time complexity of $O(n \times L^{2} + i \times n)$ = $O(n(L^{2}+i))$. 
-
-### Tractability & Implications
-
-As discussed above, the time complexity for the exact algorithm is effectively $O(2^{n})$ and the time complexity for the approximate algorithms is $O(n(L^{2}+i))$ where $n$ is the size of the visit set, $L$ is the number of landmarks in the graph overall and $i$ is the amount of times that the optimisation algorithm will iterate. $i$ will typically be a constant and can therefore be ignored and for the same input graph (this assumption was made for the simplification of Held-Karp too) $L^{2}$ will be constant as well.
-
-In effect, this means that for the same input graph, the time complexities we are looking at are $O(2^{n})$ vs $O(n)$ as the visit set size increases by a constant factor. The vast difference between these two time complexities shows how easily approximate solutions can be derived in polynomial time, which helps make this problem more tractable. Namely, this demonstrates that the problem of finding a solution to the TSP within a set factor of the optimal solution is a tractable one, even if finding the *actual* optimal solution is not.
-
-This has many implications for the real world applications of the broader version of this problem. Though the discussion above concluded that the exact algorithm would be superior for the initial specified problem, the tradeoff of lower accuracy for an improved time complexity can be beneficial to many use-cases. Below is a list of applications that would be better suited to either type of algorithm:
-
-**Exact Algorithm**:
-
-- An exact algorithm would be well suited to static non-changing data where time is not much of a concern but the best solution is required. In a scenario where large freeways need to be built to visit a few key cities, the geographical data remains mostly static since the overall terrain does not change suddenly, but an inefficient solution could cost millions. Similarly, in wartime where tunnels and bunker networks need to be built that connect everyone to a few key locations, a few extra kilometres could result in hundreds of lost lives. In cases like this, provided that the number of key locations is sufficiently small, users would likely not mind waiting for a more optimal output.
-
-**Approximate Algorithm**:
-
-- As discussed previously, an approximate algorithm would be very well suited to logistics/trucking companies that have to move a lot of shipments and goods across the country fast. The nature of real world companies means that clients would appear and disappear on a daily basis, and there are always new locations to be delivered to or picked up from. Since the input graph is dynamically changing, an exact solution would be very quickly out of date and an $O(n)$ time complexity would be preferred over the intractable $O(2^{n})$ complexity since the amount of pickup points would simply be so large.
-- An approximate algorithm would be well suited to data routing, specifically peer to peer networks that want to connect a large group of people. For example, a P2P video conferencing call would need to find a sufficiently small closed walk to ensure that the call has minimal delay. Since the input data for this case would be constantly changing (people leaving and joining with variable bandwidths), it would need to be run very often, and an intractable solution would not suffice.
-
-This being said, most applications would be better suited to a combination of both. With a small number of nodes in the visit set, the intractability of finding an exact solution is not much of an issue, as the speeds are virtually instant anyway, but anything above about 15 to 20 nodes will render the computational time to be prohibitive. As such, for most real world applications, it makes more sense to use a combination of both the algorithms and switch over once the input size has exceeded the practical time constraints a layman user would expect. Such is the case with the initial solution, as described above.
-
-\newpage
-
-## Appendix
-
-### Initial Pseudocode
-
-The following is the final pseudocode reiterated from the previous 2 parts, namely for convenience while analysing, since multiple modifications were made to the initial pseudocode. A Python implementation of this pseudocode can be found [here](https://github.com/garv-shah/brain/blob/hugo/content/notes/School%20Subjects/Algorithmics/SAT/main_old.py).
-
-Let $A =$ starting vertex
-Let $B =$ ending vertex
-Let $S = \{P, Q, R\}$ or any other vertices to be visited along the way.
-Let $C \in S$ (random node in $S$)
-
-#### Main Function
-
-```
-function main(
-	friends: dictionary,
-	landmarks: dictionary,
-	routes: dictionary,
-	timetable: dictionary
+    // new cost is worse -> go again
+    Go again with the same tourFirst, the cost of the candidate is evaluated. This requires us to run Dijkstra's on each node in the visit set again, but since the output of Dijkstra's is cached, this would actually only take  time. Next, a pairwise swap is done, which adds every node in the visit set to a new array in a differing order which is also in  time. Finally, the cost is calculated again, leaving us with a final total of . Overall, this means that this process is done in linear time for  iterations, leaving a final time complexity of . Simulated Annealing has the exact same time complexity as Hill Climbing because the only major difference is if a candidate solution is accepted or not and this is done in  time because the time complexity of selecting a random number is .This leaves us with a final time complexity of  = . Tractability & ImplicationsAs discussed above, the time complexity for the exact algorithm is effectively  and the time complexity for the approximate algorithms is  where  is the size of the visit set,  is the number of landmarks in the graph overall and  is the amount of times that the optimisation algorithm will iterate.  will typically be a constant and can therefore be ignored and for the same input graph (this assumption was made for the simplification of Held-Karp too)  will be constant as well.In effect, this means that for the same input graph, the time complexities we are looking at are  vs  as the visit set size increases by a constant factor. The vast difference between these two time complexities shows how easily approximate solutions can be derived in polynomial time, which helps make this problem more tractable. Namely, this demonstrates that the problem of finding a solution to the TSP within a set factor of the optimal solution is a tractable one, even if finding the actual optimal solution is not.This has many implications for the real world applications of the broader version of this problem. Though the discussion above concluded that the exact algorithm would be superior for the initial specified problem, the tradeoff of lower accuracy for an improved time complexity can be beneficial to many use-cases. Below is a list of applications that would be better suited to either type of algorithm:Exact Algorithm:An exact algorithm would be well suited to static non-changing data where time is not much of a concern but the best solution is required. In a scenario where large freeways need to be built to visit a few key cities, the geographical data remains mostly static since the overall terrain does not change suddenly, but an inefficient solution could cost millions. Similarly, in wartime where tunnels and bunker networks need to be built that connect everyone to a few key locations, a few extra kilometres could result in hundreds of lost lives. In cases like this, provided that the number of key locations is sufficiently small, users would likely not mind waiting for a more optimal output.Approximate Algorithm:As discussed previously, an approximate algorithm would be very well suited to logistics/trucking companies that have to move a lot of shipments and goods across the country fast. The nature of real world companies means that clients would appear and disappear on a daily basis, and there are always new locations to be delivered to or picked up from. Since the input graph is dynamically changing, an exact solution would be very quickly out of date and an  time complexity would be preferred over the intractable  complexity since the amount of pickup points would simply be so large.An approximate algorithm would be well suited to data routing, specifically peer to peer networks that want to connect a large group of people. For example, a P2P video conferencing call would need to find a sufficiently small closed walk to ensure that the call has minimal delay. Since the input data for this case would be constantly changing (people leaving and joining with variable bandwidths), it would need to be run very often, and an intractable solution would not suffice.This being said, most applications would be better suited to a combination of both. With a small number of nodes in the visit set, the intractability of finding an exact solution is not much of an issue, as the speeds are virtually instant anyway, but anything above about 15 to 20 nodes will render the computational time to be prohibitive. As such, for most real world applications, it makes more sense to use a combination of both the algorithms and switch over once the input size has exceeded the practical time constraints a layman user would expect. Such is the case with the initial solution, as described above.\newpageAppendixInitial PseudocodeThe following is the final pseudocode reiterated from the previous 2 parts, namely for convenience while analysing, since multiple modifications were made to the initial pseudocode. A Python implementation of this pseudocode can be found here.Let  starting vertexLet  ending vertexLet  or any other vertices to be visited along the way.Let  (random node in )Main Functionfunction main(
+    friends: dictionary,
+    landmarks: dictionary,
+    routes: dictionary,
+    timetable: dictionary
 ):
-	// global variable declarations
-	concession: bool = Ask the user "Do you posses a concession card?"
-	holiday: bool = Ask the user "Is today a weekend or a holiday?"
-	user_name: string = Ask the user to select a friend from friends dictionary
-	selected_time = Ask the user what time they are leaving
-	
-	cached_djk: dictionary = empty dictionary
-	edge_lookup_matrix: matrix = |V| x |V| matrix that stores a list of edges in each entry
-	
-	// get distance of all friends from landmarks
-	friend_distances: dictionary = calculate_nodes(friends, landmarks)
-	visit_set: set = set of all closest nodes from friend_distances
-	people_at_nodes: dictionary = all friends sorted into keys of which nodes they are closest to, from visit_set
-	
-	home: string = closest node of user_name
-	
-	print all friends, where they live closest to and how far away
-	
-	print out friends that would take more than 20 minutes to walk (average human walking speed is 5.1 km/h)
-	
-	hamiltonian_path = held_karp(home, home, visit_set, selected_time)
-	
-	print how much the trip would cost and how long it would take
-	
-	print the path of the hamiltonian_path
-end function
-```
-
-#### Calculate Nodes
-
-```
-function calculate_nodes (
-	friend_data: dictionary,
-	node_data: dictionary
+    // global variable declarations
+    concession: bool = Ask the user "Do you posses a concession card?"
+    holiday: bool = Ask the user "Is today a weekend or a holiday?"
+    user_name: string = Ask the user to select a friend from friends dictionary
+    selected_time = Ask the user what time they are leaving
+    
+    cached_djk: dictionary = empty dictionary
+    edge_lookup_matrix: matrix = |V| x |V| matrix that stores a list of edges in each entry
+    
+    // get distance of all friends from landmarks
+    friend_distances: dictionary = calculate_nodes(friends, landmarks)
+    visit_set: set = set of all closest nodes from friend_distances
+    people_at_nodes: dictionary = all friends sorted into keys of which nodes they are closest to, from visit_set
+    
+    home: string = closest node of user_name
+    
+    print all friends, where they live closest to and how far away
+    
+    print out friends that would take more than 20 minutes to walk (average human walking speed is 5.1 km/h)
+    
+    hamiltonian_path = held_karp(home, home, visit_set, selected_time)
+    
+    print how much the trip would cost and how long it would take
+    
+    print the path of the hamiltonian_path
+end functionCalculate Nodesfunction calculate_nodes (
+    friend_data: dictionary,
+    node_data: dictionary
 ):
-	for friend in friend_data:
-		home: tuple = friend['home']
-		// initial min vals that will be set to smallest iterated distance
-		min: float = infinity
-		min_node: node = null
-		
-		for node in node_data:
-			location: tuple = node['coordinates']
-			// find real life distance (functional abstraction)
-			distance: float = latlong_distance(home, location)
-			if distance < min:
-				min = distance
-				min_node = node
-		
-		distance_dict[friend]['min_node'] = min_node
-		distance_dict[friend]['distance'] = min
-end function
-```
-
-#### Held-Karp
-
-```
-function held_karp (
+    for friend in friend_data:
+        home: tuple = friend['home']
+        // initial min vals that will be set to smallest iterated distance
+        min: float = infinity
+        min_node: node = null
+        
+        for node in node_data:
+            location: tuple = node['coordinates']
+            // find real life distance (functional abstraction)
+            distance: float = latlong_distance(home, location)
+            if distance < min:
+                min = distance
+                min_node = node
+        
+        distance_dict[friend]['min_node'] = min_node
+        distance_dict[friend]['distance'] = min
+end functionHeld-Karpfunction held_karp (
     start: node,
     end: node,
-    visit: set<node>,
+    visit: set,
     current_time: datetime
 ):
     if visit.size = 0:
-    	djk = fetch_djk(start, end, current_time)
-		return djk['cost']
+        djk = fetch_djk(start, end, current_time)
+        return djk['cost']
     else:
         min = infinity
         For node C in set S:
-	        sub_path = held_karp(start, C, (set \ C), current_time)
-	        djk = fetch_djk(C, end, current_time + toMinutes(sub_path['cost']))
-	        cost = sub_path['cost'] + djk['cost']
-	        if cost < min:
-	            min = cost
-	    return min
-end function
-```
-
-#### Dijkstra's
-
-```
-function dijkstras (
+            sub_path = held_karp(start, C, (set \ C), current_time)
+            djk = fetch_djk(C, end, current_time + toMinutes(sub_path['cost']))
+            cost = sub_path['cost'] + djk['cost']
+            if cost < min:
+                min = cost
+        return min
+end functionDijkstra'sfunction dijkstras (
     start: node,
     current_time: datetime
 ):
@@ -694,7 +445,7 @@ function dijkstras (
         min_node = unexplored node with min cost
         unexplored_list.remove(min_node)
     
-	    // go through every neighbour and relax
+        // go through every neighbour and relax
         for each neighbour of min_node:
             current_dist = distance[min_node] + dist(min_node, neighbour, current_time + to_minutes(distance[min_node]))
             // a shorter path has been found to the neighbour -> relax value
@@ -703,24 +454,18 @@ function dijkstras (
                 predecessor[neighbour] = min_node
     
     return {
-	    'distances': distance,
-	    'predecessors': predecessor,
+        'distances': distance,
+        'predecessors': predecessor,
     }
-end function
-```
-
-#### Fetch Dijkstra's (Cached)
-
-```
-cached_djk = dictionary of node -> dict
+end functionFetch Dijkstra's (Cached)cached_djk = dictionary of node -> dict
 
 function fetch_djk (
     start: node,
     end: node,
     current_time: datetime,
 ):
-	name = start + '@' + current_time
-	
+    name = start + '@' + current_time
+    
     if cached_djk[name] does not exists:
         cached_djk[name] = dijkstras(start, current_time)
     
@@ -734,165 +479,118 @@ function fetch_djk (
         'distance': djk['distances'][end],
         'path': path
     }
-end function
-```
-
-#### Distance Function
-
-```
-function dist (
-	start: node,
-	end: node,
-	current_time: datetime
-):	
-	// if the start and end node are the same, it takes no time to get there
-	if start = end:
-		return 0
-	else if edges = null:
-		// if no edge exists between nodes
-		return infinity
-	
-	edges = edge_lookup_matrix[start][end]
-	distances = []
-	
-	// go over each possible edge between nodes (multiple possible)
-	for edge in edges:
-		line = edge.line
-		// next time bus/train will be at node (functional abstraction)
-		next_time = soonest_time_at_node(timetable, line, start, current_time)
-		wait_time = next_time - current_time
-		distances.add(edge.weight + wait_time)
-	
-	return min(distances)
-end function
-```
-
-\newpage
-
-### Modified Exact Algorithm Pseudocode
-
-Below is the final pseudocode for the exact algorithm, based on Held-Karp. A Python implementation of the following pseudocode can be found [here](https://github.com/garv-shah/brain/blob/hugo/content/notes/School%20Subjects/Algorithmics/SAT/main.py).
-
-Let $A =$ starting vertex
-Let $B =$ ending vertex
-Let $S = \{P, Q, R\}$ or any other vertices to be visited along the way.
-Let $C \in S$ (random node in $S$)
-
-#### Main Function
-
-```
-function main(
-	friends: dictionary,
-	landmarks: dictionary,
-	routes: dictionary,
-	timetable: dictionary
-):
-	// global variable declarations
-	concession: bool = Ask the user "Do you posses a concession card?"
-	holiday: bool = Ask the user "Is today a weekend or a holiday?"
-	user_name: string = Ask the user to select a friend from friends dictionary
-	selected_time = Ask the user what time they are leaving
-	
-	cached_djk: dictionary = empty dictionary
-	edge_lookup_matrix: matrix = |V| x |V| matrix that stores a list of edges in each entry
-	
-	// get distance of all friends from landmarks
-	friend_distances: dictionary = calculate_nodes(friends, landmarks)
-	visit_set: set = set of all closest nodes from friend_distances
-	people_at_nodes: dictionary = all friends sorted into keys of which nodes they are closest to, from visit_set
-	
-	home: string = closest node of user_name
-	
-	print all friends, where they live closest to and how far away
-	
-	print out friends that would take more than 20 minutes to walk (average human walking speed is 5.1 km/h)
-	
-	hamiltonian_path = fetch_hk(home, home, visit_set, selected_time)
-	
-	print how much the trip would cost and how long it would take
-	
-	print the path of the hamiltonian_path
-end function
-```
-
-#### Calculate Nodes
-
-```
-function calculate_nodes (
-	friend_data: dictionary,
-	node_data: dictionary
-):
-	for friend in friend_data:
-		home: tuple = friend['home']
-		// initial min vals that will be set to smallest iterated distance
-		min: float = infinity
-		min_node: node = null
-		
-		for node in node_data:
-			location: tuple = node['coordinates']
-			// find real life distance (functional abstraction)
-			distance: float = latlong_distance(home, location)
-			if distance < min:
-				min = distance
-				min_node = node
-		
-		distance_dict[friend]['min_node'] = min_node
-		distance_dict[friend]['distance'] = min
-end function
-```
-
-#### Held-Karp
-
-```
-function held_karp (
+end functionDistance Functionfunction dist (
     start: node,
     end: node,
-    visit: set<node>,
+    current_time: datetime
+):	
+    // if the start and end node are the same, it takes no time to get there
+    if start = end:
+        return 0
+    else if edges = null:
+        // if no edge exists between nodes
+        return infinity
+    
+    edges = edge_lookup_matrix[start][end]
+    distances = []
+    
+    // go over each possible edge between nodes (multiple possible)
+    for edge in edges:
+        line = edge.line
+        // next time bus/train will be at node (functional abstraction)
+        next_time = soonest_time_at_node(timetable, line, start, current_time)
+        wait_time = next_time - current_time
+        distances.add(edge.weight + wait_time)
+    
+    return min(distances)
+end function\newpageModified Exact Algorithm PseudocodeBelow is the final pseudocode for the exact algorithm, based on Held-Karp. A Python implementation of the following pseudocode can be found here.Let  starting vertexLet  ending vertexLet  or any other vertices to be visited along the way.Let  (random node in )Main Functionfunction main(
+    friends: dictionary,
+    landmarks: dictionary,
+    routes: dictionary,
+    timetable: dictionary
+):
+    // global variable declarations
+    concession: bool = Ask the user "Do you posses a concession card?"
+    holiday: bool = Ask the user "Is today a weekend or a holiday?"
+    user_name: string = Ask the user to select a friend from friends dictionary
+    selected_time = Ask the user what time they are leaving
+    
+    cached_djk: dictionary = empty dictionary
+    edge_lookup_matrix: matrix = |V| x |V| matrix that stores a list of edges in each entry
+    
+    // get distance of all friends from landmarks
+    friend_distances: dictionary = calculate_nodes(friends, landmarks)
+    visit_set: set = set of all closest nodes from friend_distances
+    people_at_nodes: dictionary = all friends sorted into keys of which nodes they are closest to, from visit_set
+    
+    home: string = closest node of user_name
+    
+    print all friends, where they live closest to and how far away
+    
+    print out friends that would take more than 20 minutes to walk (average human walking speed is 5.1 km/h)
+    
+    hamiltonian_path = fetch_hk(home, home, visit_set, selected_time)
+    
+    print how much the trip would cost and how long it would take
+    
+    print the path of the hamiltonian_path
+end functionCalculate Nodesfunction calculate_nodes (
+    friend_data: dictionary,
+    node_data: dictionary
+):
+    for friend in friend_data:
+        home: tuple = friend['home']
+        // initial min vals that will be set to smallest iterated distance
+        min: float = infinity
+        min_node: node = null
+        
+        for node in node_data:
+            location: tuple = node['coordinates']
+            // find real life distance (functional abstraction)
+            distance: float = latlong_distance(home, location)
+            if distance < min:
+                min = distance
+                min_node = node
+        
+        distance_dict[friend]['min_node'] = min_node
+        distance_dict[friend]['distance'] = min
+end functionHeld-Karpfunction held_karp (
+    start: node,
+    end: node,
+    visit: set,
     current_time: datetime
 ):
     if visit.size = 0:
-    	djk = fetch_djk(start, end, current_time)
-		return djk['cost']
+        djk = fetch_djk(start, end, current_time)
+        return djk['cost']
     else:
         min = infinity
         For node C in set S:
-	        sub_path = fetch_hk(start, C, (set \ C), current_time)
-	        djk = fetch_djk(C, end, current_time + toMinutes(sub_path['cost']))
-	        cost = sub_path['cost'] + djk['cost']
-	        if cost < min:
-	            min = cost
-	    return min
-end function
-```
-
-#### Fetch Held-Karp (Cached)
-
-```
-cached_hk = dictionary of list -> dict
+            sub_path = fetch_hk(start, C, (set \ C), current_time)
+            djk = fetch_djk(C, end, current_time + toMinutes(sub_path['cost']))
+            cost = sub_path['cost'] + djk['cost']
+            if cost < min:
+                min = cost
+        return min
+end functionFetch Held-Karp (Cached)cached_hk = dictionary of list -> dict
 
 function fetch_hk (
-	start: node, 
-	end: node,
-	visit: set of nodes,
-	current_time: datetime,
+    start: node, 
+    end: node,
+    visit: set of nodes,
+    current_time: datetime,
 ):
-	// unique identifier
-	name = start + '-' + end + visit set + '@' + current_time
-	if cached_hk[name] does not exists:
-		cached_hk[name] = held_karp(start, end, visit, current_time)
-	return cached_hk[name]
-end function
-```
-
-#### Dijkstra's
-
-```
-function dijkstras (
+    // unique identifier
+    name = start + '-' + end + visit set + '@' + current_time
+    if cached_hk[name] does not exists:
+        cached_hk[name] = held_karp(start, end, visit, current_time)
+    return cached_hk[name]
+end functionDijkstra'sfunction dijkstras (
     start: node,
     current_time: datetime
 ):
-	unexplored = empty min priority queue of nodes based on distance
-	
+    unexplored = empty min priority queue of nodes based on distance
+    
     // Set all node distance to infinity
     for node in graph:
         distance[node] = infinity
@@ -907,7 +605,7 @@ function dijkstras (
         min_node = unexplored.minimum_node()
         unexplored.remove(min_node)
     
-	    // go through every neighbour and relax
+        // go through every neighbour and relax
         for each neighbour of min_node:
             current_dist = distance[min_node] + dist(min_node, neighbour, current_time + to_minutes(distance[min_node]))
             // a shorter path has been found to the neighbour -> relax value
@@ -916,24 +614,18 @@ function dijkstras (
                 predecessor[neighbour] = min_node
     
     return {
-	    'distances': distance,
-	    'predecessors': predecessor,
+        'distances': distance,
+        'predecessors': predecessor,
     }
-end function
-```
-
-#### Fetch Dijkstra's (Cached)
-
-```
-cached_djk = dictionary of node -> dict
+end functionFetch Dijkstra's (Cached)cached_djk = dictionary of node -> dict
 
 function fetch_djk (
     start: node,
     end: node,
     current_time: datetime,
 ):
-	name = start + '@' + current_time
-	
+    name = start + '@' + current_time
+    
     if cached_djk[name] does not exists:
         cached_djk[name] = dijkstras(start, current_time)
     
@@ -947,274 +639,198 @@ function fetch_djk (
         'distance': djk['distances'][end],
         'path': path
     }
-end function
-```
-
-#### Distance Function
-
-```
-function dist (
-	start: node,
-	end: node,
-	current_time: datetime
+end functionDistance Functionfunction dist (
+    start: node,
+    end: node,
+    current_time: datetime
 ):	
-	// if the start and end node are the same, it takes no time to get there
-	if start = end:
-		return 0
-	else if edges = null:
-		// if no edge exists between nodes
-		return infinity
-	
-	edges = edge_lookup_matrix[start][end]
-	distances = []
-	
-	// go over each possible edge between nodes (multiple possible)
-	for edge in edges:
-		wait_time = wait time from data (precomputed)
-		distances.add(edge.weight + wait_time)
-	
-	return min(distances)
-end function
-```
-
-\newpage
-
-### Approximate Algorithm Pseudocode
-
-Below is the final pseudocode for the approximate algorithm, using Simulated Annealing. A Python implementation of the following pseudocode can be found [here](https://github.com/garv-shah/brain/blob/hugo/content/notes/School%20Subjects/Algorithmics/SAT/main_approximate.py).
-
-Let $A =$ starting vertex
-Let $B =$ ending vertex
-Let $S = \{P, Q, R\}$ or any other vertices to be visited along the way.
-Let $C \in S$ (random node in $S$)
-
-#### Main Function
-
-```
-function main(
-	friends: dictionary,
-	landmarks: dictionary,
-	routes: dictionary,
-	timetable: dictionary
+    // if the start and end node are the same, it takes no time to get there
+    if start = end:
+        return 0
+    else if edges = null:
+        // if no edge exists between nodes
+        return infinity
+    
+    edges = edge_lookup_matrix[start][end]
+    distances = []
+    
+    // go over each possible edge between nodes (multiple possible)
+    for edge in edges:
+        wait_time = wait time from data (precomputed)
+        distances.add(edge.weight + wait_time)
+    
+    return min(distances)
+end function\newpageApproximate Algorithm PseudocodeBelow is the final pseudocode for the approximate algorithm, using Simulated Annealing. A Python implementation of the following pseudocode can be found here.Let  starting vertexLet  ending vertexLet  or any other vertices to be visited along the way.Let  (random node in )Main Functionfunction main(
+    friends: dictionary,
+    landmarks: dictionary,
+    routes: dictionary,
+    timetable: dictionary
 ):
-	// global variable declarations
-	concession: bool = Ask the user "Do you posses a concession card?"
-	holiday: bool = Ask the user "Is today a weekend or a holiday?"
-	user_name: string = Ask the user to select a friend from friends dictionary
-	selected_time = Ask the user what time they are leaving
-	
-	cached_djk: dictionary = empty dictionary
-	edge_lookup_matrix: matrix = |V| x |V| matrix that stores a list of edges in each entry
-	
-	// get distance of all friends from landmarks
-	friend_distances: dictionary = calculate_nodes(friends, landmarks)
-	visit_set: set = set of all closest nodes from friend_distances
-	people_at_nodes: dictionary = all friends sorted into keys of which nodes they are closest to, from visit_set
-	
-	home: string = closest node of user_name
-	
-	print all friends, where they live closest to and how far away
-	
-	print out friends that would take more than 20 minutes to walk (average human walking speed is 5.1 km/h)
-	
-	candidate = candidate_solution(home, home, visit_set, selected_time)
-	hamiltonian_path = simulated_annealing(candidate['path'], selected_time)
-	// or hill_climbing(candidate['path'], selected_time)
-	
-	hamiltonian_path['path'] = normalise_path(hamiltonian_path['path'], selected_time)
-	
-	print how much the trip would cost and how long it would take
-	
-	print the path of the hamiltonian_path
-end function
-```
-
-#### Calculate Nodes
-
-```
-function calculate_nodes (
-	friend_data: dictionary,
-	node_data: dictionary
+    // global variable declarations
+    concession: bool = Ask the user "Do you posses a concession card?"
+    holiday: bool = Ask the user "Is today a weekend or a holiday?"
+    user_name: string = Ask the user to select a friend from friends dictionary
+    selected_time = Ask the user what time they are leaving
+    
+    cached_djk: dictionary = empty dictionary
+    edge_lookup_matrix: matrix = |V| x |V| matrix that stores a list of edges in each entry
+    
+    // get distance of all friends from landmarks
+    friend_distances: dictionary = calculate_nodes(friends, landmarks)
+    visit_set: set = set of all closest nodes from friend_distances
+    people_at_nodes: dictionary = all friends sorted into keys of which nodes they are closest to, from visit_set
+    
+    home: string = closest node of user_name
+    
+    print all friends, where they live closest to and how far away
+    
+    print out friends that would take more than 20 minutes to walk (average human walking speed is 5.1 km/h)
+    
+    candidate = candidate_solution(home, home, visit_set, selected_time)
+    hamiltonian_path = simulated_annealing(candidate['path'], selected_time)
+    // or hill_climbing(candidate['path'], selected_time)
+    
+    hamiltonian_path['path'] = normalise_path(hamiltonian_path['path'], selected_time)
+    
+    print how much the trip would cost and how long it would take
+    
+    print the path of the hamiltonian_path
+end functionCalculate Nodesfunction calculate_nodes (
+    friend_data: dictionary,
+    node_data: dictionary
 ):
-	for friend in friend_data:
-		home: tuple = friend['home']
-		// initial min vals that will be set to smallest iterated distance
-		min: float = infinity
-		min_node: node = null
-		
-		for node in node_data:
-			location: tuple = node['coordinates']
-			// find real life distance (functional abstraction)
-			distance: float = latlong_distance(home, location)
-			if distance < min:
-				min = distance
-				min_node = node
-		
-		distance_dict[friend]['min_node'] = min_node
-		distance_dict[friend]['distance'] = min
-end function
-```
-
-#### Candidate Solution (NN Heuristic)
-
-```
-// creates a canditate solution using the NN Heuristic
+    for friend in friend_data:
+        home: tuple = friend['home']
+        // initial min vals that will be set to smallest iterated distance
+        min: float = infinity
+        min_node: node = null
+        
+        for node in node_data:
+            location: tuple = node['coordinates']
+            // find real life distance (functional abstraction)
+            distance: float = latlong_distance(home, location)
+            if distance < min:
+                min = distance
+                min_node = node
+        
+        distance_dict[friend]['min_node'] = min_node
+        distance_dict[friend]['distance'] = min
+end functionCandidate Solution (NN Heuristic)// creates a canditate solution using the NN Heuristic
 function canditate_solution (
-	start: node, 
-	end: node,
-	visit: set of nodes,
-	current_time: datetime,
+    start: node, 
+    end: node,
+    visit: set of nodes,
+    current_time: datetime,
 ):
-	path = [start]
-	current_vertex = start
-	cost = 0
-	
-	while len(visit) != 0:
-		closest_node = fetch_djk(current_vertex, visit, current_time)
-		path.add(closest_node)
-		cost += closest_node.cost
-		visit.remove(closest_node)
-		current_vertex = closest_node
-	
-	// go back to the end node
-	closest_node = fetch_djk(current_vertex, end, current_time)
-	path.add(closest_node)
-	cost += closest_node.cost
-	
-	return {'path': path, 'cost': cost}
-end function
-```
-
-#### Pairwise Swap
-
-```
-function pairwise_swap (
-	u: integer,
-	v: integer,
-	path: path of nodes
+    path = [start]
+    current_vertex = start
+    cost = 0
+    
+    while len(visit) != 0:
+        closest_node = fetch_djk(current_vertex, visit, current_time)
+        path.add(closest_node)
+        cost += closest_node.cost
+        visit.remove(closest_node)
+        current_vertex = closest_node
+    
+    // go back to the end node
+    closest_node = fetch_djk(current_vertex, end, current_time)
+    path.add(closest_node)
+    cost += closest_node.cost
+    
+    return {'path': path, 'cost': cost}
+end functionPairwise Swapfunction pairwise_swap (
+    u: integer,
+    v: integer,
+    path: path of nodes
 ):
-	new_tour = []
-	
-	for i in [0, u]:
-		new_tour.add(path[i])
-	for i in [v, u):
-		new_tour.add(path[i])
-	for i in (v, len(path)]:
-		new_tour.add(path[i])
-	
-	return new_tour
-end function
-```
-
-#### Calculate Cost
-
-```
-function calculate_cost (
-	path: path of nodes,
-	current_time: datetime
+    new_tour = []
+    
+    for i in [0, u]:
+        new_tour.add(path[i])
+    for i in [v, u):
+        new_tour.add(path[i])
+    for i in (v, len(path)]:
+        new_tour.add(path[i])
+    
+    return new_tour
+end functionCalculate Costfunction calculate_cost (
+    path: path of nodes,
+    current_time: datetime
 ):
-	cost = 0
-	time = current_time
-	
-	for i from 0 to len(path) - 1:
-		djk = fetch_djk(path[i], path[i + 1], current_time)
-		cost += djk['cost']
-		time += djk['cost'] number of minutes
-	
-	return cost
-end function
-```
-
-#### Hill Climbing
-
-```
-function hill_climbing (
-	candidate: path of nodes,
-	current_time: datetime,
-	fail_count: int = 0
+    cost = 0
+    time = current_time
+    
+    for i from 0 to len(path) - 1:
+        djk = fetch_djk(path[i], path[i + 1], current_time)
+        cost += djk['cost']
+        time += djk['cost'] number of minutes
+    
+    return cost
+end functionHill Climbingfunction hill_climbing (
+    candidate: path of nodes,
+    current_time: datetime,
+    fail_count: int = 0
 ):
-	if fail_count < 200:
-		cost = calculate_cost(candidate, current_time)
-		u = random number from 1 to len(candidate) - 1 inclusive
-		v = random number from u to len(candidate) - 1 inclusive
-		
-		new_tour = pairwise_swap(u, v, candidate)
-		new_cost = calculate_cost(new_tour, current_time)
-		
-		if new_cost <= cost:
-			// new cost is better/equal -> accept
-			return hill_climbing(new_tour, current_time, 0)
-		else:
-			// new cost is worse -> go again
-			return hill_climbing(candidate, current_time, fail_count + 1)
-	else:
-		return candidate
-end function
-```
-
-#### Simulated Annealing
-
-```
-function simulated_annealing (
-	candidate: path of nodes,
-	current_time: datetime,
+    if fail_count < 200:
+        cost = calculate_cost(candidate, current_time)
+        u = random number from 1 to len(candidate) - 1 inclusive
+        v = random number from u to len(candidate) - 1 inclusive
+        
+        new_tour = pairwise_swap(u, v, candidate)
+        new_cost = calculate_cost(new_tour, current_time)
+        
+        if new_cost  accept
+            return hill_climbing(new_tour, current_time, 0)
+        else:
+            // new cost is worse -> go again
+            return hill_climbing(candidate, current_time, fail_count + 1)
+    else:
+        return candidate
+end functionSimulated Annealingfunction simulated_annealing (
+    candidate: path of nodes,
+    current_time: datetime,
 ):
-	// parameters to fiddle with
-	temp = 0.98
-	min_temp = 0.00001
-	temp_change = 5
-	beta = 1.2
-	alpha = 0.85
-	
-	old_cost = calculate_cost(candidate, current_time)
-	
-	while temp > min_temp:
-		for n from 1 to temp_change:
-			u = random number from 1 to len(candidate) - 1 inclusive
-			v = random number from u to len(candidate) - 1 inclusive
-			
-			new_tour = pairwise_swap(u, v, candidate)
-			new_cost = calculate_cost(new_tour, current_time)
-			
-			ap = acceptance_probability(old_cost, new_cost, beta, temp)
-			
-			if ap > random float from 0 to 1:
-				candidate = new_tour
-				old_cost = new_cost
-			
-		temp *= alpha
-		
-	return candidate
-end function
-```
-
-#### Acceptance Probability
-
-```
-function acceptance_probability (
-	old_cost: number,
-	new_cost: number,
-	beta: number,
-	temp: number
+    // parameters to fiddle with
+    temp = 0.98
+    min_temp = 0.00001
+    temp_change = 5
+    beta = 1.2
+    alpha = 0.85
+    
+    old_cost = calculate_cost(candidate, current_time)
+    
+    while temp > min_temp:
+        for n from 1 to temp_change:
+            u = random number from 1 to len(candidate) - 1 inclusive
+            v = random number from u to len(candidate) - 1 inclusive
+            
+            new_tour = pairwise_swap(u, v, candidate)
+            new_cost = calculate_cost(new_tour, current_time)
+            
+            ap = acceptance_probability(old_cost, new_cost, beta, temp)
+            
+            if ap > random float from 0 to 1:
+                candidate = new_tour
+                old_cost = new_cost
+            
+        temp *= alpha
+        
+    return candidate
+end functionAcceptance Probabilityfunction acceptance_probability (
+    old_cost: number,
+    new_cost: number,
+    beta: number,
+    temp: number
 ):
-	c = new_cost - old_cost
-	
-	if c <= 0:
-		return 1
-	else:
-		return e**((-beta * c)/temp)
-end function
-```
-
-#### Dijkstra's
-
-```
-function dijkstras (
+    c = new_cost - old_cost
+    
+    if c Dijkstra'sfunction dijkstras (
     start: node,
     current_time: datetime
 ):
-	unexplored = empty min priority queue of nodes based on distance
-	
+    unexplored = empty min priority queue of nodes based on distance
+    
     // Set all node distance to infinity
     for node in graph:
         distance[node] = infinity
@@ -1229,7 +845,7 @@ function dijkstras (
         min_node = unexplored.minimum_node()
         unexplored.remove(min_node)
     
-	    // go through every neighbour and relax
+        // go through every neighbour and relax
         for each neighbour of min_node:
             current_dist = distance[min_node] + dist(min_node, neighbour, current_time + to_minutes(distance[min_node]))
             // a shorter path has been found to the neighbour -> relax value
@@ -1238,24 +854,18 @@ function dijkstras (
                 predecessor[neighbour] = min_node
     
     return {
-	    'distances': distance,
-	    'predecessors': predecessor,
+        'distances': distance,
+        'predecessors': predecessor,
     }
-end function
-```
-
-#### Fetch Dijkstra's (Cached)
-
-```
-cached_djk = dictionary of node -> dict
+end functionFetch Dijkstra's (Cached)cached_djk = dictionary of node -> dict
 
 function fetch_djk (
     start: node,
     end: node,
     current_time: datetime,
 ):
-	name = start + '@' + current_time
-	
+    name = start + '@' + current_time
+    
     if cached_djk[name] does not exists:
         cached_djk[name] = dijkstras(start, current_time)
     
@@ -1269,54 +879,42 @@ function fetch_djk (
         'distance': djk['distances'][end],
         'path': path
     }
-end function
-```
-
-#### Distance Function
-
-```
-function dist (
-	start: node,
-	end: node,
-	current_time: datetime
+end functionDistance Functionfunction dist (
+    start: node,
+    end: node,
+    current_time: datetime
 ):	
-	// if the start and end node are the same, it takes no time to get there
-	if start = end:
-		return 0
-	else if edges = null:
-		// if no edge exists between nodes
-		return infinity
-	
-	edges = edge_lookup_matrix[start][end]
-	distances = []
-	
-	// go over each possible edge between nodes (multiple possible)
-	for edge in edges:
-		wait_time = wait time from data (precomputed)
-		distances.add(edge.weight + wait_time)
-	
-	return min(distances)
-end function
-```
-
-#### Normalising Function
-
-```
-function normalise_path (
-	path: path of nodes,
-	current_time: datetime
+    // if the start and end node are the same, it takes no time to get there
+    if start = end:
+        return 0
+    else if edges = null:
+        // if no edge exists between nodes
+        return infinity
+    
+    edges = edge_lookup_matrix[start][end]
+    distances = []
+    
+    // go over each possible edge between nodes (multiple possible)
+    for edge in edges:
+        wait_time = wait time from data (precomputed)
+        distances.add(edge.weight + wait_time)
+    
+    return min(distances)
+end functionNormalising Functionfunction normalise_path (
+    path: path of nodes,
+    current_time: datetime
 ):
-	return_path = []
-	time = current_time
-	
-	for i from 0 to len(path) - 1:
-		djk = fetch_djk(path[i], path[i + 1], current_time)
-		time += djk['cost'] number of minutes
-		// this is to prevent the last and first item double up
-		return_path += everything in djk['path'] except last item
-	
-	return_route.add(last item in route)
-	
-	return cost
+    return_path = []
+    time = current_time
+    
+    for i from 0 to len(path) - 1:
+        djk = fetch_djk(path[i], path[i + 1], current_time)
+        time += djk['cost'] number of minutes
+        // this is to prevent the last and first item double up
+        return_path += everything in djk['path'] except last item
+    
+    return_route.add(last item in route)
+    
+    return cost
 end function
 ```

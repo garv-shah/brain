@@ -1,5 +1,5 @@
 ---
-title: "Relationships"
+title: Relationships
 ---
 #flashwrite #lit #analysis 
 

@@ -2,25 +2,26 @@
 title: Varieties of English
 ---
 - [Pidgin](Pidgins) :: is nobody's native language but arises when two speakers share no common language so develop a form of communication that is somewhat unstructured.
-  
+
 - Creole :: a language that has developed from a mix of two other languages. Further, a creole is a language that was initially a pidgin but has become native for groups of speakers. They are generally more structured with a full lexicon and syntax.
-  
+
 - Patois :: more so used as a pejorative for creole and pidgin, as "broken English" or non-standard.
-  
+
 - Lingua Franca :: a language that is adopted as a common language between speakers whose native languages are different.
-  
-- Globish :: a portmanteau of "global" and "English," Globish is a simplified subset of English used by non-native speakers, consisting of only the most common words and phrases. 
-  
+
+- Globish :: a portmanteau of "global" and "English," Globish is a simplified subset of English used by non-native speakers, consisting of only the most common words and phrases.
+
 - Native English :: English being used by a native speaker, as their primary language.
-  
+
 - Non-native English :: English being used by a non-native speaker, not as a primary language.
 
 - Accent:
 - Dialect:
 - Idiolect:
+
 ## English Across the World
 Braj Kachru's Three Circles of English
-![[Three Circles Model.png]]
+![Three Circles Model.png](Three Circles Model.png)
 
 The 'Inner Circle' shows examples of countries where English is the 'primary' language, namely as an official language of the country and spoken by the majority.
 
@@ -48,5 +49,4 @@ Acrolect :: the most prestigious dialect or variety of a particular language. 
 Each different variety varies depending on the heritage background of the speakers
 
 There is also a variety of Australian English called 'Strine' - the word 'Strine' itself represents a poor pronunciation of the word 'Australian'.
-
 
