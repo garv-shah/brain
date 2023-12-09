@@ -12,7 +12,7 @@ Basilect varieties of AAE that are heavily influenced by the indigenous substrat
 
 In general, no distinction between tense and lax vowels, so pairs such as 'sleep' and 'slip', 'shared' and 'shed', 'cart' and cut would all be pronounced the same.
 Another pair that falls together is /e/ and /æ/ with 'bed' and 'bad' both being pronounced more like the former.
-![[Aboriginal English Phonology.png]]
+![[notes/School Subjects/English Language/Year 11/Englishes in Contact/Aboriginal English Phonology.png]]
 
 ### Morphology And Lexicology
 ### Discourse

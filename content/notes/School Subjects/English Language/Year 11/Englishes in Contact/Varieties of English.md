@@ -1,7 +1,7 @@
 ---
 title: Varieties of English
 ---
-- [Pidgin](Pidgins) :: is nobody's native language but arises when two speakers share no common language so develop a form of communication that is somewhat unstructured.
+- [Pidgin](Pidgins.md) :: is nobody's native language but arises when two speakers share no common language so develop a form of communication that is somewhat unstructured.
 
 - Creole :: a language that has developed from a mix of two other languages. Further, a creole is a language that was initially a pidgin but has become native for groups of speakers. They are generally more structured with a full lexicon and syntax.
 
