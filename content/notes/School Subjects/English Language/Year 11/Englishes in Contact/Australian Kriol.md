@@ -27,7 +27,7 @@ Introduction:
 	- When and where did it originate
 -->
 
-Kriol is an English-lexified creole language that originated in Northern Australia circa 1908, developed by the Indigenous Australian minority. With over 20,000 active language users, at least 10,000 of whom speak it as their primary language [@harris1986], the creole is now the most widely spoken language by Indigenous Australians after English [@bowern2023], namely throughout a wide band extending from western Queensland to the Kimberleys of Western Australia,[^1] as shown in [@Fig:figure0]. The language is a mixture of English, the contact language brought to the Indigenous peoples after British colonisation, and the various Indigenous languages of the region, establishing itself through the creolisation of the many English-based pidgins that arose throughout the 1800s. According to Kachru's model of the 'Three Concentric Circles of English', Kriol can be found in what he calls the 'Outer Circle', referring to regions in which English has been institutionalised as an 'additional language' [@kachru1997] after the colonial period, as has been done with Indigenous communities in Northern Australia.
+Kriol is an English-lexified creole language that originated in Northern Australia circa 1908, developed by the Indigenous Australian minority. With over 20,000 active language users, at least 10,000 of whom speak it as their primary language [@harris1986], the creole is now the most widely spoken language by Indigenous Australians after English [@dickson2023], namely throughout a wide band extending from western Queensland to the Kimberleys of Western Australia,[^1] as shown in [@Fig:figure0]. The language is a mixture of English, the contact language brought to the Indigenous peoples after British colonisation, and the various Indigenous languages of the region, establishing itself through the creolisation of the many English-based pidgins that arose throughout the 1800s. According to Kachru's model of the 'Three Concentric Circles of English', Kriol can be found in what he calls the 'Outer Circle', referring to regions in which English has been institutionalised as an 'additional language' [@kachru1997] after the colonial period, as has been done with Indigenous communities in Northern Australia.
 
 ![Australia, showing the region in which Kriol is spoken](Australian%20Kriol%20Regions.png){#fig:figure0 height=340px}
 
@@ -41,7 +41,7 @@ Kriol is an English-lexified creole language that originated in Northern Austral
 - What is the linguistic history of this region? What was the original language? How and why did English get there?
 -->
 
-Australian Kriol is one of two widely recognised creole languages in Australia, the other being Torres Strait Creole, otherwise known as Yumplatok [@bowern2023]. The creation of Kriol is a direct result of the colonisation and invasion of Australia by English-speaking settlers, and many of the language's roots can be traced back to the initial invasions that occurred in the Sydney region in the late 1700s.
+Australian Kriol is one of two widely recognised creole languages in Australia, the other being Torres Strait Creole, otherwise known as Yumplatok [@dickson2023]. The creation of Kriol is a direct result of the colonisation and invasion of Australia by English-speaking settlers, and many of the language's roots can be traced back to the initial invasions that occurred in the Sydney region in the late 1700s.
 
 Historical evidence suggests that Kriol emerged in some locations in the early 1900s, developing from Northern Territory Pidgin English whose arrival in the region coincided with the growth of the pastoral industry in the mid to late 1800s. Much of the emergence of Kriol is documented in relation to the [Roper River Mission](https://www.findandconnect.gov.au/guide/nt/YE00010) (now Ngukurr), the first of five missions set up by the Church Missionary Society in the Northern Territory of Australia in 1908, with the intention of bringing 'Christianity and civilisation' to the Aboriginal peoples of the land. Creolisation is considered to have occurred within the first decades of the mission's establishment afforded by the prime conditions for creolisation, such as the segregated dormitory system where contact-language-speaking children were made to live separate from their traditional-language-speaking parents or relatives [@nationalcentreforindigenousgenomics2015]. Though this theory involving a single point of conception at Ngukurr - known as the monogenesis hypothesis - is popularly espoused, linguists such as @munro2005 and @meakins2014 endorse the multi-regional hypothesis, suggesting that similar processes were occurring throughout pastoral stations in the region, providing more than one possible point of genesis for Kriol. Nonetheless, population movements and migration spread the newfound creole across the Northern Territory throughout the mid-1900s, largely attributed to World War II and bombings in the area.
 
@@ -87,7 +87,7 @@ Kriol has absorbed several phonemes from English into its phonology that did not
 
 \normalsize
 
-**Table 1** \space Example Kriol consonant inventory using NT Kriol orthography (adapted from @bowern2023).
+**Table 1** \space Example Kriol consonant inventory using NT Kriol orthography (adapted from @dickson2023).
 
 Variation in the phonetic traits is evident in Kriol, initially attributed to a creole continuum and geographical variation. Earlier researchers such as @sandefur1979 provided examples of phonological variation linked to basilectal, acrolectal, and mesolectal forms. Early descriptions of geographical variation also encompass phonological variation, for example, Sandefur's early grammatical outlines mention that Ngukurr Kriol speaker's have a vowel system displaying influence from the substratal three-vowel system while speakers at Barunga "tended towards a five vowel system" [@sandefur1979]. 
 
@@ -111,17 +111,17 @@ Kriol, typical of creole languages, is mostly an isolating language[^2] with lit
 
 \normalsize
 
-**Table 2** \space Common adverbial suffixes on Kriol lexical verbs. (adapted from @bowern2023).
+**Table 2** \space Common adverbial suffixes on Kriol lexical verbs. (adapted from @dickson2023).
 
 [^2]: meaning that Kriol has a morpheme per word ratio close to one.
 
-In terms of aspectual suffixes, past tense is marked by *bin* and contractions incorporating *bin*, seen in *'De det Burlany, ai **bin** luk im wok pas'* ('There is Burlany, I saw him walk past') and *'Maidi **imin** jinggabat im femili'* ('Maybe he was thinking of his family') respectively [@bowern2023]. The particle *garra* is typically described as encoding obligation [@sandefur1979] but unlike its English etymon 'got to', *garra* can simply be used to mark future tense: *'if ing-**garra** tok na ing-**garra** meigi mi jandap irriwul, dis da festaim ai **garra** irrim du.'* (‘If he’s going to talk, then he’ll make me pay attention \[because] this is the first time I’ll be hearing it too.’) [@bowern2023].
+In terms of aspectual suffixes, past tense is marked by *bin* and contractions incorporating *bin*, seen in *'De det Burlany, ai **bin** luk im wok pas'* ('There is Burlany, I saw him walk past') and *'Maidi **imin** jinggabat im femili'* ('Maybe he was thinking of his family') respectively [@dickson2023]. The particle *garra* is typically described as encoding obligation [@sandefur1979] but unlike its English etymon 'got to', *garra* can simply be used to mark future tense: *'if ing-**garra** tok na ing-**garra** meigi mi jandap irriwul, dis da festaim ai **garra** irrim du.'* (‘If he’s going to talk, then he’ll make me pay attention \[because] this is the first time I’ll be hearing it too.’) [@dickson2023].
 
 Anecdotally, younger speakers of Kriol may have difficulty parsing common contractions [@dickson2015], suggesting that grammaticalisation may be in progress. It is worth noting that in a similar contact language, Light Warlpiri, the derivative of *garra*, the *-rra* suffix, is used purely as a future tense morpheme, furthering evidence of possible grammaticalisation. 
 
-Reduplication is also a productive feature of Kriol nominals and verbs, though it is more frequent in eastern varieties. Unlike some creoles, reduplication in Kriol does not indicate plurality but is rather used to express emotional connotations; it is often used as a diminutive, as in the lexeme *yawkyawk* 'little young girl' [@ponsonnet2018]. Plural markings tend to be optional but can be achieved through various means such as the plural determiner *ola* or the suffix *-mo(b)* which connotes 'group' or collectivity rather than simply plurality: *en naja lilmen dissaid igin gada **ola** frut-**mo**, gada **ola** daga* ('And \[there's] another little man on this side too with the fruit, with the food') [@bowern2023].
+Reduplication is also a productive feature of Kriol nominals and verbs, though it is more frequent in eastern varieties. Unlike some creoles, reduplication in Kriol does not indicate plurality but is rather used to express emotional connotations; it is often used as a diminutive, as in the lexeme *yawkyawk* 'little young girl' [@ponsonnet2018]. Plural markings tend to be optional but can be achieved through various means such as the plural determiner *ola* or the suffix *-mo(b)* which connotes 'group' or collectivity rather than simply plurality: *en naja lilmen dissaid igin gada **ola** frut-**mo**, gada **ola** daga* ('And \[there's] another little man on this side too with the fruit, with the food') [@dickson2023].
 
-Finally, the syntactic word order of Kriol is SVO, following the superstratum English, but with some additional flexibility. This often occurs in sentences including possession, as seen in *'la det haus **ba mela**'* which translates to 'at **our** house' [@bowern2023]. 
+Finally, the syntactic word order of Kriol is SVO, following the superstratum English, but with some additional flexibility. This often occurs in sentences including possession, as seen in *'la det haus **ba mela**'* which translates to 'at **our** house' [@dickson2023]. 
 
 ### Lexicon and Semantics
 
@@ -148,7 +148,7 @@ The lexicon of Kriol mostly comprises of English-derived lexemes. As mentioned a
 
 \normalsize
 
-**Table 3** \space Sample of English-derived Kriol lexemes with semantics distinct from their etymons. (adapted from @bowern2023).
+**Table 3** \space Sample of English-derived Kriol lexemes with semantics distinct from their etymons. (adapted from @dickson2023).
 
 All Kriol pronouns are derivatives of English lexemes, but the pronoun system aligns itself much more closely to that of the substrata, including features not found in English such as inclusivity, obligatory encoding duality and obligatory 2nd person plural form (see Table 4). 
 
@@ -163,7 +163,7 @@ All Kriol pronouns are derivatives of English lexemes, but the pronoun system al
 
 \normalsize
 
-**Table 4** \space Kriol pronouns in the Roper variety. (adapted from @bowern2023).
+**Table 4** \space Kriol pronouns in the Roper variety. (adapted from @dickson2023).
 
 Variation between *ai/mi* and *thei/alabat* have been characterized to be dependant on syntactic position, and many variants exist across Kriol varieties beyond Roper Kriol.
 
@@ -181,9 +181,9 @@ Nicholls observes a preference for using kin terms over other forms of person re
 
 The lexeme *det* (etymon: 'that') and its role was also analysed by @nicholls2016. Initially *det* was described as a basic adnominal demonstrative just like its etymon by @sandefur1979 but Nicholls observed it functioning like a recognitional determiner, used to ‘indicate familiarity between the addressee and the referent of a noun phrase’ [@nicholls2016]. An example of this can be seen in the sentence used above, *'De **det** Burlany, ai bin luk im wok pas'* ('There is Burlany, I saw him walk past'), where *det* is used to indicate that the speaker is familiar with 'Burlany'. 
 
-Kriol speakers often employ politeness strategies in relation to kinship. Namely, it is common to use the plural form of a pronoun to refer to singular referents when kin-based avoidance rules dictate. For example, in '*Genga, **yumo** na dum det ekshin*' ('Brother-in-law, you demonstrate the gesture') [@bowern2023], the speaker from Ngukurr is refering to a peer who is a classificatory brother-in-law and hence uses plural pronouns when addressing him. 
+Kriol speakers often employ politeness strategies in relation to kinship. Namely, it is common to use the plural form of a pronoun to refer to singular referents when kin-based avoidance rules dictate. For example, in '*Genga, **yumo** na dum det ekshin*' ('Brother-in-law, you demonstrate the gesture') [@dickson2023], the speaker from Ngukurr is refering to a peer who is a classificatory brother-in-law and hence uses plural pronouns when addressing him. 
 
-Paralinguistic features do not seem to have been a focus of research, but it is supposedly evident that 'Kriol speakers use a number of iconic gestures and signs related to those that are used by speakers of pre-contact languages' [@bowern2023].
+Paralinguistic features do not seem to have been a focus of research, but it is supposedly evident that 'Kriol speakers use a number of iconic gestures and signs related to those that are used by speakers of pre-contact languages' [@dickson2023].
 
 ## Sociolinguistic Implications
 
@@ -195,7 +195,7 @@ Paralinguistic features do not seem to have been a focus of research, but it is 
 
 Kriol is a growing language, acting as a lingua franca across a variety of indigenous communities in northern Australia. Due to its affordance of communication and shared cultural experience, Kriol has seen a rise in usage amongst rural communities across the continent, but has also received disapproval due to perceptions that it has destroyed the vitality and viability of substrata and moved them all closer to Standard English, influencing the rich oral tradition of Indigenous communities along with their cultural heritage.
 
-In terms of Kriol's vitality, it is relatively high compared to other Indigenous languages in the Australian context, but certainly quite low when compared to creole languages worldwide, especially in more formal settings. In an Australian context, the demographic vitality of the language is quite high: the language has shown consistent growth in many remote communities and though towns with large non-Indigenous populations populations may see a shift away from Kriol, decreolisation processes are not evident, with smaller communities using it as the primary language in most or all homes and in informal social interactions. Institutionally, Kriol's vitality is much lower, featuring only peripherally in education and government institutions. In most cases, classrooms in Kriol-speaking communities will have a teaching assistant working as a subordinate to a non-Indigenous teacher with limited Kriol knowledge. As such, Kriol is rarely incorporated into schooling curricula, though initiatives to increase its presence have been emerging in recent decades [@bowern2023]. Outside of education, religion is one institutional domain that has consistently afforded Kriol a position of significance, with a full Kriol translation of the Bible being published in 2007, linked [here](https://aboriginalbibles.org.au/kriol/). Orthographical conventions for the language were established due to the commencement of the bible translation and bilingual education in the late 1970s. While Kriol's orthography prescribes letter-sound correspondences, spelling is only nominally standardised, allowing for spelling variation in accordance with pronunciation. That being said, literacy levels amongst Kriol-speaking communities are generally low, causing written Kriol to be uncommon.
+In terms of Kriol's vitality, it is relatively high compared to other Indigenous languages in the Australian context, but certainly quite low when compared to creole languages worldwide, especially in more formal settings. In an Australian context, the demographic vitality of the language is quite high: the language has shown consistent growth in many remote communities and though towns with large non-Indigenous populations populations may see a shift away from Kriol, decreolisation processes are not evident, with smaller communities using it as the primary language in most or all homes and in informal social interactions. Institutionally, Kriol's vitality is much lower, featuring only peripherally in education and government institutions. In most cases, classrooms in Kriol-speaking communities will have a teaching assistant working as a subordinate to a non-Indigenous teacher with limited Kriol knowledge. As such, Kriol is rarely incorporated into schooling curricula, though initiatives to increase its presence have been emerging in recent decades [@dickson2023]. Outside of education, religion is one institutional domain that has consistently afforded Kriol a position of significance, with a full Kriol translation of the Bible being published in 2007, linked [here](https://aboriginalbibles.org.au/kriol/). Orthographical conventions for the language were established due to the commencement of the bible translation and bilingual education in the late 1970s. While Kriol's orthography prescribes letter-sound correspondences, spelling is only nominally standardised, allowing for spelling variation in accordance with pronunciation. That being said, literacy levels amongst Kriol-speaking communities are generally low, causing written Kriol to be uncommon.
 
 Status factors have also contributed to ethnolinguistic vitality, with both creole languages and Australian languages having seperate histories of discrimination and denigration, causing the effects to be compounded for Kriol. For many decades following its emergence, Kriol (otherwise known as "Pidgin English" at the time) was generally regarded as an inferior form of English, and though there was some acceptance of the language for its practical value as a last resort for communication, it was still typically subjugated, as is the case in this official policy from the Roper River Mission, 1944:
 
@@ -224,3 +224,5 @@ More work must be done to continue our linguistic understanding of Kriol and to 
 \pagebreak
 
 # Bibliography
+
+This research report takes heavy influence from the chapter titled 'Kriol' [@dickson2023] from 'The Oxford Guide to Australian Languages', authored by Greg Dickson. It is intended to be a summarised version of the information presented in Dickson's chapter, whilst providing supporting evidence and insights from various other sources.
