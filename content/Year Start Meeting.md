@@ -1,0 +1,17 @@
+- Start something like the Congressional App Challenge (for social cause)
+- Make a competition/workshop
+- Compete to submit their app
+- Network with other well-known organisations (unimelb)
+- There's informatics and robotics, but what about app development?
+- <u>Contact local government council, help them out</u>
+	- Show them examples of what you did
+- **Get together with other people**, be a co-founder
+- 3 to 5 people on board
+- [Inspirit AI: AI Taught by Stanford/MIT Alum for High School](https://www.inspiritai.com/)
+- ^^ seems like a bootcamp, like $1200 USD
+- talk to alumni so you can write about traditions
+- college values, why is it a good fit for me?
+- past, current, future <- why us
+- why them and nobody else?
+
+- try to think what is *wrong* about the question?
