@@ -1,5 +1,5 @@
 ---
-title: School Subjects
+title: "School Subjects"
 ---
 
 ## [[English Language]]

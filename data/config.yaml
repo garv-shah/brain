@@ -1,0 +1,29 @@
+name: Garv Shah
+enableToc: true
+openToc: false
+enableLinkPreview: true
+enableLatex: true
+enableCodeBlockTitle: true
+enableCodeBlockCopy: true
+enableCallouts: true
+enableSPA: true
+enableFooter: true
+enableContextualBacklinks: true
+enableRecentNotes: false
+enableGitHubEdit: true
+enableMermaid: true
+GitHubLink: https://github.com/garv-shah/notes/tree/hugo/content
+search:
+  enableSemanticSearch: false
+  operandApiKey: "REPLACE-WITH-YOUR-OPERAND-API-KEY"
+  operandIndexId: "REPLACE-WITH-YOUR-OPERAND-INDEX-ID"
+description:
+  Garv Shah's Notes, the home for all of Garv's notes :D
+  From school to home to whatever else, you can probably find my notes somewhere in here
+page_title:
+  "👋 Garv's Notes"
+links:
+  - link_name: LinkedIn
+    link: https://www.linkedin.com/in/garvshah/
+  - link_name: GitHub
+    link: https://github.com/garv-shah

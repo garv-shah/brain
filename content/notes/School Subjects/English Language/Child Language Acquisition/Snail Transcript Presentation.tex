@@ -1,0 +1,476 @@
+%%
+% Please see https://bitbucket.org/rivanvx/beamer/wiki/Home for obtaining beamer.
+%%
+\documentclass[compress]{beamer}
+\usetheme{Boadilla}
+\usepackage{xcolor}
+\usepackage{csquotes}
+\usepackage{fontspec}
+\useoutertheme{miniframes}
+
+%Beamer notes config%
+%\usepackage{pgfpages}
+%\setbeameroption{show notes on second screen}
+
+%Defines the IPA environment and ipatext functions%
+\newfontfamily\ipafont{Charis SIL}
+\newenvironment{ipa}{\ipafont}{\par}
+\DeclareTextFontCommand{\ipatext}{\ipafont}
+
+%Makes all descriptions use the IPA font%
+\let\origdescription=\description
+\def\description{\origdescription\ipa}
+
+\title{Snail Transcript}
+\subtitle{Child Language Aquisition}
+\author{Garv Shah}
+\institute{English Language}
+\date{\today}
+
+\begin{document}
+
+%Titlepage%
+\begin{frame}
+\titlepage
+\end{frame}
+
+%Table of Contents%
+\begin{frame}
+\frametitle{Outline}
+
+\begin{columns}
+\column{0.5\textwidth}
+	\tableofcontents
+
+\column{0.4\textwidth}
+	\centering
+	\begin{figure}
+		\includegraphics[scale=0.3]{snail.jpg}
+		\caption{Example of a Snail}
+	\end{figure}
+\end{columns}
+
+\end{frame}
+
+%Introduction%
+\section{Introduction}
+\begin{frame}
+	\frametitle{Introduction}
+
+	\begin{itemize}
+		\item Bella and Grandmother talking about snail
+	\end{itemize}
+
+	\begin{description}
+		\item[\textcolor{red}{C}] Bella, the child learning English
+		\item[G] Her grandmother, caregiver and MKO
+	\end{description}
+
+	\begin{itemize}
+		\item Bella well into the telegraphic stage
+		\item About 5 months ahead
+	\end{itemize}
+\end{frame}
+
+\note[itemize]{
+\item Conversation between Bella, girl of 1 year 11 months, and her Grandmother in the garden about snails
+\item Grandmother is her caregiver, serves as MKO while helping Bella, the child, in her language development.
+\item Throughout presentation, red C for child, blue G for grandma
+\item Bella well into the telegraphic stage, evidence provider later
+\item Subsystems developed into that expected of 2-3 year old, about 5 months ahead of expected language development
+}
+
+\begin{frame}
+	\frametitle{Introduction}
+	
+	\begin{displayquote}
+		We are storytelling creatures, and as children we acquire language to tell those stories that we have inside us.” - Jerome Bruner	
+	\end{displayquote}
+
+\end{frame}
+
+\note[itemize]{
+\item Bella learns how to describe the world around her by imitating and
+  interacting with her MKO, grandma
+}
+
+\section{Features of Language}
+\subsection{Emerging Subsystems}
+\begin{frame}
+	\frametitle{Emerging Subsystems}
+	\begin{itemize}
+		\item Bella's Developmental Stage $\rightarrow$ well into telegraphic
+		\item Coherent utterances, but missing function words/morphemes
+	\end{itemize}
+	
+	\begin{block}{Typical Utterances}
+		\begin{columns}
+			\column{0.5\textwidth}
+				\centering
+				\begin{displayquote}
+					"Where daddy?"
+				\end{displayquote}
+
+			\column{0.5\textwidth}
+				\centering
+				\begin{displayquote}
+					"What that?
+				\end{displayquote}
+		\end{columns}
+	\end{block}
+
+	
+\end{frame}
+
+\note[itemize]{
+\item
+  Well into the telegraphic stage
+\item
+  At this point, Bella gone beyond two-word stage , producing coherent
+  enough utterances, but somewhat lacking all the needed function words
+  and morphemes to be syntactically accurate
+\item
+  Children in the telegraphic stage almost sounds like text messages,
+  omitting unnecessary words.
+\item
+  Also gained the ability to ask basic questions, like "where" or "why"
+\item
+  For example, child might say "Where daddy?" or "What that?" dropping
+  the word \emph{is}
+}
+
+\subsubsection{Lexical/Semantic POV}
+%Lexical and Semantic Perspective%
+\begin{frame}
+	\frametitle{Lexical/Semantic Perspective}
+	
+	\begin{itemize}
+		\item Actively asking where questions
+	\end{itemize}
+	\begin{description}
+	\item[\textcolor{red}{C}] Where [nʌdə sneɪjəl]
+	\end{description}
+	
+	\begin{itemize}
+		\item Can point and direct others
+	\end{itemize}
+	\begin{description}
+	\item[\textcolor{red}{C}] Look! I see [ənʌdə sneɪjəw]
+	\end{description}
+\end{frame}
+
+\note[itemize]{
+\item
+  Actively asking where questions: "Where \ipa{{[}nʌdə sneɪjəl{]}}"
+\item
+  Can point and direct others: "Look! I see \ipa{{[}ənʌdə sneɪjəw{]}}"
+}
+
+\subsubsection{Morphological/Syntactic POV}
+%Morphological & Syntactic Perspective%
+\begin{frame}
+	\frametitle{Morphological/Syntactic Perspective}
+	
+	\begin{itemize}
+		\item Grammatical morphemes being added to speech
+	\end{itemize}
+	\begin{description}
+		\item[\textcolor{red}{C}] [dɛəz] Mickey
+		\item[\textcolor{red}{C}] Look he [pʊdɪn] his head way up in sky
+	\end{description}
+	
+	MLU is 3.44 lexemes, last utterance an outlier
+	\begin{itemize}
+		\item Could be collocation: "head way up in the clouds" or "head way up in the stars"
+		\item Supports Skinner's behaviourist ideas
+	\end{itemize}
+\end{frame}
+
+\note[itemize]{
+\item
+  We can clearly see Bella well into stage as she is beginning to add
+  grammatical morphemes to speech:
+
+\item
+  "\ipa{{[}dɛəz{]}} Mickey" uses contraction for "there is"
+\item
+  "Look he \ipa{{[}pʊdɪn{]}} his head way up in sky": still developing inflectional morpheme -ing, g-dropping: replacing /ŋ/ sound with /n/, putting $\therefore$ puttin'{}
+\item
+  That last utterance was outlier, MLU is approx 3.44 lexemes, while
+  this utterance had 9 lexemes, much higher than mean
+\item
+  This is a common phrase, almost a collocation, possibly replacing the
+  word sky with "clouds" or "stars".
+\item
+  Common phrase could have been repeated by MKO such as parents or
+  grandmother and imitated by Bella, supporting
+  Skinner's Behaviourist ideas
+}
+
+\subsection{Supported Theories}
+%Carer Strategies%
+\begin{frame}
+	\frametitle{Supported Theories}
+	
+	Mainly supports behaviourism and interactionism
+	
+	Lines that support cognitivism are present
+	
+	\begin{itemize}
+		\item Displays understanding of location
+	\end{itemize}
+	\begin{description}
+		\item[G] Do you see another one?
+		\item[\textcolor{red}{C}] [ʌn də flaʊwə]
+	\end{description}
+	
+	\begin{itemize}
+		\item Simple prepositions such as "on" or "in"
+	\end{itemize}
+	\begin{description}
+		\item[G] Do you see another snail?
+		\item[\textcolor{red}{C}] [ən dæ twiː]
+	\end{description}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Supported Theories}
+	
+	\begin{itemize}
+		\item Recast $\therefore$ negative reinforcement
+	\end{itemize}
+	\begin{description}
+		\item[\textcolor{red}{C}] Look! I see [ənʌdə sneɪjəw]
+		\item[G] Do you see another snail
+	\end{description}
+	
+	\begin{block}{}
+		Transition of declarative $\rightarrow$ interrogative $=$ scaffolding
+	\end{block}
+\end{frame}
+
+%Interactionism%
+\subsubsection{Interactionism}
+\begin{frame}
+	\frametitle{Interactionism}
+	
+	Emphasis on interaction with MKO
+	
+	\begin{itemize}
+		\item Teaches society's perceptions through interaction
+	\end{itemize}
+	\begin{description}
+		\item[G] Yes he's in the tree
+		\item[\textcolor{red}{C}] Look he [pʊdɪn]...
+	\end{description}
+\end{frame}
+
+%Behaviourism%
+\subsubsection{Behaviourism}
+\begin{frame}
+	\frametitle{Behaviourism}
+	
+	\begin{block}{}
+		Operant conditioning through recasts, Bella learns to imitate MKO
+	\end{block}
+	
+	\noindent\rule{\textwidth}{1pt}
+	
+	\begin{description}
+		\item[\textcolor{red}{C}] Where [nʌdə sneɪjəl]
+		\item[G] Where's another snail
+	\end{description}
+	
+	\noindent\rule{\textwidth}{1pt}
+	
+	\begin{description}
+		\item[G] There's another snail
+		\item[\textcolor{red}{C}] [dɛəz ənʌdə sneɪjəw]
+	\end{description}
+	
+\end{frame}
+
+\section{The Subsystems}
+\begin{frame}
+	\vfill
+	\centering
+	\begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+	\usebeamerfont{title}\insertsectionhead\par%
+ 	\end{beamercolorbox}
+ 	\vfill
+ \end{frame}
+
+\subsection{Phonological Processes}
+%Phonological Processes%
+\begin{frame}
+	\frametitle{Phonological Processes}
+	
+	Operant conditioning through recasts, Bella learns to imitate MKO
+	
+	\begin{itemize}
+		\item Elision of the /l/ and /ɹ/ consonant clusters $\rightarrow$ cluster reduction
+		\item Epenthesis of the /jə/ sound
+	\end{itemize}
+	\begin{description}
+		\item[\textcolor{red}{C}] [kaɪm] on [tiː] a [sneɪjəl], see
+	\end{description}
+	
+	\begin{itemize}
+		\item Epenthesis of /jə/ sound is consistent across her speech
+		\item Gliding of /l/ $\rightarrow$ /w/
+	\end{itemize}
+	\begin{description}
+		\item[\textcolor{red}{C}] [dɛəz ənʌdə sneɪjəw]
+	\end{description}
+	
+	\begin{itemize}
+		\item Consistent th-stopping
+	\end{itemize}
+	\begin{description}
+		\item[\textcolor{red}{C}] Where [nʌdə sneɪjəl]
+	\end{description}
+	
+\end{frame}
+
+\subsection{Lexicology}
+%Lexicology%
+\begin{frame}
+	\frametitle{Lexicology}
+	
+	Lexicon of $\approx$ 20 words
+	
+	\begin{itemize}
+		\item Repeating lexemes: "there's", "another", "snail", "where"
+		\item Probably spends a lot of time in the garden
+		\item Supporting interactionist theories
+	\end{itemize}
+	
+	\begin{itemize}
+		\item New words introduced through questioning and scaffolding, prompted for new lexemes
+	\end{itemize}
+	\begin{description}
+		\item[G] What colour is that flower?
+		\item[\textcolor{red}{C}] Look! I see [ənʌdə sneɪjəw]
+	\end{description}
+	
+\end{frame}
+
+\subsection{Morphology}
+%Morphology%
+\begin{frame}
+	\frametitle{Morphology}
+	
+	Able to utilise gerund and starting to use inflectional morphemes
+	
+	\begin{itemize}
+		\item Evidence of using articles
+		\item Clear example of learning to add grammar from recast
+	\end{itemize}
+	\begin{description}
+		\item[G] Look here's a snail
+		\item[\textcolor{red}{C}] [hiːəz ə sneɪjəl]
+	\end{description}
+	
+\end{frame}
+
+\subsection{Syntax/Semantics}
+%Syntax/Semantics%
+\begin{frame}
+	\frametitle{Syntax/Semantics}
+	
+	Errors dealt with in behaviourist fashion
+	Is able to use interrogative sentences
+	
+	\begin{itemize}
+		\item SVO structure present
+	\end{itemize}
+	\begin{description}
+		\item[\textcolor{red}{C}] \textcolor{olive}{I} \textcolor{teal}{see} \textcolor{gray}{[ənʌdə sneɪjəw]}
+	\end{description}
+	
+	\begin{block}{Key}
+	\begin{columns}
+	\column{0.3\textwidth}
+		\centering
+		\textcolor{olive}{Subject}
+
+	\column{0.3\textwidth}
+		\centering
+		\textcolor{teal}{Verb}
+		
+	\column{0.3\textwidth}
+		\centering
+		\textcolor{gray}{Object}
+	\end{columns} 
+	\end{block}
+	
+\end{frame}
+
+\subsection{Discourse}
+%Discourse%
+\begin{frame}
+	\frametitle{Discourse}
+	
+	\begin{itemize}
+		\item Adjacency pairs present
+	\end{itemize}
+	\begin{description}
+		\item[G] You want me to climb in the tree?
+		\item[\textcolor{red}{C}] [jɑː]
+		\item[G] No way, silly monkey! You want to climb in the tree?
+		\item[\textcolor{red}{C}] [jɑː]
+	\end{description}
+	
+	 \begin{itemize}
+		\item Mostly coherent, can use interjections/discourse markers
+	\end{itemize}
+	\begin{description}
+		\item[\textcolor{red}{C}] oh, oh!
+	\end{description}
+	
+\end{frame}
+
+\subsubsection{Caretaker}
+\begin{frame}
+	\frametitle{Caretaker}
+	
+	\begin{itemize}
+		\item Uses confirmation requests to prompt and scaffold the child.
+		\item Supports interactionist theories
+	\end{itemize}
+	\begin{description}
+		\item[G] That's a lot of snails, isn't it?
+		\item[G] You put the snail in the garden, did you?
+	\end{description}
+	
+\end{frame}
+
+\section{Conclusion}
+%Conclusion%
+\begin{frame}
+	\frametitle{Conclusion}
+	
+	\begin{itemize}
+		\item Well into telegraphic stage $\rightarrow$ about 5 months ahead of expected development
+		\item Evident by emerging subsystems
+		\item Mostly supports behaviourist and interactionist theories
+		\item Bella will continue to refine her language, approaching adult-like grammatical ability
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Conclusion}
+	
+	\begin{displayquote}
+		In sum, then, "thinking about thinking" has to be a principal ingredient of any empowering practice of education.” - Jerome Bruner	
+	\end{displayquote}
+	
+\end{frame}
+
+\begin{frame}
+	\centering
+	Thank you for listening!
+\end{frame}
+
+\end{document}
